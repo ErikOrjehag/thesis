@@ -1,0 +1,88 @@
+\section{Implementation}
+
+This section describes the parts that will be implemented in PyTorch for this thesis.
+
+\subsection{CNN architectures}
+
+In order to predict depth and motion from monocular images two different CNN architectures will be implemented.
+
+\paragraph{SfMLearner} This is the architecture from \cite{sfmlearner}. The authors use a DispNet\cite{dispnet} architecture to predict depth maps at four different scales, and a ResNet18\cite{resnet} architecture with modified decoder to predict pose updates in an euler angle axis representation.
+
+\paragraph{Monodepth2} This is the architecture from \cite{monodepth2}. The authors use a ResNet18 architecture instead of a DispNet architecture to predict depth estimates. They make this choice because its a smaller and faster architecture. Similarly they use a ResNet18 architecture with modified decoder to predict the pose updates in an euler angle axis representation.
+
+
+
+\subsection{Datasets}
+
+The neural networks will be trained and tested on the following datasets: KITTI\cite{kitti}, FlyingThings3D\cite{dispnet} and Lyft\cite{lyft2019}.
+
+\subsection{Data augmentation}
+
+Following \cite{monodepth2} the ability to apply a random augmentation with 50\% chance to the training images will be implemented in the system. This can improve robustness and hopefully makes the CNN generalize and achieve better results on the unseen testing data. The following augmentations can be applied: Horizontal flip, random brightness, contrast, saturation and hue jitter.
+
+\subsection{Differentiable depth image warping}
+\label{sec:diffwarp}
+
+Central to all previous methods in the related work section is the differentiable depth image warp operation in the loss function of the CNN networks. Given the intrinsic camera matrix:
+
+\[
+K = 
+\begin{pmatrix}
+f_x & s & x_0 \\
+0 & f_y & y_0 \\
+0 & 0   & 1
+\end{pmatrix}
+\]
+
+And the predicted depth $ D_t(p_t) $ of pixel $ p_t $ of the target (current) frame. And the transform $ T_{t \rightarrow s} $ from the target to source (next/previous) frame:
+
+\[
+T_{t \rightarrow s} =
+\begin{pmatrix}
+\textbf{R} & \textbf{t} \\
+0 & 1
+\end{pmatrix}
+\]
+
+The position of the target pixel $ p_t $ in the source image $ p_s $ can be calculated in homogeneous coordinates as:
+
+\[
+p_s \sim K T_{t \rightarrow s} D_t(p_t) K^{-1} p_t 
+\]
+
+The pixel position $ p_s $ is however continuous and in order to sample the discrete source image $ I_s $ a differentiable bilinear sampling method is used. The method is described in \textit{spatial transformer networks}\cite{spatialtransformernetworks} and works by interpolating the neighbouring 4 pixels values (top-left, bottom-right) by the distance to the the continuous sampling point $ p_t $.
+
+\subsection{Loss functions}
+\label{sec:loss}
+
+\paragraph{Photometric loss} Is defined as $ \mathcal{L}_p(I_t, \hat{I}_s)=|I_t - \hat{I}_s| $.
+
+\paragraph{SSIM loss} Is defined as $ \mathcal{L}_{ssim}(I_t, \hat{I}_s)=\dfrac{1-\textrm{SSIM}(I_t, \hat{I}_s)}{2} $.
+
+\paragraph{Combined loss} The photometric and SSIM loss is often combined and balanced using $ \mathcal{L}_{ps}(I_t, \hat{I}_s) = \alpha \mathcal{L}_{ssim} + (1-\alpha) \mathcal{L}_p $
+
+\paragraph{Depth smooth loss} Is defined as $ \mathcal{L}_{smooth}(D_t)=|\delta_x^2 D_t|+|\delta_y^2 D_t| $. Not ideal because it can cause very fussy edges as seen in SfMLearner.
+
+\paragraph{Edge aware depth smooth loss} Is defined as $ \mathcal{L}_{edge}(D_t)=|\delta_x D_t|e^{-|\delta_x I_t|} + |\delta_y D_t|e^{-|\delta_y I_t|} $. Applied in Monodepth2 giving sharper edges because the smoothness term is weighted to mostly affect areas with small photometric derivitive.
+
+\paragraph{Velocity supervision loss} When a velocity measurement exists in the dataset a term to enforce scale accurate estimates can be added like $ \mathcal{L}_{v} = \bigr{|} \| \textbf{t}_{t \rightarrow s} \| - |v|\Delta t \bigr{|} $, as proposed in packnet\cite{packnet}.
+
+\subsection{Handling occlusions}
+\label{sec:occlusion}
+
+\paragraph{Disparity loss} To encourage background depths (low disparities) in shadows of the depth map where occlusion has occurred a penalty on the disparity can be added $ \mathcal{L}_{o} =|d_t|. $
+
+\paragraph{Minimum loss across frames} In SfMLearner the photometric loss is calculated for the previous and next frames compared to the current in the sequence. The pixel wise average across the frames are then used. This causes problems if a pixel is for example occluded in the previous frame, but visible in the current and next frame. In this situation the average loss will be pretty high even though a correct depth and transformation has been predicted, because of the occluded pixel. Instead Monodepth2 suggests to pick the minimum per pixel error over the frames which creates a more telling loss. 
+
+\subsection{Handling model limitations}
+\label{sec:modellimit}
+
+In order to optimize using the photometric reprojecton error as the loss function two assumptions must hold. Firstly the scene must be static, meaning all objects in the scene must be still except the moving camera. Movement by cars and humans in the scene that is not due to the camera movement will cause problems. Secondly there must be photometric consistency between frames for the photometric error to make sense. This means that non lambertian surfaces, change in lighting, and change in exposure between frames will cause problems.
+
+\paragraph{Explainability mask} The authors of \cite{sfmlearner} tackle this problem by having a CNN predict what pixels are valid to use in the photometric loss function. It shares the encoder of the pose predicting network but branches of into a different encoder which estimates a mask of the valid/explainable pixels. The loss function for the mask is the cross entropy loss compared to a mask filled with ones. The photometric loss function is augmented to include the explainability mask removing pixels that cannot be explained by the predicted depth and transformation. This encourages the mask to be filled with ones, but allows some slack due to pixels that can not be explained by the photometric loss.
+
+\paragraph{Stationary pixels mask} The authors of \cite{monodepth2} introduced a mask to remove stationary pixels from the set of previous, current and next frame. This is done by creating a mask where the photometric error is smaller before applying the projection than after. This works because stationary pixels that have not moved in relation to the camera will of course have a small photometric loss without reprojection. This will remove pixels from the car dashboard and also nearby vehicles that are traveling at the same speed.
+
+\subsection{Multi-scale estimation}
+
+In the depth decoder 4 different scales of the depth map is created. In SfMLearner downsamples the target image to the size of the depth map when calculating the loss. The authors of Monodepth2 noticed that this creates holes in the depth prediction on some surfaces because it creates ambiguities for the pixels removed during downsampling. Their approach is instead to resize the depth map to the target image size using interpolation, which turns out to work better.

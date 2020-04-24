@@ -1,0 +1,92 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[DeTone et~al.(2017)DeTone, Malisiewicz, and Rabinovich]{superpoint}
+Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
+\newblock Superpoint: Self-supervised interest point detection and description.
+\newblock 12 2017.
+
+\bibitem[DeTone et~al.(2018)DeTone, Malisiewicz, and Rabinovich]{unsuperpoint}
+Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
+\newblock Superpoint: Self-supervised interest point detection and description.
+\newblock pages 337--33712, 06 2018.
+\newblock \doi{10.1109/CVPRW.2018.00060}.
+
+\bibitem[Geiger et~al.(2013)Geiger, Lenz, Stiller, and Urtasun]{kitti}
+Andreas Geiger, P~Lenz, Christoph Stiller, and Raquel Urtasun.
+\newblock Vision meets robotics: the kitti dataset.
+\newblock \emph{The International Journal of Robotics Research}, 32:\penalty0
+  1231--1237, 09 2013.
+\newblock \doi{10.1177/0278364913491297}.
+
+\bibitem[Godard et~al.(2017)Godard, Aodha, and Brostow]{leftright}
+Clement Godard, Oisin Aodha, and Gabriel Brostow.
+\newblock Unsupervised monocular depth estimation with left-right consistency.
+\newblock 07 2017.
+\newblock \doi{10.1109/CVPR.2017.699}.
+
+\bibitem[Godard et~al.(2018)Godard, Aodha, and Brostow]{monodepth2}
+Clément Godard, Oisin Aodha, and Gabriel Brostow.
+\newblock Digging into self-supervised monocular depth estimation, 06 2018.
+
+\bibitem[Guizilini et~al.(2019)Guizilini, Ambrus, Pillai, and Gaidon]{packnet}
+Vitor Guizilini, Rares Ambrus, Sudeep Pillai, and Adrien Gaidon.
+\newblock Packnet-sfm: 3d packing for self-supervised monocular depth
+  estimation, 05 2019.
+
+\bibitem[He et~al.(2015)He, Zhang, Ren, and Sun]{resnet}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock 7, 12 2015.
+
+\bibitem[Jaderberg et~al.(2015)Jaderberg, Simonyan, Zisserman, and
+  Kavukcuoglu]{spatialtransformernetworks}
+Max Jaderberg, Karen Simonyan, Andrew Zisserman, and Koray Kavukcuoglu.
+\newblock Spatial transformer networks.
+\newblock \emph{Advances in Neural Information Processing Systems 28 (NIPS
+  2015)}, 06 2015.
+
+\bibitem[Kesten et~al.(2019)Kesten, Usman, Houston, Pandya, Nadhamuni,
+  Ferreira, Yuan, Low, Jain, Ondruska, Omari, Shah, Kulkarni, Kazakova, Tao,
+  Platinsky, Jiang, and Shet]{lyft2019}
+R.~Kesten, M.~Usman, J.~Houston, T.~Pandya, K.~Nadhamuni, A.~Ferreira, M.~Yuan,
+  B.~Low, A.~Jain, P.~Ondruska, S.~Omari, S.~Shah, A.~Kulkarni, A.~Kazakova,
+  C.~Tao, L.~Platinsky, W.~Jiang, and V.~Shet.
+\newblock Lyft level 5 av dataset 2019.
+\newblock url{https://level5.lyft.com/dataset/}, 2019.
+
+\bibitem[N.Mayer et~al.(2016)N.Mayer, E.Ilg, P.H{\"a}usser, P.Fischer,
+  D.Cremers, A.Dosovitskiy, and T.Brox]{dispnet}
+N.Mayer, E.Ilg, P.H{\"a}usser, P.Fischer, D.Cremers, A.Dosovitskiy, and T.Brox.
+\newblock A large dataset to train convolutional networks for disparity,
+  optical flow, and scene flow estimation.
+\newblock In \emph{IEEE International Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2016.
+\newblock URL
+  \url{http://lmb.informatik.uni-freiburg.de/Publications/2016/MIFDB16}.
+\newblock arXiv:1512.02134.
+
+\bibitem[Pillai et~al.(2019)Pillai, Ambrus, and Gaidon]{superdepth}
+Sudeep Pillai, Rares Ambrus, and Adrien Gaidon.
+\newblock Superdepth: Self-supervised, super-resolved monocular depth
+  estimation.
+\newblock pages 9250--9256, 05 2019.
+\newblock \doi{10.1109/ICRA.2019.8793621}.
+
+\bibitem[Tang et~al.(2019)Tang, Ambrus, Guizilini, Pillai, Kim, and
+  Gaidon]{keypointdepth}
+Jiexiong Tang, Rares Ambrus, Vitor Guizilini, Sudeep Pillai, Hanme Kim, and
+  Adrien Gaidon.
+\newblock Self-supervised 3d keypoint learning for ego-motion estimation, 12
+  2019.
+
+\bibitem[Zhou et~al.(2017)Zhou, Brown, Snavely, and Lowe]{sfmlearner}
+Tinghui Zhou, Matthew Brown, Noah Snavely, and David Lowe.
+\newblock Unsupervised learning of depth and ego-motion from video.
+\newblock 04 2017.
+
+\end{thebibliography}

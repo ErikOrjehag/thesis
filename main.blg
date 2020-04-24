@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: plainnat.bst
+A level-1 auxiliary file: tack.aux
+A level-1 auxiliary file: notation.aux
+A level-1 auxiliary file: introduktion.aux
+A level-1 auxiliary file: relatedwork.aux
+A level-1 auxiliary file: metod.aux
+A level-1 auxiliary file: resultat.aux
+Database file #1: IEEEfull.bib
+Database file #2: myrefs.bib
+Warning--entry type for "keypointdepth" isn't style-file defined
+--line 64 of file myrefs.bib
+Warning--entry type for "monodepth2" isn't style-file defined
+--line 72 of file myrefs.bib
+Warning--entry type for "packnet" isn't style-file defined
+--line 80 of file myrefs.bib
+Warning--empty journal in superpoint
+Warning--empty booktitle in unsuperpoint
+Warning--empty booktitle in leftright
+Warning--empty journal in resnet
+Warning--empty booktitle in superdepth
+Warning--empty journal in sfmlearner
+You've used 13 entries,
+            2773 wiz_defined-function locations,
+            1189 strings with 21751 characters,
+and the built_in function-call counts, 7391 in all, are:
+= -- 586
+> -- 633
+< -- 2
++ -- 211
+- -- 198
+* -- 668
+:= -- 1157
+add.period$ -- 42
+call.type$ -- 13
+change.case$ -- 105
+chr.to.int$ -- 13
+cite$ -- 32
+duplicate$ -- 278
+empty$ -- 488
+format.name$ -- 211
+if$ -- 1512
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 9
+newline$ -- 76
+num.names$ -- 52
+pop$ -- 238
+preamble$ -- 1
+purify$ -- 92
+quote$ -- 0
+skip$ -- 245
+stack$ -- 0
+substring$ -- 123
+swap$ -- 42
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 143
+warning$ -- 6
+while$ -- 44
+width$ -- 0
+write$ -- 167
+(There were 9 warnings)
