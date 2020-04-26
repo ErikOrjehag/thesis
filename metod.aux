@@ -2,48 +2,47 @@
 \providecommand\hyper@newdestlabel[2]{}
 \citation{kitti}
 \citation{lyft2019}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method}{9}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:method}{{4}{11}{Method}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Datasets}{11}{section.4.1}}
+\newlabel{cha:method}{{4}{9}{Method}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Datasets}{9}{section.4.1}}
 \citation{sfmlearner}
 \citation{dispnet}
 \citation{resnet}
 \citation{monodepth2}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }}{12}{figure.caption.12}}
-\newlabel{fig:sequencedataset}{{4.1}{12}{From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Architectures}{12}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}SfMLearner architecture}{12}{subsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Monodepth2 architecture}{12}{subsection.4.2.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }}{10}{figure.caption.12}}
+\newlabel{fig:sequencedataset}{{4.1}{10}{From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Architectures}{10}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}SfMLearner architecture}{10}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Monodepth2 architecture}{10}{subsection.4.2.2}}
 \citation{spatialtransformernetworks}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Differentiable depth image warping}{13}{section.4.3}}
-\newlabel{sec:diffwarp}{{4.3}{13}{Differentiable depth image warping}{section.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Differentiable depth image warping}{11}{section.4.3}}
+\newlabel{sec:diffwarp}{{4.3}{11}{Differentiable depth image warping}{section.4.3}{}}
 \citation{packnet}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The \textsc  {cnn}\xspace  predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \textsc  {cnn}\xspace  to learn to accurately predict correct depth and movement.\relax }}{14}{figure.caption.13}}
-\newlabel{fig:warp}{{4.2}{14}{The \abbrCNN predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \abbrCNN to learn to accurately predict correct depth and movement.\relax }{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Loss functions}{14}{section.4.4}}
-\newlabel{sec:loss}{{4.4}{14}{Loss functions}{section.4.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{Photometric loss}{14}{section*.14}}
-\@writefile{toc}{\contentsline {paragraph}{SSIM loss}{14}{section*.15}}
-\@writefile{toc}{\contentsline {paragraph}{Combined loss}{14}{section*.16}}
-\@writefile{toc}{\contentsline {paragraph}{Depth smooth loss}{14}{section*.17}}
-\@writefile{toc}{\contentsline {paragraph}{Edge aware depth smooth loss}{14}{section*.18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The \textsc  {cnn}\xspace  predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \textsc  {cnn}\xspace  to learn to accurately predict correct depth and movement.\relax }}{12}{figure.caption.13}}
+\newlabel{fig:warp}{{4.2}{12}{The \abbrCNN predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \abbrCNN to learn to accurately predict correct depth and movement.\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Loss functions}{12}{section.4.4}}
+\newlabel{sec:loss}{{4.4}{12}{Loss functions}{section.4.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Photometric loss}{12}{section*.14}}
+\@writefile{toc}{\contentsline {paragraph}{SSIM loss}{12}{section*.15}}
+\@writefile{toc}{\contentsline {paragraph}{Combined loss}{12}{section*.16}}
+\@writefile{toc}{\contentsline {paragraph}{Depth smooth loss}{12}{section*.17}}
+\@writefile{toc}{\contentsline {paragraph}{Edge aware depth smooth loss}{12}{section*.18}}
 \citation{sfmlearner}
 \citation{monodepth2}
-\@writefile{toc}{\contentsline {paragraph}{Velocity supervision loss}{15}{section*.19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Handling occlusions}{15}{subsection.4.4.1}}
-\newlabel{sec:occlusion}{{4.4.1}{15}{Handling occlusions}{subsection.4.4.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Disparity loss}{15}{section*.20}}
-\@writefile{toc}{\contentsline {paragraph}{Minimum loss across frames}{15}{section*.21}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Handling model limitations}{15}{section.4.5}}
-\newlabel{sec:modellimit}{{4.5}{15}{Handling model limitations}{section.4.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{Explainability mask}{15}{section*.22}}
-\@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{15}{section*.23}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Handling model limitations}{16}{section.4.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Evaluation}{16}{section.4.7}}
+\@writefile{toc}{\contentsline {paragraph}{Velocity supervision loss}{13}{section*.19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Handling occlusions}{13}{subsection.4.4.1}}
+\newlabel{sec:occlusion}{{4.4.1}{13}{Handling occlusions}{subsection.4.4.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Disparity loss}{13}{section*.20}}
+\@writefile{toc}{\contentsline {paragraph}{Minimum loss across frames}{13}{section*.21}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Handling model limitations}{13}{section.4.5}}
+\newlabel{sec:modellimit}{{4.5}{13}{Handling model limitations}{section.4.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Explainability mask}{13}{section*.22}}
+\@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{13}{section*.23}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Evaluation}{14}{section.4.6}}
 \@setckpt{metod}{
-\setcounter{page}{17}
+\setcounter{page}{15}
 \setcounter{equation}{0}
 \setcounter{enumi}{5}
 \setcounter{enumii}{0}
@@ -54,7 +53,7 @@
 \setcounter{rt@toplevel}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
-\setcounter{section}{7}
+\setcounter{section}{6}
 \setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
@@ -75,7 +74,7 @@
 \setcounter{NAT@ctr}{13}
 \setcounter{ContinuedFloat}{0}
 \setcounter{Item}{5}
-\setcounter{bookmark@seq@number}{31}
+\setcounter{bookmark@seq@number}{29}
 \setcounter{lofdepth}{1}
 \setcounter{lotdepth}{1}
 \setcounter{KVtest}{1}

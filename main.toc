@@ -13,34 +13,32 @@
 \contentsline {section}{\numberline {1.4}Delimitations}{2}{section.1.4}
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Convolutional neural networks}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Unsupervised learning}{5}{section.2.2}
-\contentsline {chapter}{\numberline {3}Related work}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Unsupervised Monocular Depth Estimation with Left-Right Consistency \cite {leftright}}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Unsupervised Learning of Depth and Ego-Motion from Video \cite {sfmlearner}}{8}{section.3.2}
-\contentsline {section}{\numberline {3.3}SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation \cite {superdepth}}{8}{section.3.3}
-\contentsline {section}{\numberline {3.4}3D Packing for Self-Supervised Monocular Depth Estimation \cite {packnet}}{9}{section.3.4}
-\contentsline {section}{\numberline {3.5}Digging Into Self-Supervised Monocular Depth Estimation \cite {monodepth2}}{9}{section.3.5}
-\contentsline {section}{\numberline {3.6}Self-Supervised 3D Keypoint Learning for Ego-motion Estimation \cite {keypointdepth}}{10}{section.3.6}
-\contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Datasets}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Architectures}{12}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}SfMLearner architecture}{12}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Monodepth2 architecture}{12}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Differentiable depth image warping}{13}{section.4.3}
-\contentsline {section}{\numberline {4.4}Loss functions}{14}{section.4.4}
-\contentsline {paragraph}{Photometric loss}{14}{section*.14}
-\contentsline {paragraph}{SSIM loss}{14}{section*.15}
-\contentsline {paragraph}{Combined loss}{14}{section*.16}
-\contentsline {paragraph}{Depth smooth loss}{14}{section*.17}
-\contentsline {paragraph}{Edge aware depth smooth loss}{14}{section*.18}
-\contentsline {paragraph}{Velocity supervision loss}{15}{section*.19}
-\contentsline {subsection}{\numberline {4.4.1}Handling occlusions}{15}{subsection.4.4.1}
-\contentsline {paragraph}{Disparity loss}{15}{section*.20}
-\contentsline {paragraph}{Minimum loss across frames}{15}{section*.21}
-\contentsline {section}{\numberline {4.5}Handling model limitations}{15}{section.4.5}
-\contentsline {paragraph}{Explainability mask}{15}{section*.22}
-\contentsline {paragraph}{Stationary pixels mask}{15}{section*.23}
-\contentsline {section}{\numberline {4.6}Handling model limitations}{16}{section.4.6}
-\contentsline {section}{\numberline {4.7}Evaluation}{16}{section.4.7}
-\contentsline {chapter}{\numberline {5}Resultat}{17}{chapter.5}
-\contentsline {chapter}{Bibliography}{21}{chapter*.30}
+\contentsline {chapter}{\numberline {3}Related work}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Unsupervised Monocular Depth Estimation with Left-Right Consistency \cite {leftright}}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Unsupervised Learning of Depth and Ego-Motion from Video \cite {sfmlearner}}{6}{section.3.2}
+\contentsline {section}{\numberline {3.3}SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation \cite {superdepth}}{6}{section.3.3}
+\contentsline {section}{\numberline {3.4}3D Packing for Self-Supervised Monocular Depth Estimation \cite {packnet}}{7}{section.3.4}
+\contentsline {section}{\numberline {3.5}Digging Into Self-Supervised Monocular Depth Estimation \cite {monodepth2}}{7}{section.3.5}
+\contentsline {section}{\numberline {3.6}Self-Supervised 3D Keypoint Learning for Ego-motion Estimation \cite {keypointdepth}}{8}{section.3.6}
+\contentsline {chapter}{\numberline {4}Method}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Datasets}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Architectures}{10}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}SfMLearner architecture}{10}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Monodepth2 architecture}{10}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Differentiable depth image warping}{11}{section.4.3}
+\contentsline {section}{\numberline {4.4}Loss functions}{12}{section.4.4}
+\contentsline {paragraph}{Photometric loss}{12}{section*.14}
+\contentsline {paragraph}{SSIM loss}{12}{section*.15}
+\contentsline {paragraph}{Combined loss}{12}{section*.16}
+\contentsline {paragraph}{Depth smooth loss}{12}{section*.17}
+\contentsline {paragraph}{Edge aware depth smooth loss}{12}{section*.18}
+\contentsline {paragraph}{Velocity supervision loss}{13}{section*.19}
+\contentsline {subsection}{\numberline {4.4.1}Handling occlusions}{13}{subsection.4.4.1}
+\contentsline {paragraph}{Disparity loss}{13}{section*.20}
+\contentsline {paragraph}{Minimum loss across frames}{13}{section*.21}
+\contentsline {section}{\numberline {4.5}Handling model limitations}{13}{section.4.5}
+\contentsline {paragraph}{Explainability mask}{13}{section*.22}
+\contentsline {paragraph}{Stationary pixels mask}{13}{section*.23}
+\contentsline {section}{\numberline {4.6}Evaluation}{14}{section.4.6}
+\contentsline {chapter}{\numberline {5}Resultat}{15}{chapter.5}
+\contentsline {chapter}{Bibliography}{19}{chapter*.30}
