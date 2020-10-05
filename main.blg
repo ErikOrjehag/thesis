@@ -5,6 +5,7 @@ The style file: plainnat.bst
 A level-1 auxiliary file: tack.aux
 A level-1 auxiliary file: notation.aux
 A level-1 auxiliary file: introduktion.aux
+A level-1 auxiliary file: background.aux
 A level-1 auxiliary file: relatedwork.aux
 A level-1 auxiliary file: metod.aux
 A level-1 auxiliary file: resultat.aux
@@ -24,7 +25,7 @@ Warning--empty booktitle in superdepth
 Warning--empty journal in sfmlearner
 You've used 13 entries,
             2773 wiz_defined-function locations,
-            1189 strings with 21751 characters,
+            1190 strings with 21765 characters,
 and the built_in function-call counts, 7391 in all, are:
 = -- 586
 > -- 633

@@ -16,9 +16,9 @@
 \contentsline {chapter}{\numberline {3}Related work}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}Unsupervised Monocular Depth Estimation with Left-Right Consistency \cite {leftright}}{5}{section.3.1}
 \contentsline {section}{\numberline {3.2}Unsupervised Learning of Depth and Ego-Motion from Video \cite {sfmlearner}}{6}{section.3.2}
-\contentsline {section}{\numberline {3.3}SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation \cite {superdepth}}{6}{section.3.3}
+\contentsline {section}{\numberline {3.3}SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation \cite {superdepth}}{7}{section.3.3}
 \contentsline {section}{\numberline {3.4}3D Packing for Self-Supervised Monocular Depth Estimation \cite {packnet}}{7}{section.3.4}
-\contentsline {section}{\numberline {3.5}Digging Into Self-Supervised Monocular Depth Estimation \cite {monodepth2}}{7}{section.3.5}
+\contentsline {section}{\numberline {3.5}Digging Into Self-Supervised Monocular Depth Estimation \cite {monodepth2}}{8}{section.3.5}
 \contentsline {section}{\numberline {3.6}Self-Supervised 3D Keypoint Learning for Ego-motion Estimation \cite {keypointdepth}}{8}{section.3.6}
 \contentsline {chapter}{\numberline {4}Method}{9}{chapter.4}
 \contentsline {section}{\numberline {4.1}Datasets}{9}{section.4.1}
@@ -41,4 +41,4 @@
 \contentsline {paragraph}{Stationary pixels mask}{13}{section*.23}
 \contentsline {section}{\numberline {4.6}Evaluation}{14}{section.4.6}
 \contentsline {chapter}{\numberline {5}Resultat}{15}{chapter.5}
-\contentsline {chapter}{Bibliography}{19}{chapter*.30}
+\contentsline {chapter}{Bibliography}{19}{chapter*.29}

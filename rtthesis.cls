@@ -58,7 +58,7 @@
 \let\ifrt@subtitle\ifrteng@subtitle
 %%% Title - subtitle separator
 \define@key{rtthesis}{subtitlesep}{\gdef\@subtitlesep{#1}}
-\def\@subtitlesep{:\enspace}
+\def\@subtitlesep{\enspace}
 %%% Year
 \define@key{rtthesis}{year}{\def\thesis@year{#1}}
 %%% Month
@@ -312,7 +312,7 @@
         \normalfont%
         \small%
         \CROP@font{%
-          \texttt{\jobname}:~\the\year-\two@digits{\the\month}-\two@digits{\the\day}\:\:%
+          \texttt{\jobname}~\the\year-\two@digits{\the\month}-\two@digits{\the\day}\:\:%
           \CROP@time\x\the\CROP@index~(``\thepage'')\strut%
         }%
         \vskip\dimen@%
