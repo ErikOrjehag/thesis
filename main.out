@@ -18,14 +18,16 @@
 \BOOKMARK [1][-]{section.3.5}{3.5 Digging Into Self-Supervised Monocular Depth Estimation monodepth2}{chapter.3}% 18
 \BOOKMARK [1][-]{section.3.6}{3.6 Self-Supervised 3D Keypoint Learning for Ego-motion Estimation keypointdepth}{chapter.3}% 19
 \BOOKMARK [0][]{chapter.4}{4 Method}{}% 20
-\BOOKMARK [1][-]{section.4.1}{4.1 Datasets}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.2}{4.2 Architectures}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 SfMLearner architecture}{section.4.2}% 23
-\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Monodepth2 architecture}{section.4.2}% 24
-\BOOKMARK [1][-]{section.4.3}{4.3 Differentiable depth image warping}{chapter.4}% 25
-\BOOKMARK [1][-]{section.4.4}{4.4 Loss functions}{chapter.4}% 26
-\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Handling occlusions}{section.4.4}% 27
-\BOOKMARK [1][-]{section.4.5}{4.5 Handling model limitations}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.6}{4.6 Evaluation}{chapter.4}% 29
-\BOOKMARK [0][]{chapter.5}{5 Resultat}{}% 30
-\BOOKMARK [0][]{chapter*.29}{Bibliography}{}% 31
+\BOOKMARK [1][-]{section.4.1}{4.1 Unsupervised depth and ego motion learning}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Sequence datasets}{section.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Architectures for depth and ego motion CNNs}{section.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Differentiable depth image warping}{section.4.1}% 24
+\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Loss functions}{section.4.1}% 25
+\BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 Handling occlusions}{section.4.1}% 26
+\BOOKMARK [2][-]{subsection.4.1.6}{4.1.6 Handling model limitations}{section.4.1}% 27
+\BOOKMARK [1][-]{section.4.2}{4.2 Unsupervised keypoint learning}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.3}{4.3 Unsupervised consensus maximization}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.4}{4.4 Evaluation}{chapter.4}% 30
+\BOOKMARK [0][]{chapter.5}{5 Results}{}% 31
+\BOOKMARK [0][]{chapter.6}{6 Discussion}{}% 32
+\BOOKMARK [0][]{chapter*.25}{Bibliography}{}% 33

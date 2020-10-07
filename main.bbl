@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -88,5 +88,13 @@ Jiexiong Tang, Rares Ambrus, Vitor Guizilini, Sudeep Pillai, Hanme Kim, and
 Tinghui Zhou, Matthew Brown, Noah Snavely, and David Lowe.
 \newblock Unsupervised learning of depth and ego-motion from video.
 \newblock 04 2017.
+
+\bibitem[{Zhou Wang} et~al.(2004){Zhou Wang}, {Bovik}, {Sheikh}, and
+  {Simoncelli}]{ssim}
+{Zhou Wang}, A.~C. {Bovik}, H.~R. {Sheikh}, and E.~P. {Simoncelli}.
+\newblock Image quality assessment: from error visibility to structural
+  similarity.
+\newblock \emph{IEEE Transactions on Image Processing}, 13\penalty0
+  (4):\penalty0 600--612, 2004.
 
 \end{thebibliography}
