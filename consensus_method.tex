@@ -110,9 +110,9 @@ To learn the weight $w \in \textbf{w}$ for each pair of points, the PointNet\cit
 	\label{fig:consensus}
 \end{figure}
 
-Because the fundamental matrix is a constraint expressed by 1 linear equation a basis of only 1  nullspace vector is needed from the singular value decomposition to construct it. But the method can also be used to learn constraints such as a homography or rigid 3D transformation that are constrained by 3 linear equations and therefore require a basis of 3 nullspace vectors.
+Because the fundamental matrix is a constraint expressed by 1 linear equation a basis of only 1  nullspace vector is needed from the singular value decomposition to construct it. But the method can also be used to learn constraints such as a homography or rigid 3D transformation that are constrained by 3 linear equations and therefore require a basis of 3 nullspace vectors. In that case the last 3 singular values from the SVD should be minimized in the loss function.
 
-In the following sections the method used to extract the homography from the basis vectors will be explained. Two points that are related by a homography is expressed as follows.
+In the following sections the method used to extract the homography from the basis vectors will be explained. Two points that are related by a homography is expressed as follows. The monomials are grouped by parentheses.
 
 \[
 u \times Hv=0 \rightarrow
@@ -152,6 +152,82 @@ v_y \\
 \end{cases}
 \]
 
+The monomials are the same, which means that the same input Vandermonde matrix $X$ can be used. But because an homography is constrained by $r=3$ linear equations the last 3 singular values of the SVD should be minimized during training.
+
+Extract 3 basis vectors from the nullspace which will be the 3 rightmost columns of $ V $ in the SVD.
+
+\[
+U\Sigma V^T = diag(\textbf{w})X
+\]
 
 
+\[
+B = 
+\begin{pmatrix}
+\textbf{v}_7 & \textbf{v}_8 & \textbf{v}_9
+\end{pmatrix}
+\in \mathbb{R}^{9x3}
+\]
 
+The 3 linear equations of the homography are tangled which means that the elements of $B$ can not be directly mapped onto the elements in $H$. Notice that the first equation of $H$ does not contain $u_y$ and the second equation of $H$ does not contain $u_x$. We can exploit this fact to perform a change of basis from $B \in \mathbb{R}^{9x3}$ to $B' \in \mathbb{R}^{9x2}$ that should have the following structure.
+
+\begin{center}
+\begin{tabular}{ c c c }
+	Monomial & Structure of $B'$ & Corresponding element in $H$ \\
+	$u_x v_x$ & \multirow{9}{*}{
+$\begin{pmatrix}
+	0 & . \\
+	0 & . \\
+	0 & . \\
+	. & 0 \\
+	. & 0 \\
+	. & 0 \\
+	. & . \\
+	. & . \\
+	. & . \\
+\end{pmatrix}$
+} & \multirow{9}{*}{
+$\begin{pmatrix}
+  & -h_{31} \\
+  & -h_{32} \\
+  & -h_{33} \\
+\ \ h_{31} &   \\
+\ \ h_{32} &   \\
+\ \ h_{33} &   \\
+-h_{21} &\ \  h_{11} \\
+-h_{22} &\ \  h_{12} \\
+-h_{23} &\ \  h_{13} \\
+\end{pmatrix}$
+} \\
+	$u_x v_y$ & \\
+	$u_x \ \ \ \ $ & \\    
+	\hline
+	$u_y v_x$ & \\
+	$u_y v_y$ & \\
+	$u_y \ \ \ \ $ & \\    
+	\hline
+	$\ \ \ \ v_x$ & \\
+	$\ \ \ \ v_y$ & \\
+	$\ \ \ \ 1$ & \\
+\end{tabular}
+\end{center}
+
+To perform the change of basis to get the structure of $B'$ we use the nullspace $n_1 \in \mathbb{R}^{3x1}$ of rows 1, 2 and 3 from $B$, and the nullspace $n_2 \in \mathbb{R}^{3x1}$ of row 4, 5, 6 from $B$.
+
+\[
+A_1 = 
+\begin{pmatrix}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33} \\
+\end{pmatrix}
+\]
+
+\[
+A_2 = 
+\begin{pmatrix}
+b_{41} & b_{42} & b_{43} \\
+b_{51} & b_{52} & b_{53} \\
+b_{61} & b_{62} & b_{63} \\
+\end{pmatrix}
+\]
