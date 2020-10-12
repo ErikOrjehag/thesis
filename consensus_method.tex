@@ -2,7 +2,7 @@
 
 Consensus maximization in a set of features related by a geometric constraint that also contains outliers is an important aspect of an SFM system. The problem consists of finding the largest set of inlier features in a set that is consistent with a geometric constraint. In a 3D vision setting the geometric constraint could be for example a rigid transformation $[\textbf{R}\ \textbf{t}]$, a fundamental matrix $F$ or a homography $H$ that relates pairs of corresponding 3D or 2D points.
 
-A popular algorithm to solve this problem is RANSAC\cite{ransac}, but is however not differentiable and therefore not learnable by a neural network. In this paper\cite{consensus} from 2019 the authors present a fully and to end differential method to learn consensus maximization in an unsupervised setting. The explanation  of the method in the paper is however very theoretical and non-accessible to master level students. In this section I will try to explain the method with emphasis on ease of understanding and with the mathematical toolbox of an engineering student.
+A popular algorithm to solve this problem is RANSAC\cite{ransac}, but is however not differentiable and therefore not learnable by a neural network. In this paper\cite{consensus} from 2019 the authors present a fully and to end differential method to learn consensus maximization in an unsupervised setting. The explanation  of the method in the paper is however very theoretical and non-accessible to master level students. In this section I will try to explain the method with emphasis on ease of understanding and with the mathematical toolbox of an engineering student. I will focus on the method used to extract the parameters of the constraint, as it's not explained by the paper in detail and took a lot of figuring out on my part, especially how to extract the homography.
 
 Consider one of the simplest geometric constraint on a set of corresponding 2D points in subsequent frames of the KITTI dataset, the fundamental matrix $F$. Given a point $u$ in frame 1, and point $v$ in frame 2 they are related in the following way.
 
@@ -52,10 +52,10 @@ f_{31} (v_x) + f_{32} (v_y) + f_{33} (1)
 = 0
 \]
 
-Now consider a set of M corresponding points that are related by the same fundamental matrix $F$. Place the 9 monomials in the parentheses for all M points in a matrix $ X \in \mathbb{R}^{Mx9} $. A matrix of monomials is called a Vandermonde matrix.
+Now consider a set of $m$ corresponding points that are related by the same fundamental matrix $F$. Place the 9 monomials in the parentheses for all $m$ points in a matrix $ M \in \mathbb{R}^{mx9} $. A matrix of monomials is called an Vandermonde matrix.
 
 \[
-X=
+M=
 \begin{pmatrix}
 u_{x,1} v_{x,1} & u_{x,1} v_{y,1} & u_{x,1} & u_{y,1} v_{x,1} & u_{y,1} v_{y,1} & u_{y,1} & v_{x,1} & v_{y,1} & 1 \\
  & & & \vdots & & & & & \\
@@ -63,10 +63,10 @@ u_{x,m} v_{x,m} & u_{x,m} v_{y,m} & u_{x,m} & u_{y,m} v_{x,m} & u_{y,m} v_{y,m} 
 \end{pmatrix}
 \]
 
-The constraint is satisfied by all M points if
+The constraint is satisfied by all $m$ points if
 
 \[
-X
+M
 \begin{pmatrix}
 f_{11} \\
 f_{12} \\
@@ -84,24 +84,24 @@ f_{33} \\
 \vdots \\
 0 \\
 \end{pmatrix}
-^{Mx1}
+^{mx1}
 \]
 
-Now the solution $\textbf{f}$ should look very familiar. The column vector $\textbf{f}$ is in fact the very definition of a nullspace of $X$. This is the key insight in this method of unsupervised consensus maximization. Finding the nullspace of $X$ is done by performing a singular value decomposition (SVD).
+Now the solution $\textbf{f}$ should look very familiar. The column vector $\textbf{f}$ is in fact the very definition of a nullspace of $M$. This is the key insight in this method of unsupervised consensus maximization. Finding the nullspace of $M$ is done by performing a singular value decomposition (SVD).
 
 \[
-U\Sigma V^T=X
+U\Sigma V^T=M
 \]
 
-The nullspace will be the last column vector of $V \in \mathbb{R}^{9x9}$ and the last singular value $\sigma_9$ in the diagonal of $\Sigma$ will be zero. This is correct only if the set of corresponding points contains only inliers. If the set contains outliers that can not be related by the gemoetric constraint then the last singular value $\sigma_9$ will be greater than zero. If the inliers and outliers where known they could be represented by a vector $\textbf{w} \in [0,1]^m$ where $ 1 $ means inlier and $ 0 $ means outlier. Now $X$ can be weighted by $\textbf{w}$ which would cancel all rows in $X$ which comes from an outlier pair of points.
+The nullspace will be the last column vector of $V \in \mathbb{R}^{9x9}$ and the last singular value $\sigma_9$ in the diagonal of $\Sigma$ will be zero. This is correct only if the set of corresponding points contains only inliers. If the set contains outliers that can not be related by the gemoetric constraint then the last singular value $\sigma_9$ will be greater than zero. If the inliers and outliers where known they could be represented by a vector $\textbf{w} \in [0,1]^m$ where $ 1 $ means inlier and $ 0 $ means outlier. Now $M$ can be weighted by $\textbf{w}$ which would cancel all rows in $M$ which comes from an outlier pair of points.
 
 \[
-\diag(\textbf{w}) X \textbf{f} = \textbf{0}
+\diag(\textbf{w}) M \textbf{f} = \textbf{0}
 \] 
 
-The problem of finding the largest set of inliers has now been transformed into finding the weights $\textbf{w}$ such that the last singular value $\sigma_9$ of $\diag(\textbf{w})X$ is near zero, and the sum of the weights is large.
+The problem of finding the largest set of inliers has now been transformed into finding the weights $\textbf{w}$ such that the last singular value $\sigma_9$ of $\diag(\textbf{w})M$ is near zero, and the sum of the weights should be large to have as many inliers as possible.
 
-To learn the weight $w \in \textbf{w}$ for each pair of points, the PointNet\cite{pointnet} architecture was used. The pair of points are concatenated into rows of a $ X \in \mathbb{R}^{nxm} $ matrix. For 2D points $n = 2+2=4$ and for 3D points $n=3+3=6$. The input $X$ is fed trough the PointNet segmentation network with a single output class, signifying if the point pair is an inlier or not. The key innovation of the PointNet architecture is that it can directly consume point cloud data, as oppose to first transforming the input to a 3D voxel grid or an image. The network is also invariant to the ordering of the points in the input list. Figure \ref{fig:consensus} illustrates the process of feeding the input through pointnet to get the weights, and then applying the weights to the Vandermonde matrix of which we want to minimize the last singular value.
+To learn the weight $w \in \textbf{w}$ for each pair of points, the PointNet\cite{pointnet} architecture was used. The pair of points are concatenated into rows of a $ X \in \mathbb{R}^{mxn} $ matrix. For 2D points $n = 2+2=4$ and for 3D points $n=3+3=6$. The input $X$ is fed trough the PointNet segmentation network with a single output class, signifying if the point pair is an inlier or not. The key innovation of the PointNet architecture is that it can directly consume point cloud data, as oppose to first transforming the input to a 3D voxel grid or an image. The network is also invariant to the ordering of the points in the input list. Figure \ref{fig:consensus} illustrates the process of feeding the input through pointnet to get the weights, and then applying the weights to the Vandermonde matrix of which we want to minimize the last singular value.
 
 \begin{figure}[H]
 	\centering
@@ -152,14 +152,9 @@ v_y \\
 \end{cases}
 \]
 
-The monomials are the same, which means that the same input Vandermonde matrix $X$ can be used. But because an homography is constrained by $r=3$ linear equations the last 3 singular values of the SVD should be minimized during training.
+The monomials are the same, which means that the same Vandermonde matrix $M$ can be used. But because an homography is constrained by $r=3$ linear equations the last 3 singular values of the SVD should be minimized during training.
 
-Extract 3 basis vectors from the nullspace which will be the 3 rightmost columns of $ V $ in the SVD.
-
-\[
-U\Sigma V^T = diag(\textbf{w})X
-\]
-
+Extract 3 basis vectors from the nullspace which will be the 3 rightmost columns of $ V $ in the SVD of $diag(\textbf{w})M$.
 
 \[
 B = 
@@ -188,15 +183,15 @@ $\begin{pmatrix}
 \end{pmatrix}$
 } & \multirow{9}{*}{
 $\begin{pmatrix}
-  & -h_{31} \\
-  & -h_{32} \\
-  & -h_{33} \\
-\ \ h_{31} &   \\
-\ \ h_{32} &   \\
-\ \ h_{33} &   \\
--h_{21} &\ \  h_{11} \\
--h_{22} &\ \  h_{12} \\
--h_{23} &\ \  h_{13} \\
+ & h_{31} \\
+ & h_{32} \\
+ & h_{33} \\
+h_{31} &   \\
+h_{32} &   \\
+h_{33} &   \\
+h_{21} & h_{11} \\
+h_{22} & h_{12} \\
+h_{23} & h_{13} \\
 \end{pmatrix}$
 } \\
 	$u_x v_y$ & \\
@@ -212,7 +207,7 @@ $\begin{pmatrix}
 \end{tabular}
 \end{center}
 
-To perform the change of basis to get the structure of $B'$ we use the nullspace $n_1 \in \mathbb{R}^{3x1}$ of rows 1, 2 and 3 from $B$, and the nullspace $n_2 \in \mathbb{R}^{3x1}$ of row 4, 5, 6 from $B$.
+To perform the change of basis to get the structure of $B'$ we use the nullspace $\textbf{n}_1 \in \mathbb{R}^{3x1}$ of rows 1, 2 and 3 from $B$, and the nullspace $\textbf{n}_2 \in \mathbb{R}^{3x1}$ of row 4, 5, 6 from $B$.
 
 \[
 A_1 = 
@@ -220,10 +215,7 @@ A_1 =
 b_{11} & b_{12} & b_{13} \\
 b_{21} & b_{22} & b_{23} \\
 b_{31} & b_{32} & b_{33} \\
-\end{pmatrix}
-\]
-
-\[
+\end{pmatrix},
 A_2 = 
 \begin{pmatrix}
 b_{41} & b_{42} & b_{43} \\
@@ -231,3 +223,74 @@ b_{51} & b_{52} & b_{53} \\
 b_{61} & b_{62} & b_{63} \\
 \end{pmatrix}
 \]
+\[
+\textbf{n}_1 = \textit{"rightmost column of right-singular vectors of A1"}
+\]
+\[
+\textbf{n}_2 = \textit{"rightmost column of right-singular vectors of A2"}
+\]
+\[
+\textbf{b}^{n_1} = B\textbf{n}_1
+\]
+\[
+\textbf{b}^{n_2} = B\textbf{n}_2
+\]
+
+Now the $\textbf{b}^{n_1}$ and $\textbf{b}^{n_2}$ basis vectors will have the following structure as desired.
+
+\[
+\textbf{b}^{n_1} =
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+. \\
+. \\
+. \\
+. \\
+. \\
+. \\
+\end{pmatrix},
+\textbf{b}^{n_2} =
+\begin{pmatrix}
+. \\
+. \\
+. \\
+0 \\
+0 \\
+0 \\
+. \\
+. \\
+. \\
+\end{pmatrix},
+\]
+
+The basis vectors have zeros at the correct place. The next step is to adjust the scale so that row 4, 5 and 6 of $\textbf{b}^{n_1}$ and row 1, 2 and 3 of $\textbf{b}^{n_2}$ have the same norm because they both represent the same elements $h_{31}$, $h_{32}$ and $h_{33}$. We also make sure they have the same sign.
+
+\[
+s = \sign(b^{n_2}_1 + b^{n_2}_2 + b^{n_2}_3) \sign(b^{n_1}_4 + b^{n_1}_5 + b^{n_1}_6)
+\]
+
+$s$ will be -1 if they have different signs, or 1 if they are the same sign.
+
+\[
+B'=
+\begin{pmatrix}
+\textbf{b}^{n_1} / \norm{(b^{n_1}_4 \ b^{n_1}_5 \ b^{n_1}_6)
+} &
+\textbf{b}^{n_2} / \norm{(b^{n_2}_1 \ b^{n_2}_2 \ b^{n_2}_3)} s
+\end{pmatrix}
+\in \mathbb{R}^{9x2}
+\]
+
+It is now possible to assign the elements of $H$ by pattern matching.
+
+\[
+H=
+\begin{pmatrix}
+\ \ b'_{72} & \ \ b'_{82} & \ \ b'_{92} \\
+\ \ b'_{71} & \ \ b'_{81} & \ \ b'_{91} \\
+-b'_{41} & -b'_{51} & -b'_{61} \\
+\end{pmatrix}
+\]
+
