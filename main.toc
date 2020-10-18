@@ -35,6 +35,10 @@
 \contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{14}{section.4.2}
 \contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{15}{section.4.3}
 \contentsline {section}{\numberline {4.4}Evaluation}{20}{section.4.4}
-\contentsline {chapter}{\numberline {5}Results}{21}{chapter.5}
-\contentsline {chapter}{\numberline {6}Discussion}{25}{chapter.6}
-\contentsline {chapter}{Bibliography}{27}{chapter*.25}
+\contentsline {subsection}{\numberline {4.4.1}Depth}{20}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Ego motion}{21}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Keypoints}{21}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{21}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Results}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Discussion}{27}{chapter.6}
+\contentsline {chapter}{Bibliography}{29}{chapter*.25}
