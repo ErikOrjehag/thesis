@@ -103,8 +103,12 @@ with $C_1=1e-4$ and $C_2=9e-4$. To compute the per-patch mean $\mu_x$ and standa
 
 The two above mentioned photometric loss terms can also be combined and balanced using $ \mathcal{L}_{ps}(I_t, \hat{I}_s) = \alpha \mathcal{L}_{ssim} + (1-\alpha) \mathcal{L}_p $. In my experiments I used $\alpha=0.85$.
 
-TODO: Insert image of SSIM vs abs diff.
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{diff}
+	\caption{The images illustrates the photometric reconstruction loss $ \mathcal{L}_{ps} $ with $\alpha=0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.}
+	\label{fig:diff}
+\end{figure}
 
 To propagate the depth from textured regions to regions of uniform color a depth smoothness loss term is used. The first alternative is a loss on the second derivative of the depth intensities.
 
@@ -117,6 +121,13 @@ I also ran experiments applying the smoothness loss on the disparity map instead
 \[
 \mathcal{L}_{edge}(D_t)=mean(|\delta_x D_t|e^{-|\delta_x I_t|} + |\delta_y D_t|e^{-|\delta_y I_t|})
 \]
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{edge}
+	\caption{The top row of images illustrates the edge weighting terms $e^{-|\delta_y I_t|}$ and $e^{-|\delta_x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.}
+	\label{fig:edge}
+\end{figure}
 
 When a velocity measurement exists in the dataset a term to enforce scale accurate estimates can be added. This was proposed in the packnet paper\cite{packnet}.
 
@@ -142,5 +153,8 @@ In order to optimize using the photometric reprojecton error as the loss functio
 
 \paragraph{Explainability mask} The authors of \cite{sfmlearner} tackle this problem by having a CNN predict what pixels are valid to use in the photometric loss function. It shares the encoder of the pose predicting network but branches of into a different encoder which estimates a mask of the valid/explainable pixels. The loss function for the mask is the cross entropy loss compared to a mask filled with ones. The photometric loss function is augmented to include the explainability mask removing pixels that cannot be explained by the predicted depth and transformation. This encourages the mask to be filled with ones, but allows some slack due to pixels that can not be explained by the photometric loss.
 
+TODO: Image explainability
+
 \paragraph{Stationary pixels mask} The authors of \cite{monodepth2} introduced a mask to remove stationary pixels from the set of previous, current and next frame. This is done by creating a mask where the photometric error is smaller before applying the projection than after. This works because stationary pixels that have not moved in relation to the camera will of course have a small photometric loss without reprojection. This will remove pixels from the car dashboard and also nearby vehicles that are traveling at the same speed.
 
+TODO: Image stationary
