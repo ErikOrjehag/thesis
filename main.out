@@ -26,12 +26,13 @@
 \BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 Handling occlusions}{section.4.1}% 26
 \BOOKMARK [2][-]{subsection.4.1.6}{4.1.6 Handling model limitations}{section.4.1}% 27
 \BOOKMARK [1][-]{section.4.2}{4.2 Unsupervised keypoint learning}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.3}{4.3 Unsupervised consensus maximization}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.4}{4.4 Evaluation}{chapter.4}% 30
-\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Depth}{section.4.4}% 31
-\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Ego motion}{section.4.4}% 32
-\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Keypoints}{section.4.4}% 33
-\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Consensus maximization}{section.4.4}% 34
-\BOOKMARK [0][]{chapter.5}{5 Results}{}% 35
-\BOOKMARK [0][]{chapter.6}{6 Discussion}{}% 36
-\BOOKMARK [0][]{chapter*.28}{Bibliography}{}% 37
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Score encoder}{section.4.2}% 29
+\BOOKMARK [1][-]{section.4.3}{4.3 Unsupervised consensus maximization}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.4}{4.4 Evaluation}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Depth}{section.4.4}% 32
+\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Ego motion}{section.4.4}% 33
+\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Keypoints}{section.4.4}% 34
+\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Consensus maximization}{section.4.4}% 35
+\BOOKMARK [0][]{chapter.5}{5 Results}{}% 36
+\BOOKMARK [0][]{chapter.6}{6 Discussion}{}% 37
+\BOOKMARK [0][]{chapter*.29}{Bibliography}{}% 38

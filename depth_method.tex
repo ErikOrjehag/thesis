@@ -63,7 +63,11 @@ T_{t \rightarrow s} =
 The position of the target pixel $ p_t $ in the source image $ p_s $ can be calculated in homogeneous coordinates as:
 
 \[
-p_s \sim K T_{t \rightarrow s} D_t(p_t) K^{-1} p_t 
+p_s \sim 
+\begin{pmatrix}
+K  & \textbf{0} \\
+\end{pmatrix}
+T_{t \rightarrow s} D_t(p_t) K^{-1} p_t 
 \]
 
 The pixel position $ p_s $ is however continuous and in order to sample the discrete source image $ I_s $ a differentiable bilinear sampling method is used. The method is described in \textit{spatial transformer networks}\cite{spatialtransformernetworks} and works by interpolating the neighbouring 4 pixels values (top-left, bottom-right) by the distance to the the continuous sampling point $ p_t $. This process is illustrated in Figure \ref{fig:warp}.
@@ -129,6 +133,7 @@ I also ran experiments applying the smoothness loss on the disparity map instead
 	\label{fig:edge}
 \end{figure}
 
+\iffalse
 When a velocity measurement exists in the dataset a term to enforce scale accurate estimates can be added. This was proposed in the packnet paper\cite{packnet}.
 
 \[
@@ -136,15 +141,23 @@ When a velocity measurement exists in the dataset a term to enforce scale accura
 \]
 
 Where $v$ is the velocity from the dataset, $\Delta t$ is the time between frames in the sequence, and $t_{t\rightarrow s}$ is extracted from the rightmost column of $T_{t\rightarrow s}$.
+\fi
 
 \subsection{Handling occlusions}
 \label{sec:occlusion}
 
+\iffalse
 \paragraph{Disparity loss} To encourage background depths (low disparities) in shadows of the depth map where occlusion has occurred a penalty on the disparity can be added $ \mathcal{L}_{o} =|d_t|. $
+\fi
 
-\paragraph{Minimum loss across frames} In SfMLearner the photometric loss is calculated for the previous and next frames compared to the current in the sequence. The pixel wise average across the frames are then used. This causes problems if a pixel is for example occluded in the previous frame, but visible in the current and next frame. In this situation the average loss will be pretty high even though a correct depth and transformation has been predicted, because of the occluded pixel. Instead Monodepth2 suggests to pick the minimum per pixel error over the frames which creates a more telling loss. 
+In the SfMLearner paper the photometric loss is calculated for the previous and next frames compared to the current in the sequence. The pixel wise average across the frames are then used. This causes problems if a pixel is for example occluded in the previous frame, but visible in the current and next frame. In this situation the average loss will be pretty high even though a correct depth and transformation has been predicted, because of the occluded pixel. Instead Monodepth2 suggests to pick the minimum per pixel error over the frames which alleviates this issue. 
 
-TODO: Insert illustration and actual image of min-mask.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{min}
+	\caption{By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.}
+	\label{fig:min}
+\end{figure}
 
 \subsection{Handling model limitations}
 \label{sec:modellimit}
@@ -153,8 +166,11 @@ In order to optimize using the photometric reprojecton error as the loss functio
 
 \paragraph{Explainability mask} The authors of \cite{sfmlearner} tackle this problem by having a CNN predict what pixels are valid to use in the photometric loss function. It shares the encoder of the pose predicting network but branches of into a different encoder which estimates a mask of the valid/explainable pixels. The loss function for the mask is the cross entropy loss compared to a mask filled with ones. The photometric loss function is augmented to include the explainability mask removing pixels that cannot be explained by the predicted depth and transformation. This encourages the mask to be filled with ones, but allows some slack due to pixels that can not be explained by the photometric loss.
 
-TODO: Image explainability
-
 \paragraph{Stationary pixels mask} The authors of \cite{monodepth2} introduced a mask to remove stationary pixels from the set of previous, current and next frame. This is done by creating a mask where the photometric error is smaller before applying the projection than after. This works because stationary pixels that have not moved in relation to the camera will of course have a small photometric loss without reprojection. This will remove pixels from the car dashboard and also nearby vehicles that are traveling at the same speed.
 
-TODO: Image stationary
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{stat}
+	\caption{The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.}
+	\label{fig:stat}
+\end{figure}

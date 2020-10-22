@@ -25,35 +25,40 @@
 \newlabel{sec:loss}{{4.1.4}{12}{Loss functions}{subsection.4.1.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces The images illustrates the photometric reconstruction loss $ \mathcal  {L}_{ps} $ with $\alpha =0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.\relax }}{13}{figure.caption.14}}
 \newlabel{fig:diff}{{4.3}{13}{The images illustrates the photometric reconstruction loss $ \mathcal {L}_{ps} $ with $\alpha =0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.\relax }{figure.caption.14}{}}
-\citation{packnet}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces The top row of images illustrates the edge weighting terms $e^{-|\delta _y I_t|}$ and $e^{-|\delta _x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.\relax }}{14}{figure.caption.15}}
 \newlabel{fig:edge}{{4.4}{14}{The top row of images illustrates the edge weighting terms $e^{-|\delta _y I_t|}$ and $e^{-|\delta _x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.\relax }{figure.caption.15}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Handling occlusions}{14}{subsection.4.1.5}}
 \newlabel{sec:occlusion}{{4.1.5}{14}{Handling occlusions}{subsection.4.1.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{Disparity loss}{14}{section*.16}}
-\@writefile{toc}{\contentsline {paragraph}{Minimum loss across frames}{14}{section*.17}}
 \citation{sfmlearner}
 \citation{monodepth2}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }}{15}{figure.caption.16}}
+\newlabel{fig:min}{{4.5}{15}{By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }{figure.caption.16}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.6}Handling model limitations}{15}{subsection.4.1.6}}
 \newlabel{sec:modellimit}{{4.1.6}{15}{Handling model limitations}{subsection.4.1.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Explainability mask}{15}{section*.18}}
-\@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{15}{section*.19}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{15}{section.4.2}}
+\@writefile{toc}{\contentsline {paragraph}{Explainability mask}{15}{section*.17}}
+\citation{unsuperpoint}
+\@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{16}{section*.18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }}{16}{figure.caption.19}}
+\newlabel{fig:stat}{{4.6}{16}{The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{16}{section.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.\relax }}{17}{figure.caption.20}}
+\newlabel{fig:unsuperpoint}{{4.7}{17}{The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces \relax }}{17}{figure.caption.21}}
+\newlabel{fig:unsuperpointloss}{{4.8}{17}{\relax }{figure.caption.21}{}}
 \citation{ransac}
 \citation{consensus}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces \relax }}{16}{figure.caption.20}}
-\newlabel{fig:unsuperpoint}{{4.5}{16}{\relax }{figure.caption.20}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{16}{section.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Score encoder}{18}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{18}{section.4.3}}
 \citation{pointnet}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces \relax }}{19}{figure.caption.21}}
-\newlabel{fig:consensus}{{4.6}{19}{\relax }{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Evaluation}{21}{section.4.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Depth}{21}{subsection.4.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Ego motion}{23}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Keypoints}{23}{subsection.4.4.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{23}{subsection.4.4.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces \relax }}{20}{figure.caption.22}}
+\newlabel{fig:consensus}{{4.9}{20}{\relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Evaluation}{22}{section.4.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Depth}{23}{subsection.4.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Ego motion}{24}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Keypoints}{24}{subsection.4.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{24}{subsection.4.4.4}}
 \@setckpt{metod}{
-\setcounter{page}{24}
+\setcounter{page}{25}
 \setcounter{equation}{0}
 \setcounter{enumi}{5}
 \setcounter{enumii}{0}
@@ -69,7 +74,7 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{6}
+\setcounter{figure}{9}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
 \setcounter{CPROT@family}{1}
@@ -85,7 +90,7 @@
 \setcounter{NAT@ctr}{14}
 \setcounter{ContinuedFloat}{0}
 \setcounter{Item}{5}
-\setcounter{bookmark@seq@number}{34}
+\setcounter{bookmark@seq@number}{35}
 \setcounter{lofdepth}{1}
 \setcounter{lotdepth}{1}
 \setcounter{KVtest}{1}
