@@ -45,5 +45,8 @@ Secondly, instead of calculating the loss for each depth scale in the decoder, a
 
 \section{Self-Supervised 3D Keypoint Learning for Ego-motion Estimation \cite{keypointdepth}}
 
-This paper from 7 Dec 2019 combines the work of the previously discussed papers and also adds keypoint learning from SuperPoint\cite{superpoint} and its successor Unsuperpoint\cite{unsuperpoint} into the pipeline.
-The researchers train the depth, keypoint and pose estimating networks jointly, making them benifit from each other and achieve state of the art results.
+This paper from 7 Dec 2019 combines the work of the previously discussed papers and also adds keypoint learning from SuperPoint\cite{superpoint} and its successor UnsuperPoint\cite{unsuperpoint} into the pipeline.
+The researchers train the depth, keypoint and pose estimating networks jointly, making them benifit from each other and achieve state of the art results. However, the step that finds possible outlier keypoints and also estimates an initial guess for the camera pose, is not differentiable.
+
+\section{Unsupervised Learning of Consensus Maximization for 3D Vision Problems}
+

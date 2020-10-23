@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,6 +15,14 @@ Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
 \newblock Superpoint: Self-supervised interest point detection and description.
 \newblock pages 337--33712, 06 2018.
 \newblock \doi{10.1109/CVPRW.2018.00060}.
+
+\bibitem[Fischler and Bolles(1981)]{ransac}
+Martin~A. Fischler and Robert~C. Bolles.
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock \emph{Commun. ACM}, 24\penalty0 (6):\penalty0 381--395, June 1981.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/358669.358692}.
 
 \bibitem[Geiger et~al.(2013)Geiger, Lenz, Stiller, and Urtasun]{kitti}
 Andreas Geiger, P~Lenz, Christoph Stiller, and Raquel Urtasun.
@@ -76,6 +84,12 @@ Sudeep Pillai, Rares Ambrus, and Adrien Gaidon.
   estimation.
 \newblock pages 9250--9256, 05 2019.
 \newblock \doi{10.1109/ICRA.2019.8793621}.
+
+\bibitem[Qi et~al.(2016)Qi, Su, Mo, and Guibas]{pointnet}
+Charles~Ruizhongtai Qi, Hao Su, Kaichun Mo, and Leonidas~J. Guibas.
+\newblock Pointnet: Deep learning on point sets for 3d classification and
+  segmentation.
+\newblock \emph{CoRR}, abs/1612.00593, 2016.
 
 \bibitem[Tang et~al.(2019)Tang, Ambrus, Guizilini, Pillai, Kim, and
   Gaidon]{keypointdepth}
