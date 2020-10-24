@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.10.22)  23 OCT 2020 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  24 OCT 2020 18:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 33 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (./rtthesis.cls
 Document Class: rtthesis 2011/12/05 rtthesis Class v. 0.51
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
@@ -1222,8 +1222,6 @@ Package babel Info: Making " an active character on input line 90.
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -1952,7 +1950,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/LiU_primary_black.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/LiU_primary_black.pdf, id=156, 597.23125pt x 845.1575pt>
+<fig/LiU_primary_black.pdf, id=205, 597.23125pt x 845.1575pt>
 File: fig/LiU_primary_black.pdf Graphic file (type pdf)
 <use fig/LiU_primary_black.pdf>
 Package pdftex.def Info: fig/LiU_primary_black.pdf  used on input line 30.
@@ -2071,14 +2069,14 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 
 
 ])
-Overfull \hbox (7.02397pt too wide) in paragraph at lines 31--46
+Overfull \hbox (7.02397pt too wide) in paragraph at lines 29--46
 []\T1/jkpk/m/n/10 In a full \T1/jkpk/m/sc/10 s\T1/jkpk/m/n/10 f\T1/jkpk/m/sc/10
  m \T1/jkpk/m/n/10 pipeline, both 3D-reconstruction, bun-dle ad-just-ment and l
 oop-closure
  []
 
 
-Overfull \hbox (4.60663pt too wide) in paragraph at lines 31--46
+Overfull \hbox (4.60663pt too wide) in paragraph at lines 29--46
 \T1/jkpk/m/n/10 de-tec-tion are usu-ally done as well. This will not be part of
  this the-sis project. 
  []
@@ -2094,7 +2092,7 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
  []
 
 (./cnn.tex
-<fig/conv.pdf, id=290, 421.575pt x 182.6022pt>
+<fig/conv.pdf, id=338, 421.575pt x 182.6022pt>
 File: fig/conv.pdf Graphic file (type pdf)
 <use fig/conv.pdf>
 Package pdftex.def Info: fig/conv.pdf  used on input line 7.
@@ -2108,16 +2106,16 @@ Package pdftex.def Info: fig/conv.pdf  used on input line 7.
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/conv.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/deep.pdf, id=314, 319.1925pt x 96.36pt>
+<fig/deep.pdf, id=361, 319.1925pt x 96.36pt>
 File: fig/deep.pdf Graphic file (type pdf)
 <use fig/deep.pdf>
 Package pdftex.def Info: fig/deep.pdf  used on input line 18.
 (pdftex.def)             Requested size: 355.65944pt x 107.36958pt.
 Package epstopdf Info: Source file: <fig/activation.eps>
-(epstopdf)                    date: 2020-10-22 16:07:02
+(epstopdf)                    date: 2020-04-23 15:36:01
 (epstopdf)                    size: 40070 bytes
 (epstopdf)             Output file: <fig/activation-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-10-22 16:07:02
+(epstopdf)                    date: 2020-04-23 15:36:03
 (epstopdf)                    size: 14433 bytes
 (epstopdf)             Command: <repstopdf --outfile=fig/activation-eps-convert
 ed-to.pdf fig/activation.eps>
@@ -2127,7 +2125,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/activation-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/activation-eps-converted-to.pdf, id=316, 318.18875pt x 139.52126pt>
+<fig/activation-eps-converted-to.pdf, id=363, 318.18875pt x 139.52126pt>
 File: fig/activation-eps-converted-to.pdf Graphic file (type pdf)
 <use fig/activation-eps-converted-to.pdf>
 Package pdftex.def Info: fig/activation-eps-converted-to.pdf  used on input lin
@@ -2137,212 +2135,36 @@ e 27.
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/deep.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
-> <./fig/activation-eps-converted-to.pdf>]
+> <./fig/activation-eps-converted-to.pdf>] [5]
 \openout2 = `relatedwork.aux'.
 
- (./relatedwork.tex
+ (./relatedwork.tex [6
+
+
+
+]
 Chapter 3.
 
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [] 
  []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 6.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 6.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 6.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 6.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 6.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 6.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 6.
-
-[5
-
-
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 12.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 12.
-
-
+[7]
 Overfull \hbox (11.76201pt too wide) in paragraph at lines 22--23
 []\T1/jkpk/m/n/10 To tackle the prob-lem with tex-tured ar-eas and non Lam-ber-
 tian sur-faces, a smoothess
  []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 24.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 24.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 24.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 24.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 24.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 24.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 24.
-
-
 Underfull \vbox (badness 2600) has occurred while \output is active []
 
- [6]
+ [8]
 Overfull \hbox (1.64pt too wide) in paragraph at lines 28--29
 []\T1/jkpk/m/n/10 The main con-tri-bu-tions from this pa-per is the pro-posal t
 o use supixel-convolution.
  []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 39.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 39.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 39.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 39.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 39.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 39.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 39.
-
-[7]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 46.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 46.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\NAT@ctype' on input line 46.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 46.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 46.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\let' on input line 46.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 46.
-
-
-Overfull \hbox (41.3399pt too wide) in paragraph at lines 48--50
-\T1/jkpk/m/n/10 pers and also adds key-point learn-ing from SuperPoint[[]] and 
-its suc-ces-sor UnsuperPoint[[]]
- []
-
-) [8]
+[9]) [10]
 \openout2 = `metod.aux'.
 
  (./metod.tex
@@ -2353,7 +2175,7 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
  []
 
 (./depth_method.tex
-<fig/sequencedataset.png, id=383, 100.2144pt x 92.5056pt>
+<fig/sequencedataset.png, id=442, 100.2144pt x 92.5056pt>
 File: fig/sequencedataset.png Graphic file (type png)
 <use fig/sequencedataset.png>
 Package pdftex.def Info: fig/sequencedataset.png  used on input line 12.
@@ -2361,7 +2183,7 @@ Package pdftex.def Info: fig/sequencedataset.png  used on input line 12.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9
+ [11
 
 
 
@@ -2371,8 +2193,8 @@ Overfull \hbox (11.67665pt too wide) in paragraph at lines 35--36
 The au-thors use a DispNet[[]]
  []
 
-[10 <./fig/sequencedataset.png>]
-<fig/warp.pdf, id=405, 354.36388pt x 185.73389pt>
+[12 <./fig/sequencedataset.png>]
+<fig/warp.pdf, id=465, 354.36388pt x 185.73389pt>
 File: fig/warp.pdf Graphic file (type pdf)
 <use fig/warp.pdf>
 Package pdftex.def Info: fig/warp.pdf  used on input line 79.
@@ -2380,18 +2202,18 @@ Package pdftex.def Info: fig/warp.pdf  used on input line 79.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11]
-[12 <./fig/warp.pdf
+ [13]
+[14 <./fig/warp.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/warp.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/diff.png, id=457, 201.3924pt x 30.8352pt>
+<fig/diff.png, id=517, 201.3924pt x 30.8352pt>
 File: fig/diff.png Graphic file (type png)
 <use fig/diff.png>
 Package pdftex.def Info: fig/diff.png  used on input line 113.
 (pdftex.def)             Requested size: 355.65944pt x 54.45924pt.
-<fig/edge.png, id=458, 200.1879pt x 61.4295pt>
+<fig/edge.png, id=518, 200.1879pt x 61.4295pt>
 File: fig/edge.png Graphic file (type png)
 <use fig/edge.png>
 Package pdftex.def Info: fig/edge.png  used on input line 132.
@@ -2399,8 +2221,8 @@ Package pdftex.def Info: fig/edge.png  used on input line 132.
 
 Underfull \vbox (badness 1521) has occurred while \output is active []
 
- [13 <./fig/diff.png>]
-<fig/min.png, id=466, 100.2144pt x 92.5056pt>
+ [15 <./fig/diff.png>]
+<fig/min.png, id=525, 100.2144pt x 92.5056pt>
 File: fig/min.png Graphic file (type png)
 <use fig/min.png>
 Package pdftex.def Info: fig/min.png  used on input line 158.
@@ -2408,19 +2230,19 @@ Package pdftex.def Info: fig/min.png  used on input line 158.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14 <./fig/edge.png>] [15 <./fig/min.png>]
-<fig/stat.png, id=482, 100.2144pt x 92.5056pt>
+ [16 <./fig/edge.png>] [17 <./fig/min.png>]
+<fig/stat.png, id=541, 100.2144pt x 92.5056pt>
 File: fig/stat.png Graphic file (type png)
 <use fig/stat.png>
 Package pdftex.def Info: fig/stat.png  used on input line 174.
 (pdftex.def)             Requested size: 177.82971pt x 164.16823pt.
-) (./point_method.tex [16 <./fig/stat.png>]
-<fig/unsuperpoint.pdf, id=492, 533.1117pt x 248.8497pt>
+) (./point_method.tex [18 <./fig/stat.png>]
+<fig/unsuperpoint.pdf, id=551, 533.1117pt x 248.8497pt>
 File: fig/unsuperpoint.pdf Graphic file (type pdf)
 <use fig/unsuperpoint.pdf>
 Package pdftex.def Info: fig/unsuperpoint.pdf  used on input line 10.
 (pdftex.def)             Requested size: 355.65944pt x 166.02216pt.
-<fig/unsuperpointloss.pdf, id=493, 371.46779pt x 166.7028pt>
+<fig/unsuperpointloss.pdf, id=552, 371.46779pt x 166.7028pt>
 File: fig/unsuperpointloss.pdf Graphic file (type pdf)
 <use fig/unsuperpointloss.pdf>
 Package pdftex.def Info: fig/unsuperpointloss.pdf  used on input line 19.
@@ -2428,7 +2250,7 @@ Package pdftex.def Info: fig/unsuperpointloss.pdf  used on input line 19.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17 <./fig/unsuperpoint.pdf
+ [19 <./fig/unsuperpoint.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/unsuperpoint.pdf): PDF inclusion:
  invalid other resource which is no dict (key 'ProcSets', type <array>); ignore
@@ -2436,17 +2258,17 @@ d.
 >]
 Underfull \vbox (badness 1117) has occurred while \output is active []
 
- [18 <./fig/unsuperpointloss.pdf
+ [20 <./fig/unsuperpointloss.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/unsuperpointloss.pdf): PDF inclus
 ion: invalid other resource which is no dict (key 'ProcSets', type <array>); ig
 nored.
->]) (./consensus_method.tex
+>]) (./consensus_method.tex [21]
 
-Package natbib Warning: Citation `consensus' on page 19 undefined on input line
+Package natbib Warning: Citation `consensus' on page 22 undefined on input line
  5.
 
-[19]
+[22]
 Overfull \hbox (26.22528pt too wide) detected at line 53
 \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/n/10 )
  + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/n/1
@@ -2459,26 +2281,23 @@ n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp
 /m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (1) = 0
  []
 
-[20]
-<fig/consensus.pdf, id=611, 325.215pt x 102.3825pt>
+[23]
+<fig/consensus.pdf, id=675, 325.215pt x 102.3825pt>
 File: fig/consensus.pdf Graphic file (type pdf)
 <use fig/consensus.pdf>
 Package pdftex.def Info: fig/consensus.pdf  used on input line 108.
 (pdftex.def)             Requested size: 355.65944pt x 111.97589pt.
- [21 <./fig/consensus.pdf
+ [24 <./fig/consensus.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/consensus.pdf): PDF inclusion: in
 valid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-Underfull \vbox (badness 1655) has occurred while \output is active []
-
- [22]
 Overfull \hbox (11.34282pt too wide) in paragraph at lines 239--240
 []\T1/jkpk/m/n/10 Now the $[][]$ and $[][]$ ba-sis vec-tors will have the fol-l
 ow-ing struc-ture as de-sired. 
  []
 
-[23]) (./evaluation.tex [24] [25])) [26]
+[25]) (./evaluation.tex [26] [27])) [28]
 \openout2 = `results.aux'.
 
  (./results.tex
@@ -2488,75 +2307,69 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [] 
  []
 
-<fig/configurations.png, id=704, 772.8875pt x 317.185pt>
-File: fig/configurations.png Graphic file (type png)
-<use fig/configurations.png>
-Package pdftex.def Info: fig/configurations.png  used on input line 7.
-(pdftex.def)             Requested size: 355.65944pt x 145.9601pt.
-
-Underfull \hbox (badness 1490) in paragraph at lines 8--8
-[]\T1/jkpk/b/sl/10 Figure 5.1: |\T1/jkpk/m/sl/10 Dif-fer-ent con-fig-u-ra-tions
- of net-work ar-chite-cutes, train-ing
- []
-
-<fig/evaluation.png, id=705, 765.86125pt x 443.6575pt>
+<fig/evaluation.png, id=761, 765.86125pt x 443.6575pt>
 File: fig/evaluation.png Graphic file (type png)
 <use fig/evaluation.png>
-Package pdftex.def Info: fig/evaluation.png  used on input line 14.
+Package pdftex.def Info: fig/evaluation.png  used on input line 43.
 (pdftex.def)             Requested size: 355.65944pt x 206.03458pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [27
+ [29
 
 
 
- <./fig/configurations.png>] [28 <./fig/evaluation.png>]
-<fig/depthmaps.png, id=719, 835.12pt x 385.44pt>
+]
+[30 <./fig/evaluation.png>]
+<fig/depthmaps.png, id=774, 835.12pt x 385.44pt>
 File: fig/depthmaps.png Graphic file (type png)
 <use fig/depthmaps.png>
-Package pdftex.def Info: fig/depthmaps.png  used on input line 23.
+Package pdftex.def Info: fig/depthmaps.png  used on input line 52.
 (pdftex.def)             Requested size: 355.65944pt x 164.15388pt.
-<fig/3drender.png, id=720, 810.02625pt x 279.0425pt>
+<fig/3drender.png, id=775, 810.02625pt x 279.0425pt>
 File: fig/3drender.png Graphic file (type png)
 <use fig/3drender.png>
-Package pdftex.def Info: fig/3drender.png  used on input line 37.
+Package pdftex.def Info: fig/3drender.png  used on input line 66.
 (pdftex.def)             Requested size: 284.52863pt x 98.01547pt.
-<fig/motion2.png, id=721, 185.0112pt x 88.6512pt>
+<fig/motion2.png, id=776, 185.0112pt x 88.6512pt>
 File: fig/motion2.png Graphic file (type png)
 <use fig/motion2.png>
-Package pdftex.def Info: fig/motion2.png  used on input line 44.
+Package pdftex.def Info: fig/motion2.png  used on input line 73.
 (pdftex.def)             Requested size: 284.52863pt x 136.34334pt.
-<fig/3dseq.png, id=722, 198.5016pt x 149.358pt>
+<fig/3dseq.png, id=777, 198.5016pt x 149.358pt>
 File: fig/3dseq.png Graphic file (type png)
 <use fig/3dseq.png>
-Package pdftex.def Info: fig/3dseq.png  used on input line 51.
+Package pdftex.def Info: fig/3dseq.png  used on input line 80.
 (pdftex.def)             Requested size: 284.52863pt x 214.08624pt.
-) [29
+ [31
 
- <./fig/depthmaps.png> <./fig/3drender.png> <./fig/motion2.png>] [30 <./fig/3ds
-eq.png>]
+ <./fig/depthmaps.png> <./fig/3drender.png> <./fig/motion2.png>]
+<fig/point1.png, id=789, 840.13875pt x 261.97874pt>
+File: fig/point1.png Graphic file (type png)
+<use fig/point1.png>
+Package pdftex.def Info: fig/point1.png  used on input line 89.
+(pdftex.def)             Requested size: 355.65944pt x 110.90576pt.
+) [32 <./fig/3dseq.png> <./fig/point1.png>]
 \openout2 = `discussion.aux'.
 
-
-(./discussion.tex
+ (./discussion.tex
 Chapter 6.
 
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [] 
  []
 
-)
-Overfull \hbox (32.90193pt too wide) in paragraph at lines 15--51
-[]\T1/jkpk/m/n/10 Future work to cou-ple the train-ing of depth, key-points and
- con-sen-sus more tightly. 
+
+Overfull \hbox (32.90193pt too wide) in paragraph at lines 20--21
+\T1/jkpk/m/n/10 Future work to cou-ple the train-ing of depth, key-points and c
+on-sen-sus more tightly. 
  []
 
-[31
+) [33
 
 
 
-] [32
+] [34
 
 
 ] (./main.bbl
@@ -2597,7 +2410,7 @@ Underfull \hbox (badness 1694) in paragraph at lines 72--80
 urg . de / Publications /
  []
 
-[33
+[35
 
 
 ])
@@ -2606,31 +2419,24 @@ No file main.ind.
 Package natbib Warning: There were undefined citations.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 60.
-[34]
+[36]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 60.
  (./main.aux (./tack.aux) (./notation.aux) (./introduction.aux)
 (./background.aux) (./relatedwork.aux) (./metod.aux) (./results.aux)
 (./discussion.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 60.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 60.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 65BE690E1E63F6C7F2C1EF4465B1A46A;2875
-(rerunfilecheck)             After:  C4CABF2C274A9B29A4FA83776CA9A353;2996.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 60BA80E0C6083C8D8AC0BE84DDF6FA5E;3769.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 60.
  ) 
 Here is how much of TeX's memory you used:
- 13720 strings out of 494267
- 195367 string characters out of 6162827
- 318392 words of memory out of 5000000
- 16454 multiletter control sequences out of 15000+600000
+ 13743 strings out of 492982
+ 195654 string characters out of 6134896
+ 322719 words of memory out of 5000000
+ 16672 multiletter control sequences out of 15000+600000
  223502 words of font info for 162 fonts, out of 8000000 for 9000
- 395 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  45i,16n,48p,1108b,548s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{/usr/share/texlive/tex
@@ -2651,10 +2457,10 @@ kpmne.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><
 /texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (46 pages, 4280097 bytes).
+Output written on main.pdf (48 pages, 4674404 bytes).
 PDF statistics:
- 852 PDF objects out of 1000 (max. 8388607)
- 693 compressed objects within 7 object streams
- 134 named destinations out of 1000 (max. 500000)
- 18832 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 914 PDF objects out of 1000 (max. 8388607)
+ 752 compressed objects within 8 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 18928 words of extra memory for PDF output out of 20736 (max. 10000000)
 

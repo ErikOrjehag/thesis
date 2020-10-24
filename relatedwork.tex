@@ -3,15 +3,15 @@
 
 In this chapter some of the important contributions of previous research papers are summarized.
 
-\section{Unsupervised Monocular Depth Estimation with Left-Right Consistency \cite{leftright}}
+\section{Unsupervised Monocular Depth Estimation with Left-Right Consistency}
 \label{sec:relwork:leftright}
-In a paper from 12 Apr 2017 the authors present MonoDepth, with an implementation available in Tensorflow on github. In this work the depth is predicted using an encoder-decoder type network, but the relative motion between frames is not estimated at all. The KITTI dataset provides stereo image pairs which are used during training, and the relative transformation between the left and right cameras is known. Using only the left image as input to the network both disparity maps for the left and right images are predicted. The two disparity maps are used to project the left image into the view of the right image and vice versa. This can be seen as a precursor to the papers discussed later which uses only a monocular image sequence to train a depth predicting network and pose predicting network jointly.
+In a paper\cite{leftright} from 12 Apr 2017 the authors present MonoDepth, with an implementation available in Tensorflow on github. In this work the depth is predicted using an encoder-decoder type network, but the relative motion between frames is not estimated at all. The KITTI dataset provides stereo image pairs which are used during training, and the relative transformation between the left and right cameras is known. Using only the left image as input to the network both disparity maps for the left and right images are predicted. The two disparity maps are used to project the left image into the view of the right image and vice versa. This can be seen as a precursor to the papers discussed later which uses only a monocular image sequence to train a depth predicting network and pose predicting network jointly.
 
 In the loss function, the left image is reconstructed from the right image and vice versa. This is possible using the disparity maps and known baseline and focal length of the cameras. The L1 norm of the per pixel photometric error as well as \abbrSSIM are computed and added to the loss. An additional loss term encourages the left disparity to be equal to the right disparity projected into the left camera viewpoint. Because the photometric error does not work well on low textured regions an edge aware smoothess term is added to propagate the depth values from nearby areas in the disparity map. The method produces metrically accurate results because the baseline and focal length of the cameras are known.
 
-\section{Unsupervised Learning of Depth and Ego-Motion from Video \cite{sfmlearner}}
+\section{Unsupervised Learning of Depth and Ego-Motion from Video}
 \label{sec:relwork:unego}
-In a paper from CVPR 21 July 2017 the authors present SfMLearner with an official implementation in Tensorflow on github. Additional replications in the PyTorch and Chainer frameworks are also available.
+In a paper\cite{sfmlearner} from CVPR 21 July 2017 the authors present SfMLearner with an official implementation in Tensorflow on github. Additional replications in the PyTorch and Chainer frameworks are also available.
 
 Contrary to the paper in section \ref{sec:relwork:leftright} only a monocular sequence of images from the KITTI dataset is used during training. In the stereo case the relative pose between the left and right cameras was known, but with this monocular dataset the pose between subsequent frames is unknown. The authors train a pose predicting and depth predicting network simultaneously with a joint loss function to solve this problem.
 
@@ -21,32 +21,34 @@ The authors add an explainability mask to the photometric error term to account 
 
 To tackle the problem with textured areas and non Lambertian surfaces, a smoothess term is used. An edge aware smoothess term was not used like in previous work\cite{leftright} but a penalty on the second order gradient of the depth map was used instead. This unfortunately makes edges very fuzzy in the results compared to other methods.
 
-\section{SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation \cite{superdepth}}
+\section{SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation}
 
-In this paper published 3 Oct 2018 the authors train a depth estimating network on only stereo image pairs. After the depth predicting network has been trained the pose network from section \ref{sec:relwork:unego} is trained, using results from the already trained depth predicting network. This means that the depth and pose networks are not trained with a joint loss function but are instead trained separately.
+In a paper\cite{superdepth} published 3 Oct 2018 the authors train a depth estimating network on only stereo image pairs. After the depth predicting network has been trained the pose network from section \ref{sec:relwork:unego} is trained, using results from the already trained depth predicting network. This means that the depth and pose networks are not trained with a joint loss function but are instead trained separately.
 
-The main contributions from this paper is the proposal to use supixel-convolution. The method additionally uses differentiable flip-augmentation to remove edge artifacats on the left and right edges of the depth map seen in previous work using stereo image pairs during training.
+The main contributions from this paper is the proposal to use supixel-convolution. The method additionally uses differentiable flip-augmentation to remove edge artifacts on the left and right edges of the depth map seen in previous work using stereo image pairs during training.
 
 To handle occluded pixels between the left and right images an occulsion regularization loss term is added to encourage background depths (low disparaty).
 
-\section{3D Packing for Self-Supervised Monocular Depth Estimation \cite{packnet}}
-The authors present PacknetSfM in their paper on 6 Dec 2019. The main contribution is a new network architecture with packing and unpacking blocks replacing down and up sampling. The new packing blocks use space to depth transformations and 3d convolutions. The authors claim that the new packing and unpacking blocks are better at perserving resolution than standard down and upsampling. As the method is not adopted in later work, it is unclear if the new packing and unpacking approach is actually any good.
+\section{3D Packing for Self-Supervised Monocular Depth Estimation}
+In a paper\cite{packnet} published 6 Dec 2019 the authors present PacknetSfM. The main contribution is a new network architecture with packing and unpacking blocks replacing down and up sampling. The new packing blocks use space to depth transformations and 3d convolutions. The authors claim that the new packing and unpacking blocks are better at perserving resolution than standard down and upsampling. As the method is not adopted in later work, it is unclear if the new packing and unpacking approach is actually any good.
 
 The second contribution is a loss on the camera velocity that makes it possible for the monocular depth estimation to be metrically accurate. The velocity of the car is assumed to be known in the training dataset.
 
 The third contribution is a mask on pixels that do not change between frames. These pixels are assumed to have no ego motion. Stationary pixels can occur for example if the car dashboard is visible in a frame, or other vehicles are moving at a similar speed nearby.
 
-\section{Digging Into Self-Supervised Monocular Depth Estimation \cite{monodepth2}}
-The authors present MonoDepth2 on 17 Aug 2019. They propose mainly two contributions.
+\section{Digging Into Self-Supervised Monocular Depth Estimation}
+In a paper\cite{monodepth2} published on 17 Aug 2019 the authors present MonoDepth2. They propose mainly two contributions.
 
 Firstly, instead of taking the average of the reprojection errors from all source frames given a target frame they use the minimum. This makes it so that if a feature is occluded in one source image but not in the other the errors will not be averaged together but instead the error from the source frame that is not occluded will be used.
 
 Secondly, instead of calculating the loss for each depth scale in the decoder, all the depth maps are upsampled to the original target image size when computing the loss. This way a single pixel in the low resolution layer of the decoder will predict the depth of a patch of pixels in the originally sized input image.
 
-\section{Self-Supervised 3D Keypoint Learning for Ego-motion Estimation \cite{keypointdepth}}
+\section{Self-Supervised 3D Keypoint Learning for Ego-motion Estimation}
 
-This paper from 7 Dec 2019 combines the work of the previously discussed papers and also adds keypoint learning from SuperPoint\cite{superpoint} and its successor UnsuperPoint\cite{unsuperpoint} into the pipeline.
-The researchers train the depth, keypoint and pose estimating networks jointly, making them benifit from each other and achieve state of the art results. However, the step that finds possible outlier keypoints and also estimates an initial guess for the camera pose, is not differentiable.
+In a paper\cite{keypointdepth} from 7 Dec 2019 the authors combines the work of the previously discussed papers and also adds keypoint learning from SuperPoint\cite{superpoint} and its successor UnsuperPoint\cite{unsuperpoint} into the pipeline. The researchers train the depth, keypoint and pose estimating networks jointly, making them benifit from each other and achieve state of the art results. However, the step that finds possible outlier keypoints and also estimates an initial guess for the camera pose, is not differentiable.
+
+\section{UnsuperPoint: End-To-End Unsupervised Interest Point Detector and Descriptor}
+
 
 \section{Unsupervised Learning of Consensus Maximization for 3D Vision Problems}
 

@@ -1,13 +1,42 @@
 \chapter{Results}\label{cha:results}
 
-Figure \ref{fig:evaluation} contains some preliminary evaluation results. The gray configurations in Figure \ref{fig:configurations} have not been trained yet. Each configuration takes about 15 hours to train. Still missing possibility to train on Synthia and also random data augmentations, L1 loss on disparity and velocity supervision loss.
+\section{Depth and ego motion}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{configurations}
-	\caption{Different configurations of network architecutes, training datasets and loss terms evaluated to find the best performance}
-	\label{fig:configurations}
-\end{figure}
+\begin{table}[H]
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\hline
+ & Net & DS & W & Edge & Norm & Expl & Stat & SSIM & Comb & US \\
+\hline
+C1 & SL & K & di &  &  & $ \times $ &  &  & avg &  \\
+\hline
+C2 & SL & K & de &  &  & $ \times $ &  &  & avg &  \\
+\hline
+C3 & SL & K & de &  &  &  &  &  & avg &  \\
+\hline
+C4 & SL & K & de &  &  &  & $ \times $ &  & avg &  \\
+\hline
+C5 & SL & K & de & $ \times $ &  &  & $ \times $ &  & avg &  \\
+\hline
+C6 & SL & K & de & $ \times $ &  &  & $ \times $ & $ \times $ & min &  \\
+\hline
+C7 & SL & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min &  \\
+\hline
+C8 & SL & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+\hline
+C9 & SL & L & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+\hline
+C10 & M2 & K & de &  &  &  & $ \times $ &  & avg &  \\
+\hline
+C11 & M2 & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min &  \\
+\hline
+C12 & M2 & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+\hline
+C13 & M2 & L & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+\hline
+\end{tabular}
+\caption{Different configurations of network architecutes, training datasets and loss terms evaluated to find the best performance}
+\label{table:configurations}
+\end{table}
 
 \begin{figure}[H]
 	\centering
@@ -52,3 +81,14 @@ Figure \ref{fig:evaluation} contains some preliminary evaluation results. The gr
 	\caption{}
 	\label{fig:3dseq}
 \end{figure}
+
+\section{Keypoint detection}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{point1}
+	\caption{}
+	\label{fig:point1}
+\end{figure}
+
+\section{Consensus maximization}

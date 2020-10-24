@@ -13,32 +13,43 @@
 \contentsline {section}{\numberline {1.4}Delimitations}{2}{section.1.4}
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Convolutional neural networks}{3}{section.2.1}
-\contentsline {chapter}{\numberline {3}Related work}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Unsupervised Monocular Depth Estimation with Left-Right Consistency \cite {leftright}}{5}{section.3.1}
-\contentsline {section}{\numberline {3.2}Unsupervised Learning of Depth and Ego-Motion from Video \cite {sfmlearner}}{6}{section.3.2}
-\contentsline {section}{\numberline {3.3}SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation \cite {superdepth}}{7}{section.3.3}
-\contentsline {section}{\numberline {3.4}3D Packing for Self-Supervised Monocular Depth Estimation \cite {packnet}}{7}{section.3.4}
-\contentsline {section}{\numberline {3.5}Digging Into Self-Supervised Monocular Depth Estimation \cite {monodepth2}}{7}{section.3.5}
-\contentsline {section}{\numberline {3.6}Self-Supervised 3D Keypoint Learning for Ego-motion Estimation \cite {keypointdepth}}{8}{section.3.6}
-\contentsline {section}{\numberline {3.7}Unsupervised Learning of Consensus Maximization for 3D Vision Problems}{8}{section.3.7}
-\contentsline {chapter}{\numberline {4}Method}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Unsupervised depth and ego motion learning}{9}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{9}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Architectures for depth and ego motion CNNs}{10}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Differentiable depth image warping}{11}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Loss functions}{12}{subsection.4.1.4}
-\contentsline {subsection}{\numberline {4.1.5}Handling occlusions}{14}{subsection.4.1.5}
-\contentsline {subsection}{\numberline {4.1.6}Handling model limitations}{15}{subsection.4.1.6}
-\contentsline {paragraph}{Explainability mask}{15}{section*.17}
-\contentsline {paragraph}{Stationary pixels mask}{16}{section*.18}
-\contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{17}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Loss function for keypoint learning}{19}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{19}{section.4.3}
-\contentsline {section}{\numberline {4.4}Evaluation}{24}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Depth}{24}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Ego motion}{26}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Keypoints}{26}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{26}{subsection.4.4.4}
-\contentsline {chapter}{\numberline {5}Results}{27}{chapter.5}
-\contentsline {chapter}{\numberline {6}Discussion}{31}{chapter.6}
-\contentsline {chapter}{Bibliography}{33}{chapter*.29}
+\contentsline {chapter}{\numberline {3}Related work}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Unsupervised Monocular Depth Estimation with Left-Right Consistency}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Unsupervised Learning of Depth and Ego-Motion from Video}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}3D Packing for Self-Supervised Monocular Depth Estimation}{9}{section.3.4}
+\contentsline {section}{\numberline {3.5}Digging Into Self-Supervised Monocular Depth Estimation}{9}{section.3.5}
+\contentsline {section}{\numberline {3.6}Self-Supervised 3D Keypoint Learning for Ego-motion Estimation}{10}{section.3.6}
+\contentsline {section}{\numberline {3.7}UnsuperPoint: End-To-End Unsupervised Interest Point Detector and Descriptor}{10}{section.3.7}
+\contentsline {section}{\numberline {3.8}Unsupervised Learning of Consensus Maximization for 3D Vision Problems}{10}{section.3.8}
+\contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Unsupervised depth and ego motion learning}{11}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{11}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Architectures for depth and ego motion CNNs}{12}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Differentiable depth image warping}{13}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Loss functions}{14}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Handling occlusions}{16}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Handling model limitations}{17}{subsection.4.1.6}
+\contentsline {paragraph}{Explainability mask}{17}{section*.17}
+\contentsline {paragraph}{Stationary pixels mask}{18}{section*.18}
+\contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{19}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Loss function for keypoint learning}{21}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Generating random homographies}{21}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Brute force matching}{22}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{22}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Improving training convergence}{26}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Evaluation}{26}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Depth}{27}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Ego motion}{28}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Keypoints}{28}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{28}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Results}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Depth and ego motion}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Keypoint detection}{32}{section.5.2}
+\contentsline {section}{\numberline {5.3}Consensus maximization}{32}{section.5.3}
+\contentsline {chapter}{\numberline {6}Discussion}{33}{chapter.6}
+\contentsline {section}{\numberline {6.1}Results}{33}{section.6.1}
+\contentsline {section}{\numberline {6.2}Method}{33}{section.6.2}
+\contentsline {section}{\numberline {6.3}Future work}{33}{section.6.3}
+\contentsline {section}{\numberline {6.4}Conclusion}{33}{section.6.4}
+\contentsline {chapter}{Bibliography}{35}{chapter*.30}
