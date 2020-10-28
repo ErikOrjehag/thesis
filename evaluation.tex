@@ -60,5 +60,18 @@ The error of the camera motion predictions are measured using \textit{RMSE}. But
 
 \subsection{Keypoints}
 
+The unsupervised keypoint network was compared with the ORB feature detector from OpenCV. To messure the performance differences 3 different metrics where used.
+
+Repeatability score (RS) is a measure on how good a method is at finding the same keypoints in two different images. Given two images of the same scene but from different angles, it is necessary that the method finds keypoints in the images that represents the same physical feature in the scene. Otherwise the set of matching keypoints is going to be very small when the points are paired based on their descriptors.
+
+Localization error (LE) is a measure of the average distance error between corresponding points.
+
+Matching score (MS) is a measure on how many keypoints are matched correctly based on their descriptors.
 
 \subsection{Consensus maximization}
+
+The unsupervised consensus maximization network was compared with the \textit{findHomography()} and \textit{findFundamentalMat()} from OpenCV.
+
+Homography error (HE) is calculated as the average distance between the corners of the image transformed by the estimated homography and the ground truth homography.
+
+RE and SED for fundamental matrix...

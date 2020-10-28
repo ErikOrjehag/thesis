@@ -2,66 +2,65 @@
 \providecommand\hyper@newdestlabel[2]{}
 \citation{kitti}
 \citation{lyft2019}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Method}{9}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:method}{{4}{11}{Method}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Unsupervised depth and ego motion learning}{11}{section.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{11}{subsection.4.1.1}}
+\newlabel{cha:method}{{4}{9}{Method}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Unsupervised depth and ego motion learning}{9}{section.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{9}{subsection.4.1.1}}
 \citation{sfmlearner}
 \citation{dispnet}
 \citation{resnet}
 \citation{monodepth2}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }}{12}{figure.caption.12}}
-\newlabel{fig:sequencedataset}{{4.1}{12}{From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Architectures for depth and ego motion CNNs}{12}{subsection.4.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }}{10}{figure.caption.10}}
+\newlabel{fig:sequencedataset}{{4.1}{10}{From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Architectures for depth and ego motion CNNs}{10}{subsection.4.1.2}}
 \citation{spatialtransformernetworks}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Differentiable depth image warping}{13}{subsection.4.1.3}}
-\newlabel{sec:diffwarp}{{4.1.3}{13}{Differentiable depth image warping}{subsection.4.1.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Differentiable depth image warping}{11}{subsection.4.1.3}}
+\newlabel{sec:diffwarp}{{4.1.3}{11}{Differentiable depth image warping}{subsection.4.1.3}{}}
 \citation{ssim}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The \textsc  {cnn}\xspace  predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \textsc  {cnn}\xspace  to learn to accurately predict correct depth and movement.\relax }}{14}{figure.caption.13}}
-\newlabel{fig:warp}{{4.2}{14}{The \abbrCNN predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \abbrCNN to learn to accurately predict correct depth and movement.\relax }{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Loss functions}{14}{subsection.4.1.4}}
-\newlabel{sec:loss}{{4.1.4}{14}{Loss functions}{subsection.4.1.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces The images illustrates the photometric reconstruction loss $ \mathcal  {L}_{ps} $ with $\alpha =0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.\relax }}{15}{figure.caption.14}}
-\newlabel{fig:diff}{{4.3}{15}{The images illustrates the photometric reconstruction loss $ \mathcal {L}_{ps} $ with $\alpha =0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.\relax }{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces The top row of images illustrates the edge weighting terms $e^{-|\delta _y I_t|}$ and $e^{-|\delta _x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.\relax }}{16}{figure.caption.15}}
-\newlabel{fig:edge}{{4.4}{16}{The top row of images illustrates the edge weighting terms $e^{-|\delta _y I_t|}$ and $e^{-|\delta _x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.\relax }{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Handling occlusions}{16}{subsection.4.1.5}}
-\newlabel{sec:occlusion}{{4.1.5}{16}{Handling occlusions}{subsection.4.1.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The \textsc  {cnn}\xspace  predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \textsc  {cnn}\xspace  to learn to accurately predict correct depth and movement.\relax }}{12}{figure.caption.11}}
+\newlabel{fig:warp}{{4.2}{12}{The \abbrCNN predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \abbrCNN to learn to accurately predict correct depth and movement.\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Loss functions}{12}{subsection.4.1.4}}
+\newlabel{sec:loss}{{4.1.4}{12}{Loss functions}{subsection.4.1.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces The images illustrates the photometric reconstruction loss $ \mathcal  {L}_{ps} $ with $\alpha =0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.\relax }}{13}{figure.caption.12}}
+\newlabel{fig:diff}{{4.3}{13}{The images illustrates the photometric reconstruction loss $ \mathcal {L}_{ps} $ with $\alpha =0.85$ for each pixel in the reconstructed image. The left image shows the loss after 1 epoch of training and the right image shows the loss after 30 epochs. The reconstruction loss should decrease during training as the network learns to predict better depth maps, which is what we see.\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces The top row of images illustrates the edge weighting terms $e^{-|\delta _y I_t|}$ and $e^{-|\delta _x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.\relax }}{14}{figure.caption.13}}
+\newlabel{fig:edge}{{4.4}{14}{The top row of images illustrates the edge weighting terms $e^{-|\delta _y I_t|}$ and $e^{-|\delta _x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Handling occlusions}{14}{subsection.4.1.5}}
+\newlabel{sec:occlusion}{{4.1.5}{14}{Handling occlusions}{subsection.4.1.5}{}}
 \citation{sfmlearner}
 \citation{monodepth2}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }}{17}{figure.caption.16}}
-\newlabel{fig:min}{{4.5}{17}{By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.6}Handling model limitations}{17}{subsection.4.1.6}}
-\newlabel{sec:modellimit}{{4.1.6}{17}{Handling model limitations}{subsection.4.1.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Explainability mask}{17}{section*.17}}
-\@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{18}{section*.18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }}{18}{figure.caption.19}}
-\newlabel{fig:stat}{{4.6}{18}{The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }}{15}{figure.caption.14}}
+\newlabel{fig:min}{{4.5}{15}{By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.6}Handling model limitations}{15}{subsection.4.1.6}}
+\newlabel{sec:modellimit}{{4.1.6}{15}{Handling model limitations}{subsection.4.1.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Explainability mask}{15}{section*.15}}
+\@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{16}{section*.16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }}{16}{figure.caption.17}}
+\newlabel{fig:stat}{{4.6}{16}{The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }{figure.caption.17}{}}
 \citation{unsuperpoint}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{19}{section.4.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.\relax }}{19}{figure.caption.20}}
-\newlabel{fig:unsuperpoint}{{4.7}{19}{The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.\relax }{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $H$. The keypoint positions from twin A are transformed by the same homography $H$ and the output from the two branches are compared in order to formulate the loss function.\relax }}{20}{figure.caption.21}}
-\newlabel{fig:unsuperpointloss}{{4.8}{20}{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $H$. The keypoint positions from twin A are transformed by the same homography $H$ and the output from the two branches are compared in order to formulate the loss function.\relax }{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Loss function for keypoint learning}{21}{subsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Generating random homographies}{21}{subsection.4.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Unsupervised keypoint learning}{17}{section.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.\relax }}{17}{figure.caption.18}}
+\newlabel{fig:unsuperpoint}{{4.7}{17}{The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.\relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $H$. The keypoint positions from twin A are transformed by the same homography $H$ and the output from the two branches are compared in order to formulate the loss function.\relax }}{18}{figure.caption.19}}
+\newlabel{fig:unsuperpointloss}{{4.8}{18}{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $H$. The keypoint positions from twin A are transformed by the same homography $H$ and the output from the two branches are compared in order to formulate the loss function.\relax }{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Loss function for keypoint learning}{19}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Generating random homographies}{19}{subsection.4.2.2}}
 \citation{ransac}
 \citation{consensus}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Brute force matching}{22}{subsection.4.2.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{22}{section.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Unsupervised consensus maximization}{20}{section.4.3}}
 \citation{pointnet}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces \relax }}{24}{figure.caption.22}}
-\newlabel{fig:consensus}{{4.9}{24}{\relax }{figure.caption.22}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Improving training convergence}{26}{subsection.4.3.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Evaluation}{26}{section.4.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Depth}{27}{subsection.4.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Ego motion}{28}{subsection.4.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Keypoints}{28}{subsection.4.4.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{28}{subsection.4.4.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces \relax }}{22}{figure.caption.20}}
+\newlabel{fig:consensus}{{4.9}{22}{\relax }{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Improving training convergence}{24}{subsection.4.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Evaluation}{24}{section.4.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Depth}{25}{subsection.4.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Ego motion}{26}{subsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Keypoints}{26}{subsection.4.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Consensus maximization}{27}{subsection.4.4.4}}
 \@setckpt{metod}{
-\setcounter{page}{29}
+\setcounter{page}{28}
 \setcounter{equation}{0}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -93,7 +92,7 @@
 \setcounter{NAT@ctr}{16}
 \setcounter{ContinuedFloat}{0}
 \setcounter{Item}{3}
-\setcounter{bookmark@seq@number}{40}
+\setcounter{bookmark@seq@number}{38}
 \setcounter{lofdepth}{1}
 \setcounter{lotdepth}{1}
 \setcounter{KVtest}{1}
