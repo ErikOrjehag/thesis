@@ -1,6 +1,14 @@
-\section{Implementation}
+\chapter{Implementation}
 
 This section describes the parts that will be implemented in PyTorch for this thesis.
+
+\input{depth_method}
+
+\input{point_method}
+
+\input{consensus_method}
+
+\iffalse
 
 \subsection{CNN architectures}
 
@@ -9,16 +17,6 @@ In order to predict depth and motion from monocular images two different CNN arc
 \paragraph{SfMLearner} This is the architecture from \cite{sfmlearner}. The authors use a DispNet\cite{dispnet} architecture to predict depth maps at four different scales, and a ResNet18\cite{resnet} architecture with modified decoder to predict pose updates in an euler angle axis representation.
 
 \paragraph{Monodepth2} This is the architecture from \cite{monodepth2}. The authors use a ResNet18 architecture instead of a DispNet architecture to predict depth estimates. They make this choice because its a smaller and faster architecture. Similarly they use a ResNet18 architecture with modified decoder to predict the pose updates in an euler angle axis representation.
-
-
-
-\subsection{Datasets}
-
-The neural networks will be trained and tested on the following datasets: KITTI\cite{kitti}, FlyingThings3D\cite{dispnet} and Lyft\cite{lyft2019}.
-
-\subsection{Data augmentation}
-
-Following \cite{monodepth2} the ability to apply a random augmentation with 50\% chance to the training images will be implemented in the system. This can improve robustness and hopefully makes the CNN generalize and achieve better results on the unseen testing data. The following augmentations can be applied: Horizontal flip, random brightness, contrast, saturation and hue jitter.
 
 \subsection{Differentiable depth image warping}
 \label{sec:diffwarp}
@@ -86,3 +84,5 @@ In order to optimize using the photometric reprojecton error as the loss functio
 \subsection{Multi-scale estimation}
 
 In the depth decoder 4 different scales of the depth map is created. In SfMLearner downsamples the target image to the size of the depth map when calculating the loss. The authors of Monodepth2 noticed that this creates holes in the depth prediction on some surfaces because it creates ambiguities for the pixels removed during downsampling. Their approach is instead to resize the depth map to the target image size using interpolation, which turns out to work better.
+
+\fi

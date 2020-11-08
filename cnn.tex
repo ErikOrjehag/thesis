@@ -1,11 +1,11 @@
-\section{Convolutional neural networks}
+\section{Convolutional neural networks and learning}
 
 The central method used in this project is a deep learning algorithm called convolutional neural networks (\abbrCNN for short). A \abbrCNN architecture can successfully capture the spatial dependencies in an image through convolutional filtering operations with kernels of learnable weights and biases.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{conv}
-	\caption{Convolutional filtering operation with a 3 channel RGB image and 3x3 kernel}
+	\caption{Convolutional filtering operation with a 3 channel RGB image and 3x3 kernel.}
 	\label{fig:conv}
 \end{figure}
 
@@ -16,7 +16,7 @@ In order to form a deep neural network multiple filtering operations are chained
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{deep}
-	\caption{Multiple layers chained with each other to form a deep network}.
+	\caption{Multiple layers chained with each other to form a deep network.}
 	\label{fig:deep}
 \end{figure}
 
@@ -30,5 +30,3 @@ The activation functions need to be differentiable because the derivatives are u
 \end{figure}
 
 The features in the deep neural networks are used to formulate a loss function. The loss defines an objective that we want the network to learn. This means that the process of learning becomes a task of updating the filter kernels in such a way that the loss function is minimized. If the loss function is decreasing during the training process it means that the network is learning. It is crucial that the loss function describes the problem accurately, otherwise the network will not learn the correct behavior. The weights in the network are updated using a method called back propagation. The algorithm computes the gradient of the loss function with respect to the weights in the network for a single input example from the training data using the derivative chain rule, which can be done very efficiently. Updating the weights to minimize the loss function can then be done using gradient decent. As the network is fed with more input examples from the training data, the network slowly learns the correct weights that minimizes the loss function as desired.
-
-

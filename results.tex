@@ -1,91 +1,86 @@
 \chapter{Results}\label{cha:results}
 
+This chapter presents the results from the experiments conducted to evaluate the performance of the unsupervised learning methods investigated in this thesis. 
+
 \section{Depth and ego motion}
 
 \begin{table}[H]
-\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|}
+\centering
+\begin{tabular}{|l|c|c||c|c||c|c||c|c|c|c|}
 \hline
- & Net & DS & W & Edge & Norm & Expl & Stat & SSIM & Comb & US \\
+C & Net & DS & Edge & Norm & Expl & Stat & SSIM & Comb & US \\
 \hline
-C1 & SL & K & di &  &  & $ \times $ &  &  & avg &  \\
+1 & SL & K &  &  &  &  &  & avg &  \\
 \hline
-C2 & SL & K & de &  &  & $ \times $ &  &  & avg &  \\
+2 & SL & K &  &  & $ \times $ &  &  & avg &  \\
 \hline
-C3 & SL & K & de &  &  &  &  &  & avg &  \\
+3 & SL & K &  &  &  & $ \times $ &  & avg &  \\
 \hline
-C4 & SL & K & de &  &  &  & $ \times $ &  & avg &  \\
+4 & SL & K & $ \times $ &  &  & $ \times $ &  & avg &  \\
 \hline
-C5 & SL & K & de & $ \times $ &  &  & $ \times $ &  & avg &  \\
+5 & SL & K & $ \times $ &  &  & $ \times $ & $ \times $ & min &  \\
 \hline
-C6 & SL & K & de & $ \times $ &  &  & $ \times $ & $ \times $ & min &  \\
+6 & SL & K & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min &  \\
 \hline
-C7 & SL & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min &  \\
+7 & SL & K & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
 \hline
-C8 & SL & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+8 & SL & L & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
 \hline
-C9 & SL & L & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+9 & M2 & K &  &  &  & $ \times $ &  & avg &  \\
 \hline
-C10 & M2 & K & de &  &  &  & $ \times $ &  & avg &  \\
+10 & M2 & K & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min &  \\
 \hline
-C11 & M2 & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min &  \\
+11 & M2 & K & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
 \hline
-C12 & M2 & K & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
-\hline
-C13 & M2 & L & de & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
+12 & M2 & L & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
 \hline
 \end{tabular}
-\caption{Different configurations of network architecutes, training datasets and loss terms evaluated to find the best performance}
+\caption{All configurations of the depth and ego motion network that were evaluated. The C column identifies the specific configuration. The Net column shows which architecture was used, either SL for SfmLearner or M2 for Monodepth2. The DS column shows which dataset was used during training, either K for Kitti or L for Lyft. The Edge column indicates if the edge aware smoothing loss term $\mathcal{L}_{edge}$ was used. The Norm column indicates if depth map normalization was used. The Expl column indicates if an explainability mask was used. The Stat column indicates if a mask to remove stationary pixels from the loss was used. The SSIM column indicates if $\mathcal{L}_{ps}$ was used, otherwise just $\mathcal{L}_{p}$. The Comb column shows which methods was used to combine the loss terms from the two source images, either the average or the minimum loss across frames. The US column indicates that up scaling of the depth maps in the pyramid was used, otherwise the target frame was down scaled to match the size of the smaller depth maps in the pyramid.}
 \label{table:configurations}
 \end{table}
 
 
 \begin{table}[H]
+\centering
 {\setlength{\tabcolsep}{0.4em}
 \begin{tabular}{|r|r|c||l|l|l|l||l|l|l||l|}
 \hline
 E & C & DS & AbsRel & SqRel & RMSE & RMSLE & $1.25$ & $1.25^2$ & $1.25^3$ & Ego \\
 \hline
-1 & 1 & K & 0.362 & 13.469 & 8.759 & 0.372 & 0.730 & 0.884 & 0.933 & 0.020 \\
+1 & 1 & K & 0.174 & 1.405 & 4.829 & 0.249 & 0.784 & 0.920 & 0.964 & 0.024 \\
 \hline
 2 & 2 & K & 0.184 & 1.718 & 4.953 & 0.258 & 0.776 & 0.915 & 0.960 & 0.020 \\
 \hline
-3 & 3 & K & 0.174 & 1.405 & 4.829 & 0.249 & 0.784 & 0.920 & 0.964 & 0.024 \\
+3 & 3 & K & 0.140 & 0.793 & 4.549 & 0.217 & 0.818 & 0.939 & 0.976 & 0.020 \\
 \hline
-4 & 4 & K & 0.140 & 0.793 & 4.549 & 0.217 & 0.818 & 0.939 & 0.976 & 0.020 \\
+4 & 4 & K & 0.143 & 0.819 & 4.708 & 0.222 & 0.810 & 0.937 & 0.975 & 0.022 \\
 \hline
-5 & 5 & K & 0.143 & 0.819 & 4.708 & 0.222 & 0.810 & 0.937 & 0.975 & 0.022 \\
+5 & 5 & K & 0.133 & 0.727 & 4.305 & 0.204 & 0.843 & 0.950 & 0.979 & 0.023 \\
 \hline
-6 & 6 & K & 0.133 & 0.727 & 4.305 & 0.204 & 0.843 & 0.950 & 0.979 & 0.023 \\
+6 & 6 & K & 0.137 & 0.797 & 4.282 & 0.208 & 0.837 & 0.948 & 0.977 & 0.024 \\
 \hline
-7 & 7 & K & 0.137 & 0.797 & 4.282 & 0.208 & 0.837 & 0.948 & 0.977 & 0.024 \\
+7 & 7 & K & 0.135 & 0.778 & 4.248 & 0.208 & 0.841 & 0.948 & 0.997 & 0.020 \\
 \hline
-8 & 8 & K & 0.135 & 0.778 & 4.248 & 0.208 & 0.841 & 0.948 & 0.997 & 0.020 \\
+8 & 7 & L & 0.340 & 7.811 & 23.071 & 0.447 & 0.457 & 0.734 & 0.868 & 0.043 \\
 \hline
-9 & 8 & L & 0.340 & 7.811 & 23.071 & 0.447 & 0.457 & 0.734 & 0.868 & 0.043 \\
+9 & 8 & K & 0.512 & 5.185 & 10.757 & 0.611 & 0.305 & 0.549 & 0.732 & 0.495 \\
 \hline
-10 & 9 & K & 0.512 & 5.185 & 10.757 & 0.611 & 0.305 & 0.549 & 0.732 & 0.495 \\
+10 & 8 & L & 0.739 & 20.236 & 31.859 & 0.773 & 0.240 & 0.434 & 0.587 & 1.324 \\
 \hline
-11 & 9 & L & 0.739 & 20.236 & 31.859 & 0.773 & 0.240 & 0.434 & 0.587 & 1.324 \\
+11 & 9 & K & \textbf{0.125} & \textbf{0.697} & 4.298 & 0.203 & 0.845 & 0.948 & 0.979 & 0.021 \\
 \hline
-12 & 10 & K & 0.125 & 0.697 & 4.298 & 0.203 & 0.845 & 0.948 & 0.979 & 0.021 \\
+12 & 10 & K & 0.126 & 0.714 & 4.018 & \textbf{0.194} & \textbf{0.860} & \textbf{0.958} & \textbf{0.982} & \textbf{0.019} \\
 \hline
-13 & 11 & K & 0.126 & 0.714 & 4.018 & 0.194 & 0.860 & 0.958 & 0.982 & 0.019 \\
+13 & 11 & K & 0.132 & 0.769 & \textbf{3.966} & 0.196 & 0.859 & 0.957 & 0.981 & \textbf{0.019} \\
 \hline
-14 & 12 & K & 0.132 & 0.769 & 3.966 & 0.196 & 0.859 & 0.957 & 0.981 & 0.019 \\
+14 & 11 & L & 0.304 & 7.019 & 21.907 & 0.414 & 0.518 & 0.775 & 0.886 & 0.042 \\
 \hline
-15 & 12 & L & 0.304 & 7.019 & 21.907 & 0.414 & 0.518 & 0.775 & 0.886 & 0.042 \\
+15 & 12 & K & 0.322 & 3.177 & 7.179 & 0.378 & 0.549 & 0.797 & 0.906 & 0.036 \\
 \hline
-16 & 13 & K & 0.322 & 3.177 & 7.179 & 0.378 & 0.549 & 0.797 & 0.906 & 0.036 \\
-\hline
-17 & 13 & L & 0.303 & 8.051 & 19.312 & 0.385 & 0.637 & 0.827 & 0.906 & 0.059 \\
-\hline
-\hline
-\multicolumn{2}{|c|}{SL} & K & 0.208 & 1.768 & 6.856 & 0.283 & 0.678 & 0.885 & 0.957 &  \\
-\hline
-\multicolumn{2}{|c|}{M2} & K & 0.132 & 1.044 & 5.142 & 0.210 & 0.845 & 0.948 & 0.977 & \\
+16 & 12 & L & 0.303 & 8.051 & 19.312 & 0.385 & 0.637 & 0.827 & 0.906 & 0.059 \\
 \hline
 \end{tabular}}
-\caption{Experiments measuring the performance of the different configurations.}
+\caption{All the experiments measuring the performance of the different configurations in Table \ref{table:configurations}. The E column identifies a specific experiment. The C column shows which configuration was used. The DS column shows which Dataset was used during testing, K for Kitti and L for Lyft. The dataset used during testing differs from the one used during training in some experiments. The AbsRel, SqRel, RMSE and RMSLE columns are the depth error metrics described in section \ref{sec:depthmetrics}, smaller is better. The $1.25$, $1.25^2$ and $1.25^3$ columns are the depth accuracy metrics described in section \ref{sec:depthmetrics}, larger is better. The Ego column is the camera ego motion error metric described in section \ref{sec:egometric}.}
 \label{table:experiments}
 \end{table}
 
@@ -150,8 +145,8 @@ E & C & DS & AbsRel & SqRel & RMSE & RMSLE & $1.25$ & $1.25^2$ & $1.25^3$ & Ego 
 \hline
 Method & RS $\uparrow$ & LE $\downarrow$ & MS $\uparrow$ & CMR $\uparrow$ & Nt & Nm \\
 \hline
-UnsuperPoint & 0.796 & \underline{0.666} & \underline{0.488} & \underline{0.834} & 338 & 203 \\
-ORB & \underline{0.841} & 0.764 & 0.302 & 0.564 & 310 & 171 \\
+UnsuperPoint & 0.796 & \textbf{0.666} & \textbf{0.488} & \textbf{0.834} & 338 & 203 \\
+ORB & \textbf{0.841} & 0.764 & 0.302 & 0.564 & 310 & 171 \\
 \hline
 \end{tabular}
 \caption{Experiments measuring the performance of keypoint detection methods.}
@@ -178,7 +173,7 @@ ORB & \underline{0.841} & 0.764 & 0.302 & 0.564 & 310 & 171 \\
 	\centering
 	\begin{tabular}{|l|l|l|l|}
 		\hline
-		Method & HE \\
+		Method & HA \\
 		\hline
 		ConsensusNet & ??? \\
 		OpenCV RANSAC & ??? \\

@@ -1,0 +1,17 @@
+\chapter{Method}\label{cha:method}
+
+This chapter describes the methods used to answer the research questions. The first question relates to the datasets used during training and testing of the networks. The second question relates to the performance benefits of applying specific techniques from previous research in unsupervised monocular depth and ego motion prediction.
+
+To begin with the chapter summarizes which datasets where used in this thesis and how the choice relates to the first research question. Following that an explanation of which specific techniques used in monocular depth prediction will be evaluated in the results chapter, and the method used to combine them. Lastly a detailed description of all the error and accuracy metrics that will be presented in the results chapter. A good understanding of what the metrics can tell us is needed to answer both research questions.
+
+\input{datasets}
+
+\input{combtech}
+
+\input{evaluation}
+
+
+
+
+
+\input{consensus_method}

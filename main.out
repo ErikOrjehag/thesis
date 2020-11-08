@@ -3,46 +3,48 @@
 \BOOKMARK [0][]{thetocanchor.0}{Contents}{}% 3
 \BOOKMARK [0][]{section*.5}{Notation}{}% 4
 \BOOKMARK [0][]{chapter.1}{1 Introduction}{}% 5
-\BOOKMARK [1][-]{section.1.1}{1.1 Contributions}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.2}{1.2 Motivation}{chapter.1}% 7
-\BOOKMARK [1][-]{section.1.3}{1.3 Research Questions}{chapter.1}% 8
-\BOOKMARK [1][-]{section.1.4}{1.4 Delimitations}{chapter.1}% 9
-\BOOKMARK [0][]{chapter.2}{2 Background}{}% 10
-\BOOKMARK [1][-]{section.2.1}{2.1 Convolutional neural networks}{chapter.2}% 11
-\BOOKMARK [0][]{chapter.3}{3 Related work}{}% 12
-\BOOKMARK [1][-]{section.3.1}{3.1 Unsupervised Monocular Depth Estimation with Left-Right Consistency}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{3.2 Unsupervised Learning of Depth and Ego-Motion from Video}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{3.3 SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.4}{3.4 3D Packing for Self-Supervised Monocular Depth Estimation}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.5}{3.5 Digging Into Self-Supervised Monocular Depth Estimation}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.6}{3.6 Self-Supervised 3D Keypoint Learning for Ego-motion Estimation}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.7}{3.7 UnsuperPoint: End-To-End Unsupervised Interest Point Detector and Descriptor}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.8}{3.8 Unsupervised Learning of Consensus Maximization for 3D Vision Problems}{chapter.3}% 20
-\BOOKMARK [0][]{chapter.4}{4 Method}{}% 21
-\BOOKMARK [1][-]{section.4.1}{4.1 Unsupervised depth and ego motion learning}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Sequence datasets}{section.4.1}% 23
-\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Architectures for depth and ego motion CNNs}{section.4.1}% 24
-\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 Differentiable depth image warping}{section.4.1}% 25
-\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Loss functions}{section.4.1}% 26
-\BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 Handling occlusions}{section.4.1}% 27
-\BOOKMARK [2][-]{subsection.4.1.6}{4.1.6 Handling model limitations}{section.4.1}% 28
-\BOOKMARK [1][-]{section.4.2}{4.2 Unsupervised keypoint learning}{chapter.4}% 29
-\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Loss function for keypoint learning}{section.4.2}% 30
-\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Generating random homographies}{section.4.2}% 31
-\BOOKMARK [1][-]{section.4.3}{4.3 Unsupervised consensus maximization}{chapter.4}% 32
-\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Improving training convergence}{section.4.3}% 33
-\BOOKMARK [1][-]{section.4.4}{4.4 Evaluation}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Depth}{section.4.4}% 35
-\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Ego motion}{section.4.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Keypoints}{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Consensus maximization}{section.4.4}% 38
-\BOOKMARK [0][]{chapter.5}{5 Results}{}% 39
-\BOOKMARK [1][-]{section.5.1}{5.1 Depth and ego motion}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.2}{5.2 Keypoint detection}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.3}{5.3 Consensus maximization}{chapter.5}% 42
-\BOOKMARK [0][]{chapter.6}{6 Discussion}{}% 43
-\BOOKMARK [1][-]{section.6.1}{6.1 Results}{chapter.6}% 44
-\BOOKMARK [1][-]{section.6.2}{6.2 Method}{chapter.6}% 45
-\BOOKMARK [1][-]{section.6.3}{6.3 The work in a wider context}{chapter.6}% 46
-\BOOKMARK [0][]{chapter.7}{7 Conclusions}{}% 47
-\BOOKMARK [0][]{chapter*.32}{Bibliography}{}% 48
+\BOOKMARK [1][-]{section.1.1}{1.1 Motivation}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.2}{1.2 Research Questions}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.3}{1.3 Delimitations}{chapter.1}% 8
+\BOOKMARK [0][]{chapter.2}{2 Background}{}% 9
+\BOOKMARK [1][-]{section.2.1}{2.1 Convolutional neural networks and learning}{chapter.2}% 10
+\BOOKMARK [0][]{chapter.3}{3 Related work}{}% 11
+\BOOKMARK [1][-]{section.3.1}{3.1 Unsupervised Monocular Depth Estimation with Left-Right Consistency}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{3.2 Unsupervised Learning of Depth and Ego-Motion from Video}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{3.3 SuperDepth: Self-Supervised, Super-Resolved Monocular Depth Estimation}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.4}{3.4 3D Packing for Self-Supervised Monocular Depth Estimation}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.5}{3.5 Digging Into Self-Supervised Monocular Depth Estimation}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.6}{3.6 Self-Supervised 3D Keypoint Learning for Ego-motion Estimation}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.7}{3.7 UnsuperPoint: End-To-End Unsupervised Interest Point Detector and Descriptor}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.8}{3.8 Unsupervised Learning of Consensus Maximization for 3D Vision Problems}{chapter.3}% 19
+\BOOKMARK [0][]{chapter.4}{4 Method}{}% 20
+\BOOKMARK [1][-]{section.4.1}{4.1 Sequence datasets}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.2}{4.2 Homography dataset}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.3}{4.3 Combining techniques from previous research}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.4}{4.4 Evaluation metrics}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Depth error and accuracy metrics}{section.4.4}% 25
+\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Camera ego motion error metric}{section.4.4}% 26
+\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Keypoint error and score metrics}{section.4.4}% 27
+\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Consensus maximization performance metrics}{section.4.4}% 28
+\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 29
+\BOOKMARK [1][-]{subsection.5.0.1}{5.0.1 Architectures for depth and ego motion CNNs}{chapter.5}% 30
+\BOOKMARK [2][-]{subsection.5.0.2}{5.0.2 Differentiable depth image warping}{subsection.5.0.1}% 31
+\BOOKMARK [2][-]{subsection.5.0.3}{5.0.3 Loss functions}{subsection.5.0.1}% 32
+\BOOKMARK [2][-]{subsection.5.0.4}{5.0.4 Handling occlusions}{subsection.5.0.1}% 33
+\BOOKMARK [2][-]{subsection.5.0.5}{5.0.5 Handling model limitations}{subsection.5.0.1}% 34
+\BOOKMARK [1][-]{section.5.1}{5.1 Unsupervised keypoint learning}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Loss function for keypoint learning}{section.5.1}% 36
+\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Generating random homographies}{section.5.1}% 37
+\BOOKMARK [1][-]{section.5.2}{5.2 Unsupervised consensus maximization}{chapter.5}% 38
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Improving training convergence}{section.5.2}% 39
+\BOOKMARK [0][]{chapter.6}{6 Results}{}% 40
+\BOOKMARK [1][-]{section.6.1}{6.1 Depth and ego motion}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.2}{6.2 Keypoint detection}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.3}{6.3 Consensus maximization}{chapter.6}% 43
+\BOOKMARK [0][]{chapter.7}{7 Discussion}{}% 44
+\BOOKMARK [1][-]{section.7.1}{7.1 Results}{chapter.7}% 45
+\BOOKMARK [1][-]{section.7.2}{7.2 Method}{chapter.7}% 46
+\BOOKMARK [1][-]{section.7.3}{7.3 The work in a wider context}{chapter.7}% 47
+\BOOKMARK [0][]{chapter.8}{8 Conclusions}{}% 48
+\BOOKMARK [1][-]{section.8.1}{8.1 Future work}{chapter.8}% 49
+\BOOKMARK [0][]{chapter*.34}{Bibliography}{}% 50

@@ -1,8 +1,9 @@
-\section{Evaluation}
+\section{Evaluation metrics}
 
 This section describes the metrics used to evaluate depth, ego motion, feature point and consensus maximization predictions. These specific metrics where chosen because they are also used in the related works in this field, which makes the results comparable to other papers.
 
-\subsection{Depth}
+\subsection{Depth error and accuracy metrics}
+\label{sec:depthmetrics}
 
 The depth error and accuracy metrics are sparse and only calculated for the pixels of which there exists a ground truth laser measurement in the dataset. The values are averaged over all laser measurements and frames in the test split of the dataset. An error of 0 and an accuracy of 1 is optimal, but can never be achieved in practice.
 
@@ -54,11 +55,12 @@ a_{\gamma} = \frac{\sum^N_{n=1}{(\max(\frac{y_n}{\hat{y}_n}, \frac{\hat{y}_n}{y_
 
 This should be interpreted as the ratio of predictions that is within the ratio of $ \gamma $ relative to the ground truth.
 
-\subsection{Ego motion}
+\subsection{Camera ego motion error metric}
+\label{sec:egometric}
 
 The error of the camera motion predictions are measured using \textit{RMSE}. But instead of taking the mean over all poses in a sequence, the alignment error is calculated part wise over a track length of only 5 poses. The final error is presented as the mean \textit{RMSE} of all parts. Each track part is transformed to have its first pose coincide with the world origo. This makes it so that the first pose in the track part of both the prediction and ground truth is the identity matrix $I \in \mathbb{R}^{4\times 4}$. Because the ego motion is predicted relative to an unknown scale and the ground truth is in meters, we scale each predicted track part to have similar scale to the ground truth track part.
 
-\subsection{Keypoints}
+\subsection{Keypoint error and score metrics}
 
 The unsupervised keypoint network was compared with the ORB feature detector from OpenCV. To messure the performance differences 3 different metrics where used.
 
@@ -68,7 +70,7 @@ Localization error (LE) is a measure of the average distance error between corre
 
 Matching score (MS) is a measure on how many keypoints are matched correctly based on their descriptors.
 
-\subsection{Consensus maximization}
+\subsection{Consensus maximization performance metrics}
 
 The unsupervised consensus maximization network was compared with the \textit{findHomography()} and \textit{findFundamentalMat()} from OpenCV.
 

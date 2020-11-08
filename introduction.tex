@@ -4,21 +4,26 @@ This thesis aims to show how new neural network techniques can be used to predic
 
 Recent research has shown that it's possible to predict depth and relative motion from a sequence of images taken with a monocular \abbrRGB camera, up to a unknown scale factor. The training data is a sequence of unlabeled images with a small relative motion, for example looking out from the front window of a moving car. Given a target view and a new nearby view it's possible to train depth and pose predicting \abbrCNN{}s jointly using a combined loss function. The depth and pose predictions are used to warp nearby views to the target view and the loss is based on the similarity achieved after warping.
 
-\section{Contributions}
-
-This thesis does an analysis, and a performance comparison of different techniques described in current research papers. Training and testing is done on new datasets.
-
 \section{Motivation}
 
-Localization by only using visual input is highly desirable in robotics applications due to the low hardware cost and power consumption of using cameras compared to, for example, 3D lidars. Obtaining labeled data can be a tedious task, for that reason this thesis will focus on unsupervised learning on unlabeled data.
+Here are three main points motivating future research into the use of unsupervised learning methods for visual structure from motion.
+
+
+\begin{itemize}
+	\item Localization of autonomous vehicles is commonly  achieved using lidar sensors due to their high accuracy and robustness, but using cameras instead comes with many other benefits. For example lower hardware cost and power consumption. Cameras are passive sensors which means that they don't interfere with each other. Lidars rely on spinning parts which can break if subjected to shaking or impact. Focusing on monoscopic vision instead of stereo vision again comes down to cost benefits.
+	
+	\item Obtaining labeled data for supervised training can be a tedious task, in that respect unsupervised methods are much more desirable. Labeling data is time consuming, expensive and prone to human errors. Collecting and storing data without labeling it is however comparably easy and inexpensive.
+	
+	\item This thesis focuses on depth, ego motion, keypoint prediction and consensus maximization. The motivation for this choice of unsupervised methods is the idea that in future work it might be possible to combine these methods to jointly learn all the tasks at the same time where each part of the system benefits from the others during training. The hope would be that the performance of the system would increase simply by collecting more unlabeled data.
+\end{itemize}
 
 \section{Research Questions}
 
 \begin{enumerate}
 	
-	\item What ideas from previous work can be combined and what are the performance gains if any?
-	\item How well do previous methods work on new datasets not tested in the original papers?
-	\item Can the results from the original papers be replicated in the PyTorch framework?
+	\item How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?
+	
+	\item What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?
 	
 \end{enumerate}
 
