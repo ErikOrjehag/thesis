@@ -1,8 +1,14 @@
 \chapter{Introduction}\label{cha:introduction}
 
-This thesis aims to show how new neural network techniques can be used to predict depth and relative camera motion for an image sequence captured by a monocular \abbrRGB camera. Imagine closing one eye and looking out into the world, it is trivial as a grownup human to detect motion and estimate how the head moves in relation to what is seen. Calculating camera movement from an image sequence is a well studied problem and is usually done by finding corresponding features in the images and calculating (using projective geometry) which camera movement can give rise to such correspondences and their relative movement between frames in the sequence.
+This aim of this thesis to investigate the performance and implementation of some newly published techniques of using unsupervised training of neural networks in the structure from motion pipeline. 
 
-Recent research has shown that it's possible to predict depth and relative motion from a sequence of images taken with a monocular \abbrRGB camera, up to a unknown scale factor. The training data is a sequence of unlabeled images with a small relative motion, for example looking out from the front window of a moving car. Given a target view and a new nearby view it's possible to train depth and pose predicting \abbrCNN{}s jointly using a combined loss function. The depth and pose predictions are used to warp nearby views to the target view and the loss is based on the similarity achieved after warping.
+Imagine closing one eye and looking out into the world, it is trivial as a grownup human to detect motion and estimate how the head moves in relation to what is seen. Calculating camera movement from an image sequence is a well studied problem and is usually done by finding corresponding features in the images and calculating (using projective geometry) which camera movement can give rise to such correspondences and their relative movement between frames in the sequence.
+
+Recent research has shown that it's possible to predict depth and relative motion from a sequence of images taken with a monocular \abbrRGB camera, up to a unknown scale factor. The training data is a sequence of unlabeled images with a small relative motion, for example looking out from the front window of a moving car. Given a target view and a few nearby view it's possible to train depth and pose predicting \abbrCNN{}s jointly using a combined loss function. The depth and pose predictions are used to warp nearby views to the target view and the loss is based on the similarity achieved after warping.
+
+In addition to predicting depth and motion in an image sequence, it is also useful to extract feature points in the image that can be tracked over time in order to build a map of the world. In the process of extracting feature points the system should be able to filter out points that are matched incorrectly with each other, so called outliers.
+
+If depth prediction, camera motion, feature point detection and geometric consensus maximization are implemented in an unsupervised training framework it opens up the possibility to train all subsystems jointly where each part benefits from the rest. Collecting training data would be cheap, since no manual annotation of the data is needed. But this is left as an area of future work and not covered in this thesis.
 
 \section{Motivation}
 
@@ -31,4 +37,6 @@ Here are three main points motivating future research into the use of unsupervis
 
 The visual localization problem can be solved using, for example, a stereoscopic camera or a time of flight camera. But this thesis will only explore the use of a monoscopic, non depth sensing, \abbrRGB camera, because it enables applications where hardware cost is a big factor.
 
-In a full \abbrSFM pipeline, both 3D-reconstruction, bundle adjustment and loop-closure detection are usually done as well. This will not be part of this thesis project.
+In a full \abbrSFM pipeline, both detection, 3D-reconstruction, bundle adjustment and loop-closure are commonly included. The detection and prediction on input images is usually referred to as the \abbrSFM frontend, while the map building is referred to as the backend. This thesis will primarily focus on how unsupervised training can be applied to the frontend, and will not be investigating anything to do with the backend.
+
+This thesis will focus on a few techniques to train a neural network to predict depth and camera motion from a sequence of unlabeled images. Additionally the thesis will evaluate two specific methods to predict feature points and perform geometric consensus maximization on the correspondences using neural networks.
