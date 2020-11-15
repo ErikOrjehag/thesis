@@ -11,10 +11,10 @@
 \contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Convolutional neural networks and learning}{5}{section.2.1}
 \contentsline {chapter}{\numberline {3}Related work}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Depth and ego motion prediction}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Feature points prediction}{9}{section.3.2}
-\contentsline {section}{\numberline {3.3}Geometric consensus maximization}{9}{section.3.3}
-\contentsline {section}{\numberline {3.4}Combined depth and feature point detection}{9}{section.3.4}
+\contentsline {section}{\numberline {3.1}Unsupervised depth and ego motion prediction}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Unsupervised keypoint prediction}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Unsupervised geometric consensus maximization}{10}{section.3.3}
+\contentsline {section}{\numberline {3.4}Combined depth and feature point detection}{10}{section.3.4}
 \contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}
 \contentsline {section}{\numberline {4.1}Sequence datasets}{11}{section.4.1}
 \contentsline {section}{\numberline {4.2}Homography dataset}{12}{section.4.2}

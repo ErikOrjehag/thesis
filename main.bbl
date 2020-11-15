@@ -5,16 +5,18 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Christiansen et~al.(2019)Christiansen, Kragh, Brodskiy, and
+  Karstoft]{unsuperpoint}
+Peter~Hviid Christiansen, Mikkel~Fly Kragh, Yury Brodskiy, and Henrik Karstoft.
+\newblock Unsuperpoint: End-to-end unsupervised interest point detector and
+  descriptor.
+\newblock \emph{CoRR}, abs/1907.04011, 2019.
+\newblock URL \url{http://arxiv.org/abs/1907.04011}.
+
 \bibitem[DeTone et~al.(2017)DeTone, Malisiewicz, and Rabinovich]{superpoint}
 Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
 \newblock Superpoint: Self-supervised interest point detection and description.
 \newblock 12 2017.
-
-\bibitem[DeTone et~al.(2018)DeTone, Malisiewicz, and Rabinovich]{unsuperpoint}
-Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
-\newblock Superpoint: Self-supervised interest point detection and description.
-\newblock pages 337--33712, 06 2018.
-\newblock \doi{10.1109/CVPRW.2018.00060}.
 
 \bibitem[Fischler and Bolles(1981)]{ransac}
 Martin~A. Fischler and Robert~C. Bolles.

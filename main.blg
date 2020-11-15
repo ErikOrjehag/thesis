@@ -7,63 +7,64 @@ A level-1 auxiliary file: notation.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
 A level-1 auxiliary file: relatedwork.aux
-A level-1 auxiliary file: metod.aux
+A level-1 auxiliary file: method.aux
+A level-1 auxiliary file: implementation.aux
 A level-1 auxiliary file: results.aux
 A level-1 auxiliary file: discussion.aux
+A level-1 auxiliary file: conclusions.aux
 Database file #1: IEEEfull.bib
 Database file #2: myrefs.bib
 Warning--entry type for "keypointdepth" isn't style-file defined
---line 81 of file myrefs.bib
+--line 83 of file myrefs.bib
 Warning--entry type for "monodepth2" isn't style-file defined
---line 89 of file myrefs.bib
+--line 91 of file myrefs.bib
 Warning--entry type for "packnet" isn't style-file defined
---line 97 of file myrefs.bib
+--line 99 of file myrefs.bib
 Warning--I didn't find a database entry for "consensus"
 Warning--empty journal in superpoint
-Warning--empty booktitle in unsuperpoint
 Warning--empty booktitle in leftright
 Warning--empty journal in resnet
 Warning--empty booktitle in superdepth
 Warning--empty journal in sfmlearner
 You've used 16 entries,
             2773 wiz_defined-function locations,
-            1216 strings with 22395 characters,
-and the built_in function-call counts, 8889 in all, are:
-= -- 720
-> -- 732
-< -- 3
-+ -- 244
-- -- 228
-* -- 804
-:= -- 1393
+            1220 strings with 22600 characters,
+and the built_in function-call counts, 8732 in all, are:
+= -- 702
+> -- 741
+< -- 2
++ -- 247
+- -- 231
+* -- 797
+:= -- 1387
 add.period$ -- 53
 call.type$ -- 16
-change.case$ -- 124
+change.case$ -- 125
 chr.to.int$ -- 16
-cite$ -- 38
-duplicate$ -- 339
-empty$ -- 600
-format.name$ -- 246
-if$ -- 1821
+cite$ -- 37
+duplicate$ -- 327
+empty$ -- 577
+format.name$ -- 249
+if$ -- 1773
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 12
 newline$ -- 93
 num.names$ -- 64
-pop$ -- 268
+pop$ -- 264
 preamble$ -- 1
-purify$ -- 108
+purify$ -- 109
 quote$ -- 0
-skip$ -- 293
+skip$ -- 283
 stack$ -- 0
-substring$ -- 175
-swap$ -- 46
-text.length$ -- 2
+substring$ -- 141
+swap$ -- 36
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 176
-warning$ -- 6
-while$ -- 56
+warning$ -- 5
+while$ -- 54
 width$ -- 0
-write$ -- 210
-(There were 10 warnings)
+write$ -- 211
+(There were 9 warnings)

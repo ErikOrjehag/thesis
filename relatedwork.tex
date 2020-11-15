@@ -3,7 +3,7 @@
 
 In this chapter some of the important contributions of previous research papers are summarized. Firstly a list of papers in the field of unsupervised depth and ego motion prediction is presented. Secondly a paper on unsupervised feature point prediction. Thirdly a paper on unsupervised geometric consensus maximization. And finally a paper on combining depth and feature point prediction, albeit using classical consensus maximization that is not learned by a neural network.
 
-\section{Depth and ego motion prediction}
+\section{Unsupervised depth and ego motion prediction}
 
 All the papers in this section are discussed in the order of publication to show a timeline of progress in the field of depth and ego motion prediction.
 
@@ -24,21 +24,27 @@ In this paper\cite{superdepth} the authors train a depth estimating network on o
 
 %\section{3D Packing for Self-Supervised Monocular Depth Estimation}
 
+% TA BORT?
 In this paper\cite{packnet} the authors present PacknetSfM. The main contribution is a new network architecture with packing and unpacking blocks replacing down and up sampling. The new packing blocks use space to depth transformations and 3d convolutions. The authors claim that the new packing and unpacking blocks are better at perserving resolution than standard down and upsampling. As the method is not adopted in later work, it is unclear if the new packing and unpacking approach is actually effective. The second contribution is a loss on the camera velocity that makes it possible for the monocular depth estimation to be metrically accurate. The velocity of the car is assumed to be known in the training dataset. The third contribution is a mask on pixels that do not change between frames. These pixels are assumed to be part of objects that are stationary with respect to the camera. Such pixels can occur for example if the car dashboard is visible in a frame, or other vehicles are moving at a similar speed nearby.
 
 %\section{Digging Into Self-Supervised Monocular Depth Estimation}
 
 In this paper\cite{monodepth2} the authors present MonoDepth2. They propose mainly two contributions. Firstly, instead of taking the average of the reprojection errors from all source frames given a target frame they use the minimum. This makes it so that if a feature is occluded in one source image but not in the other the errors will not be averaged together but instead the error from the source frame that is not occluded will be used. Secondly, instead of calculating the loss for each depth scale in the decoder, all the depth maps are up-sampled to the original target image size when computing the loss. This way a single pixel in the low resolution layer of the decoder will predict the depth of a patch of pixels in the originally sized input image.
 
-\section{Feature points prediction}
+\section{Unsupervised keypoint prediction}
 %\section{UnsuperPoint: End-To-End Unsupervised Interest Point Detector and Descriptor}
 
+Collecting ground truth data to train a neural network for keypoint detection is cumbersome. What constitutes a keypoint is hard to define clearly and consistently for a human annotator.
 
-\section{Geometric consensus maximization}
+SuperPoint\cite{superpoint} uses a unsupervised approach to learn prediction of points and their descriptors. The network is first trained on  a synthetic dataset of simple geometric shapes. The pseudo ground truth points are defined as the corners and junctions in the synthetic images. This pre-trained network is then trained on "real" images in a siemese network setup using a method they call homographic adaptation. The two siamese siblings are fed images transformed by random but known homographies and the output from the networks are compared in the loss function. The output of SuperPoint is a heatmap where each pixel describes the "point-ness" of that pixel, and a descriptor map. To keep the model fast both the point and descriptor maps are predicted semi-dense grid,
+one cell for each 8 pixel patch. The maps are up-sampled to the original image size using bicubic interpolation, and the descriptors are normalized.
+
+UnsuperPoint\cite{unsuperpoint} is heavily inspired by SuperPoint but does not need to be pre-trained on a synthetic dataset, instead it is trained in one round of training on real images. It uses a similar method of using siamese networks and homography adaptation during traning, but the output from the network is different. The network uses regression of actual point position coordinates instead of a heat map, incorporates non-maximum suppression, predicts scores for each keypoint and a sparse descriptor map that is sampled and interpolated using the point positions.
+
+\section{Unsupervised geometric consensus maximization}
 %\section{Unsupervised Learning of Consensus Maximization for 3D Vision Problems}
 
-
-%\section{Self-Supervised 3D Keypoint Learning for Ego-motion Estimation}
+Consensus maximization is an important strategy in 3D vision problems for robust geometric model estimation from measurements including outliers. The classical method of \textit{Random Sampling and Consensus}, or RANSAC\cite{ransac} for short, is widely popular with great success. But replicating the same generic behavior using supervised training of neural networks has proven difficult. Unsupervised methods have a huge potential to generalize to any unseen data distribution and are in this context very desirable. This paper\cite{consensus}.
 
 \section{Combined depth and feature point detection}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  10 NOV 2020 20:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  15 NOV 2020 14:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2145,26 +2145,27 @@ icted us-ing an encoder-
 
 
 
-]
-Underfull \vbox (badness 7433) has occurred while \output is active []
+] [8] [9]
 
- [8])
-[9]
+Package natbib Warning: Citation `consensus' on page 10 undefined on input line
+ 47.
+
+) [10]
 \openout2 = `method.aux'.
 
- (./method.tex [10
-
-
-
-]
+ (./method.tex
 Chapter 4.
 
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [] 
  []
 
-(./datasets.tex [11]
-<fig/sequencedataset.png, id=411, 100.2144pt x 92.5056pt>
+(./datasets.tex [11
+
+
+
+]
+<fig/sequencedataset.png, id=415, 100.2144pt x 92.5056pt>
 File: fig/sequencedataset.png Graphic file (type png)
 <use fig/sequencedataset.png>
 Package pdftex.def Info: fig/sequencedataset.png  used on input line 7.
@@ -2196,7 +2197,7 @@ The au-thors use a DispNet[[]]
  []
 
 [17]
-<fig/warp.pdf, id=450, 354.36388pt x 185.73389pt>
+<fig/warp.pdf, id=454, 354.36388pt x 185.73389pt>
 File: fig/warp.pdf Graphic file (type pdf)
 <use fig/warp.pdf>
 Package pdftex.def Info: fig/warp.pdf  used on input line 51.
@@ -2210,12 +2211,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/warp.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/diff.png, id=499, 201.3924pt x 30.8352pt>
+<fig/diff.png, id=503, 201.3924pt x 30.8352pt>
 File: fig/diff.png Graphic file (type png)
 <use fig/diff.png>
 Package pdftex.def Info: fig/diff.png  used on input line 85.
 (pdftex.def)             Requested size: 355.65944pt x 54.45924pt.
-<fig/edge.png, id=500, 200.1879pt x 61.4295pt>
+<fig/edge.png, id=504, 200.1879pt x 61.4295pt>
 File: fig/edge.png Graphic file (type png)
 <use fig/edge.png>
 Package pdftex.def Info: fig/edge.png  used on input line 104.
@@ -2224,7 +2225,7 @@ Package pdftex.def Info: fig/edge.png  used on input line 104.
 Underfull \vbox (badness 1521) has occurred while \output is active []
 
  [20 <./fig/diff.png>]
-<fig/min.png, id=507, 100.2144pt x 92.5056pt>
+<fig/min.png, id=511, 100.2144pt x 92.5056pt>
 File: fig/min.png Graphic file (type png)
 <use fig/min.png>
 Package pdftex.def Info: fig/min.png  used on input line 130.
@@ -2233,18 +2234,18 @@ Package pdftex.def Info: fig/min.png  used on input line 130.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21 <./fig/edge.png>] [22 <./fig/min.png>]
-<fig/stat.png, id=524, 100.2144pt x 92.5056pt>
+<fig/stat.png, id=528, 100.2144pt x 92.5056pt>
 File: fig/stat.png Graphic file (type png)
 <use fig/stat.png>
 Package pdftex.def Info: fig/stat.png  used on input line 146.
 (pdftex.def)             Requested size: 177.82971pt x 164.16823pt.
 ) (./point_method.tex [23 <./fig/stat.png>]
-<fig/unsuperpoint.pdf, id=534, 533.1117pt x 248.8497pt>
+<fig/unsuperpoint.pdf, id=538, 533.1117pt x 248.8497pt>
 File: fig/unsuperpoint.pdf Graphic file (type pdf)
 <use fig/unsuperpoint.pdf>
 Package pdftex.def Info: fig/unsuperpoint.pdf  used on input line 10.
 (pdftex.def)             Requested size: 355.65944pt x 166.02216pt.
-<fig/unsuperpointloss.pdf, id=535, 371.46779pt x 166.7028pt>
+<fig/unsuperpointloss.pdf, id=539, 371.46779pt x 166.7028pt>
 File: fig/unsuperpointloss.pdf Graphic file (type pdf)
 <use fig/unsuperpointloss.pdf>
 Package pdftex.def Info: fig/unsuperpointloss.pdf  used on input line 19.
@@ -2284,7 +2285,7 @@ n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp
  []
 
 [27]
-<fig/consensus.pdf, id=653, 325.215pt x 102.3825pt>
+<fig/consensus.pdf, id=656, 325.215pt x 102.3825pt>
 File: fig/consensus.pdf Graphic file (type pdf)
 <use fig/consensus.pdf>
 Package pdftex.def Info: fig/consensus.pdf  used on input line 108.
@@ -2326,22 +2327,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [34]
 [35]
-<fig/depthmaps.png, id=763, 835.12pt x 385.44pt>
+<fig/depthmaps.png, id=766, 835.12pt x 385.44pt>
 File: fig/depthmaps.png Graphic file (type png)
 <use fig/depthmaps.png>
 Package pdftex.def Info: fig/depthmaps.png  used on input line 100.
 (pdftex.def)             Requested size: 355.65944pt x 164.15388pt.
-<fig/3drender.png, id=764, 810.02625pt x 279.0425pt>
+<fig/3drender.png, id=767, 810.02625pt x 279.0425pt>
 File: fig/3drender.png Graphic file (type png)
 <use fig/3drender.png>
 Package pdftex.def Info: fig/3drender.png  used on input line 114.
 (pdftex.def)             Requested size: 284.52863pt x 98.01547pt.
-<fig/motion2.png, id=765, 185.0112pt x 88.6512pt>
+<fig/motion2.png, id=768, 185.0112pt x 88.6512pt>
 File: fig/motion2.png Graphic file (type png)
 <use fig/motion2.png>
 Package pdftex.def Info: fig/motion2.png  used on input line 121.
 (pdftex.def)             Requested size: 284.52863pt x 136.34334pt.
-<fig/3dseq.png, id=766, 198.5016pt x 149.358pt>
+<fig/3dseq.png, id=769, 198.5016pt x 149.358pt>
 File: fig/3dseq.png Graphic file (type png)
 <use fig/3dseq.png>
 Package pdftex.def Info: fig/3dseq.png  used on input line 128.
@@ -2349,19 +2350,19 @@ Package pdftex.def Info: fig/3dseq.png  used on input line 128.
  [36
 
  <./fig/depthmaps.png> <./fig/3drender.png> <./fig/motion2.png>]
-<fig/point1.png, id=777, 840.13875pt x 261.97874pt>
+<fig/point1.png, id=780, 840.13875pt x 261.97874pt>
 File: fig/point1.png Graphic file (type png)
 <use fig/point1.png>
 Package pdftex.def Info: fig/point1.png  used on input line 137.
 (pdftex.def)             Requested size: 355.65944pt x 110.90576pt.
-<fig/synthhomo.png, id=778, 833.1125pt x 254.9525pt>
+<fig/synthhomo.png, id=781, 833.1125pt x 254.9525pt>
 File: fig/synthhomo.png Graphic file (type png)
 <use fig/synthhomo.png>
 Package pdftex.def Info: fig/synthhomo.png  used on input line 160.
 (pdftex.def)             Requested size: 355.65944pt x 108.8416pt.
 
 [37 <./fig/3dseq.png> <./fig/point1.png>]
-<fig/kittihomo.png, id=788, 834.11626pt x 511.9125pt>
+<fig/kittihomo.png, id=791, 834.11626pt x 511.9125pt>
 File: fig/kittihomo.png Graphic file (type png)
 <use fig/kittihomo.png>
 Package pdftex.def Info: fig/kittihomo.png  used on input line 167.
@@ -2411,43 +2412,43 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [] 
  []
 
-
-Underfull \hbox (badness 7540) in paragraph at lines 56--60
-[]\T1/jkpk/m/n/10 Max Jader-berg, Karen Si-monyan, An-drew Zis-ser-man, and Ko-
-ray
- []
-
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 78.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 14.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 3271) in paragraph at lines 72--80
-[]\T1/jkpk/m/n/10 N.Mayer, E.Ilg, P.Häusser, P.Fischer, D.Cremers, A.Dosovitski
-y, and
- []
-
-
-Underfull \hbox (badness 1694) in paragraph at lines 72--80
-\T1/jkpk/m/n/10 T.Brox.  A large dataset to train con-vo-lu-tional net-works fo
-r dis-par-
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 72--80
-\T1/jkpk/m/n/10 ity, op-ti-cal flow, and scene flow es-ti-ma-tion.  In \T1/jkpk
-/m/sl/10 IEEE In-ter-na-tional
- []
-
-
-Underfull \hbox (badness 1694) in paragraph at lines 72--80
-\T1/jkpk/m/n/10 URL []$\T1/pcr/m/n/10 http : / / lmb . informatik . uni-[]freib
-urg . de / Publications /
+Underfull \hbox (badness 7540) in paragraph at lines 58--62
+[]\T1/jkpk/m/n/10 Max Jader-berg, Karen Si-monyan, An-drew Zis-ser-man, and Ko-
+ray
  []
 
 [45
 
 
-])
+]
+Underfull \hbox (badness 3271) in paragraph at lines 74--82
+[]\T1/jkpk/m/n/10 N.Mayer, E.Ilg, P.Häusser, P.Fischer, D.Cremers, A.Dosovitski
+y, and
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 74--82
+\T1/jkpk/m/n/10 T.Brox.  A large dataset to train con-vo-lu-tional net-works fo
+r dis-par-
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 74--82
+\T1/jkpk/m/n/10 ity, op-ti-cal flow, and scene flow es-ti-ma-tion.  In \T1/jkpk
+/m/sl/10 IEEE In-ter-na-tional
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 74--82
+\T1/jkpk/m/n/10 URL []$\T1/pcr/m/n/10 http : / / lmb . informatik . uni-[]freib
+urg . de / Publications /
+ []
+
+)
 No file main.ind.
 
 Package natbib Warning: There were undefined citations.
@@ -2461,7 +2462,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 64.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 64.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 64.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: FCDD610452DF21B800426FD748860DD6;3192.
+(rerunfilecheck)             Checksum: 6199793E7BFFD43B87B1F4C1D30766FC;3225.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2471,7 +2472,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 64.
 Here is how much of TeX's memory you used:
  13771 strings out of 492982
  196004 string characters out of 6134896
- 333610 words of memory out of 5000000
+ 333669 words of memory out of 5000000
  16675 multiletter control sequences out of 15000+600000
  223502 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2495,10 +2496,10 @@ kpmne.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><
 /texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (56 pages, 5261672 bytes).
+Output written on main.pdf (56 pages, 5264861 bytes).
 PDF statistics:
- 935 PDF objects out of 1000 (max. 8388607)
- 759 compressed objects within 8 object streams
+ 940 PDF objects out of 1000 (max. 8388607)
+ 764 compressed objects within 8 object streams
  152 named destinations out of 1000 (max. 500000)
  18893 words of extra memory for PDF output out of 20736 (max. 10000000)
 
