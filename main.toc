@@ -16,14 +16,15 @@
 \contentsline {section}{\numberline {3.3}Unsupervised geometric consensus maximization}{10}{section.3.3}
 \contentsline {section}{\numberline {3.4}Combined depth and feature point detection}{10}{section.3.4}
 \contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Sequence datasets}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Homography dataset}{12}{section.4.2}
-\contentsline {section}{\numberline {4.3}Combining techniques from previous research}{13}{section.4.3}
-\contentsline {section}{\numberline {4.4}Evaluation metrics}{13}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Depth error and accuracy metrics}{13}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Camera ego motion error metric}{15}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Keypoint error and score metrics}{15}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4.4}Consensus maximization performance metrics}{15}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.1}Datasets}{11}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{12}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Homography dataset}{12}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Combining techniques from previous research}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}Evaluation metrics}{13}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Depth error and accuracy metrics}{13}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Camera ego motion error metric}{15}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Keypoint error and score metrics}{15}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Consensus maximization performance metrics}{15}{subsection.4.3.4}
 \contentsline {chapter}{\numberline {5}Implementation}{17}{chapter.5}
 \contentsline {subsection}{\numberline {5.0.1}Architectures for depth and ego motion CNNs}{17}{subsection.5.0.1}
 \contentsline {subsection}{\numberline {5.0.2}Differentiable depth image warping}{18}{subsection.5.0.2}
@@ -45,7 +46,7 @@
 \contentsline {section}{\numberline {7.2}Method}{41}{section.7.2}
 \contentsline {section}{\numberline {7.3}The work in a wider context}{41}{section.7.3}
 \contentsline {chapter}{\numberline {8}Conclusions}{43}{chapter.8}
-\contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{43}{section*.32}
-\contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{43}{section*.33}
+\contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{43}{section*.34}
+\contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{43}{section*.35}
 \contentsline {section}{\numberline {8.1}Future work}{43}{section.8.1}
-\contentsline {chapter}{Bibliography}{45}{chapter*.34}
+\contentsline {chapter}{Bibliography}{45}{chapter*.36}

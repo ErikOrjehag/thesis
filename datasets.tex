@@ -1,6 +1,12 @@
-\section{Sequence datasets}
+\section{Datasets}
 
-The neural networks are trained and evaluated on 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset the images from the left and right camera are treated as separate image sequences to yield more training data. The images are resized to 128x416 pixels, and the intrinsic camera matrix is updated accordingly. The lidar data from Kitti and Lyft is converted to sparse depth maps and are used during performance evaluation. The dataloader works by loading triplets of adjacent frames in the image sequences, and also the ground truth movement and depth map. An example of this is seen in Figure \ref{fig:sequencedataset}.
+The neural networks are trained and evaluated on images from 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset the images from the left and right camera are treated as separate image sequences to yield more training data. The images are resized to 128x416 pixels, and the intrinsic camera matrix is updated accordingly.
+
+\subsection{Sequence datasets}
+
+TODO....
+
+ The lidar data from Kitti and Lyft is converted to sparse depth maps and are used during performance evaluation. The dataloader works by loading triplets of adjacent frames in the image sequences, and also the ground truth movement and depth map. An example of this is seen in Figure \ref{fig:sequencedataset}.
 
 \begin{figure}[H]
 	\centering
@@ -23,7 +29,9 @@ The neural networks are trained and evaluated on 2 different datasets, KITTI\cit
 	\end{tabular}
 \end{center}
 
-\section{Homography dataset}
+\subsection{Homography dataset}
+
+TODO....
 
 How to generate the random homography used during training is not described in the UnsuperPoint paper, but is an important part of the method. The method used in this thesis generates random homographies from 5 parameters $\alpha_{rotation}$, $\alpha_{translation}$, $\alpha_{scale}$, $\alpha_{sheer}$ and $\alpha_{perspective}$. The parameters controls the maximum transformation for each aspect of an homography. The final homographgy is constructed from parts as follows.
 

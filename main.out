@@ -14,32 +14,33 @@
 \BOOKMARK [1][-]{section.3.3}{3.3 Unsupervised geometric consensus maximization}{chapter.3}% 14
 \BOOKMARK [1][-]{section.3.4}{3.4 Combined depth and feature point detection}{chapter.3}% 15
 \BOOKMARK [0][]{chapter.4}{4 Method}{}% 16
-\BOOKMARK [1][-]{section.4.1}{4.1 Sequence datasets}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.2}{4.2 Homography dataset}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.3}{4.3 Combining techniques from previous research}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.4}{4.4 Evaluation metrics}{chapter.4}% 20
-\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Depth error and accuracy metrics}{section.4.4}% 21
-\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Camera ego motion error metric}{section.4.4}% 22
-\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Keypoint error and score metrics}{section.4.4}% 23
-\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Consensus maximization performance metrics}{section.4.4}% 24
-\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 25
-\BOOKMARK [1][-]{subsection.5.0.1}{5.0.1 Architectures for depth and ego motion CNNs}{chapter.5}% 26
-\BOOKMARK [2][-]{subsection.5.0.2}{5.0.2 Differentiable depth image warping}{subsection.5.0.1}% 27
-\BOOKMARK [2][-]{subsection.5.0.3}{5.0.3 Loss functions}{subsection.5.0.1}% 28
-\BOOKMARK [2][-]{subsection.5.0.4}{5.0.4 Handling occlusions}{subsection.5.0.1}% 29
-\BOOKMARK [2][-]{subsection.5.0.5}{5.0.5 Handling model limitations}{subsection.5.0.1}% 30
-\BOOKMARK [1][-]{section.5.1}{5.1 Unsupervised keypoint learning}{chapter.5}% 31
-\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Loss function for keypoint learning}{section.5.1}% 32
-\BOOKMARK [1][-]{section.5.2}{5.2 Unsupervised consensus maximization}{chapter.5}% 33
-\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Improving training convergence}{section.5.2}% 34
-\BOOKMARK [0][]{chapter.6}{6 Results}{}% 35
-\BOOKMARK [1][-]{section.6.1}{6.1 Depth and ego motion}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{6.2 Keypoint detection}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.3}{6.3 Consensus maximization}{chapter.6}% 38
-\BOOKMARK [0][]{chapter.7}{7 Discussion}{}% 39
-\BOOKMARK [1][-]{section.7.1}{7.1 Results}{chapter.7}% 40
-\BOOKMARK [1][-]{section.7.2}{7.2 Method}{chapter.7}% 41
-\BOOKMARK [1][-]{section.7.3}{7.3 The work in a wider context}{chapter.7}% 42
-\BOOKMARK [0][]{chapter.8}{8 Conclusions}{}% 43
-\BOOKMARK [1][-]{section.8.1}{8.1 Future work}{chapter.8}% 44
-\BOOKMARK [0][]{chapter*.34}{Bibliography}{}% 45
+\BOOKMARK [1][-]{section.4.1}{4.1 Datasets}{chapter.4}% 17
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Sequence datasets}{section.4.1}% 18
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Homography dataset}{section.4.1}% 19
+\BOOKMARK [1][-]{section.4.2}{4.2 Combining techniques from previous research}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{4.3 Evaluation metrics}{chapter.4}% 21
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Depth error and accuracy metrics}{section.4.3}% 22
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Camera ego motion error metric}{section.4.3}% 23
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 Keypoint error and score metrics}{section.4.3}% 24
+\BOOKMARK [2][-]{subsection.4.3.4}{4.3.4 Consensus maximization performance metrics}{section.4.3}% 25
+\BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 26
+\BOOKMARK [1][-]{subsection.5.0.1}{5.0.1 Architectures for depth and ego motion CNNs}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.0.2}{5.0.2 Differentiable depth image warping}{subsection.5.0.1}% 28
+\BOOKMARK [2][-]{subsection.5.0.3}{5.0.3 Loss functions}{subsection.5.0.1}% 29
+\BOOKMARK [2][-]{subsection.5.0.4}{5.0.4 Handling occlusions}{subsection.5.0.1}% 30
+\BOOKMARK [2][-]{subsection.5.0.5}{5.0.5 Handling model limitations}{subsection.5.0.1}% 31
+\BOOKMARK [1][-]{section.5.1}{5.1 Unsupervised keypoint learning}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Loss function for keypoint learning}{section.5.1}% 33
+\BOOKMARK [1][-]{section.5.2}{5.2 Unsupervised consensus maximization}{chapter.5}% 34
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Improving training convergence}{section.5.2}% 35
+\BOOKMARK [0][]{chapter.6}{6 Results}{}% 36
+\BOOKMARK [1][-]{section.6.1}{6.1 Depth and ego motion}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{6.2 Keypoint detection}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{6.3 Consensus maximization}{chapter.6}% 39
+\BOOKMARK [0][]{chapter.7}{7 Discussion}{}% 40
+\BOOKMARK [1][-]{section.7.1}{7.1 Results}{chapter.7}% 41
+\BOOKMARK [1][-]{section.7.2}{7.2 Method}{chapter.7}% 42
+\BOOKMARK [1][-]{section.7.3}{7.3 The work in a wider context}{chapter.7}% 43
+\BOOKMARK [0][]{chapter.8}{8 Conclusions}{}% 44
+\BOOKMARK [1][-]{section.8.1}{8.1 Future work}{chapter.8}% 45
+\BOOKMARK [0][]{chapter*.36}{Bibliography}{}% 46

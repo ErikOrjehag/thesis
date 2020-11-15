@@ -23,12 +23,12 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.0.4}Handling occlusions}{21}{subsection.5.0.4}}
 \newlabel{sec:occlusion}{{5.0.4}{21}{Handling occlusions}{subsection.5.0.4}{}}
 \citation{sfmlearner}
-\citation{monodepth2}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }}{22}{figure.caption.14}}
 \newlabel{fig:min}{{5.4}{22}{By picking the per pixel minimum reprojection error the issue created by occluded pixels can be alleviated. The top image is the previous frame, the middle image is the current target frame and the bottom image is the next frame in the sequence. If the minimum reprojection error can be found in the previous frame then it is colored blue, if its from the next frame it is green. Because the door to the right is occluded by the orange truck in the previous frame, the reprojection loss from the next frame is used instead where the door is visible. The wall to the left is outside the boundaries of the next image, so the reprojection error from the previous frame is used instead.\relax }{figure.caption.14}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.0.5}Handling model limitations}{22}{subsection.5.0.5}}
 \newlabel{sec:modellimit}{{5.0.5}{22}{Handling model limitations}{subsection.5.0.5}{}}
 \@writefile{toc}{\contentsline {paragraph}{Explainability mask}{22}{section*.15}}
+\citation{monodepth2}
 \@writefile{toc}{\contentsline {paragraph}{Stationary pixels mask}{23}{section*.16}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }}{23}{figure.caption.17}}
 \newlabel{fig:stat}{{5.5}{23}{The model assumes a stationary world without moving objects in it. By excluding stationary pixels from the loss issues arising from moving objects can be alleviated. The black pixels in the image are the ones removed because their photometric error is smaller before warping the image using the depth map compared to after warping. The red horizontal lines on the van and bicyclist illustrates that they do not move with respect to the camera, and the green slanted line illustrates that the back bike tire is moving with respect to the camera. The mask successfully removes pixels on the van and bicyclist, but also removes some pixels on the pavement that should not be removed.\relax }{figure.caption.17}{}}
@@ -79,7 +79,7 @@
 \setcounter{NAT@ctr}{16}
 \setcounter{ContinuedFloat}{0}
 \setcounter{Item}{2}
-\setcounter{bookmark@seq@number}{34}
+\setcounter{bookmark@seq@number}{35}
 \setcounter{lofdepth}{1}
 \setcounter{lotdepth}{1}
 \setcounter{KVtest}{1}

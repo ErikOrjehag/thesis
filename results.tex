@@ -84,6 +84,8 @@ E & C & DS & AbsRel & SqRel & RMSE & RMSLE & $1.25$ & $1.25^2$ & $1.25^3$ & Ego 
 \label{table:experiments}
 \end{table}
 
+TODO: Describe the improvements (if any) seen by applying each additional method for depth prediction and explain why this could be....
+
 \iffalse
 \begin{figure}[H]
 	\centering
@@ -135,7 +137,7 @@ E & C & DS & AbsRel & SqRel & RMSE & RMSLE & $1.25$ & $1.25^2$ & $1.25^3$ & Ego 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{point1}
-	\caption{}
+	\caption{Results from the keypoint prediction network. The top row are the original input images fed to branch A, and bellow are the transformed images fed to branch B. Circles that are the same color have matching descriptors.}
 	\label{fig:point1}
 \end{figure}
 
@@ -152,6 +154,8 @@ ORB & \textbf{0.841} & 0.764 & 0.302 & 0.564 & 310 & 171 \\
 \caption{Experiments measuring the performance of keypoint detection methods.}
 \label{table:pointsbenchmark}
 \end{table}
+
+TODO: Describe what the results are showing....
 
 \section{Consensus maximization}
 
@@ -173,12 +177,49 @@ ORB & \textbf{0.841} & 0.764 & 0.302 & 0.564 & 310 & 171 \\
 	\centering
 	\begin{tabular}{|l|l|l|l|}
 		\hline
-		Method & HA \\
+		Method & HE $\downarrow$ \\
 		\hline
 		ConsensusNet & ??? \\
-		OpenCV RANSAC & ??? \\
+		RANSAC & ??? \\
 		\hline
 	\end{tabular}
 	\caption{Metrics for homography estimation.}
 	\label{table:pointsbenchmark}
 \end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l|c|c|c}
+	\multicolumn{2}{c}{}&\multicolumn{2}{c}{Predicted}&\\
+	\cline{3-4}
+	\multicolumn{2}{c|}{}&Inlier&Outlier&\multicolumn{1}{c}{Total}\\
+	\cline{2-4}
+	\multirow{2}{*}{Actual}& Inlier & $TP$ & $FN$ & $TP+FN$\\
+	\cline{2-4}
+	& Outlier & $FP$ & $TN$ & $FP+TN$\\
+	\cline{2-4}
+	\multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$TP+FP$} & \multicolumn{    1}{c}{$FN+TN$} & \multicolumn{1}{c}{$N$}\\
+\end{tabular}
+	\caption{Confusion matrix for inlier/outlier prediction using ConsensusNet.}
+	\label{table:consensusconfusion}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l|l|c|c|c}
+		\multicolumn{2}{c}{}&\multicolumn{2}{c}{Predicted}&\\
+		\cline{3-4}
+		\multicolumn{2}{c|}{}&Inlier&Outlier&\multicolumn{1}{c}{Total}\\
+		\cline{2-4}
+		\multirow{2}{*}{Actual}& Inlier & $TP$ & $FN$ & $TP+FN$\\
+		\cline{2-4}
+		& Outlier & $FP$ & $TN$ & $FP+TN$\\
+		\cline{2-4}
+		\multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$TP+FP$} & \multicolumn{    1}{c}{$FN+TN$} & \multicolumn{1}{c}{$N$}\\
+	\end{tabular}
+	\caption{Confusion matrix for inlier/outlier prediction using RANSAC.}
+	\label{table:consensusconfusion}
+\end{table}
+
+TODO: Insert actual numbers from the testing code and describe what the results are showing....
