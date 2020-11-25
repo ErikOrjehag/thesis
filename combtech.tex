@@ -1,4 +1,33 @@
 
-\section{Combining techniques from previous research}
+\section{Comparing techniques for depth and ego motion prediction}
 
-TODO....
+To answer the second research question, a system of enabling and disabling terms in the loss function was implemented. The effect on performance for a few particular loss terms discussed in the related work was measured. By enabling a selection of loss terms (Table \ref{table:configurations}) in different experiments (Table \ref{table:experiments})  their respective contribution to the results can be observed. The command line options to the program used to train the models are listed in Table \ref{table:cli}. An deeper explanation of these techniques can be found in the chapter \ref{cha:implementation}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ |l|l|p{65mm}| }
+		\hline
+		Command line option & Name & Description \\
+		\hline
+		\texttt{-{}-net} & Net & Network architecture (SfMLearner or Monodepth2). \\
+		\hline
+		\texttt{-{}-dataset} & DS & Dataset for training (Kitti or Lyft). \\
+		\hline
+		\texttt{-{}-explain-mask} & Expl & Filter pixels using explainability mask (section \ref{sec:modellimit}) \\
+		\hline
+		\texttt{-{}-stationary-mask} & Stat & Filter pixels using stationary pixels mask (section \ref{sec:modellimit}) \\
+		\hline
+		\texttt{-{}-ssim} & SSIM & Use SSIM in combination with L1 in the photometric error term (section \ref{sec:loss}). \\
+		\hline
+		\texttt{-{}-smooth-map-norm} & Norm & Normalize the depth smoothness map (section \ref{sec:loss}) \\
+		\hline
+		\texttt{-{}-edge-aware} & Edge & Use edge aware depth smoothness loss term (section \ref{sec:loss}) \\
+		\hline
+		\texttt{-{}-upscale} & US & Use up-scaling of the smaller depth maps in the decoder (section \ref{sec:rldepth}). \\
+		\hline
+		\texttt{-{}-min-loss} & Comb & Combine loss from $t-1$ and $t+1$ with \texttt{min} instead of \texttt{avg} (section \ref{sec:occlusion}). \\
+		\hline
+	\end{tabular}
+	\caption{A list of command line option for the PyTorch training script. The column Name contains the naming used for each technique when they are used to form the configurations in Table \ref{table:configurations} in chapter \ref{cha:results} Results.}
+	\label{table:cli}
+\end{table}

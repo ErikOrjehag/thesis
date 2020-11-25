@@ -16,8 +16,8 @@
 \BOOKMARK [0][]{chapter.4}{4 Method}{}% 16
 \BOOKMARK [1][-]{section.4.1}{4.1 Datasets}{chapter.4}% 17
 \BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Sequence datasets}{section.4.1}% 18
-\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Homography dataset}{section.4.1}% 19
-\BOOKMARK [1][-]{section.4.2}{4.2 Combining techniques from previous research}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Homographic adaptation dataset}{section.4.1}% 19
+\BOOKMARK [1][-]{section.4.2}{4.2 Comparing techniques for depth and ego motion prediction}{chapter.4}% 20
 \BOOKMARK [1][-]{section.4.3}{4.3 Evaluation metrics}{chapter.4}% 21
 \BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Depth error and accuracy metrics}{section.4.3}% 22
 \BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Camera ego motion error metric}{section.4.3}% 23
@@ -43,4 +43,4 @@
 \BOOKMARK [1][-]{section.7.3}{7.3 The work in a wider context}{chapter.7}% 43
 \BOOKMARK [0][]{chapter.8}{8 Conclusions}{}% 44
 \BOOKMARK [1][-]{section.8.1}{8.1 Future work}{chapter.8}% 45
-\BOOKMARK [0][]{chapter*.36}{Bibliography}{}% 46
+\BOOKMARK [0][]{chapter*.38}{Bibliography}{}% 46

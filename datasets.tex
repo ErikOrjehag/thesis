@@ -1,21 +1,24 @@
 \section{Datasets}
 
-The neural networks are trained and evaluated on images from 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset the images from the left and right camera are treated as separate image sequences to yield more training data. The images are resized to 128x416 pixels, and the intrinsic camera matrix is updated accordingly.
+The neural networks are trained and evaluated on images from 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset the images from the left and right camera are treated as separate image sequences to yield more training data. The images are resized to $128\times 416$ pixels, and the intrinsic camera matrix is updated accordingly.
 
 \subsection{Sequence datasets}
 
-TODO....
+To train the networks used for depth and ego motion prediction the images from Kitti and Lyft at loaded in triplets of subsequent frames in a sequence.
 
- The lidar data from Kitti and Lyft is converted to sparse depth maps and are used during performance evaluation. The dataloader works by loading triplets of adjacent frames in the image sequences, and also the ground truth movement and depth map. An example of this is seen in Figure \ref{fig:sequencedataset}.
-
+The lidar data from Kitti and Lyft is converted to a sparse depth map, together with the ground truth ego motion. This data is only used during testing, not during training.
+adjacent
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{sequencedataset}
-	\caption{From top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.}
+	\caption{The dataloader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.}
 	\label{fig:sequencedataset}
 \end{figure}
 
-\begin{center}
+Kitti contains 124 sequences, and Lyft contains 148 sequences. For each dataset the sequences are split, approximately 90\% is used for training and 10\% for testing.
+
+\begin{table}[H]
+	\centering
 	\begin{tabular}{ |c|c|c|c|c| } 
 		\hline
 		&\multicolumn{2}{c|}{Sequences / Samples} \\ 
@@ -27,11 +30,13 @@ TODO....
 		Lyft & 134 / 3759 & 14 / 1735 \\ 
 		\hline
 	\end{tabular}
-\end{center}
+	\caption{The training sequences are split into a training set and a testing set.}
+	\label{table:datasets}
+\end{table}
 
-\subsection{Homography dataset}
+\subsection{Homographic adaptation dataset}
 
-TODO....
+To train the network that predicts keypoints, images are read one by one from the Kitti or Lyft datasets. The image is fed trough two branches, in branch A the image is not modified, and in branch B the image is transformed by a random homography (Figure \ref{fig:unsuperpointloss}). The authors of UnsuperPoint refer to this technique as homographic adaptation.
 
 How to generate the random homography used during training is not described in the UnsuperPoint paper, but is an important part of the method. The method used in this thesis generates random homographies from 5 parameters $\alpha_{rotation}$, $\alpha_{translation}$, $\alpha_{scale}$, $\alpha_{sheer}$ and $\alpha_{perspective}$. The parameters controls the maximum transformation for each aspect of an homography. The final homographgy is constructed from parts as follows.
 
@@ -78,3 +83,7 @@ p & p & 1 \\
 , \text{with}
 \ p=u_6*\alpha_{perspective} \\
 \]
+
+The output from the network is used together with the random but known homography to formulate the loss function.
+
+TODO: Illustration of training data for consensus maximization
