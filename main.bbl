@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,6 +43,34 @@ Clement Godard, Oisin Aodha, and Gabriel Brostow.
 Clément Godard, Oisin Aodha, and Gabriel Brostow.
 \newblock Digging into self-supervised monocular depth estimation, 06 2018.
 
+\bibitem[Goodfellow et~al.(2016{\natexlab{a}})Goodfellow, Bengio, and
+  Courville]{dlbook164}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock \emph{Deep Learning}, pages 164--165.
+\newblock MIT Press, 2016{\natexlab{a}}.
+\newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem[Goodfellow et~al.(2016{\natexlab{b}})Goodfellow, Bengio, and
+  Courville]{dlbook273}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock \emph{Deep Learning}, page 273.
+\newblock MIT Press, 2016{\natexlab{b}}.
+\newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem[Goodfellow et~al.(2016{\natexlab{c}})Goodfellow, Bengio, and
+  Courville]{dlbook326}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock \emph{Deep Learning}, pages 326--327.
+\newblock MIT Press, 2016{\natexlab{c}}.
+\newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem[Goodfellow et~al.(2016{\natexlab{d}})Goodfellow, Bengio, and
+  Courville]{dlbook80}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock \emph{Deep Learning}, pages 80--82.
+\newblock MIT Press, 2016{\natexlab{d}}.
+\newblock \url{http://www.deeplearningbook.org}.
+
 \bibitem[Guizilini et~al.(2019)Guizilini, Ambrus, Pillai, and Gaidon]{packnet}
 Vitor Guizilini, Rares Ambrus, Sudeep Pillai, and Adrien Gaidon.
 \newblock Packnet-sfm: 3d packing for self-supervised monocular depth
@@ -69,6 +97,14 @@ R.~Kesten, M.~Usman, J.~Houston, T.~Pandya, K.~Nadhamuni, A.~Ferreira, M.~Yuan,
 \newblock Lyft level 5 av dataset 2019.
 \newblock url{https://level5.lyft.com/dataset/}, 2019.
 
+\bibitem[{Mur-Artal} et~al.(2015){Mur-Artal}, {Montiel}, and
+  {Tardós}]{orbslam}
+R.~{Mur-Artal}, J.~M.~M. {Montiel}, and J.~D. {Tardós}.
+\newblock Orb-slam: A versatile and accurate monocular slam system.
+\newblock \emph{IEEE Transactions on Robotics}, 31\penalty0 (5):\penalty0
+  1147--1163, 2015.
+\newblock \doi{10.1109/TRO.2015.2463671}.
+
 \bibitem[N.Mayer et~al.(2016)N.Mayer, E.Ilg, P.H{\"a}usser, P.Fischer,
   D.Cremers, A.Dosovitskiy, and T.Brox]{dispnet}
 N.Mayer, E.Ilg, P.H{\"a}usser, P.Fischer, D.Cremers, A.Dosovitskiy, and T.Brox.
@@ -87,6 +123,13 @@ Sudeep Pillai, Rares Ambrus, and Adrien Gaidon.
 \newblock pages 9250--9256, 05 2019.
 \newblock \doi{10.1109/ICRA.2019.8793621}.
 
+\bibitem[Probst et~al.(2019)Probst, Paudel, Chhatkuli, and Gool]{consensus}
+Thomas Probst, Danda~Pani Paudel, Ajad Chhatkuli, and Luc~Van Gool.
+\newblock Unsupervised learning of consensus maximization for 3d vision
+  problems.
+\newblock In \emph{The IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, June 2019.
+
 \bibitem[Qi et~al.(2016)Qi, Su, Mo, and Guibas]{pointnet}
 Charles~Ruizhongtai Qi, Hao Su, Kaichun Mo, and Leonidas~J. Guibas.
 \newblock Pointnet: Deep learning on point sets for 3d classification and
@@ -99,6 +142,15 @@ Jiexiong Tang, Rares Ambrus, Vitor Guizilini, Sudeep Pillai, Hanme Kim, and
   Adrien Gaidon.
 \newblock Self-supervised 3d keypoint learning for ego-motion estimation, 12
   2019.
+
+\bibitem[Wang et~al.(2019)Wang, Chao, Garg, Hariharan, Campbell, and
+  Weinberger]{lidarvscamera}
+Yan Wang, Wei-Lun Chao, Divyansh Garg, Bharath Hariharan, Mark Campbell, and
+  Kilian Weinberger.
+\newblock Pseudo-lidar from visual depth estimation: Bridging the gap in 3d
+  object detection for autonomous driving.
+\newblock pages 8437--8445, 06 2019.
+\newblock \doi{10.1109/CVPR.2019.00864}.
 
 \bibitem[Zhou et~al.(2017)Zhou, Brown, Snavely, and Lowe]{sfmlearner}
 Tinghui Zhou, Matthew Brown, Noah Snavely, and David Lowe.
