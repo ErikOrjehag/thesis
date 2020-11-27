@@ -8,7 +8,12 @@ The first architecture is referred to as SfMlearner\cite{sfmlearner}. The author
 
 The second architecture is referred to as Monodepth2\cite{monodepth2}. The authors use a ResNet18 architecture instead of a DispNet architecture to predict depth estimates. They make this choice because its a smaller and faster architecture. Similarly they use a ResNet18 architecture with modified decoder to predict the pose updates in an euler angle axis representation.
 
-TODO: Insert diagram of general encoder-decoder type network used for depth and ego motion prediction....
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{net}
+	\caption{High level diagram of the network architectures used for depth and ego motion prediction. The layers from the depth encoder are concatenated into the layers of the decoder. Depth maps are computed at multiple scales in the decoder and are all used in the loss function. A separate network that takes as input 3 subsequent frames predicts the poses $T_{t\rightarrow t-1}$ and $T_{t\rightarrow t+1}$ between the target and nearby reference frames. The pose network shares encoder with the explain-ability mask predicting network (section \ref{sec:modellimit}).}
+	\label{fig:net}
+\end{figure}
 
 \newpage
 \subsection{Differentiable depth image warping}
@@ -98,27 +103,34 @@ To propagate the depth from textured regions to regions of uniform color a depth
 I also ran experiments applying the smoothness loss on the disparity map instead of the depth map, but with worse performance. The second alternative investigated was an edge aware smoothness loss that weights the first order derivative of the depth map with the exponential of the first derivative of the pixel intensities. This method allows large changes in depth near sharp features in the image but penelizes changes in depth in smooth regions. The method showed great promise in the Monodepth2 paper, resulting in sharper edges because the smoothness term is weighted to mostly affect areas with small photometric derivative.
 
 \[
-\mathcal{L}_{edge}(D_t)=mean(|\delta_x D_t|e^{-|\delta_x I_t|} + |\delta_y D_t|e^{-|\delta_y I_t|})
+\mathcal{L}_{edge}(D_t)=\mean(|\delta_x D_t|e^{-|\delta_x I_t|} + |\delta_y D_t|e^{-|\delta_y I_t|})
 \]
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.0\textwidth]{edge}
+	\includegraphics[width=0.9\textwidth]{edge}
 	\caption{The top row of images illustrates the edge weighting terms $e^{-|\delta_y I_t|}$ and $e^{-|\delta_x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.}
 	\label{fig:edge}
 \end{figure}
 
-TODO: Smooth map normalization!!!
+\subsection{Depth map normalization}\label{sec:normalization}
 
-\iffalse
-When a velocity measurement exists in the dataset a term to enforce scale accurate estimates can be added. This was proposed in the packnet paper\cite{packnet}.
+The predicted depth is scale invariant which can make it difficult to balance the loss terms with the correct weights. To alleviate this is issue the depth map can be normalized before it is used in the loss.
 
 \[
-\mathcal{L}_{v} = \mean(\bigr{|} \| \textbf{t}_{t \rightarrow s} \| - |v|\Delta t \bigr{|})
+\hat{D_t} = \frac{D_t}{\median(D_t)} 
 \]
 
-Where $v$ is the velocity from the dataset, $\Delta t$ is the time between frames in the sequence, and $t_{t\rightarrow s}$ is extracted from the rightmost column of $T_{t\rightarrow s}$.
-\fi
+\subsection{Depth map up-scaling}\label{sec:upscale}
+
+The smaller depth maps in the depth decoder of the network are all used in the loss. Early work in this area down-scaled the target image to fit the size of the smaller depth maps when used in the loss function. But in MonoDepth2\cite{monodepth2} it was proposed to instead up-scale the depth maps to the original target image size.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{upscale}
+	\caption{The depth maps can optionally be up-scaled in the loss function.}
+	\label{fig:upscale}
+\end{figure}
 
 \subsection{Handling occlusions}
 \label{sec:occlusion}

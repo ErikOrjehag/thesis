@@ -4,6 +4,21 @@ This chapter presents the results from the experiments conducted to evaluate the
 
 \section{Depth and ego motion}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{3drender}
+	\caption{3D render of colorized depth map}
+	\label{fig:3drender}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{motion2}
+	\caption{3D visualization of the camera movement in three different image sequences. The green lines are the ground truth and the red lines are the predicted camera trajectories.}
+	\label{fig:movement}
+\end{figure}
+
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|c|c||c|c||c|c||c|c|c|c|}
@@ -104,25 +119,11 @@ TODO: Describe the improvements (if any) seen by applying each additional method
 	\label{fig:depthmapskitty}
 \end{figure}
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{depthmapslyft}
-%	\caption{Examples from the Lyft dataset}
-%	\label{fig:depthmaplyft}
-%\end{figure}
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{3drender}
-	\caption{3D render of colorized depth map}
-	\label{fig:3drender}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{motion2}
-	\caption{3D visualization of the camera movement in three different image sequences. The green lines are the ground truth and the red lines are the predicted camera trajectories.}
-	\label{fig:movement}
+	\includegraphics[width=1.0\textwidth]{depthmapslyft}
+	\caption{Examples from the Lyft dataset}
+	\label{fig:depthmaplyft}
 \end{figure}
 
 \begin{figure}[H]

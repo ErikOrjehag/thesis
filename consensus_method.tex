@@ -294,6 +294,152 @@ H=
 \end{pmatrix}
 \]
 
+The method not only works for predicting the fundamental or homographic relationship between points, but can also be used for 3D rigid transformations.
+
+\[
+v=Ru+t \rightarrow
+\]
+\[
+Ru+t-v=0 \rightarrow
+\]
+\[
+\begin{pmatrix}
+r_{11} & r_{12} & r_{13} \\
+r_{21} & r_{22} & r_{23} \\
+r_{31} & r_{32} & r_{33} \\
+\end{pmatrix}
+\begin{pmatrix}
+u_x \\
+u_y \\
+y_z \\
+\end{pmatrix}
++
+\begin{pmatrix}
+t_x \\
+t_y \\
+t_z \\
+\end{pmatrix}
+-
+\begin{pmatrix}
+v_x \\
+v_y \\
+v_z \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+\end{pmatrix}
+\rightarrow
+\]
+\[
+\begin{cases}
+r_{11} (u_x) + r_{12} (u_y) + r_{13} (u_z) + t_x (1) - (v_y) = 0 \\
+r_{21} (u_x) + r_{22} (u_y) + r_{23} (u_z) + t_y (1) - (v_x) = 0 \\
+r_{31} (u_x) + r_{32} (u_y) + r_{33} (u_z) + t_z (1) - (v_z) = 0 \\
+\end{cases}
+\]
+
+The monomials in the parentheses form the following Vandermonde matrix.
+
+\[
+M=
+\begin{pmatrix}
+u_{x,1} & u_{y,1} & u_{z,1} & v_{x,1} & v_{y,1} & v_{z,1} & 1 \\
+ & & & \vdots & & & \\
+u_{x,m} & u_{y,m} & u_{z,m} & v_{x,m} & v_{y,m} & v_{z,m} & 1 \\
+\end{pmatrix}
+\]
+
+The constraint of $r=3$ linear equations is satisfied for all inliers if
+
+\[
+\diag(\textbf{w})
+M
+\begin{pmatrix}
+r_{11} & r_{21} & r_{31} \\
+r_{12} & r_{22} & r_{32} \\
+r_{13} & r_{23} & r_{33} \\
+-1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1 \\
+t_x & t_y & t_z \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+\vdots \\
+0 \\
+\end{pmatrix}
+^{mx1}
+\]
+
+Similar to before $R$ and $t$ is extracted from the null vectors of $\diag(\textbf{w})M$. The null vectors are the 3 rightmost singular vectors in the SVD. The 3 null vectors form a basis matrix $B$ on which a change of basis is performed to untangle the components $v_x$, $v_y$ and $v_z$ into a new structure $B'$ where $R$ and $t$ are easy to extract.
+
+\begin{center}
+	\begin{tabular}{ c c c }
+		Monomial & Structure of $B'$ &  \\
+		$u_x$ & \multirow{7}{*}{
+			$\begin{pmatrix}
+			r_{11} & r_{21} & r_{31} \\
+			r_{12} & r_{22} & r_{32} \\
+			r_{13} & r_{23} & r_{33} \\
+			-1 & 0 & 0 \\
+			0 & -1 & 0 \\
+			0 & 0 & -1 \\
+			t_x & t_y & t_z \\
+			\end{pmatrix}$
+		} \\
+		$u_y$ & \\
+		$u_z$ & \\    
+		\hline
+		$v_x$ & \\
+		$v_y$ & \\
+		$v_z$ & \\    
+		\hline
+		$1$ & \\
+	\end{tabular}
+\end{center}
+
+\[
+B'=
+-
+\begin{pmatrix}
+b_{41} & b_{42} & b_{43} \\
+b_{51} & b_{52} & b_{53} \\
+b_{61} & b_{62} & b_{63} \\
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+b_{11} & b_{12} & b_{13} \\
+b_{21} & b_{22} & b_{23} \\
+b_{31} & b_{32} & b_{33} \\
+b_{41} & b_{42} & b_{43} \\
+b_{51} & b_{52} & b_{53} \\
+b_{61} & b_{62} & b_{63} \\
+b_{71} & b_{72} & b_{73} \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+r_{11} & r_{21} & r_{31} \\
+r_{12} & r_{22} & r_{32} \\
+r_{13} & r_{23} & r_{33} \\
+-1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1 \\
+t_x & t_y & t_z \\
+\end{pmatrix}
+\]
+
+However this holds for any affine transformation, to enforce the rotation manifold constraint an additional regularizer loss term is added.
+
+\[
+\mathcal{L}_r=\log(1 + || RR^T - I_{3\times3} ||)
+\]
+
 \subsection{Improving training convergence}
 
 TODO: Describe changes I had to make compared to the original paper in order to achieve convergence during training....
+
+
+

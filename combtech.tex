@@ -19,11 +19,11 @@ To answer the second research question, a system of enabling and disabling terms
 		\hline
 		\texttt{-{}-ssim} & SSIM & Use SSIM in combination with L1 in the photometric error term (section \ref{sec:loss}). \\
 		\hline
-		\texttt{-{}-smooth-map-norm} & Norm & Normalize the depth smoothness map (section \ref{sec:loss}) \\
+		\texttt{-{}-depth-map-norm} & Norm & Normalize the depth map (section \ref{sec:normalization}) \\
 		\hline
 		\texttt{-{}-edge-aware} & Edge & Use edge aware depth smoothness loss term (section \ref{sec:loss}) \\
 		\hline
-		\texttt{-{}-upscale} & US & Use up-scaling of the smaller depth maps in the decoder (section \ref{sec:rldepth}). \\
+		\texttt{-{}-upscale} & US & Use up-scaling of the smaller depth maps in the decoder (section \ref{sec:upscale}). \\
 		\hline
 		\texttt{-{}-min-loss} & Comb & Combine loss from $t-1$ and $t+1$ with \texttt{min} instead of \texttt{avg} (section \ref{sec:occlusion}). \\
 		\hline
