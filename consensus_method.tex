@@ -439,7 +439,36 @@ However this holds for any affine transformation, to enforce the rotation manifo
 
 \subsection{Improving training convergence}
 
-TODO: Describe changes I had to make compared to the original paper in order to achieve convergence during training....
+After some initial attempts at training the consensus maximization network for hagiographies on the output of the keypoint network, it was clear that it was next to impossible to get the training to converge on a good solution. Applying some additional techniques not described in the original paper resolved the issue.
+
+Firstly the points should be transformed into a different basis before they are fed into the consensus maximization network. The change of basis ensures that the coordinates are scaled so that their maximum magnitude is 1, and the origin is centered in the middle of the image and not in the top left corner.
+
+\[
+G=
+\begin{pmatrix}
+W & 0 & W/2 \\
+0 & W & H/2 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\]
+\[
+p' = G^{-1} p
+\]
+Where $p$ is the output point from the keypoint network, $W$ and $H$ is the width and height of the image respectively, and $p'$ is the new altered point used as input. The homography $H$ predicted by the consensus maximization network will be in this new basis $G$ and needs to be altered in order to use it in our standard pixel coordinate basis as follows.
+
+\[
+H' = G H G^{-1}
+\]
+
+The second method to improve convergence during training is to normalize the rows of the Vandermonde matrix as follows.
+
+\[
+M_n' = \frac{M_n}{||M_n||}
+\]
+
+For all $n$ rows of the Vandermonde matrix $M$.
+
+
 
 
 

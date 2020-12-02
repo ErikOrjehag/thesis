@@ -1,6 +1,6 @@
 \chapter{Introduction}\label{cha:introduction}
 
-This aim of this thesis is to investigate the performance and implementation of some newly published techniques of using unsupervised training of neural networks in the structure from motion pipeline. 
+This aim of this thesis is to investigate the performance and implementation of some recently published techniques of using unsupervised training of neural networks in the structure from motion pipeline. 
 
 Imagine closing one eye and looking out into the world, it is trivial as a grownup human to detect motion and estimate how the head moves in relation to what is seen. Calculating camera movement from an image sequence is a well studied problem and is usually done by finding corresponding features in the images and calculating (using projective geometry) which camera movement can give rise to such correspondences and their relative movement between frames in the sequence.
 
@@ -16,7 +16,7 @@ Here are three main points motivating future research into the use of unsupervis
 
 
 \begin{itemize}
-	\item Localization of autonomous vehicles is commonly  achieved using lidar sensors due to their high accuracy and robustness, but using cameras instead comes with many other benefits\cite{lidarvscamera}. For example lower hardware cost and power consumption. Cameras are passive sensors which means that they don't interfere with each other. Lidars rely on spinning parts which can break if subjected to shaking or impact. Focusing on monoscopic vision instead of stereo vision again comes down to cost benefits.
+	\item Localization of autonomous vehicles is commonly  achieved using lidar sensors due to their high accuracy and robustness, but using cameras instead comes with many other benefits\cite{lidarvscamera}. For example lower hardware cost and power consumption. Cameras are passive sensors which means that they do not interfere with each other. Lidars rely on spinning parts which can break if subjected to shaking or impact. Focusing on monoscopic vision instead of stereo vision again comes down to cost benefits.
 	
 	\item Obtaining labeled data for supervised training can be a tedious task, in that respect unsupervised methods are much more desirable. Labeling data is time consuming, expensive and prone to human errors. Collecting and storing data without labeling it is however comparably easy and inexpensive.
 	
