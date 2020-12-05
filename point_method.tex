@@ -41,18 +41,60 @@ TODO: Describe briefly the loss terms used....
 
 Corresp G
 
+\[
+G=[g_{ij}]_{M^A\times M^B}=\left[||p_i^{A\rightarrow B}-p_j^B||\right]_{M^A\times M^B}
+\]
+
 pairs hat
 
-dk
+\[
+d_k=||\hat{p}_k^{A\rightarrow B}-\hat{p}_k^B||
+\]
 
-lposition
+\[
+\mathcal{L}_k^{position} = d_k
+\]
 
 lsim
+\[
+\mathcal{L}_k^{sim} = \left(\hat{s}_k^{A}-\hat{s}_k^B\right)^2
+\]
 
 lscore
+\[
+\mathcal{L}_k^{score}=\frac{\hat{s}_k^A+\hat{s}_k^B}{2}\left(d_k-\frac{1}{K}\sum^K_{k=1}d_k\right)
+\]
+
 
 lunixy
 
+\[
+\mathcal{L}^{uniform}=\mathcal{L}^{uniform\_x}_A+\mathcal{L}^{uniform\_y}_A+\mathcal{L}^{uniform\_x}_B+\mathcal{L}^{uniform\_y}_B
+\]
+
+where
+
+\[
+\mathcal{L}^{uniform\_x}_A=\sum_{i=1}^M\left(x_i^{sorted}-\frac{i-1}{M-1}\right)^2
+\]
+
 ldesc
 
+\[
+\mathcal{L}^{desc}=\sum^{M^B}_{i=1}\sum^{M^B}_{j=1}\lambda_d*c_{ij}\max\left(0,m_p-{f_i^A}^Tf_j^B\right)+(1-c_{ij})\max\left(0,{f_i^A}^Tf_j^B-m_n\right)
+\]
+
 ldecorr
+
+\[
+\mathcal{L}^{decorr}=\sum^F_{i\neq j}r_{ij}^A+\sum^F_{i\neq j}r_{ij}^B
+\]
+
+\[
+r^b_{ij}=
+\frac{(f_i^b-\bar{f}^b_i)^T(f_j^b-\bar{f}^b_j)}
+{
+\sqrt{(f_i^b-\bar{f}^b_i)^T(f_i^b-\bar{f}^b_i)}
+\sqrt{(f_j^b-\bar{f}^b_j)^T(f_j^b-\bar{f}^b_j)}
+}
+\]

@@ -437,6 +437,8 @@ However this holds for any affine transformation, to enforce the rotation manifo
 \mathcal{L}_r=\log(1 + || RR^T - I_{3\times3} ||)
 \]
 
+In the confusion matrix in the results section a point is classified as an inlier if its weight $w>0.5$.
+
 \subsection{Improving training convergence}
 
 After some initial attempts at training the consensus maximization network for hagiographies on the output of the keypoint network, it was clear that it was next to impossible to get the training to converge on a good solution. Applying some additional techniques not described in the original paper resolved the issue.

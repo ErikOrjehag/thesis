@@ -86,4 +86,13 @@ p & p & 1 \\
 
 The output from the network is used together with the random but known homography to formulate the loss function.
 
-TODO: Illustration of training data for consensus maximization
+\section{Consensus maximization dataset}
+
+The consensus maximization network is trained on the output from the keypoint network. During training the weights of the keypoint net are frozen. Figure \ref{fig:consdata} illustrates the flow of data in the training and evaluation pipeline. Notice that the ground truth homography is not used in the loss function, and is only used in the evaluation metric to test the performance of the predictions.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{consdata}
+	\caption{Illustrates the flow of data in the training and evaluation pipeline of the consensus maximization network.}
+	\label{fig:consdata}
+\end{figure}
