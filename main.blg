@@ -15,56 +15,56 @@ A level-1 auxiliary file: conclusions.aux
 Database file #1: IEEEfull.bib
 Database file #2: myrefs.bib
 Warning--entry type for "keypointdepth" isn't style-file defined
---line 170 of file myrefs.bib
+--line 176 of file myrefs.bib
 Warning--entry type for "monodepth2" isn't style-file defined
---line 178 of file myrefs.bib
+--line 184 of file myrefs.bib
 Warning--entry type for "packnet" isn't style-file defined
---line 186 of file myrefs.bib
+--line 192 of file myrefs.bib
 Warning--empty journal in superpoint
 Warning--empty booktitle in leftright
 Warning--empty journal in resnet
 Warning--empty booktitle in superdepth
 Warning--empty booktitle in lidarvscamera
 Warning--empty journal in sfmlearner
-You've used 25 entries,
+You've used 26 entries,
             2773 wiz_defined-function locations,
-            1263 strings with 23798 characters,
-and the built_in function-call counts, 13838 in all, are:
-= -- 1148
-> -- 1036
-< -- 8
-+ -- 349
-- -- 321
-* -- 1225
-:= -- 2137
-add.period$ -- 88
-call.type$ -- 25
-change.case$ -- 178
-chr.to.int$ -- 22
-cite$ -- 56
-duplicate$ -- 567
-empty$ -- 987
-format.name$ -- 348
-if$ -- 2885
+            1274 strings with 24018 characters,
+and the built_in function-call counts, 14416 in all, are:
+= -- 1209
+> -- 1047
+< -- 10
++ -- 353
+- -- 324
+* -- 1260
+:= -- 2216
+add.period$ -- 94
+call.type$ -- 26
+change.case$ -- 181
+chr.to.int$ -- 23
+cite$ -- 58
+duplicate$ -- 601
+empty$ -- 1043
+format.name$ -- 352
+if$ -- 3021
 int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 25
-newline$ -- 146
-num.names$ -- 100
-pop$ -- 398
+missing$ -- 26
+newline$ -- 154
+num.names$ -- 105
+pop$ -- 409
 preamble$ -- 1
-purify$ -- 157
+purify$ -- 160
 quote$ -- 0
-skip$ -- 457
+skip$ -- 482
 stack$ -- 0
-substring$ -- 370
-swap$ -- 97
-text.length$ -- 6
+substring$ -- 412
+swap$ -- 109
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 255
+type$ -- 261
 warning$ -- 6
-while$ -- 93
+while$ -- 99
 width$ -- 0
-write$ -- 342
+write$ -- 362
 (There were 9 warnings)

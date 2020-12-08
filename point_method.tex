@@ -46,33 +46,33 @@ To formulate the loss function the point correspondences between branch A and B 
 G=[g_{ij}]_{M^A\times M^B}=\left[||p_i^{A\rightarrow B}-p_j^B||\right]_{M^A\times M^B}
 \]
 
-We define a point correspondence if point $i$ in branch A has a point $j$ as its closest neightbor in branch B, and if the distance $g_{ij}$ is less than 8px. With the correspondences the output matrices $s^b$, $P^b$ and $F^b$ can be redefined as \textit{corresponding matrices} $\hat{s}^b$, $\hat{P}^b$ and $\hat{F}^b$ with $K\le M$ entries, such that entry $k$ in the new matrices maps to corresponding points in the input images.
+We define a point pair if point $i$ in branch A has a point $j$ as its closest neightbor in branch B, and if the distance $g_{ij}$ is less than 8px. With the point pairs defined the output matrices $s^b$, $P^b$ and $F^b$ can be redefined as \textit{corresponding matrices} $\hat{s}^b$, $\hat{P}^b$ and $\hat{F}^b$ with $K\le M$ entries, such that entry $k$ in the new matrices maps to corresponding points in the input images.
 
-Define $d_k$ as the distance between each corresponding point pair.
+Define $d_k$ as the distance between each point pair.
 
 \[
 d_k=||\hat{p}_k^{A\rightarrow B}-\hat{p}_k^B||
 \]
 
-The distance between corresponding point pairs should be minimized, this is achieved by the $\mathcal{L}^{position}$ loss term.
+The distance between point pairs should be minimized, this is achieved by the $\mathcal{L}^{position}$ loss term.
 
 \[
 \mathcal{L}_k^{position} = d_k
 \]
 
-The scores of corresponding points in branch A and B should be similar, this is achieved by the $\mathcal{L}^{sim}$ loss term.
+The scores of point pairs in branch A and B should be similar, this is achieved by the $\mathcal{L}^{sim}$ loss term.
 
 \[
 \mathcal{L}_k^{sim} = \left(\hat{s}_k^{A}-\hat{s}_k^B\right)^2
 \]
 
-To teach the network to predict sensible scores for the points, the distance $d_k$ between correspondences is used.
+To teach the network to predict sensible scores for the points, the distance $d_k$ between point pairs is used.
 
 \[
 \mathcal{L}_k^{score}=\frac{\hat{s}_k^A+\hat{s}_k^B}{2}\left(d_k-\bar{d}\right)
 \]
 
-If $d_k$ is less than the mean distance $\hat{d}$ the score should be large in order to minimize the loss. If the $d_k$ is greater than the mean distance $\hat{d}$ the score should be small in order to minimize the loss.
+If $d_k$ is less than the mean distance $\bar{d}$ the score should be large in order to minimize the loss. If the $d_k$ is greater than the mean distance $\bar{d}$ the score should be small in order to minimize the loss.
 
 \begin{figure}[H]
 	\begin{center}
@@ -87,47 +87,61 @@ Training with only the above mentioned loss terms, the relative positions of the
 	\begin{center}
 		\input{fig/hist-no-unixy.pgf}
 	\end{center}
-	\caption{A PGF histogram from \texttt{matplotlib}.}
+	\caption{Histogram with 100 buckets of relative point positions from both branch A and B, in both the $x$ and $y$ direction. As is clearly visible in the diagram there is a bias of relative positions towards 0 and 1.}
 	\label{fig:hist-no-unixy}
 \end{figure}
 
-lunixy
+To alleviate this issue, a loss is added that encourages uniform distribution of the relative point positions.
 
 
 \[
 \mathcal{L}^{uniform}=\mathcal{L}^{uniform\_x}_A+\mathcal{L}^{uniform\_y}_A+\mathcal{L}^{uniform\_x}_B+\mathcal{L}^{uniform\_y}_B
 \]
-
 where
-
 \[
 \mathcal{L}^{uniform\_x}_A=\sum_{i=1}^M\left(x_i^{sorted}-\frac{i-1}{M-1}\right)^2
 \]
+and so on for both branch A and B, in the $x$ and $y$ dimension. The effect of applying this loss can be seen in Figure \ref{fig:hist-unixy}.
 
 \begin{figure}[H]
 	\begin{center}
 		\input{fig/hist-unixy.pgf}
 	\end{center}
-	\caption{A PGF histogram from \texttt{matplotlib}.}
+	\caption{Histogram with 100 buckets of relative point positions when including the loss term $\mathcal{L}^{uniform}$ that encourages a uniform distribution. The data is taken from the model evaluated in the results chapter of this thesis.}
+	\label{fig:hist-unixy}
 \end{figure}
 
-ldesc
+The descriptor loss is calculated using a hinge loss with both positive margin $m_p$ and negative margin $m_n$. An $M^A\times M^B$ correspondence matrix $C$ is constructed, such that
+
+\[
+c_{ij}=
+\begin{cases}
+1\ \text{if}\ g_{ij}\le 8 \\
+0\ \text{otherwise} \\
+\end{cases}
+\]
+
+Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix and descriptor matrix $F$ as follows
 
 \[
 \mathcal{L}^{desc}=\sum^{M^B}_{i=1}\sum^{M^B}_{j=1}\lambda_d*c_{ij}\max\left(0,m_p-{f_i^A}^Tf_j^B\right)+(1-c_{ij})\max\left(0,{f_i^A}^Tf_j^B-m_n\right)
 \]
 
-ldecorr
+The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $R^b=[r^b_{ij}]_{F\times F}$.
 
 \[
 \mathcal{L}^{decorr}=\sum^F_{i\neq j}r_{ij}^A+\sum^F_{i\neq j}r_{ij}^B
 \]
-
+Each element $r^b_{ij}$ is a Pearson's correlation coefficient\cite{pearsons} defined as
 \[
 r^b_{ij}=
-\frac{(f_i^b-\bar{f}^b_i)^T(f_j^b-\bar{f}^b_j)}
-{
-\sqrt{(f_i^b-\bar{f}^b_i)^T(f_i^b-\bar{f}^b_i)}
-\sqrt{(f_j^b-\bar{f}^b_j)^T(f_j^b-\bar{f}^b_j)}
+\frac{ \tilde{f}_i^b \cdot \tilde{f}_j^b }{
+||\tilde{f}_i^b||\ ||\tilde{f}_j^b||
 }
+,\ \text{where}\ 
+\tilde{f}_i^b=f_i^b-\bar{f}^b_i
+\ \text{and}\ 
+\tilde{f}_j^b=f_j^b-\bar{f}^b_j
 \]
+
+Due to what might be just a oversight by the authors, this is not the same definition of $r_{ij}$ as presented in the original UnsuperPoint paper.

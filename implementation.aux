@@ -52,15 +52,17 @@
 \newlabel{fig:unsuperpointloss}{{5.10}{29}{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $H$. The keypoint positions from twin A are transformed by the same homography $H$ and the output from the two branches are compared in order to formulate the loss function.\relax }{figure.caption.28}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Loss function for keypoint learning}{29}{subsection.5.1.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Histogram with 50 buckets of scores for all points in a pair of images. The data is taken from the fully trained network evaluated in the results chapter. Most points has either a really low or high score, and a few points has a score somewhere in between.\relax }}{30}{figure.caption.29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces A PGF histogram from \texttt  {matplotlib}.\relax }}{31}{figure.caption.30}}
-\newlabel{fig:hist-no-unixy}{{5.12}{31}{A PGF histogram from \texttt {matplotlib}.\relax }{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Histogram with 100 buckets of relative point positions from both branch A and B, in both the $x$ and $y$ direction. As is clearly visible in the diagram there is a bias of relative positions towards 0 and 1.\relax }}{31}{figure.caption.30}}
+\newlabel{fig:hist-no-unixy}{{5.12}{31}{Histogram with 100 buckets of relative point positions from both branch A and B, in both the $x$ and $y$ direction. As is clearly visible in the diagram there is a bias of relative positions towards 0 and 1.\relax }{figure.caption.30}{}}
+\citation{pearsons}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Histogram with 100 buckets of relative point positions when including the loss term $\mathcal  {L}^{uniform}$ that encourages a uniform distribution. The data is taken from the model evaluated in the results chapter of this thesis.\relax }}{32}{figure.caption.31}}
+\newlabel{fig:hist-unixy}{{5.13}{32}{Histogram with 100 buckets of relative point positions when including the loss term $\mathcal {L}^{uniform}$ that encourages a uniform distribution. The data is taken from the model evaluated in the results chapter of this thesis.\relax }{figure.caption.31}{}}
 \citation{ransac}
 \citation{consensus}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces A PGF histogram from \texttt  {matplotlib}.\relax }}{32}{figure.caption.31}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Unsupervised consensus maximization}{32}{section.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Unsupervised consensus maximization}{33}{section.5.2}}
 \citation{pointnet}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \relax }}{34}{figure.caption.32}}
-\newlabel{fig:consensus}{{5.14}{34}{\relax }{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \relax }}{35}{figure.caption.32}}
+\newlabel{fig:consensus}{{5.14}{35}{\relax }{figure.caption.32}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Histogram with 10 buckets of inlier weights $w$ for all point correspondences in a pair of images. A point is classified as an inlier if the weight $w$ is above a certain threshold.\relax }}{38}{figure.caption.33}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Improving training convergence}{38}{subsection.5.2.1}}
 \@setckpt{implementation}{
@@ -93,7 +95,7 @@
 \setcounter{CPROT@size@temp}{0}
 \setcounter{CPROT@temp@chars}{0}
 \setcounter{float@type}{4}
-\setcounter{NAT@ctr}{25}
+\setcounter{NAT@ctr}{26}
 \setcounter{ContinuedFloat}{0}
 \setcounter{Item}{2}
 \setcounter{bookmark@seq@number}{38}

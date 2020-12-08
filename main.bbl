@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -109,6 +109,14 @@ Tschangho Kim.
 \newblock \emph{Journal of Transportation Technologies}, 08:\penalty0 137--150,
   01 2018.
 \newblock \doi{10.4236/jtts.2018.83008}.
+
+\bibitem[Kirch(2008)]{pearsons}
+Wilhelm Kirch, editor.
+\newblock \emph{Pearson's Correlation Coefficient}, pages 1090--1091.
+\newblock Springer Netherlands, Dordrecht, 2008.
+\newblock ISBN 978-1-4020-5614-7.
+\newblock \doi{10.1007/978-1-4020-5614-7_2569}.
+\newblock URL \url{https://doi.org/10.1007/978-1-4020-5614-7_2569}.
 
 \bibitem[{Mur-Artal} et~al.(2015){Mur-Artal}, {Montiel}, and
   {Tardós}]{orbslam}
