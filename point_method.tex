@@ -1,9 +1,9 @@
 \newpage
 \section{Unsupervised keypoint learning}
 
-In order to build a map it is useful to extract features, or keypoints, from images. Every keypoints should have a unique descriptor which can be used to identify it in the map which makes it possible to expand the map and also localize the camera. How to build a map and localize in it is out of scope for this thesis. This section will describe an unsupervised learning method to extract keypoints from images that would be usable in a full SFML pipeline.
+In order to build a map it is useful to extract features, or keypoints, from images. Every keypoints should have a unique descriptor which can be used to identify it in the map which makes it possible to expand the map and also localize the camera. How to build a map and localize in it is out of scope for this thesis. This section will describe the usnupervised learning method implemented in this thesis, to extract keypoints from images.
 
-The method evaluated in this thesis is based on the UnsuperPoint paper \cite{unsuperpoint} from 2019. The network architecture is illustrated in Figure \ref{fig:unsuperpoint}. The input image is fed into a shared backbone. The features from the backbone are then split into three different encoders that estimate the score, position and a descriptor for each keypoint. The network will estimate a keypoint in every $8\times 8$ patch of the image, but only the top $N$ keypoints sorted by score are used in the evaluation.
+The method evaluated in this thesis is based on the UnsuperPoint paper\cite{unsuperpoint}. The network architecture is illustrated in Figure \ref{fig:unsuperpoint}. The input image is fed into a shared backbone. The features from the backbone are then split into three different encoders that estimate the score, position and a descriptor for each keypoint. The network will estimate a keypoint in every $8\times 8$ patch of the image, but only the top $N$ keypoints sorted by score are used in the evaluation.
 
 \begin{figure}[H]
 	\centering
@@ -11,6 +11,21 @@ The method evaluated in this thesis is based on the UnsuperPoint paper \cite{uns
 	\caption{The network has a common backbone and then splits into separate score, position and descriptor encoders. The output is reshaped and sorted by descending score.}
 	\label{fig:unsuperpoint}
 \end{figure}
+
+The score encoder is terminated by a sigmoid function and outputs $S_{map}$, containing scores between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$px patches of the image and only pick the best ones. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
+
+The position encoder is also terminated by a sigmoid function and outputs $P_{relative}$ which is the relative position of the keypoint in each patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions to form $P_{map}$.
+
+\[
+P_{map,x}(r,c) = 8 * (c + P_{relative,x}(r,c))
+\]
+\[
+P_{map,y}(r,c) = 8 * (r + P_{relative,y}(r,c))
+\]
+
+The descriptor encoder predicts a descriptor vector of length $256$ for each keypoint. The purpose of the descriptor is to find corresponding keypoints in different images. The encoder produces 1 descriptor vector for each $8\times 8$ patch in the image. This vector can be used directly as the keypoint descriptor and it works pretty well. Even better results can be achieved using the absolute keypoint positions to sample the values in the descriptor map with the same interpolation method used to do the warping in Figure \ref{fig:warp}.
+
+$S_{map}$, $P_{map}$ and $F_{map}$ are reshaped into a vector $s$ of $M$ elements, an $M\times 2$ matrix $P$ and an $M\times 255$ matrix $F$, where $M=\frac{W}{8}*\frac{H}{8}=832$.
 
 The network is trained in a siamese twin setup, where two duplicate networks that share weights are fed different inputs and the loss is formulated by comparing the output scores, positions and descriptors.
 
@@ -21,52 +36,63 @@ The network is trained in a siamese twin setup, where two duplicate networks tha
 	\label{fig:unsuperpointloss}
 \end{figure}
 
-The score encoder is terminated by a sigmoid function and therefore predicts scores $s_n \in \mathbb{R} $ between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$px patches of the image and only pick the best ones. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
-
-The position encoder is also terminated by a sigmoid function and predicts the relative position of the keypoint in each patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions.
-
-\[
-P_{map,x}(r,c) = 8 * (c + P_{relative,x}(r,c))
-\]
-\[
-P_{map,y}(r,c) = 8 * (r + P_{relative,y}(r,c))
-\]
-
-The descriptor encoder predicts a descriptor vector of length $F=256$ for each keypoint. The purpose of the descriptor is to find corresponding keypoints in different images. The constitutional layers produce 1 descriptor vector for each $8\times 8$ patch. This vector can be used directly as the keypoint descriptor and it works pretty well. Even better results can be achieved using the absolute keypoint positions to sample the values in the descriptor map with the same interpolation method used to do the warping in Figure \ref{fig:warp}.
-
+For each branch $b\in\{A,B\}$ the siamese networks output the reshaped matrices $s^b$, $P^b$ and $F^b$ which contain the scores, positions and descriptors of the $M$ points in each image.
 
 \subsection{Loss function for keypoint learning}
 
-TODO: Describe briefly the loss terms used....
-
-Corresp G
+To formulate the loss function the point correspondences between branch A and B need to be determined. The points in branch A are transformed such that $p_i^{A\rightarrow B}=Hp_i^A$. Then an $M^A\times M^B$ distance matrix $G$ is calculated from the pairwise distances between all points in each branch.
 
 \[
 G=[g_{ij}]_{M^A\times M^B}=\left[||p_i^{A\rightarrow B}-p_j^B||\right]_{M^A\times M^B}
 \]
 
-pairs hat
+We define a point correspondence if point $i$ in branch A has a point $j$ as its closest neightbor in branch B, and if the distance $g_{ij}$ is less than 8px. With the correspondences the output matrices $s^b$, $P^b$ and $F^b$ can be redefined as \textit{corresponding matrices} $\hat{s}^b$, $\hat{P}^b$ and $\hat{F}^b$ with $K\le M$ entries, such that entry $k$ in the new matrices maps to corresponding points in the input images.
+
+Define $d_k$ as the distance between each corresponding point pair.
 
 \[
 d_k=||\hat{p}_k^{A\rightarrow B}-\hat{p}_k^B||
 \]
 
+The distance between corresponding point pairs should be minimized, this is achieved by the $\mathcal{L}^{position}$ loss term.
+
 \[
 \mathcal{L}_k^{position} = d_k
 \]
 
-lsim
+The scores of corresponding points in branch A and B should be similar, this is achieved by the $\mathcal{L}^{sim}$ loss term.
+
 \[
 \mathcal{L}_k^{sim} = \left(\hat{s}_k^{A}-\hat{s}_k^B\right)^2
 \]
 
-lscore
+To teach the network to predict sensible scores for the points, the distance $d_k$ between correspondences is used.
+
 \[
-\mathcal{L}_k^{score}=\frac{\hat{s}_k^A+\hat{s}_k^B}{2}\left(d_k-\frac{1}{K}\sum^K_{k=1}d_k\right)
+\mathcal{L}_k^{score}=\frac{\hat{s}_k^A+\hat{s}_k^B}{2}\left(d_k-\bar{d}\right)
 \]
 
+If $d_k$ is less than the mean distance $\hat{d}$ the score should be large in order to minimize the loss. If the $d_k$ is greater than the mean distance $\hat{d}$ the score should be small in order to minimize the loss.
+
+\begin{figure}[H]
+	\begin{center}
+		\input{fig/hist-score.pgf}
+	\end{center}
+	\caption{Histogram with 50 buckets of scores for all points in a pair of images. The data is taken from the fully trained network evaluated in the results chapter. Most points has either a really low or high score, and a few points has a score somewhere in between.}
+\end{figure}
+
+Training with only the above mentioned loss terms, the relative positions of the points in the $8\times 8$ patches will be distributed towards the boundaries. One explanation for this is that hardy repeatable points will be encouraged to position them self near points in their neighboring patches, thereby minimizing $d_k$. The problem is illustrated in Figure \ref{fig:hist-no-unixy}
+
+\begin{figure}[H]
+	\begin{center}
+		\input{fig/hist-no-unixy.pgf}
+	\end{center}
+	\caption{A PGF histogram from \texttt{matplotlib}.}
+	\label{fig:hist-no-unixy}
+\end{figure}
 
 lunixy
+
 
 \[
 \mathcal{L}^{uniform}=\mathcal{L}^{uniform\_x}_A+\mathcal{L}^{uniform\_y}_A+\mathcal{L}^{uniform\_x}_B+\mathcal{L}^{uniform\_y}_B
@@ -77,6 +103,13 @@ where
 \[
 \mathcal{L}^{uniform\_x}_A=\sum_{i=1}^M\left(x_i^{sorted}-\frac{i-1}{M-1}\right)^2
 \]
+
+\begin{figure}[H]
+	\begin{center}
+		\input{fig/hist-unixy.pgf}
+	\end{center}
+	\caption{A PGF histogram from \texttt{matplotlib}.}
+\end{figure}
 
 ldesc
 

@@ -38,18 +38,18 @@
 \contentsline {paragraph}{Stationary pixels mask}{26}{section*.25}
 \contentsline {section}{\numberline {5.1}Unsupervised keypoint learning}{28}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Loss function for keypoint learning}{29}{subsection.5.1.1}
-\contentsline {section}{\numberline {5.2}Unsupervised consensus maximization}{31}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Improving training convergence}{36}{subsection.5.2.1}
-\contentsline {chapter}{\numberline {6}Results}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Depth and ego motion}{39}{section.6.1}
-\contentsline {section}{\numberline {6.2}Keypoint detection}{43}{section.6.2}
-\contentsline {section}{\numberline {6.3}Consensus maximization}{44}{section.6.3}
-\contentsline {chapter}{\numberline {7}Discussion}{47}{chapter.7}
-\contentsline {section}{\numberline {7.1}Results}{47}{section.7.1}
-\contentsline {section}{\numberline {7.2}Method}{47}{section.7.2}
-\contentsline {section}{\numberline {7.3}The work in a wider context}{47}{section.7.3}
-\contentsline {chapter}{\numberline {8}Conclusions}{49}{chapter.8}
-\contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{49}{section*.43}
-\contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{49}{section*.44}
-\contentsline {section}{\numberline {8.1}Future work}{49}{section.8.1}
-\contentsline {chapter}{Bibliography}{51}{chapter*.45}
+\contentsline {section}{\numberline {5.2}Unsupervised consensus maximization}{32}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Improving training convergence}{38}{subsection.5.2.1}
+\contentsline {chapter}{\numberline {6}Results}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Depth and ego motion}{41}{section.6.1}
+\contentsline {section}{\numberline {6.2}Keypoint detection}{45}{section.6.2}
+\contentsline {section}{\numberline {6.3}Consensus maximization}{46}{section.6.3}
+\contentsline {chapter}{\numberline {7}Discussion}{49}{chapter.7}
+\contentsline {section}{\numberline {7.1}Results}{49}{section.7.1}
+\contentsline {section}{\numberline {7.2}Method}{49}{section.7.2}
+\contentsline {section}{\numberline {7.3}The work in a wider context}{49}{section.7.3}
+\contentsline {chapter}{\numberline {8}Conclusions}{51}{chapter.8}
+\contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{51}{section*.47}
+\contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{51}{section*.48}
+\contentsline {section}{\numberline {8.1}Future work}{51}{section.8.1}
+\contentsline {chapter}{Bibliography}{53}{chapter*.49}
