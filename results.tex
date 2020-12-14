@@ -1,23 +1,38 @@
 \chapter{Results}\label{cha:results}
 
-This chapter presents the results from the experiments conducted to evaluate the performance of the unsupervised learning methods investigated in this thesis. 
+This chapter presents the results from the experiments conducted to evaluate the performance of the unsupervised learning methods investigated in this thesis. The chapter is structured into three sections with results from the depth and ego motion prediction, keypoint prediction and consensus maximization respectively.
 
 \section{Depth and ego motion}
 
+For the depth and ego motion prediction networks 12 different configurations (Table \ref{table:configurations}) where trained and evaluated in 16 experiments (Table \ref{table:experiments}). The configurations and experiments are named C1 trough C12 and E1 to E16 respectively. A configuration is a particular combination of options (Table \ref{table:cli}), such as dataset, network architecture and loss function terms used during training. Each experiment measures the performance, using the metrics in section \ref{sec:depthmetrics}, of a configuration on a particular testing dataset. In some experiments the testing dataset will differ from the training dataset, for example a network can be trained on Kitti but evaluated on Lyft.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.0\textwidth]{3drender}
-	\caption{3D render of colorized depth map}
+	\includegraphics[width=0.6\textwidth]{depthmaps}
+	\caption{Three depth maps from experiment E13, which is the Monodepth2 architecture with all options enabled, trained and evaluated on the Kitty dataset.}
+	\label{fig:depthmapskitty}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{3drender}
+	\caption{One depth map from experiment E13 rendered as a colorized point cloud.}
 	\label{fig:3drender}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{motion2}
-	\caption{3D visualization of the camera movement in three different image sequences. The green lines are the ground truth and the red lines are the predicted camera trajectories.}
-	\label{fig:movement}
+	\includegraphics[width=0.6\textwidth]{3dseq}
+	\caption{A single depth map from experiment E13 rendered from 3 different angles as a colorized point cloud.}
+	\label{fig:3dseq}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{motion2}
+	\caption{Camera movement in three different image sequences from experiment E13. The green lines are the ground truth and the red lines are the predicted camera trajectories.}
+	\label{fig:movement}
+\end{figure}
 
 \begin{table}[H]
 \centering
@@ -99,11 +114,55 @@ E & C & DS & AbsRel & SqRel & RMSE & RMSLE & $1.25$ & $1.25^2$ & $1.25^3$ & Ego 
 16 & 12 & L & 0.303 & 8.051 & 19.312 & 0.385 & 0.637 & 0.827 & 0.906 & 0.059 \\
 \hline
 \end{tabular}}
-\caption{All the experiments measuring the performance of the different configurations in Table \ref{table:configurations}. The E column identifies a specific experiment. The C column shows which configuration was used. The DS column shows which Dataset was used during testing, K for Kitti and L for Lyft. The dataset used during testing differs from the one used during training in some experiments. The AbsRel, SqRel, RMSE and RMSLE columns are the depth error metrics described in section \ref{sec:depthmetrics}, smaller is better. The $1.25$, $1.25^2$ and $1.25^3$ columns are the depth accuracy metrics described in section \ref{sec:depthmetrics}, larger is better. The Ego column is the camera ego motion error metric described in section \ref{sec:egometric}.}
+\caption{All the experiments measuring the performance of the different configurations in Table \ref{table:configurations}. The E column identifies a specific experiment. The C column shows which configuration was used. The DS column shows which dataset was used during testing, K for Kitti and L for Lyft. The dataset used during testing differs from the one used during training in some experiments. The AbsRel, SqRel, RMSE and RMSLE columns are the depth error metrics described in section \ref{sec:depthmetrics}, smaller is better. The $1.25$, $1.25^2$ and $1.25^3$ columns are the depth accuracy metrics described in section \ref{sec:depthmetrics}, larger is better. The Ego column is the camera ego motion error metric described in section \ref{sec:egometric}.}
 \label{table:experiments}
 \end{table}
 
-TODO: Describe the improvements (if any) seen by applying each additional method for depth prediction and explain why this could be....
+Comparing E1 and E2, we see that the explainability mask improves the accuracy ever so slightly but the depth error is actually worse. When the stationary pixel mask is used instead in E3 the error metrics are significantly better than in both E1 and E2, the accuracy is comparable but slightly worse. The results correspond to what can be seen visually in Figure \ref{fig:e1e2e3}.
+
+In experiment E4 the depth aware smoothness term is added, interestingly the performance metric does not show an improvement. But looking at one of the depth maps (Figure \ref{fig:E4}) it visually looks significantly more sharp and well defined.
+
+In experiment E5 we use SSIM for the photometric reconstruction error, and also combine the loss from $I_{t-1}$ and $I_{t+1}$ using the $\min()$ function per pixel. All metrics show an improvement.
+
+In E6 we add depth map normalization and in E7 we add upscaling, neither show any significant changes in the metrics.
+
+In E8 we test configuration C7 on the Lyft dataset, though it was trained on Kitti. As expected, the results are worse when evaluated on a completely different dataset than the model was trained on.
+
+In experiment E9 and E10 configuration C8 trained on Lyft is evaluated on Kitty and Lyft respectively. Very surprisingly the model performs better on Kitti even though it was trained on Lyft.
+
+From experiment E11 and onwards the SfMLearner architecture is replaced by the Monodepth2 architecture. Both E11 and E12 shows great performance, even though E11 has a configuration which is much more bare bones than E12. This suggests that the network architecture plays a big part in the overall performance.
+
+In E13 and E14 we again see that a network trained on Kitti performs better when evaluated on Kitti compared to Lyft, as expected. In E15 and E16 we see a network trained on Lyft that has a lower error on Kitti, but higher accuracy on Lyft.
+
+From the results it appears that the quality of depth prediction has a pretty low impact on the performance of the ego motion estimation.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{E1-E2-E3}
+	\caption{The top row is from experiment E1, the second row is from E2 with the explainability maps shown to the left, and the last row is from E3 with the stationary pixel map shown to the left. In the top depth map the depth prediction for the biker is incorrect. Because the biker is stationary with respect to the camera the disparity of the pixels across the subsequent frames becomes 0 and the depth goes to infinity. Training using an explain-ability mask seems to improve the depth prediction for the biker, and using a stationary pixels mask improves the depth even more.}
+	\label{fig:e1e2e3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{E4}
+	\caption{A depth map taken from experiment E4 where the edge aware smoothness loss is used.}
+	\label{fig:E4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{E14}
+	\caption{Depth map from experiment E14, where the model was trained on Kitti and evaluated on Lyft. As can be seen in the image the performance is still quite good.}
+	\label{fig:E14}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{E16}
+	\caption{Depth map from experiment E15 where the model was trained on Lyft and also evaluated on Lyft.}
+	\label{fig:E16}
+\end{figure}
 
 \iffalse
 \begin{figure}[H]
@@ -112,16 +171,6 @@ TODO: Describe the improvements (if any) seen by applying each additional method
 	\caption{Evaluation metrics when testing the configurations on the testing split of the datasets}
 	\label{fig:evaluation}
 \end{figure}
-\fi
-
-\clearpage
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{depthmaps}
-	\caption{Examples from the Kitti dataset}
-	\label{fig:depthmapskitty}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -129,15 +178,12 @@ TODO: Describe the improvements (if any) seen by applying each additional method
 	\caption{Examples from the Lyft dataset}
 	\label{fig:depthmaplyft}
 \end{figure}
+\fi
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{3dseq}
-	\caption{3D visualization from 3 different angles of the same frame in the kitti dataset.}
-	\label{fig:3dseq}
-\end{figure}
 
 \section{Keypoint detection}
+
+The keypoint predicting network was evaluated and compared with the ORB detector in OpenCV using the metrics described in section \ref{sec:keypointmetrics}.
 
 \begin{figure}[H]
 	\centering
@@ -148,35 +194,27 @@ TODO: Describe the improvements (if any) seen by applying each additional method
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|l|}
 \hline
-Method & RS $\uparrow$ & LE $\downarrow$ & MS $\uparrow$ & CMR $\uparrow$ & Nt & Nm \\
+Method & RS $\uparrow$ & LE $\downarrow$ & MS $\uparrow$ & MR $\uparrow$ \\
 \hline
-UnsuperPoint & 0.796 & \textbf{0.666} & \textbf{0.488} & \textbf{0.834} & 338 & 203 \\
-ORB & \textbf{0.841} & 0.764 & 0.302 & 0.564 & 310 & 171 \\
+UnsuperPoint & 0.796 & \textbf{0.666} & \textbf{0.488} & \textbf{0.834} \\
+ORB & \textbf{0.841} & 0.764 & 0.302 & 0.564 \\
 \hline
 \end{tabular}
-\caption{Experiments measuring the performance of keypoint detection methods.}
+\caption{Comparison between the keypoint predicting network and ORB detector in OpenCV. The table shows the repeatability score, localization error, matching score and matching ratio.}
 \label{table:pointsbenchmark}
 \end{table}
 
-TODO: Describe what the results are showing....
+As can be seen in Table \ref{table:pointsbenchmark} the repeatability score is better for the ORB detector. This means that the ORB detector is picking points in different frames that are likely to represent the same physical feature in the world. On the other hand the keypoint network has a lower localization error. The matching score and matching ratio is also better for the keypoint network, which suggests that the descriptors are better than its ORB counterpart.
 
 \section{Consensus maximization}
-
-\iffalse
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{synthhomo}
-	\caption{Outlier detection in homography estimation in synthetic dataset. Top row is ground truth and bottom row is the prediction.}
-	\label{fig:synthhomo}
-\end{figure}
-\fi
+The consensus maximization network was evaluated and compared with the \textit{findHomography()} function in OpenCV using the metrics described in section \ref{sec:consensusmetrics}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{kittihomo}
-	\caption{Outlier detection and homography estimation on images from kitti dataset. First row is from OpenCV findHomography(), second row is from the network, third row is the image from branch A transformed by the homographgy found by OpenCV, fourth row is the image from branch A transformed by the homography found by the network.}
+	\caption{Outl homographic adaptation dataset with images from Kitti. First row is from OpenCV findHomography(), second row is from the consensus network, third row is the image from branch A transformed by the homographgy found by OpenCV, fourth row is the image from branch A transformed by the homography found by the consensus network.}
 	\label{fig:kittihomo}
 \end{figure}
 
@@ -190,9 +228,11 @@ TODO: Describe what the results are showing....
 		RANSAC & 0.61 (0.45) & 0.45 (0.12) \\
 		\hline
 	\end{tabular}
-	\caption{Metrics for homography estimation.}
-	\label{table:pointsbenchmark}
+	\caption{Comparison between the consensus maximization network and findHomography() function of OpenCV which uses the RANSAC algorithm.}
+	\label{table:consensusbenchmark}
 \end{table}
+
+As can be seen in Table \ref{table:consensusbenchmark} the homography error is larger for the consensus network compared to using RANSAC. The standard deviation is very high, which suggests that the average error contains large outliers. Filtering out the top 80\% of the testing samples, we see that the standard deviation of the average homography error drops significantly. Even though the homography error is still worse than compared with RANSAC, it is not far off.
 
 \begin{table}[H]
 \centering
@@ -229,4 +269,6 @@ TODO: Describe what the results are showing....
 	\label{table:ransacconfusion}
 \end{table}
 
-TODO: Insert actual numbers from the testing code and describe what the results are showing....
+Looking at Table \ref{table:consensusnetconfusion} and Table \ref{table:ransacconfusion} we can observe that the consensus network is biased towards predicting more outliers, while RANSAC is biased towards predicting more inliers. Notice that the consensus network is biased towards outliers while still having a worse homography error compared to RANSAC. Overall the performance of both the outlier prediction and homography estimation aspect of the consensus maximization network is acceptable.
+
+
