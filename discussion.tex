@@ -1,21 +1,42 @@
 \chapter{Discussion}\label{cha:discussion}
 
 \section{Results}
-The best combination for depth and ego motion predictions.
+
+\subsection{Depth and ego motion}
+
+From the experiments it appears that most options evaluated to alter the loss function does help to improve the results. Looking at experiment E7 where a maxed out SfMLearner architecture was trained and comparing it with experiment E11 where a very bare bones Monodepth2 architecture was trained we see that they have almost the same performance. This suggests that even though a good loss function is important, perhaps even more important is the underlying network architecture.
+
+I am hesitant to draw any conclusions from experiment E9 and E10 where a model trained on Lyft performs better on Kitti than on the dataset it was trained on. This is so unexpected that I think it is more likely that the testing ground truth data is corrupt, but I have been unable to find any obvious problems with the data upon visual inspection.
+
+Another surprise was the negligible effect of adding upscaling to the smaller depth maps. In the original paper it was claimed to be quite effective, but I was not able to come to the same conclusion.
+
+It is quite clear from the results that the stationary pixel mask is more effective than the explainability mask. I also think there are further improvements that can be made here, as the stationary pixel mask is quite noisy.
+
+I conclude by saying that the edge aware depth smoothness loss, using SSIM for photometric error and combining the per pixel loss across frames using the $\min$ function are all valuable techniques.
+
+\subsection{Keypoint detection}
+
+The results from the keypoint prediction network was very satisfactory. One interesting property of the predicting network is that it rarely predicts keypoints at the edges of the image. I believe this might be because points near the edges in branch A are often outside of the image in branch A due to the homographic transformation. This means that predicting points near the edges would be penalized in the loss function during training because no correspondence would be found between points in branch A and B.
+
+\subsection{Consensus maximization}
+
+The results from the consensus maximization network is promising. But it seems to be sensitive to a few samples in the test set that throws it off completely thereby causing a large standard deviation in the mean homographic error (HE).
 
 \section{Method}
 
-Small disparity, large depth, for cars moving with the same relative speed, no ego motion.
+\subsection{Datasets}
 
-TODO: Image of holes from small disparity
+Training the depth predicting network on Kitti and testing it on Lyft we can see that the depth maps produced (Figure \ref{fig:E14}) is quite acceptable. It is important for real world applications that the network is not over-fitted to its training dataset, but instead generalizes well to unseen data. Training and evaluating on two rather different car sequence dataset in this thesis was valuable in this regard, many papers only focus on getting the best benchmark on Kitti.
 
-Over-fitting while training homography.
+Using kitti images for keypoint was good but homographies maybe not, would be nice to extend to train keypoint net on the car sequence instead.
 
-TODO: Plot over fitting. Image + Loss + Histogram
+Training homography was easy to have a metric and fit well with the already existing dataloader of keypoint net. But maybe more relevant to try to learn fundamental matrix or 3d rigid transform as the camera moves through the scene.
 
-Alterations needed to make consensus converge.
+\subsection{Evaluation metrics}
 
-Discuss evaluation metrics.
+Comparing with ORB is not the best...
+
+Comparing with RANSAC maybe not the best..
 
 \section{The work in a wider context}
 

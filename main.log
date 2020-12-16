@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  13 DEC 2020 22:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  16 DEC 2020 21:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2135,7 +2135,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/LiU_primary_black.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/LiU_primary_black.pdf, id=203, 597.23125pt x 845.1575pt>
+<fig/LiU_primary_black.pdf, id=224, 597.23125pt x 845.1575pt>
 File: fig/LiU_primary_black.pdf Graphic file (type pdf)
 <use fig/LiU_primary_black.pdf>
 Package pdftex.def Info: fig/LiU_primary_black.pdf  used on input line 32.
@@ -2245,7 +2245,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 ]
 Chapter 2.
-<fig/conv.pdf, id=335, 421.575pt x 182.6022pt>
+<fig/conv.pdf, id=360, 421.575pt x 182.6022pt>
 File: fig/conv.pdf Graphic file (type pdf)
 <use fig/conv.pdf>
 Package pdftex.def Info: fig/conv.pdf  used on input line 9.
@@ -2261,7 +2261,7 @@ ing op-er-a-tions are chained
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/conv.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/deep.pdf, id=360, 319.1925pt x 96.36pt>
+<fig/deep.pdf, id=385, 319.1925pt x 96.36pt>
 File: fig/deep.pdf Graphic file (type pdf)
 <use fig/deep.pdf>
 Package pdftex.def Info: fig/deep.pdf  used on input line 20.
@@ -2280,7 +2280,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/activation-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/activation-eps-converted-to.pdf, id=362, 318.18875pt x 139.52126pt>
+<fig/activation-eps-converted-to.pdf, id=387, 318.18875pt x 139.52126pt>
 File: fig/activation-eps-converted-to.pdf Graphic file (type pdf)
 <use fig/activation-eps-converted-to.pdf>
 Package pdftex.def Info: fig/activation-eps-converted-to.pdf  used on input lin
@@ -2318,7 +2318,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-<fig/sequencedataset.png, id=451, 100.2144pt x 92.5056pt>
+<fig/sequencedataset.png, id=477, 100.2144pt x 92.5056pt>
 File: fig/sequencedataset.png Graphic file (type png)
 <use fig/sequencedataset.png>
 Package pdftex.def Info: fig/sequencedataset.png  used on input line 13.
@@ -2330,7 +2330,7 @@ nces. For each dataset
  []
 
 [12 <./fig/sequencedataset.png>]
-<fig/consdata.pdf, id=464, 370.5042pt x 69.3792pt>
+<fig/consdata.pdf, id=489, 370.5042pt x 69.3792pt>
 File: fig/consdata.pdf Graphic file (type pdf)
 <use fig/consdata.pdf>
 Package pdftex.def Info: fig/consdata.pdf  used on input line 95.
@@ -2354,13 +2354,13 @@ Underfull \hbox (badness 1661) in paragraph at lines 16--17
  []
 
 ) (./evaluation.tex [14] [15]
-<fig/remove-edges.png, id=510, 835.12pt x 128.48pt>
+<fig/remove-edges.png, id=535, 835.12pt x 128.48pt>
 File: fig/remove-edges.png Graphic file (type png)
 <use fig/remove-edges.png>
 Package pdftex.def Info: fig/remove-edges.png  used on input line 71.
 (pdftex.def)             Requested size: 355.65944pt x 54.71796pt.
  [16 <./fig/remove-edges.png>]
-<fig/he.png, id=517, 376.40625pt x 112.42pt>
+<fig/he.png, id=542, 376.40625pt x 112.42pt>
 File: fig/he.png Graphic file (type png)
 <use fig/he.png>
 Package pdftex.def Info: fig/he.png  used on input line 107.
@@ -2375,7 +2375,7 @@ Chapter 5.
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 3.
 
-<fig/net.pdf, id=534, 371.46779pt x 145.50359pt>
+<fig/net.pdf, id=559, 371.46779pt x 145.50359pt>
 File: fig/net.pdf Graphic file (type pdf)
 <use fig/net.pdf>
 Package pdftex.def Info: fig/net.pdf  used on input line 13.
@@ -2393,7 +2393,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/net.pdf): PDF inclusion: invalid 
 other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/warp.pdf, id=568, 354.36388pt x 185.73389pt>
+<fig/warp.pdf, id=594, 354.36388pt x 185.73389pt>
 File: fig/warp.pdf Graphic file (type pdf)
 <use fig/warp.pdf>
 Package pdftex.def Info: fig/warp.pdf  used on input line 58.
@@ -2407,12 +2407,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/warp.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/diff.png, id=619, 201.3924pt x 30.8352pt>
+<fig/diff.png, id=644, 201.3924pt x 30.8352pt>
 File: fig/diff.png Graphic file (type png)
 <use fig/diff.png>
 Package pdftex.def Info: fig/diff.png  used on input line 92.
 (pdftex.def)             Requested size: 355.65944pt x 54.45924pt.
-<fig/edge.png, id=620, 200.1879pt x 61.4295pt>
+<fig/edge.png, id=645, 200.1879pt x 61.4295pt>
 File: fig/edge.png Graphic file (type png)
 <use fig/edge.png>
 Package pdftex.def Info: fig/edge.png  used on input line 111.
@@ -2421,7 +2421,7 @@ Package pdftex.def Info: fig/edge.png  used on input line 111.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23 <./fig/diff.png>]
-<fig/upscale.pdf, id=628, 160.6803pt x 199.70609pt>
+<fig/upscale.pdf, id=653, 160.6803pt x 199.70609pt>
 File: fig/upscale.pdf Graphic file (type pdf)
 <use fig/upscale.pdf>
 Package pdftex.def Info: fig/upscale.pdf  used on input line 130.
@@ -2431,18 +2431,18 @@ Package pdftex.def Info: fig/upscale.pdf  used on input line 130.
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/upscale.pdf): PDF inclusion: inva
 lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/min.png, id=667, 100.2144pt x 92.5056pt>
+<fig/min.png, id=692, 100.2144pt x 92.5056pt>
 File: fig/min.png Graphic file (type png)
 <use fig/min.png>
 Package pdftex.def Info: fig/min.png  used on input line 146.
 (pdftex.def)             Requested size: 177.82971pt x 164.16823pt.
  [25 <./fig/min.png>]
-<fig/exp.png, id=675, 419.5675pt x 387.4475pt>
+<fig/exp.png, id=700, 419.5675pt x 387.4475pt>
 File: fig/exp.png Graphic file (type png)
 <use fig/exp.png>
 Package pdftex.def Info: fig/exp.png  used on input line 160.
 (pdftex.def)             Requested size: 177.82971pt x 164.21664pt.
-<fig/stat.png, id=677, 100.2144pt x 92.5056pt>
+<fig/stat.png, id=702, 100.2144pt x 92.5056pt>
 File: fig/stat.png Graphic file (type png)
 <use fig/stat.png>
 Package pdftex.def Info: fig/stat.png  used on input line 169.
@@ -2451,7 +2451,7 @@ Package pdftex.def Info: fig/stat.png  used on input line 169.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26 <./fig/exp.png>] (./point_method.tex [27 <./fig/stat.png>]
-<fig/unsuperpoint.pdf, id=695, 533.1117pt x 248.8497pt>
+<fig/unsuperpoint.pdf, id=720, 533.1117pt x 248.8497pt>
 File: fig/unsuperpoint.pdf Graphic file (type pdf)
 <use fig/unsuperpoint.pdf>
 Package pdftex.def Info: fig/unsuperpoint.pdf  used on input line 10.
@@ -2468,7 +2468,7 @@ pdfTeX warning: /usr/bin/pdflatex (file ./fig/unsuperpoint.pdf): PDF inclusion:
  invalid other resource which is no dict (key 'ProcSets', type <array>); ignore
 d.
 >]
-<fig/unsuperpointloss.pdf, id=745, 371.46779pt x 166.7028pt>
+<fig/unsuperpointloss.pdf, id=770, 371.46779pt x 166.7028pt>
 File: fig/unsuperpointloss.pdf Graphic file (type pdf)
 <use fig/unsuperpointloss.pdf>
 Package pdftex.def Info: fig/unsuperpointloss.pdf  used on input line 34.
@@ -2497,7 +2497,7 @@ n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp
  []
 
 [33] [34]
-<fig/consensus.pdf, id=836, 325.215pt x 102.3825pt>
+<fig/consensus.pdf, id=861, 325.215pt x 102.3825pt>
 File: fig/consensus.pdf Graphic file (type pdf)
 <use fig/consensus.pdf>
 Package pdftex.def Info: fig/consensus.pdf  used on input line 108.
@@ -2525,7 +2525,7 @@ Overfull \vbox (0.51715pt too high) detected at line 393
 
 ]
 Chapter 6.
-<fig/depthmaps.png, id=929, 835.12pt x 385.44pt>
+<fig/depthmaps.png, id=954, 835.12pt x 385.44pt>
 File: fig/depthmaps.png Graphic file (type png)
 <use fig/depthmaps.png>
 Package pdftex.def Info: fig/depthmaps.png  used on input line 11.
@@ -2534,17 +2534,17 @@ Package pdftex.def Info: fig/depthmaps.png  used on input line 11.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [41]
-<fig/3drender.png, id=934, 810.02625pt x 279.0425pt>
+<fig/3drender.png, id=959, 810.02625pt x 279.0425pt>
 File: fig/3drender.png Graphic file (type png)
 <use fig/3drender.png>
 Package pdftex.def Info: fig/3drender.png  used on input line 18.
 (pdftex.def)             Requested size: 213.39783pt x 73.5116pt.
-<fig/3dseq.png, id=935, 198.5016pt x 149.358pt>
+<fig/3dseq.png, id=960, 198.5016pt x 149.358pt>
 File: fig/3dseq.png Graphic file (type png)
 <use fig/3dseq.png>
 Package pdftex.def Info: fig/3dseq.png  used on input line 25.
 (pdftex.def)             Requested size: 213.39783pt x 160.56581pt.
-<fig/motion2.png, id=936, 185.0112pt x 88.6512pt>
+<fig/motion2.png, id=961, 185.0112pt x 88.6512pt>
 File: fig/motion2.png Graphic file (type png)
 <use fig/motion2.png>
 Package pdftex.def Info: fig/motion2.png  used on input line 32.
@@ -2558,34 +2558,34 @@ Overfull \hbox (1.38905pt too wide) in paragraph at lines 76--117
  []
 
 [43 <./fig/motion2.png>] [44]
-<fig/E1-E2-E3.png, id=970, 835.12pt x 385.44pt>
+<fig/E1-E2-E3.png, id=995, 835.12pt x 385.44pt>
 File: fig/E1-E2-E3.png Graphic file (type png)
 <use fig/E1-E2-E3.png>
 Package pdftex.def Info: fig/E1-E2-E3.png  used on input line 141.
 (pdftex.def)             Requested size: 284.52863pt x 131.32428pt.
-<fig/E4.png, id=971, 835.12pt x 128.48pt>
+<fig/E4.png, id=996, 835.12pt x 128.48pt>
 File: fig/E4.png Graphic file (type png)
 <use fig/E4.png>
 Package pdftex.def Info: fig/E4.png  used on input line 148.
 (pdftex.def)             Requested size: 284.52863pt x 43.77475pt.
-<fig/E14.png, id=972, 835.12pt x 128.48pt>
+<fig/E14.png, id=997, 835.12pt x 128.48pt>
 File: fig/E14.png Graphic file (type png)
 <use fig/E14.png>
 Package pdftex.def Info: fig/E14.png  used on input line 155.
 (pdftex.def)             Requested size: 284.52863pt x 43.77475pt.
  [45 <./fig/E1-E2-E3.png> <./fig/E4.png>]
-<fig/E16.png, id=980, 835.12pt x 128.48pt>
+<fig/E16.png, id=1005, 835.12pt x 128.48pt>
 File: fig/E16.png Graphic file (type png)
 <use fig/E16.png>
 Package pdftex.def Info: fig/E16.png  used on input line 162.
 (pdftex.def)             Requested size: 284.52863pt x 43.77475pt.
-<fig/point1.png, id=982, 840.13875pt x 261.97874pt>
+<fig/point1.png, id=1007, 840.13875pt x 261.97874pt>
 File: fig/point1.png Graphic file (type png)
 <use fig/point1.png>
 Package pdftex.def Info: fig/point1.png  used on input line 190.
 (pdftex.def)             Requested size: 355.65944pt x 110.90576pt.
  [46 <./fig/E14.png> <./fig/E16.png> <./fig/point1.png>]
-<fig/kittihomo.png, id=996, 834.11626pt x 511.9125pt>
+<fig/kittihomo.png, id=1022, 834.11626pt x 511.9125pt>
 File: fig/kittihomo.png Graphic file (type png)
 <use fig/kittihomo.png>
 Package pdftex.def Info: fig/kittihomo.png  used on input line 216.
@@ -2596,20 +2596,24 @@ Package pdftex.def Info: fig/kittihomo.png  used on input line 216.
 
  (./discussion.tex
 Chapter 7.
-) [49
+
+Underfull \vbox (badness 6141) has occurred while \output is active []
+
+ [49
 
 
 
-]
+])
+[50]
 \openout2 = `conclusions.aux'.
 
- (./conclusions.tex [50
-
-
-
-]
+ (./conclusions.tex
 Chapter 8.
-) [51] [52
+) [51
+
+
+
+] [52
 
 
 ] (./main.bbl
@@ -2668,14 +2672,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 66.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0A11E9BED21D33362082A9234B6428C0;3581.
+(rerunfilecheck)             Checksum: D62CAF9CC8B3EDD15249DE8C9743F401;3967.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
  ) 
 Here is how much of TeX's memory you used:
- 20958 strings out of 492982
- 348060 string characters out of 6134896
- 489884 words of memory out of 5000000
- 23641 multiletter control sequences out of 15000+600000
+ 20968 strings out of 492982
+ 348230 string characters out of 6134896
+ 490890 words of memory out of 5000000
+ 23646 multiletter control sequences out of 15000+600000
  223502 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,16n,49p,1591b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2699,10 +2703,10 @@ kpmne.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><
 exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvr8a.pfb>
-Output written on main.pdf (65 pages, 6860350 bytes).
+Output written on main.pdf (65 pages, 6864252 bytes).
 PDF statistics:
- 1168 PDF objects out of 1200 (max. 8388607)
- 947 compressed objects within 10 object streams
- 193 named destinations out of 1000 (max. 500000)
- 18982 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 1194 PDF objects out of 1200 (max. 8388607)
+ 973 compressed objects within 10 object streams
+ 198 named destinations out of 1000 (max. 500000)
+ 19022 words of extra memory for PDF output out of 20736 (max. 10000000)
 
