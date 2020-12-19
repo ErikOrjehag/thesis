@@ -15,56 +15,56 @@ A level-1 auxiliary file: conclusions.aux
 Database file #1: IEEEfull.bib
 Database file #2: myrefs.bib
 Warning--entry type for "keypointdepth" isn't style-file defined
---line 176 of file myrefs.bib
+--line 183 of file myrefs.bib
 Warning--entry type for "monodepth2" isn't style-file defined
---line 184 of file myrefs.bib
+--line 191 of file myrefs.bib
 Warning--entry type for "packnet" isn't style-file defined
---line 192 of file myrefs.bib
+--line 199 of file myrefs.bib
 Warning--empty journal in superpoint
 Warning--empty booktitle in leftright
 Warning--empty journal in resnet
 Warning--empty booktitle in superdepth
 Warning--empty booktitle in lidarvscamera
 Warning--empty journal in sfmlearner
-You've used 26 entries,
+You've used 27 entries,
             2773 wiz_defined-function locations,
-            1274 strings with 24018 characters,
-and the built_in function-call counts, 14416 in all, are:
-= -- 1209
-> -- 1047
+            1278 strings with 24188 characters,
+and the built_in function-call counts, 14909 in all, are:
+= -- 1246
+> -- 1086
 < -- 10
-+ -- 353
-- -- 324
-* -- 1260
-:= -- 2216
-add.period$ -- 94
-call.type$ -- 26
-change.case$ -- 181
-chr.to.int$ -- 23
-cite$ -- 58
-duplicate$ -- 601
-empty$ -- 1043
-format.name$ -- 352
-if$ -- 3021
++ -- 366
+- -- 336
+* -- 1301
+:= -- 2292
+add.period$ -- 97
+call.type$ -- 27
+change.case$ -- 188
+chr.to.int$ -- 24
+cite$ -- 60
+duplicate$ -- 625
+empty$ -- 1084
+format.name$ -- 365
+if$ -- 3124
 int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 26
-newline$ -- 154
-num.names$ -- 105
-pop$ -- 409
+missing$ -- 27
+newline$ -- 159
+num.names$ -- 109
+pop$ -- 427
 preamble$ -- 1
-purify$ -- 160
+purify$ -- 166
 quote$ -- 0
-skip$ -- 482
+skip$ -- 498
 stack$ -- 0
-substring$ -- 412
-swap$ -- 109
+substring$ -- 414
+swap$ -- 111
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 261
+type$ -- 272
 warning$ -- 6
-while$ -- 99
+while$ -- 102
 width$ -- 0
-write$ -- 362
+write$ -- 374
 (There were 9 warnings)

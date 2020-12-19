@@ -28,7 +28,9 @@ The results from the consensus maximization network is promising. But it seems t
 
 Training the depth predicting network on Kitti and testing it on Lyft we can see that the depth maps produced (Figure \ref{fig:E14}) is quite acceptable. It is important for real world applications that the network is not over-fitted to its training dataset, but instead generalizes well to unseen data. Training and evaluating on two rather different car sequence dataset in this thesis was valuable in this regard, many papers only focus on getting the best benchmark on Kitti.
 
-Using kitti images for keypoint was good but homographies maybe not, would be nice to extend to train keypoint net on the car sequence instead.
+Using images from the Kitti dataset to train the keypoint prediction network gave the insight that the technique generalizes well to the domain of autonomous cars and navigation. In the original paper the network was trained on the HPatches\cite{hpatches} dataset.
+
+, would be nice to extend to train keypoint net on the car sequence instead.
 
 Training homography was easy to have a metric and fit well with the already existing dataloader of keypoint net. But maybe more relevant to try to learn fundamental matrix or 3d rigid transform as the camera moves through the scene.
 

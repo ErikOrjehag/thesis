@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  16 DEC 2020 21:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  19 DEC 2020 14:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2603,8 +2603,13 @@ Underfull \vbox (badness 6141) has occurred while \output is active []
 
 
 
-])
-[50]
+]
+Overfull \hbox (16.4066pt too wide) in paragraph at lines 31--32
+\T1/jkpk/m/n/10 cars and nav-i-ga-tion. In the orig-i-nal pa-per the net-work w
+as trained on the HPatches[[]]
+ []
+
+) [50]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
@@ -2617,13 +2622,13 @@ Chapter 8.
 
 
 ] (./main.bbl
-Underfull \hbox (badness 3312) in paragraph at lines 9--13
+Underfull \hbox (badness 3312) in paragraph at lines 15--19
 \T1/jkpk/m/n/10 tonomous au-to-mo-bil-i-ties: The so-cial im-pacts of driver-le
 ss ve-hi-cles.
  []
 
 
-Underfull \hbox (badness 3108) in paragraph at lines 9--13
+Underfull \hbox (badness 3108) in paragraph at lines 15--19
 \T1/jkpk/m/sl/10 Cur-rent So-ci-ol-ogy\T1/jkpk/m/n/10 , 68:001139211881674, 12 
 2018.  doi: $10 . 1177 /
  []
@@ -2632,31 +2637,31 @@ Underfull \hbox (badness 3108) in paragraph at lines 9--13
 
 
 ]
-Underfull \hbox (badness 7540) in paragraph at lines 92--96
+Underfull \hbox (badness 7540) in paragraph at lines 98--102
 []\T1/jkpk/m/n/10 Max Jader-berg, Karen Si-monyan, An-drew Zis-ser-man, and Ko-
 ray
  []
 
 
-Underfull \hbox (badness 3271) in paragraph at lines 131--139
+Underfull \hbox (badness 3271) in paragraph at lines 137--145
 []\T1/jkpk/m/n/10 N.Mayer, E.Ilg, P.Häusser, P.Fischer, D.Cremers, A.Dosovitski
 y, and
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 131--139
+Underfull \hbox (badness 1694) in paragraph at lines 137--145
 \T1/jkpk/m/n/10 T.Brox.  A large dataset to train con-vo-lu-tional net-works fo
 r dis-par-
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 131--139
+Underfull \hbox (badness 1668) in paragraph at lines 137--145
 \T1/jkpk/m/n/10 ity, op-ti-cal flow, and scene flow es-ti-ma-tion.  In \T1/jkpk
 /m/sl/10 IEEE In-ter-na-tional
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 131--139
+Underfull \hbox (badness 1694) in paragraph at lines 137--145
 \T1/jkpk/m/n/10 URL []$\T1/pcr/m/n/10 http : / / lmb . informatik . uni-[]freib
 urg . de / Publications /
  []
@@ -2676,10 +2681,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
  ) 
 Here is how much of TeX's memory you used:
- 20968 strings out of 492982
- 348230 string characters out of 6134896
- 490890 words of memory out of 5000000
- 23646 multiletter control sequences out of 15000+600000
+ 20973 strings out of 492982
+ 348304 string characters out of 6134896
+ 490146 words of memory out of 5000000
+ 23650 multiletter control sequences out of 15000+600000
  223502 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,16n,49p,1591b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2703,10 +2708,10 @@ kpmne.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><
 exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvr8a.pfb>
-Output written on main.pdf (65 pages, 6864252 bytes).
+Output written on main.pdf (65 pages, 6864719 bytes).
 PDF statistics:
- 1194 PDF objects out of 1200 (max. 8388607)
- 973 compressed objects within 10 object streams
- 198 named destinations out of 1000 (max. 500000)
+ 1197 PDF objects out of 1200 (max. 8388607)
+ 976 compressed objects within 10 object streams
+ 199 named destinations out of 1000 (max. 500000)
  19022 words of extra memory for PDF output out of 20736 (max. 10000000)
 
