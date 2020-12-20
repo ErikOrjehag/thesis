@@ -38,7 +38,7 @@ The network is trained in a siamese twin setup, where two duplicate networks tha
 
 For each branch $b\in\{A,B\}$ the siamese networks output the reshaped matrices $s^b$, $P^b$ and $F^b$ which contain the scores, positions and descriptors of the $M$ points in each image.
 
-\subsection{Loss function for keypoint learning}
+\subsection{Loss function for keypoint learning}\label{sec:keypointloss}
 
 To formulate the loss function the point correspondences between branch A and B need to be determined. The points in branch A are transformed such that $p_i^{A\rightarrow B}=Hp_i^A$. Then an $M^A\times M^B$ distance matrix $G$ is calculated from the pairwise distances between all points in each branch.
 

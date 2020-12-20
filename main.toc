@@ -51,10 +51,10 @@
 \contentsline {subsection}{\numberline {7.1.3}Consensus maximization}{50}{subsection.7.1.3}
 \contentsline {section}{\numberline {7.2}Method}{50}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Datasets}{50}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Evaluation metrics}{50}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}The work in a wider context}{50}{section.7.3}
-\contentsline {chapter}{\numberline {8}Conclusions}{51}{chapter.8}
-\contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{51}{section*.50}
-\contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{51}{section*.51}
-\contentsline {section}{\numberline {8.1}Future work}{51}{section.8.1}
-\contentsline {chapter}{Bibliography}{53}{chapter*.52}
+\contentsline {subsection}{\numberline {7.2.2}Evaluation metrics}{51}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}The work in a wider context}{51}{section.7.3}
+\contentsline {section}{\numberline {7.4}Future work}{51}{section.7.4}
+\contentsline {chapter}{\numberline {8}Conclusions}{53}{chapter.8}
+\contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{53}{section*.51}
+\contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{53}{section*.52}
+\contentsline {chapter}{Bibliography}{55}{chapter*.53}
