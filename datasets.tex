@@ -4,18 +4,16 @@ The neural networks are trained and evaluated on images from 2 different dataset
 
 \subsection{Sequence datasets}
 
-To train the networks used for depth and ego motion prediction the images from Kitti and Lyft at loaded in triplets of subsequent frames in a sequence.
+To train the networks used for depth and ego motion prediction the images from Kitti and Lyft at loaded in triplets of subsequent frames which are used during training of the network. To test the network the lidar data and ground truth ego motion from Kitti and Lyft is used. The lidar data is converted to a sparse depth map, that can be compared to the depth map predicted by the network. The ground truth lidar and ego motion data is only used during testing, not during training. A sample of 3 subsequent frames can be seen in Figure \ref{fig:sequencedataset}.
 
-The lidar data from Kitti and Lyft is converted to a sparse depth map, together with the ground truth ego motion. This data is only used during testing, not during training.
-adjacent
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{sequencedataset}
-	\caption{The dataloader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $I_{t-1}$, $I_t$, $I_{t+1}$ with the sparse depth map overlayed on frame $I_t$.}
+	\caption{The dataloader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $\textbf{I}_{t-1}$, $\textbf{I}_t$, $\textbf{I}_{t+1}$ with the sparse depth map overlayed on frame $\textbf{I}_t$.}
 	\label{fig:sequencedataset}
 \end{figure}
 
-Kitti contains 124 sequences, and Lyft contains 148 sequences. For each dataset the sequences are split, approximately 90\% is used for training and 10\% for testing.
+Kitti contains 124 sequences, and Lyft contains 148 sequences. For each dataset the sequences are split, approximately 90\% is used for training and 10\% for testing. A detailed breakdown of the data split can be seen in Table \ref{table:datasets}.
 
 \begin{table}[H]
 	\centering
@@ -38,51 +36,51 @@ Kitti contains 124 sequences, and Lyft contains 148 sequences. For each dataset 
 
 To train the network that predicts keypoints, images are read one by one from the Kitti or Lyft datasets. The image is fed trough two branches, in branch A the image is not modified, and in branch B the image is transformed by a random homography (Figure \ref{fig:unsuperpointloss}). The authors of UnsuperPoint refer to this technique as homographic adaptation.
 
-How to generate the random homography used during training is not described in the UnsuperPoint paper, but is an important part of the method. The method used in this thesis generates random homographies from 5 parameters $\alpha_{rotation}$, $\alpha_{translation}$, $\alpha_{scale}$, $\alpha_{sheer}$ and $\alpha_{perspective}$. The parameters controls the maximum transformation for each aspect of an homography. The final homographgy is constructed from parts as follows.
+How to generate the random homography used during training is not described in the UnsuperPoint paper, but is an important part of the method. The method used in this thesis generates random homographies from 5 parameters $\alpha_{\mathrm{rotation}}$, $\alpha_{\mathrm{translation}}$, $\alpha_{\mathrm{scale}}$, $\alpha_{\mathrm{sheer}}$ and $\alpha_{\mathrm{perspective}}$. The parameters controls the maximum transformation for each aspect of an homography. The final homographgy is constructed from parts as follows.
 
-\[
-H = H_{affine} H_{sheer} H_{perspective}
-\]
+\begin{equation}
+\textbf{H} = \textbf{H}_{\mathrm{affine}} \textbf{H}_{\mathrm{sheer}} \textbf{H}_{\mathrm{perspective}}
+\end{equation}
 
-Assume $u_n \sim U(-1,1)$ are random uniform variables in the range -1 to 1.
+Assume $u_n \sim \mathrm{U}(-1,1)$ are random uniform variables in the range $-1$ to $1$.
 
-\[
-H_{affine} = 
+\begin{equation}
+\textbf{H}_{\mathrm{affine}} = 
 \begin{pmatrix}
-\cos(r)*s & -\sin(r) & t_x \\
-\sin(r)& \cos(r)*s & t_y \\
+\cos(r)*s & -\sin(r) & t_\mathrm{x} \\
+\sin(r)& \cos(r)*s & t_\mathrm{y} \\
 0 & 0 & 1 \\
 \end{pmatrix}
 , \text{with}
 \begin{cases}
-r=u_1*\alpha_{rotation} \\
-s=u_2*\alpha_{scale}+1 \\
-t_x=u_3*\alpha_{translation} \\
-t_y=u_4*\alpha_{translation} \\
+r=u_1*\alpha_{\mathrm{rotation}} \\
+s=u_2*\alpha_{\mathrm{scale}}+1 \\
+t_\mathrm{x}=u_3*\alpha_{\mathrm{translation}} \\
+t_\mathrm{y}=u_4*\alpha_{\mathrm{translation}} \\
 \end{cases}
-\]
+\end{equation}
 
-\[
-H_{sheer} = 
+\begin{equation}
+\textbf{H}_{\mathrm{sheer}} = 
 \begin{pmatrix}
 1 & s & 0 \\
 s & 1 & 0 \\
 0 & 0 & 1 \\
 \end{pmatrix}
 , \text{with}
-\ s=u_5*\alpha_{sheer} \\
-\]
+\ s=u_5*\alpha_{\mathrm{sheer}} \\
+\end{equation}
 
-\[
-H_{perspective} = 
+\begin{equation}
+\textbf{H}_{\mathrm{perspective}} = 
 \begin{pmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 p & p & 1 \\
 \end{pmatrix}
 , \text{with}
-\ p=u_6*\alpha_{perspective} \\
-\]
+\ p=u_6*\alpha_{\mathrm{perspective}} \\
+\end{equation}
 
 The output from the network is used together with the random but known homography to formulate the loss function.
 

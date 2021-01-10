@@ -1,14 +1,26 @@
 \begin{notation}% Passing the option "old" to the notation environment will redefine the notationtabular environment so that it produces an old style LaTeX tabular instead of a booktabs.sty style tabular.
   \centering
 
-  \begin{notationtabular}{Några mängder}{Notation}{Betydelse}
-    $\naturals$ & Mängden av naturliga tal \\
-    $\reals$ & Mängden av reella tal \\
-    $\complexes$ & Mängden av komplexa tal \\
+  \begin{notationtabular}{Math}{Notation}{Meaning}
+    $\reals$ & The set of real numbers \\
+    $m, M$ & Scalars are denoted in italics \\
+    $\textbf{m}$ & Vector are denoted in lower case non-italics \\
+    $\textbf{M}$ & Matrices are denoted in upper case non-italics \\
+    $\textbf{m}_i$ & Row or column vector $i$ (depending on context) of matrix $\textbf{M}$\\
+    $m_i$ & Element $i$ of vector $\mathrm{m}$\\
+    $m_{ij}$ & Element at row $i$ and column $j$ of matrix $\mathrm{M}$ \\
+    $[m_{ij}]_{M\times N}$ & Size of matrix can be denoted with a subscript.\\
+    $\textbf{M}_{\mathrm{name}}$ & Subscripts can be used to give a unique name. \\
+    $\textbf{M}^{\mathrm{name}}$ & Superscript can also be used for the same purpose. \\
+    $\delta_x \textbf{I}$ & Discrete derivative with respect to $x$-axis of matrix $\textbf{I}$\\
+    $\textbf{M}^T, \textbf{m}^T$ & Matrix or vector transpose\\
+    $|m|$ & Absolute value of $m$\\
+    $||\textbf{m}||$ & Length of vector $\textbf{m}$\\
+    $\textbf{m}\cdot \textbf{m}$ & Vector dot product\\
   \end{notationtabular}
 
-  \begin{notationtabular}{Förkortningar}{Förkortning}{Betydelse}
-    \abbrARMA\index{ARMA@\abbrARMA!abbreviation} & Auto-regressive moving average \\
-    \abbrPID\index{PID@\abbrPID!abbreviation} & Proportional, integral, differential (regulator) \\
+  \begin{notationtabular}{Abbreviations}{Abbreviation}{Meaning}
+	\abbrSFM\index{SFM@\abbrSFM!abbreviation} & Structure From Motion\\    \abbrCNN\index{CNN@\abbrCNN!abbreviation} & Convolutional Neural Network\\ \abbrSSIM\index{SSIM@\abbrSSIM!abbreviation} & Structural Similarity index \cite{ssim}\\ \abbrRGB\index{RGB@\abbrRGB!abbreviation} & Red Green Blue, color space\\ \abbrRANSAC\index{RANSAC@\abbrRANSAC!abbreviation} & Random Sample Consensus \cite{ransac}\\
+	\abbrSVD\index{SVD@\abbrSVD!abbreviation} & Singular Value Decomposition\\
   \end{notationtabular}
 \end{notation}

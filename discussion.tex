@@ -4,7 +4,7 @@ This chapter aims to discuss and critique the work that has been presented in th
 
 \section{Results}
 
-In this section we try to draw conclusions and reflect on the trustworthiness of the results of our experiments.
+In this section we discuss and draw conclusions from the experiments.
 
 \subsection{Depth and ego motion}
 
@@ -16,7 +16,7 @@ Another surprise was the negligible effect of adding upscaling to the smaller de
 
 It is quite clear from the results that the stationary pixel mask is more effective than the explainability mask. I also think there are further improvements that can be made here, as the stationary pixel mask is quite noisy.
 
-I conclude by saying that the edge aware depth smoothness loss, using SSIM for photometric error and combining the per pixel loss across frames using the $\min$ function are all valuable techniques.
+Comparing experiment E3 and E4 we see that the edge aware depth smoothness loss does not help to improve the evaluation metrics. I still think it is valuable technique because the depth map looks sharper by visual inspection. Comparing experiment E4 and E5 we see that using SSIM in the photometric error and combining the per pixel loss across frames using the $\min$ function improves the metrics significantly.
 
 \subsection{Keypoint detection}
 
@@ -44,12 +44,6 @@ Comparing the keypoint prediction network with the ORB detector in OpenCV was a 
 
 The same could be said about the comparison between RANSAC and the consensus maximization network, perhaps a comparison other neural network techniques would also be desirable. But again the RANSAC algorithm in OpenCV is very popular in practice.
 
-\section{The work in a wider context}
-
-Self driving vehicles is a key area where neural network perception has a big impact. The adoption of autonomous vehicles could lead to more ride sharing alternatives, reducing the demand for owning a car, which in turn could reduce road congestion and oil consumption. \cite{transportation}
-
-A common concern with autonomous technologies is the impact it could have on available job opportunities. Truck drivers are often brought up as a profession that will be especially hard hit. The advent of wide spread autonomous driving vehicles could also bring about many new professions not present today, the actual total outcome of available jobs is still an open debate.\cite{sociology}
-
 \section{Future work}
 
 A very interesting path for future work would be to chain all networks together and train them at the same time. The joint training could possibly lead to better performance overall. Maybe the individual networks would have to be trained separately using the methods described in this thesis before chaining them together and then continue training using a joint loss function. The following is a suggestion for how the networks and their loss functions could be coupled together, illustrated in Figure \ref{fig:futurework}.
@@ -72,7 +66,7 @@ This sparse loss reduces scale drifting of the depth maps across frames.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.0\textwidth]{future-work}
+	\includegraphics[width=0.8\textwidth]{future-work}
 	\caption{A diagram with a suggestion of how the networks presented in this thesis could be chained together and trained using a joint loss function.}
 	\label{fig:futurework}
 \end{figure}

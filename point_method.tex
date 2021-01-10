@@ -1,7 +1,6 @@
-\newpage
 \section{Unsupervised keypoint learning}
 
-In order to build a map it is useful to extract features, or keypoints, from images. Every keypoints should have a unique descriptor which can be used to identify it in the map which makes it possible to expand the map and also localize the camera. How to build a map and localize in it is out of scope for this thesis. This section will describe the usnupervised learning method implemented in this thesis, to extract keypoints from images.
+The previous chapter we saw how neural networks can predict depth and ego motion. This can be seen as implicitly matching all the pixels in one frame with corresponding pixels in a nearby frame. But in order to build a map of the environment it is useful to extract sparse and repeatable features, or keypoints, from images. Every keypoints should have a unique descriptor which can be used to identify it in the map which makes it possible to expand the map and also localize the camera. How to build a map and localize in it is out of scope for this thesis. This section will describe the usnupervised learning method implemented in this thesis, to extract keypoints from images.
 
 The method evaluated in this thesis is based on the UnsuperPoint paper\cite{unsuperpoint}. The network architecture is illustrated in Figure \ref{fig:unsuperpoint}. The input image is fed into a shared backbone. The features from the backbone are then split into three different encoders that estimate the score, position and a descriptor for each keypoint. The network will estimate a keypoint in every $8\times 8$ patch of the image, but only the top $N$ keypoints sorted by score are used in the evaluation.
 
@@ -12,7 +11,7 @@ The method evaluated in this thesis is based on the UnsuperPoint paper\cite{unsu
 	\label{fig:unsuperpoint}
 \end{figure}
 
-The score encoder is terminated by a sigmoid function and outputs $S_{map}$, containing scores between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$px patches of the image and only pick the best ones. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
+The score encoder is terminated by a sigmoid function and outputs $S_{map}$, containing scores between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$px patches of the image. A subset of the keypoints with the highest scores are safe to use in the SFM system, while the keypoints with low scores are disregarded. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
 
 The position encoder is also terminated by a sigmoid function and outputs $P_{relative}$ which is the relative position of the keypoint in each patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions to form $P_{map}$.
 
@@ -27,7 +26,7 @@ The descriptor encoder predicts a descriptor vector of length $256$ for each key
 
 $S_{map}$, $P_{map}$ and $F_{map}$ are reshaped into a vector $s$ of $M$ elements, an $M\times 2$ matrix $P$ and an $M\times 255$ matrix $F$, where $M=\frac{W}{8}*\frac{H}{8}=832$.
 
-The network is trained in a siamese twin setup, where two duplicate networks that share weights are fed different inputs and the loss is formulated by comparing the output scores, positions and descriptors.
+The network is trained in a siamese twin setup, where two duplicate networks that share weights are fed different inputs and the loss is formulated by comparing the output scores, positions and descriptors. The flow of data is illustrated in Figure~\ref{fig:unsuperpointloss}.
 
 \begin{figure}[H]
 	\centering
@@ -72,16 +71,17 @@ To teach the network to predict sensible scores for the points, the distance $d_
 \mathcal{L}_k^{score}=\frac{\hat{s}_k^A+\hat{s}_k^B}{2}\left(d_k-\bar{d}\right)
 \]
 
-If $d_k$ is less than the mean distance $\bar{d}$ the score should be large in order to minimize the loss. If the $d_k$ is greater than the mean distance $\bar{d}$ the score should be small in order to minimize the loss.
+If $d_k$ is less than the mean distance $\bar{d}$ the score should be large in order to minimize the loss. If the $d_k$ is greater than the mean distance $\bar{d}$ the score should be small in order to minimize the loss. Figure~\ref{fig:score-hist} shows the distribution of scores predicted by a fully trained network.
 
 \begin{figure}[H]
 	\begin{center}
 		\input{fig/hist-score.pgf}
 	\end{center}
 	\caption{Histogram with 50 buckets of scores for all points in a pair of images. The data is taken from the fully trained network evaluated in the results chapter. Most points has either a really low or high score, and a few points has a score somewhere in between.}
+	\label{fig:score-hist}
 \end{figure}
 
-Training with only the above mentioned loss terms, the relative positions of the points in the $8\times 8$ patches will be distributed towards the boundaries. One explanation for this is that hardy repeatable points will be encouraged to position them self near points in their neighboring patches, thereby minimizing $d_k$. The problem is illustrated in Figure \ref{fig:hist-no-unixy}
+Training with only the above mentioned loss terms, the relative positions of the points in the $8\times 8$ patches will be distributed towards the boundaries. One explanation for this is that hardly repeatable points will be encouraged to position them self near points in their neighboring patches, thereby minimizing $d_k$. The problem is illustrated in Figure \ref{fig:hist-no-unixy}
 
 \begin{figure}[H]
 	\begin{center}
@@ -121,16 +121,16 @@ c_{ij}=
 \end{cases}
 \]
 
-Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix and descriptor matrix $F$ as follows
+A maximum distance of 8px to classify two points as corresponding is suitable because of the patch size of $8\times 8$ pixels. Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix and descriptor matrix $F$ as follows
 
 \[
 \mathcal{L}^{desc}=\sum^{M^B}_{i=1}\sum^{M^B}_{j=1}\lambda_d*c_{ij}\max\left(0,m_p-{f_i^A}^Tf_j^B\right)+(1-c_{ij})\max\left(0,{f_i^A}^Tf_j^B-m_n\right)
 \]
 
-The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $R^b=[r^b_{ij}]_{F\times F}$.
+The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $R^b=[r^b_{ij}]_{F\times F}$, where $b\in\{A,B\}$ is the branch.
 
 \[
-\mathcal{L}^{decorr}=\sum^F_{i\neq j}r_{ij}^A+\sum^F_{i\neq j}r_{ij}^B
+\mathcal{L}^{decorr}=\sum^R_{i\neq j}r_{ij}^A+\sum^R_{i\neq j}r_{ij}^B
 \]
 Each element $r^b_{ij}$ is a Pearson's correlation coefficient\cite{pearsons} defined as
 \[
