@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  10 JAN 2021 19:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.20)  14 JAN 2021 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2419,12 +2419,12 @@ other resource which is no dict (key 'ProcSets', type <array>); ignored.
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/warp.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/diff.png, id=660, 201.3924pt x 30.8352pt>
+<fig/diff.png, id=666, 201.3924pt x 30.8352pt>
 File: fig/diff.png Graphic file (type png)
 <use fig/diff.png>
 Package pdftex.def Info: fig/diff.png  used on input line 93.
 (pdftex.def)             Requested size: 355.65944pt x 54.45924pt.
-<fig/edge.png, id=662, 200.1879pt x 61.4295pt>
+<fig/edge.png, id=668, 200.1879pt x 61.4295pt>
 File: fig/edge.png Graphic file (type png)
 <use fig/edge.png>
 Package pdftex.def Info: fig/edge.png  used on input line 112.
@@ -2433,7 +2433,7 @@ Package pdftex.def Info: fig/edge.png  used on input line 112.
 Underfull \vbox (badness 4254) has occurred while \output is active []
 
  [22 <./fig/diff.png>]
-<fig/upscale.pdf, id=673, 160.6803pt x 199.70609pt>
+<fig/upscale.pdf, id=681, 160.6803pt x 199.70609pt>
 File: fig/upscale.pdf Graphic file (type pdf)
 <use fig/upscale.pdf>
 Package pdftex.def Info: fig/upscale.pdf  used on input line 131.
@@ -2443,18 +2443,18 @@ Package pdftex.def Info: fig/upscale.pdf  used on input line 131.
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/upscale.pdf): PDF inclusion: inva
 lid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/min.png, id=712, 100.2144pt x 92.5056pt>
+<fig/min.png, id=722, 100.2144pt x 92.5056pt>
 File: fig/min.png Graphic file (type png)
 <use fig/min.png>
 Package pdftex.def Info: fig/min.png  used on input line 147.
 (pdftex.def)             Requested size: 177.82971pt x 164.16823pt.
  [24 <./fig/min.png>]
-<fig/exp.png, id=722, 419.5675pt x 387.4475pt>
+<fig/exp.png, id=731, 419.5675pt x 387.4475pt>
 File: fig/exp.png Graphic file (type png)
 <use fig/exp.png>
 Package pdftex.def Info: fig/exp.png  used on input line 161.
 (pdftex.def)             Requested size: 177.82971pt x 164.21664pt.
-<fig/stat.png, id=725, 100.2144pt x 92.5056pt>
+<fig/stat.png, id=734, 100.2144pt x 92.5056pt>
 File: fig/stat.png Graphic file (type png)
 <use fig/stat.png>
 Package pdftex.def Info: fig/stat.png  used on input line 170.
@@ -2463,7 +2463,7 @@ Package pdftex.def Info: fig/stat.png  used on input line 170.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25 <./fig/exp.png>] (./point_method.tex
-<fig/unsuperpoint.pdf, id=737, 533.1117pt x 248.8497pt>
+<fig/unsuperpoint.pdf, id=746, 533.1117pt x 248.8497pt>
 File: fig/unsuperpoint.pdf Graphic file (type pdf)
 <use fig/unsuperpoint.pdf>
 Package pdftex.def Info: fig/unsuperpoint.pdf  used on input line 9.
@@ -2472,12 +2472,12 @@ Package pdftex.def Info: fig/unsuperpoint.pdf  used on input line 9.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26 <./fig/stat.png>]
-Overfull \hbox (3.91585pt too wide) in paragraph at lines 16--17
-\OML/jkpw/m/it/10 P[]$ \T1/jkpk/m/n/10 which is the rel-a-tive po-si-tion of th
-e key-point in each patch. In the Map2XY
+Overfull \hbox (3.0071pt too wide) in paragraph at lines 16--17
+[][]$ \T1/jkpk/m/n/10 which is the rel-a-tive po-si-tion of the key-point in ea
+ch patch. In the Map2XY
  []
 
-<fig/unsuperpointloss.pdf, id=747, 371.46779pt x 166.7028pt>
+<fig/unsuperpointloss.pdf, id=756, 371.46779pt x 166.7028pt>
 File: fig/unsuperpointloss.pdf Graphic file (type pdf)
 <use fig/unsuperpointloss.pdf>
 Package pdftex.def Info: fig/unsuperpointloss.pdf  used on input line 33.
@@ -2501,20 +2501,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30])
 [31] (./consensus_method.tex
-Overfull \hbox (26.22528pt too wide) detected at line 53
-\OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/n/10 )
- + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/n/1
-0 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]\OT1/jkp/m/n/1
-0 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/
-n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp
-/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]\OT1/jkp
-/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 v[]\OT1/jkp
-/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 v[]\OT1/jkp
-/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (1) = 0
+Overfull \hbox (23.10172pt too wide) detected at line 53
+[]\OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/n/10
+ ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/m/n
+/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]\OT1/jkp/m/n
+/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/jkp/
+m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]v[]\OT1/j
+kp/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 u[]\OT1/j
+kp/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 v[]\OT1/j
+kp/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (\OML/jkpw/m/it/10 v[]\OT1/j
+kp/m/n/10 ) + \OML/jkpw/m/it/10 f[]\OT1/jkp/m/n/10 (1) = 0
  []
 
 [32] [33]
-<fig/consensus.pdf, id=885, 325.215pt x 102.3825pt>
+<fig/consensus.pdf, id=914, 325.215pt x 102.3825pt>
 File: fig/consensus.pdf Graphic file (type pdf)
 <use fig/consensus.pdf>
 Package pdftex.def Info: fig/consensus.pdf  used on input line 108.
@@ -2524,11 +2524,11 @@ Package pdftex.def Info: fig/consensus.pdf  used on input line 108.
 pdfTeX warning: /usr/bin/pdflatex (file ./fig/consensus.pdf): PDF inclusion: in
 valid other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >] [35] [36]
-Overfull \vbox (0.51715pt too high) detected at line 400
+Overfull \vbox (0.37274pt too high) detected at line 400
  []
 
 (./fig/hist-w.pgf)
-Underfull \vbox (badness 2027) has occurred while \output is active []
+Underfull \vbox (badness 2042) has occurred while \output is active []
 
  [37]))
 [38] [39]
@@ -2552,12 +2552,12 @@ Overfull \hbox (1.38905pt too wide) in paragraph at lines 48--89
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [42]
-<fig/depthmaps.png, id=1020, 835.12pt x 385.44pt>
+<fig/depthmaps.png, id=1072, 835.12pt x 385.44pt>
 File: fig/depthmaps.png Graphic file (type png)
 <use fig/depthmaps.png>
 Package pdftex.def Info: fig/depthmaps.png  used on input line 99.
 (pdftex.def)             Requested size: 177.82971pt x 82.074pt.
-<fig/3drender.png, id=1021, 810.02625pt x 279.0425pt>
+<fig/3drender.png, id=1073, 810.02625pt x 279.0425pt>
 File: fig/3drender.png Graphic file (type png)
 <use fig/3drender.png>
 Package pdftex.def Info: fig/3drender.png  used on input line 105.
@@ -2566,7 +2566,7 @@ Package pdftex.def Info: fig/3drender.png  used on input line 105.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [43]
-<fig/3dseq.png, id=1029, 198.5016pt x 149.358pt>
+<fig/3dseq.png, id=1081, 198.5016pt x 149.358pt>
 File: fig/3dseq.png Graphic file (type png)
 <use fig/3dseq.png>
 Package pdftex.def Info: fig/3dseq.png  used on input line 117.
@@ -2581,7 +2581,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--118
 \T1/jkpk/m/sl/10 from ex-per-i-ment E13 ren-dered
  []
 
-<fig/motion2.png, id=1030, 185.0112pt x 88.6512pt>
+<fig/motion2.png, id=1082, 185.0112pt x 88.6512pt>
 File: fig/motion2.png Graphic file (type png)
 <use fig/motion2.png>
 Package pdftex.def Info: fig/motion2.png  used on input line 123.
@@ -2593,7 +2593,7 @@ Underfull \hbox (badness 5802) in paragraph at lines 124--124
 
 [44 <./fig/depthmaps.png> <./fig/3drender.png> <./fig/3dseq.png> <./fig/motion2
 .png>]
-<fig/E1-E2-E3.png, id=1045, 835.12pt x 385.44pt>
+<fig/E1-E2-E3.png, id=1097, 835.12pt x 385.44pt>
 File: fig/E1-E2-E3.png Graphic file (type png)
 <use fig/E1-E2-E3.png>
 Package pdftex.def Info: fig/E1-E2-E3.png  used on input line 151.
@@ -2602,29 +2602,29 @@ Package pdftex.def Info: fig/E1-E2-E3.png  used on input line 151.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [45]
-<fig/E4.png, id=1051, 835.12pt x 128.48pt>
+<fig/E4.png, id=1103, 835.12pt x 128.48pt>
 File: fig/E4.png Graphic file (type png)
 <use fig/E4.png>
 Package pdftex.def Info: fig/E4.png  used on input line 158.
 (pdftex.def)             Requested size: 284.52863pt x 43.77475pt.
-<fig/E14.png, id=1052, 835.12pt x 128.48pt>
+<fig/E14.png, id=1104, 835.12pt x 128.48pt>
 File: fig/E14.png Graphic file (type png)
 <use fig/E14.png>
 Package pdftex.def Info: fig/E14.png  used on input line 165.
 (pdftex.def)             Requested size: 284.52863pt x 43.77475pt.
-<fig/E16.png, id=1053, 835.12pt x 128.48pt>
+<fig/E16.png, id=1105, 835.12pt x 128.48pt>
 File: fig/E16.png Graphic file (type png)
 <use fig/E16.png>
 Package pdftex.def Info: fig/E16.png  used on input line 172.
 (pdftex.def)             Requested size: 284.52863pt x 43.77475pt.
 
 [46 <./fig/E1-E2-E3.png> <./fig/E4.png> <./fig/E14.png> <./fig/E16.png>]
-<fig/point1.png, id=1066, 840.13875pt x 261.97874pt>
+<fig/point1.png, id=1119, 840.13875pt x 261.97874pt>
 File: fig/point1.png Graphic file (type png)
 <use fig/point1.png>
 Package pdftex.def Info: fig/point1.png  used on input line 200.
 (pdftex.def)             Requested size: 355.65944pt x 110.90576pt.
-<fig/kittihomo.png, id=1070, 832.10875pt x 388.45125pt>
+<fig/kittihomo.png, id=1123, 832.10875pt x 388.45125pt>
 File: fig/kittihomo.png Graphic file (type png)
 <use fig/kittihomo.png>
 Package pdftex.def Info: fig/kittihomo.png  used on input line 226.
@@ -2649,7 +2649,7 @@ as trained on the HPatches[[]]
  []
 
 [52] [53]
-<fig/future-work.pdf, id=1120, 369.29968pt x 172.7253pt>
+<fig/future-work.pdf, id=1172, 369.29968pt x 172.7253pt>
 File: fig/future-work.pdf Graphic file (type pdf)
 <use fig/future-work.pdf>
 Package pdftex.def Info: fig/future-work.pdf  used on input line 69.
@@ -2728,11 +2728,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 67.
  ) 
 Here is how much of TeX's memory you used:
- 21050 strings out of 492982
- 349441 string characters out of 6134896
- 491822 words of memory out of 5000000
- 23702 multiletter control sequences out of 15000+600000
- 244208 words of font info for 166 fonts, out of 8000000 for 9000
+ 21112 strings out of 492982
+ 350316 string characters out of 6134896
+ 491986 words of memory out of 5000000
+ 23705 multiletter control sequences out of 15000+600000
+ 249352 words of font info for 174 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,18n,49p,1674b,505s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{/u
@@ -2740,11 +2740,11 @@ sr/share/texlive/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-large-sc.enc}{/usr/
 share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-
 dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/kpfonts/jkpbn8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/kpfonts/jkpbsc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kp
-fonts/jkpex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpkm
-sc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpkmsc.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb></usr/share/texlive/tex
+ublic/kpfonts/jkpbne.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfo
+nts/jkpbsc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpe
+x.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpkmsc.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpkmsc.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/kpfonts/jkpmn8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
@@ -2755,10 +2755,10 @@ kpmne.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb><
 exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvr8a.pfb>
-Output written on main.pdf (69 pages, 6946610 bytes).
+Output written on main.pdf (69 pages, 6943192 bytes).
 PDF statistics:
- 1287 PDF objects out of 1440 (max. 8388607)
- 1058 compressed objects within 11 object streams
- 220 named destinations out of 1000 (max. 500000)
+ 1351 PDF objects out of 1440 (max. 8388607)
+ 1121 compressed objects within 12 object streams
+ 273 named destinations out of 1000 (max. 500000)
  19019 words of extra memory for PDF output out of 20736 (max. 10000000)
 

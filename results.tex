@@ -130,7 +130,7 @@ Comparing E1 and E2, we see that the explainability mask improves the accuracy e
 
 In experiment E4 the edge aware depth smoothness term is added, interestingly the performance metric does not show an improvement. But looking at one of the depth maps (Figure \ref{fig:E4}) it visually looks significantly more sharp and well defined. Probably the depth error moves to other parts of the image when the edge aware depth smoothness term is enabled.
 
-In experiment E5 we use SSIM for the photometric reconstruction error, and also combine the loss from $I_{t-1}$ and $I_{t+1}$ using the $\min()$ function per pixel. All metrics show an improvement.
+In experiment E5 we use SSIM for the photometric reconstruction error, and also combine the loss from $\textbf{I}_{t-1}$ and $\textbf{I}_{t+1}$ using the $\min()$ function per pixel. All metrics show an improvement.
 
 In E6 we add depth map normalization and in E7 we add upscaling, neither show any significant changes in the metrics.
 
@@ -251,11 +251,11 @@ As can be seen in Table \ref{table:consensusbenchmark} the homography error (HE 
 	\cline{3-4}
 	\multicolumn{2}{c|}{}&Inlier&Outlier&\multicolumn{1}{c}{Total}\\
 	\cline{2-4}
-	\multirow{2}{*}{Actual}& Inlier & $0.964$ & $0.036$ & $TP+FN=1$\\
+	\multirow{2}{*}{Actual}& Inlier & $0.964$ & $0.036$ & $\mathrm{TP}+\mathrm{FN}=1$\\
 	\cline{2-4}
-	& Outlier & $0.002$ & $0.998$ & $FP+TN=1$\\
+	& Outlier & $0.002$ & $0.998$ & $\mathrm{FP}+\mathrm{TN}=1$\\
 	\cline{2-4}
-	\multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$TP+FP=0.966$} & \multicolumn{    1}{c}{$FN+TN=1.034$} & \multicolumn{1}{c}{$2$}\\
+	\multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$\mathrm{TP}+\mathrm{FP}=0.966$} & \multicolumn{    1}{c}{$\mathrm{FN}+\mathrm{TN}=1.034$} & \multicolumn{1}{c}{$2$}\\
 \end{tabular}
 	\caption{Confusion matrix for inlier/outlier prediction using ConsensusNet.}
 	\label{table:consensusnetconfusion}
@@ -269,11 +269,11 @@ As can be seen in Table \ref{table:consensusbenchmark} the homography error (HE 
 		\cline{3-4}
 		\multicolumn{2}{c|}{}&Inlier&Outlier&\multicolumn{1}{c}{Total}\\
 		\cline{2-4}
-		\multirow{2}{*}{Actual}& Inlier & $0.983$ & $0.017$ & $TP+FN=1$\\
+		\multirow{2}{*}{Actual}& Inlier & $0.983$ & $0.017$ & $\mathrm{TP}+\mathrm{FN}=1$\\
 		\cline{2-4}
-		& Outlier & $0.196$ & $0.804$ & $FP+TN=1$\\
+		& Outlier & $0.196$ & $0.804$ & $\mathrm{FP}+\mathrm{TN}=1$\\
 		\cline{2-4}
-		\multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$TP+FP=1.179$} & \multicolumn{    1}{c}{$FN+TN=0.821$} & \multicolumn{1}{c}{$2$}\\
+		\multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$\mathrm{TP}+\mathrm{FP}=1.179$} & \multicolumn{    1}{c}{$\mathrm{FN}+\mathrm{TN}=0.821$} & \multicolumn{1}{c}{$2$}\\
 	\end{tabular}
 	\caption{Confusion matrix for inlier/outlier prediction using RANSAC.}
 	\label{table:ransacconfusion}

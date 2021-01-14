@@ -50,17 +50,17 @@ A very interesting path for future work would be to chain all networks together 
 
 Two nearby images in the sequence dataset are fed into both keypoint net and depth net. The 2D positions from the keypoint net can be lifted to 3D by sampling the depth maps. The 3D points are fed into the consensus network configured to predict a rigid 3D transformation. The photometric error loss function is implemented as before (Figure \ref{fig:warp}). But instead of using a pose predicting network, the output transform from the consensus network is used instead.
 
-Instead of calculating the point pair and correspondence matrices $G$ and $C$ using a known homography, we instead use the rigid 3D transformation to move the 3D points from $I_s$ and reproject them onto $I_t$. This uses the same method we use to reproject the image using the rigid transform and depth map, but this time it is done for sparse 3D points. The correspondances are calculated just as in section \ref{sec:keypointloss} but this time using the keypoints from $I_s$ and the reprojected points from $I_t$. The keypoint loss function would also be implemented as described in this thesis using the correspondences. Additionally an additional loss term could be added to encourage the keypoint score $s$ and the inlier prediction $w$ to be similar.
+Instead of calculating the point pair and correspondence matrices $\textbf{G}$ and $\textbf{C}$ using a known homography, we instead use the rigid 3D transformation to move the 3D points from $\textbf{I}_s$ and reproject them onto $\textbf{I}_t$. This uses the same method we use to reproject the image using the rigid transform and depth map, but this time it is done for sparse 3D points. The correspondances are calculated just as in section \ref{sec:keypointloss} but this time using the keypoints from $\textbf{I}_s$ and the reprojected points from $\textbf{I}_t$. The keypoint loss function would also be implemented as described in this thesis using the correspondences. Additionally an additional loss term could be added to encourage the keypoint score $\textbf{s}$ and the inlier prediction $\textbf{w}$ to be similar.
 
 Having depth maps from two frames in the sequence, and point pairs that should represent the same points in the scene, we can also add a sparse depth consistency loss.
 
-\[
-\mathcal{L}_{cons}=\frac{
-||D_t(\hat{p}_t) - D_s(\hat{p}_s)||
+\begin{equation}
+\mathcal{L}_{\mathrm{cons}}=\frac{
+||\textbf{D}_t(\hat{\textbf{p}}_t) - \textbf{D}_s(\hat{\textbf{p}}_s)||
 }{
-D_t(\hat{p}_t) + D_s(\hat{p}_s)
+\textbf{D}_t(\hat{\textbf{p}}_t) + \textbf{D}_s(\hat{\textbf{p}}_s)
 }
-\]
+\end{equation}
 
 This sparse loss reduces scale drifting of the depth maps across frames.
 

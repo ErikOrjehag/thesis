@@ -13,7 +13,7 @@ Both SfMlearner and Monodepth2 uses a separate network to predict poses between 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{net}
-	\caption{High level diagram of the network architectures used for depth and ego motion prediction. The layers from the depth encoder are concatenated into the layers of the decoder. Depth maps are computed at multiple scales in the decoder and are all used in the loss function. A separate network that takes as input 3 subsequent frames predicts the poses $T_{t\rightarrow t-1}$ and $T_{t\rightarrow t+1}$ between the target and nearby reference frames. The pose network shares encoder with the explain-ability mask predicting network (section \ref{sec:modellimit}).}
+	\caption{High level diagram of the network architectures used for depth and ego motion prediction. The layers from the depth encoder are concatenated into the layers of the decoder. Depth maps are computed at multiple scales in the decoder and are all used in the loss function. A separate network that takes as input 3 subsequent frames predicts the poses $\textbf{T}_{t\rightarrow t-1}$ and $\textbf{T}_{t\rightarrow t+1}$ between the target and nearby reference frames. The pose network shares encoder with the explain-ability mask predicting network (section \ref{sec:modellimit}).}
 	\label{fig:net}
 \end{figure}
 
@@ -22,42 +22,42 @@ Both SfMlearner and Monodepth2 uses a separate network to predict poses between 
 
 The core component of unsupervised depth learning is the differentiable depth image warp operation in the loss function of the CNN networks. Given the intrinsic camera matrix:
 
-\[
-K = 
+\begin{equation}
+\textbf{K} = 
 \begin{pmatrix}
-f_x & s & x_0 \\
-0 & f_y & y_0 \\
+f_\mathrm{x} & s & x_0 \\
+0 & f_\mathrm{y} & y_0 \\
 0 & 0   & 1
 \end{pmatrix}
-\]
+\end{equation}
 
 And the predicted depth $ D_t(p_t) $ of pixel $ p_t $ of the target (current) frame. And the transform $ T_{t \rightarrow s} $ from the target to source (next/previous) frame:
 
-\[
-T_{t \rightarrow s} =
+\begin{equation}
+\textbf{T}_{t \rightarrow s} =
 \begin{pmatrix}
 \textbf{R} & \textbf{t} \\
 0 & 1
 \end{pmatrix}
-\]
+\end{equation}
 
 The position of the target pixel $ p_t $ in the source image $ p_s $ can be calculated in homogeneous coordinates as:
 
-\[
-p_s \sim 
+\begin{equation}
+\textbf{p}_s \sim 
 \begin{pmatrix}
-K  & \textbf{0} \\
+\textbf{K}  & \textbf{0} \\
 \end{pmatrix}
-T_{t \rightarrow s} D_t(p_t) K^{-1} p_t 
-\]
+\textbf{T}_{t \rightarrow s} \textbf{D}_t(\textbf{p}_t) \textbf{K}^{-1} \textbf{p}_t 
+\end{equation}
 
-The pixel position $ p_s $ is however continuous and in order to sample the discrete source image $ I_s $ a differentiable bilinear sampling method is used. The method is described in \textit{spatial transformer networks}\cite{spatialtransformernetworks} and works by interpolating the neighbouring 4 pixels values (top-left, bottom-right) by the distance to the the continuous sampling point $ p_t $. This process is illustrated in Figure \ref{fig:warp}.
+The pixel position $ p_s $ is however continuous and in order to sample the discrete source image $ \textbf{I}_s $ a differentiable bilinear sampling method is used. The method is described in \textit{spatial transformer networks}\cite{spatialtransformernetworks} and works by interpolating the neighbouring 4 pixels values (top-left, bottom-right) by the distance to the the continuous sampling point $ p_t $. This process is illustrated in Figure \ref{fig:warp}.
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{warp}
-	\caption{The \abbrCNN predicts the depth map $D$ of the target image $I_t$, and also the relative movement, $T_{t\rightarrow t-1}, T_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \abbrCNN to learn to accurately predict correct depth and movement.}
+	\caption{The \abbrCNN predicts the depth map $\textbf{D}$ of the target image $\textbf{I}_t$, and also the relative movement, $\textbf{T}_{t\rightarrow t-1}, \textbf{T}_{t\rightarrow t+1}$ between the target image and the source images. Each pixel $p_t$ in the target image is projected onto a position in the source images which are sampled using bilinear interpolation. This should recreate the appearance of the target image but with pixels sampled from the source image. An appearance similarity metric between the original target image and the recreated target images can be used as the loss function for the \abbrCNN to learn to accurately predict correct depth and movement.}
 	\label{fig:warp}
 \end{figure}
 
@@ -69,24 +69,24 @@ The pixel position $ p_s $ is however continuous and in order to sample the disc
 
 In order to learn the objective of depth and ego motion prediction, different combinations of the following loss terms where evaluated.
 
-To measure the similarity of the target image $I_t$ and the reconstructed image $\hat{I}_t$ a photometric loss term defined as the mean of the absolute value of the difference of pixel intensities of the two images was used.
+To measure the similarity of the target image $\textbf{I}_t$ and the reconstructed image $\hat{\textbf{I}}_t$ a photometric loss term defined as the mean of the absolute value of the difference of pixel intensities of the two images was used.
 
-\[
-\mathcal{L}_p(I_t, \hat{I}_t)=\mean(|I_t - \hat{I}_t|)
-\]
+\begin{equation}
+\mathcal{L}_p(\textbf{I}_t, \hat{\textbf{I}}_t)=\mean(|\textbf{I}_t - \hat{\textbf{I}}_t|)
+\end{equation}
 
 Another photometric loss term evaluated in this thesis is based on structured similarity, referred to as SSIM\cite{ssim}. It was originally developed to measure the quality of digital television, comparing a compressed digital image to the original distortion-free image.
 
-\[
-\mathcal{L}_{ssim}(I_t, \hat{I}_t)=\clamp(0,1,\dfrac{1-\SSIM(I_t, \hat{I}_t)}{2})
-\]
-\[
+\begin{equation}
+\mathcal{L}_{ssim}(\textbf{I}_t, \hat{\textbf{I}}_t)=\mean(\clamp(\textbf{0},\textbf{1},\dfrac{\textbf{1}-\SSIM(\textbf{I}_t, \hat{\textbf{I}}_t)}{2}))
+\end{equation}
+\begin{equation}
 \SSIM(x,y)=\frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}
-\]
+\end{equation}
 
 with $C_1=1e-4$ and $C_2=9e-4$. To compute the per-patch mean $\mu_x$ and standard deviation $\sigma_x$, a 1 pixel reflection padding was first used on the edges of the input images and then a $3\times3$ average pool filter with stride 1 was used to get the mean. Then $ \sigma_x=\mu_{x^2}-\mu_x^2 $.
 
-The two above mentioned photometric loss terms can also be combined and balanced using $ \mathcal{L}_{ps}(I_t, \hat{I}_s) = \alpha \mathcal{L}_{ssim} + (1-\alpha) \mathcal{L}_p $. In the experiments of this thesis $\alpha=0.85$ was used, which is the same value used in the original Monodepth2 paper. As the network learns over time to predict more accurate depth and ego motion, the reconstruction loss will decrease. The loss per individual pixel is illustrated in Figure \ref{fig:diff}, which shows the loss from the same sample but after 1 and 30 epochs of training respectively.
+The two above mentioned photometric loss terms can also be combined and balanced using $ \mathcal{L}_{ps}(\textbf{I}_t, \hat{\textbf{I}}_s) = \alpha \mathcal{L}_{ssim} + (1-\alpha) \mathcal{L}_p $. In the experiments of this thesis $\alpha=0.85$ was used, which is the same value used in the original Monodepth2 paper. As the network learns over time to predict more accurate depth and ego motion, the reconstruction loss will decrease. The loss per individual pixel is illustrated in Figure \ref{fig:diff}, which shows the loss from the same sample but after 1 and 30 epochs of training respectively.
 
 \begin{figure}[H]
 	\centering
@@ -97,20 +97,20 @@ The two above mentioned photometric loss terms can also be combined and balanced
 
 To propagate the depth from textured regions to regions of uniform color a depth smoothness loss term is used. The first alternative is a loss on the second derivative of the depth intensities. This loss term will discourage the network to predict fluctuating depth values in regions of uniform color such as the pavement, that should be smooth. The drawback of this technique is that changes in depth values are penalized equally in regions where there are a lot of detail that therefore could be lost in the depth map.
 
-\[
-\mathcal{L}_{smooth}(D_t)=\mean(|\delta_x^2 D_t|+|\delta_y^2 D_t|)
-\]
+\begin{equation}
+\mathcal{L}_{smooth}(\textbf{D}_t)=\mean(|\delta_x^2 \textbf{D}_t|+|\delta_y^2 \textbf{D}_t|)
+\end{equation}
 
 The second alternative investigated was an edge aware smoothness loss that weights the first order derivative of the depth map with the exponential of the first derivative of the pixel intensities. This method allows large changes in depth near sharp features in the image but penelizes changes in depth in smooth regions, see Figure \ref{fig:edge}. The method showed great promise, resulting in sharper edges because the smoothness term is weighted to mostly affect areas with small photometric derivative.
 
-\[
-\mathcal{L}_{edge}(D_t)=\mean(|\delta_x D_t|e^{-|\delta_x I_t|} + |\delta_y D_t|e^{-|\delta_y I_t|})
-\]
+\begin{equation}
+\mathcal{L}_{edge}(\textbf{D}_t)=\mean(|\delta_x \textbf{D}_t|e^{-|\delta_x \textbf{I}_t|} + |\delta_y \textbf{D}_t|e^{-|\delta_y \textbf{I}_t|})
+\end{equation}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{edge}
-	\caption{The top row of images illustrates the edge weighting terms $e^{-|\delta_y I_t|}$ and $e^{-|\delta_x I_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.}
+	\caption{The top row of images illustrates the edge weighting terms $e^{-|\delta_y \textbf{I}_t|}$ and $e^{-|\delta_x \textbf{I}_t|}$ respectively. The weight is near 0 at the edges of tree trunks and near 1 on the pavement. This will preserve the details in the depth map around trees but keep the pavement smooth.}
 	\label{fig:edge}
 \end{figure}
 
@@ -118,9 +118,9 @@ The second alternative investigated was an edge aware smoothness loss that weigh
 
 The predicted depth is scale invariant which can make it difficult to balance the loss terms with the correct weights. To alleviate this is issue the depth map can be normalized before it is used in the loss.
 
-\[
-\hat{D_t} = \frac{D_t}{\median(D_t)} 
-\]
+\begin{equation}
+\hat{\textbf{D}_t} = \frac{\textbf{D}_t}{\median(\textbf{D}_t)} 
+\end{equation}
 
 \subsection{Depth map up-scaling}\label{sec:upscale}
 
@@ -159,7 +159,7 @@ In order to optimize using the photometric reprojecton error as the loss functio
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{exp}
-	\caption{This is an image extracted from the experiments in this thesis. The top image is frame $I_t$ the middle image is frame $I_{t-1}$ and the last image is the explain-ability mask. It is visible that the network correctly predicts that the bicycle is not moving in relation to the camera, but it does not remove pixels from the white van as it should.}
+	\caption{This is an image extracted from the experiments in this thesis. The top image is frame $\textbf{I}_t$ the middle image is frame $\textbf{I}_{t-1}$ and the last image is the explain-ability mask. It is visible that the network correctly predicts that the bicycle is not moving in relation to the camera, but it does not remove pixels from the white van as it should.}
 	\label{fig:exp}
 \end{figure}
 

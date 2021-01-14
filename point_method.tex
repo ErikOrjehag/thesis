@@ -11,65 +11,65 @@ The method evaluated in this thesis is based on the UnsuperPoint paper\cite{unsu
 	\label{fig:unsuperpoint}
 \end{figure}
 
-The score encoder is terminated by a sigmoid function and outputs $S_{map}$, containing scores between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$px patches of the image. A subset of the keypoints with the highest scores are safe to use in the SFM system, while the keypoints with low scores are disregarded. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
+The score encoder is terminated by a sigmoid function and outputs $\textbf{S}_{\mathrm{map}}$, containing scores between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$ px patches of the image. A subset of the keypoints with the highest scores are safe to use in the SFM system, while the keypoints with low scores are disregarded. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
 
-The position encoder is also terminated by a sigmoid function and outputs $P_{relative}$ which is the relative position of the keypoint in each patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions to form $P_{map}$.
+The position encoder is also terminated by a sigmoid function and outputs $\textbf{P}_{\textrm{relative}}$ which is the relative position of the keypoint in each patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions to form $\textbf{P}_{\textrm{map}}$.
 
-\[
-P_{map,x}(r,c) = 8 * (c + P_{relative,x}(r,c))
-\]
-\[
-P_{map,y}(r,c) = 8 * (r + P_{relative,y}(r,c))
-\]
+\begin{equation}
+\textbf{P}_{\mathrm{map,x}}(r,c) = 8 * (c + \textbf{P}_{\mathrm{relative,x}}(r,c))
+\end{equation}
+\begin{equation}
+\textbf{P}_{\mathrm{map,y}}(r,c) = 8 * (r + \textbf{P}_{\mathrm{relative,y}}(r,c))
+\end{equation}
 
 The descriptor encoder predicts a descriptor vector of length $256$ for each keypoint. The purpose of the descriptor is to find corresponding keypoints in different images. The encoder produces 1 descriptor vector for each $8\times 8$ patch in the image. This vector can be used directly as the keypoint descriptor and it works pretty well. Even better results can be achieved using the absolute keypoint positions to sample the values in the descriptor map with the same interpolation method used to do the warping in Figure \ref{fig:warp}.
 
-$S_{map}$, $P_{map}$ and $F_{map}$ are reshaped into a vector $s$ of $M$ elements, an $M\times 2$ matrix $P$ and an $M\times 255$ matrix $F$, where $M=\frac{W}{8}*\frac{H}{8}=832$.
+$\textbf{S}_{\textrm{map}}$, $\textbf{P}_{\mathrm{map}}$ and $\textbf{F}_{\mathrm{map}}$ are reshaped into a vector $\textbf{s}$ of $M$ elements, an $M\times 2$ matrix $\textbf{P}$ and an $M\times 255$ matrix $\textbf{F}$, where $M=\frac{W}{8}*\frac{H}{8}=832$.
 
 The network is trained in a siamese twin setup, where two duplicate networks that share weights are fed different inputs and the loss is formulated by comparing the output scores, positions and descriptors. The flow of data is illustrated in Figure~\ref{fig:unsuperpointloss}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{unsuperpointloss}
-	\caption{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $H$. The keypoint positions from twin A are transformed by the same homography $H$ and the output from the two branches are compared in order to formulate the loss function.}
+	\caption{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $\textbf{H}$. The keypoint positions from twin A are transformed by the same homography $\textbf{H}$ and the output from the two branches are compared in order to formulate the loss function.}
 	\label{fig:unsuperpointloss}
 \end{figure}
 
-For each branch $b\in\{A,B\}$ the siamese networks output the reshaped matrices $s^b$, $P^b$ and $F^b$ which contain the scores, positions and descriptors of the $M$ points in each image.
+For each branch $b\in\{A,B\}$ the siamese networks output the reshaped matrices $\textbf{s}^b$, $\textbf{P}^b$ and $\textbf{F}^b$ which contain the scores, positions and descriptors of the $M$ points in each image.
 
 \subsection{Loss function for keypoint learning}\label{sec:keypointloss}
 
-To formulate the loss function the point correspondences between branch A and B need to be determined. The points in branch A are transformed such that $p_i^{A\rightarrow B}=Hp_i^A$. Then an $M^A\times M^B$ distance matrix $G$ is calculated from the pairwise distances between all points in each branch.
+To formulate the loss function the point correspondences between branch A and B need to be determined. The points in branch A are transformed such that $\textbf{p}_i^{A\rightarrow B}=\textbf{H}\textbf{p}_i^A$. Then an $M^A\times M^B$ distance matrix $\textbf{G}$ is calculated from the pairwise distances between all points in each branch.
 
-\[
-G=[g_{ij}]_{M^A\times M^B}=\left[||p_i^{A\rightarrow B}-p_j^B||\right]_{M^A\times M^B}
-\]
+\begin{equation}
+\textbf{G}=[g_{ij}]_{M^A\times M^B}=\left[||\textbf{p}_i^{A\rightarrow B}-\textbf{p}_j^B||\right]_{M^A\times M^B}
+\end{equation}
 
-We define a point pair if point $i$ in branch A has a point $j$ as its closest neightbor in branch B, and if the distance $g_{ij}$ is less than 8px. With the point pairs defined the output matrices $s^b$, $P^b$ and $F^b$ can be redefined as \textit{corresponding matrices} $\hat{s}^b$, $\hat{P}^b$ and $\hat{F}^b$ with $K\le M$ entries, such that entry $k$ in the new matrices maps to corresponding points in the input images.
+We define a point pair if point $i$ in branch A has a point $j$ as its closest neightbor in branch B, and if the distance $g_{ij}$ is less than 8px. With the point pairs defined the output matrices $\textbf{s}^b$, $\textbf{P}^b$ and $\textbf{F}^b$ can be redefined as \textit{corresponding matrices} $\hat{\textbf{s}}^b$, $\hat{\textbf{P}}^b$ and $\hat{\textbf{F}}^b$ with $K\le M$ entries, such that entry $k$ in the new matrices maps to corresponding points in the input images.
 
 Define $d_k$ as the distance between each point pair.
 
-\[
-d_k=||\hat{p}_k^{A\rightarrow B}-\hat{p}_k^B||
-\]
+\begin{equation}
+d_k=||\hat{\textbf{p}}_k^{A\rightarrow B}-\hat{\textbf{p}}_k^B||
+\end{equation}
 
-The distance between point pairs should be minimized, this is achieved by the $\mathcal{L}^{position}$ loss term.
+The distance between point pairs should be minimized, this is achieved by the $\mathcal{L}^{\textrm{position}}$ loss term.
 
-\[
-\mathcal{L}_k^{position} = d_k
-\]
+\begin{equation}
+\mathcal{L}_k^{\textrm{position}} = d_k
+\end{equation}
 
-The scores of point pairs in branch A and B should be similar, this is achieved by the $\mathcal{L}^{sim}$ loss term.
+The scores of point pairs in branch A and B should be similar, this is achieved by the $\mathcal{L}^{\textrm{sim}}$ loss term.
 
-\[
-\mathcal{L}_k^{sim} = \left(\hat{s}_k^{A}-\hat{s}_k^B\right)^2
-\]
+\begin{equation}
+\mathcal{L}_k^{\textrm{sim}} = \left(\hat{\textbf{s}}_k^{A}-\hat{\textbf{s}}_k^B\right)^2
+\end{equation}
 
 To teach the network to predict sensible scores for the points, the distance $d_k$ between point pairs is used.
 
-\[
-\mathcal{L}_k^{score}=\frac{\hat{s}_k^A+\hat{s}_k^B}{2}\left(d_k-\bar{d}\right)
-\]
+\begin{equation}
+\mathcal{L}_k^{\textrm{score}}=\frac{\hat{\textbf{s}}_k^A+\hat{\textbf{s}}_k^B}{2}\left(d_k-\bar{d}\right)
+\end{equation}
 
 If $d_k$ is less than the mean distance $\bar{d}$ the score should be large in order to minimize the loss. If the $d_k$ is greater than the mean distance $\bar{d}$ the score should be small in order to minimize the loss. Figure~\ref{fig:score-hist} shows the distribution of scores predicted by a fully trained network.
 
@@ -94,54 +94,54 @@ Training with only the above mentioned loss terms, the relative positions of the
 To alleviate this issue, a loss is added that encourages uniform distribution of the relative point positions.
 
 
-\[
-\mathcal{L}^{uniform}=\mathcal{L}^{uniform\_x}_A+\mathcal{L}^{uniform\_y}_A+\mathcal{L}^{uniform\_x}_B+\mathcal{L}^{uniform\_y}_B
-\]
+\begin{equation}
+\mathcal{L}^{\textrm{uniform}}=\mathcal{L}^{\textrm{uniform\_x}}_A+\mathcal{L}^{\textrm{uniform\_y}}_A+\mathcal{L}^{\textrm{uniform\_x}}_B+\mathcal{L}^{\textrm{uniform\_y}}_B
+\end{equation}
 where
-\[
-\mathcal{L}^{uniform\_x}_A=\sum_{i=1}^M\left(x_i^{sorted}-\frac{i-1}{M-1}\right)^2
-\]
+\begin{equation}
+\mathcal{L}^{\textrm{uniform\_x}}_A=\sum_{i=1}^M\left(x_i^{\textrm{sorted}}-\frac{i-1}{M-1}\right)^2
+\end{equation}
 and so on for both branch A and B, in the $x$ and $y$ dimension. The effect of applying this loss can be seen in Figure \ref{fig:hist-unixy}.
 
 \begin{figure}[H]
 	\begin{center}
 		\input{fig/hist-unixy.pgf}
 	\end{center}
-	\caption{Histogram with 100 buckets of relative point positions when including the loss term $\mathcal{L}^{uniform}$ that encourages a uniform distribution. The data is taken from the model evaluated in the results chapter of this thesis.}
+	\caption{Histogram with 100 buckets of relative point positions when including the loss term $\mathcal{L}^{\textrm{uniform}}$ that encourages a uniform distribution. The data is taken from the model evaluated in the results chapter of this thesis.}
 	\label{fig:hist-unixy}
 \end{figure}
 
-The descriptor loss is calculated using a hinge loss with both positive margin $m_p$ and negative margin $m_n$. An $M^A\times M^B$ correspondence matrix $C$ is constructed, such that
+The descriptor loss is calculated using a hinge loss with both positive margin $m_p$ and negative margin $m_n$. An $M^A\times M^B$ correspondence matrix $\textbf{C}$ is constructed, such that
 
-\[
+\begin{equation}
 c_{ij}=
 \begin{cases}
 1\ \text{if}\ g_{ij}\le 8 \\
 0\ \text{otherwise} \\
 \end{cases}
-\]
+\end{equation}
 
-A maximum distance of 8px to classify two points as corresponding is suitable because of the patch size of $8\times 8$ pixels. Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix and descriptor matrix $F$ as follows
+A maximum distance of 8px to classify two points as corresponding is suitable because of the patch size of $8\times 8$ pixels. Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix and descriptor matrix $\textbf{F}$ as follows
 
-\[
-\mathcal{L}^{desc}=\sum^{M^B}_{i=1}\sum^{M^B}_{j=1}\lambda_d*c_{ij}\max\left(0,m_p-{f_i^A}^Tf_j^B\right)+(1-c_{ij})\max\left(0,{f_i^A}^Tf_j^B-m_n\right)
-\]
+\begin{equation}
+\mathcal{L}^{\textrm{desc}}=\sum^{M^B}_{i=1}\sum^{M^B}_{j=1}\lambda_d*c_{ij}\max\left(0,m_p-{\textbf{f}_i^A}^T\textbf{f}_j^B\right)+(1-c_{ij})\max\left(0,{\textbf{f}_i^A}^T\textbf{f}_j^B-m_n\right)
+\end{equation}
 
-The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $R^b=[r^b_{ij}]_{F\times F}$, where $b\in\{A,B\}$ is the branch.
+The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $\textbf{R}^b=[r^b_{ij}]_{F\times F}$, where $b\in\{A,B\}$ is the branch.
 
-\[
-\mathcal{L}^{decorr}=\sum^R_{i\neq j}r_{ij}^A+\sum^R_{i\neq j}r_{ij}^B
-\]
+\begin{equation}
+\mathcal{L}^{\textrm{decorr}}=\sum^{\textbf{R}}_{i\neq j}r_{ij}^A+\sum^{\textbf{R}}_{i\neq j}r_{ij}^B
+\end{equation}
 Each element $r^b_{ij}$ is a Pearson's correlation coefficient\cite{pearsons} defined as
-\[
+\begin{equation}
 r^b_{ij}=
-\frac{ \tilde{f}_i^b \cdot \tilde{f}_j^b }{
-||\tilde{f}_i^b||\ ||\tilde{f}_j^b||
+\frac{ \tilde{\textbf{f}}_i^b \cdot \tilde{\textbf{f}}_j^b }{
+||\tilde{\textbf{f}}_i^b||\ ||\tilde{\textbf{f}}_j^b||
 }
 ,\ \text{where}\ 
-\tilde{f}_i^b=f_i^b-\bar{f}^b_i
+\tilde{\textbf{f}}_i^b=\textbf{f}_i^b-\bar{\textbf{f}}^b_i
 \ \text{and}\ 
-\tilde{f}_j^b=f_j^b-\bar{f}^b_j
-\]
+\tilde{\textbf{f}}_j^b=\textbf{f}_j^b-\bar{\textbf{f}}^b_j
+\end{equation}
 
 Due to what might be just a oversight by the authors, this is not the same definition of $r_{ij}$ as presented in the original UnsuperPoint paper.

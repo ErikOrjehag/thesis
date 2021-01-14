@@ -1,20 +1,20 @@
 \section{Unsupervised consensus maximization}
 
-Consensus maximization in a set of features related by a geometric constraint that also contains outliers is an important aspect of an SFM system. The problem consists of finding the largest set of inlier features that is consistent with a geometric constraint. In a 3D vision setting the geometric constraint could be for example a rigid transformation $[\textbf{R}\ \textbf{t}]$, a fundamental matrix $F$ or a homography $H$ that relates pairs of corresponding 3D or 2D points.
+Consensus maximization in a set of features related by a geometric constraint that also contains outliers is an important aspect of an SFM system. The problem consists of finding the largest set of inlier features that is consistent with a geometric constraint. In a 3D vision setting the geometric constraint could be for example a rigid transformation $[\textbf{R}\ \textbf{t}]$, a fundamental matrix $\textbf{F}$ or a homography $\textbf{H}$ that relates pairs of corresponding 3D or 2D points.
 
 A popular algorithm to solve this problem is RANSAC\cite{ransac}, which is a classical iterative method. On the other hand, a unsupervised machine learning method for consensus maximization is presented in this paper\cite{consensus}. The explanation of the method in the original paper uses very strict group theory. This section of the thesis will instead try to explain the method with emphasis on ease of understanding and not be as strict on the theory. The focus will be on explaining the method used to extract the parameters of the constraint, as it's not explained by the original paper in detail and took a lot of figuring out on my part, especially how to extract the parameters of the homography.
 
-Consider one of the simplest geometric constraint on a set of corresponding 2D points in subsequent frames of the KITTI dataset, the fundamental matrix $F$. Given a point $u$ in frame 1, and point $v$ in frame 2 they are related in the following way.
+Consider one of the simplest geometric constraint on a set of corresponding 2D points in subsequent frames of the KITTI dataset, the fundamental matrix $\textbf{F}$. Given a point $\textbf{u}$ in frame 1, and point $\textbf{v}$ in frame 2 they are related in the following way.
 
- \[
- u^T F v = 0
- \]
+ \begin{equation}
+ \textbf{u}^T \textbf{F} \textbf{v} = 0
+ \end{equation}
  
  To be more explicit the relation can be expressed as follows.
  
-\[
+\begin{equation}
 \begin{pmatrix}
-u_x & u_y & 1 \\
+u_\mathrm{x} & u_\mathrm{y} & 1 \\
 \end{pmatrix}
 \begin{pmatrix}
 f_{11} & f_{12} & f_{13} \\
@@ -22,51 +22,51 @@ f_{21} & f_{22} & f_{23} \\
 f_{31} & f_{32} & f_{33} \\
 \end{pmatrix}
 \begin{pmatrix}
-v_x \\
-v_y \\
+v_\mathrm{x} \\
+v_\mathrm{y} \\
 1 \\
 \end{pmatrix}
 = 0
-\]
+\end{equation}
 
 Multiplication of the two rightmost matrices gives:
 
-\[
+\begin{equation}
 \begin{pmatrix}
-u_x & u_y & 1 \\
+u_\mathrm{x} & u_\mathrm{y} & 1 \\
 \end{pmatrix}
 \begin{pmatrix}
-f_{11} v_x + f_{12} v_y + f_{13} \\
-f_{21} v_x + f_{22} v_y + f_{23} \\
-f_{31} v_x + f_{32} v_y + f_{33} \\
+f_{11} v_\mathrm{x} + f_{12} v_\mathrm{y} + f_{13} \\
+f_{21} v_\mathrm{x} + f_{22} v_\mathrm{y} + f_{23} \\
+f_{31} v_\mathrm{x} + f_{32} v_\mathrm{y} + f_{33} \\
 \end{pmatrix}
 = 0
-\]
+\end{equation}
 
 Multiplication of the remaining two matrices and grouping $u$ and $v$ in parentheses for readability gives the following linear equation.
 
-\[
-f_{11} (u_x v_x) + f_{12} (u_x v_y) + f_{13} (u_x) +
-f_{21} (u_y v_x) + f_{22} (u_y v_y) + f_{23} (u_y) +
-f_{31} (v_x) + f_{32} (v_y) + f_{33} (1)
+\begin{equation}
+f_{11} (u_\mathrm{x} v_\mathrm{x}) + f_{12} (u_\mathrm{x} v_\mathrm{y}) + f_{13} (u_\mathrm{x}) +
+f_{21} (u_\mathrm{y} v_x) + f_{22} (u_\mathrm{y} v_\mathrm{y}) + f_{23} (u_\mathrm{y}) +
+f_{31} (v_\mathrm{x}) + f_{32} (v_\mathrm{y}) + f_{33} (1)
 = 0
-\]
+\end{equation}
 
-Now consider a set of $m$ corresponding points that are related by the same fundamental matrix $F$. Place the 9 monomials in the parentheses for all $m$ points in a matrix $ M \in \mathbb{R}^{mx9} $. A matrix of monomials in the form $1, a, a^2, \dots$, such as this one, is called a Vandermonde matrix. A monomial is an expression in algebra that contains only one term.
+Now consider a set of $m$ corresponding points that are related by the same fundamental matrix $\textbf{F}$. Place the 9 monomials in the parentheses for all $m$ points in a matrix $\textbf{M} \in \mathbb{R}^{mx9} $. A matrix of monomials in the form $1, a, a^2, \dots$, such as this one, is called a Vandermonde matrix. A monomial is an expression in algebra that contains only one term.
 
-\[
-M=
+\begin{equation}
+\mathbf{M}=
 \begin{pmatrix}
-u_{x,1} v_{x,1} & u_{x,1} v_{y,1} & u_{x,1} & u_{y,1} v_{x,1} & u_{y,1} v_{y,1} & u_{y,1} & v_{x,1} & v_{y,1} & 1 \\
+u_{\mathrm{x},1} v_{\mathrm{x},1} & u_{\mathrm{x},1} v_{\mathrm{y},1} & u_{\mathrm{x},1} & u_{\mathrm{y},1} v_{\mathrm{x},1} & u_{\mathrm{y},1} v_{\mathrm{y},1} & u_{\mathrm{y},1} & v_{\mathrm{x},1} & v_{\mathrm{y},1} & 1 \\
  & & & \vdots & & & & & \\
-u_{x,m} v_{x,m} & u_{x,m} v_{y,m} & u_{x,m} & u_{y,m} v_{x,m} & u_{y,m} v_{y,m} & u_{y,m} & v_{x,m} & v_{y,m} & 1 \\
+u_{\mathrm{x},m} v_{\mathrm{x},m} & u_{\mathrm{x},m} v_{\mathrm{y},m} & u_{\mathrm{x},m} & u_{\mathrm{y},m} v_{\mathrm{x},m} & u_{\mathrm{y},m} v_{y,m} & u_{\mathrm{y},m} & v_{\mathrm{x},m} & v_{\mathrm{y},m} & 1 \\
 \end{pmatrix}
-\]
+\end{equation}
 
 The constraint is satisfied by all $m$ points if
 
-\[
-M
+\begin{equation}
+\textbf{M}
 \begin{pmatrix}
 f_{11} \\
 f_{12} \\
@@ -85,28 +85,28 @@ f_{33} \\
 0 \\
 \end{pmatrix}
 ^{mx1}
-\]
+\end{equation}
 
-Now the solution $\textbf{f}$ should look very familiar. The column vector $\textbf{f}$ is in fact the very definition of a nullspace of $M$. This is the key insight in this method of unsupervised consensus maximization. Finding the nullspace of $M$ is done by performing a singular value decomposition, which is a differentiable operation.
+Now the solution $\textbf{f}$ should look very familiar. The column vector $\textbf{f}$ is in fact the very definition of a nullspace of $\mathbf{M}$. This is the key insight in this method of unsupervised consensus maximization. Finding the nullspace of $\mathbf{M}$ is done by performing a singular value decomposition, which is a differentiable operation.
+
+\begin{equation}
+\mathbf{U}\mathbf{\Sigma}\mathbf{V}^T=\mathbf{M}
+\end{equation}
+
+The nullspace will be the last column vector of $\mathbf{V} \in \mathbb{R}^{9x9}$ and the last singular value $\sigma_9$ in the diagonal of $\mathbf{\Sigma}$ will be zero. This is correct only if the set of corresponding points contains only inliers. If the set contains outliers that can not be related by the geometric constraint then the last singular value $\sigma_9$ will be greater than zero. If the inliers and outliers where known they could be represented by a vector $\textbf{w} \in [0,1]^m$ where $ 1 $ means inlier and $ 0 $ means outlier. Now $\mathbf{M}$ can be weighted by $\textbf{w}$ which would cancel all rows in $\mathbf{M}$ which comes from an outlier pair of points.
 
 \[
-U\Sigma V^T=M
-\]
-
-The nullspace will be the last column vector of $V \in \mathbb{R}^{9x9}$ and the last singular value $\sigma_9$ in the diagonal of $\Sigma$ will be zero. This is correct only if the set of corresponding points contains only inliers. If the set contains outliers that can not be related by the geometric constraint then the last singular value $\sigma_9$ will be greater than zero. If the inliers and outliers where known they could be represented by a vector $\textbf{w} \in [0,1]^m$ where $ 1 $ means inlier and $ 0 $ means outlier. Now $M$ can be weighted by $\textbf{w}$ which would cancel all rows in $M$ which comes from an outlier pair of points.
-
-\[
-\diag(\textbf{w}) M \textbf{f} = \textbf{0}
+\diag(\textbf{w}) \mathbf{M} \textbf{f} = \textbf{0}
 \] 
 
-The problem of finding the largest set of inliers has now been transformed into finding the weights $\textbf{w}$ such that the last singular value $\sigma_9$ of $\diag(\textbf{w})M$ is near zero, and the sum of the weights should also be large to have as many inliers as possible.
+The problem of finding the largest set of inliers has now been transformed into finding the weights $\textbf{w}$ such that the last singular value $\sigma_9$ of $\diag(\textbf{w})\mathbf{M}$ is near zero, and the sum of the weights should also be large to have as many inliers as possible.
 
-To learn the weight $w \in \textbf{w}$ for each pair of points, the PointNet\cite{pointnet} architecture was used. The pair of points are concatenated into rows of a $ X \in \mathbb{R}^{m\times n} $ matrix. For 2D points $n = 2+2=4$ and for 3D points $n=3+3=6$. The input $X$ is fed trough the PointNet segmentation network with a single output class, signifying if the point pair is an inlier or not. The key innovation of the PointNet architecture is that it can directly consume point cloud data, as oppose to first transforming the input to a 3D voxel grid or an image. The network is also invariant to the ordering of the points in the input list. Figure \ref{fig:consensus} illustrates the process of feeding the input through pointnet to get the weights, and then applying the weights to the Vandermonde matrix of which we want to minimize the last singular value.
+To learn the weight $w_i \in \textbf{w}$ for each pair of points, the PointNet\cite{pointnet} architecture was used. The pair of points are concatenated into rows of a $\mathbf{X}\in \mathbb{R}^{m\times n} $ matrix. For 2D points $n = 2+2=4$ and for 3D points $n=3+3=6$. The input $\mathbf{X}$ is fed trough the PointNet segmentation network with a single output class, signifying if the point pair is an inlier or not. The key innovation of the PointNet architecture is that it can directly consume point cloud data, as oppose to first transforming the input to a 3D voxel grid or an image. The network is also invariant to the ordering of the points in the input list. Figure \ref{fig:consensus} illustrates the process of feeding the input through pointnet to get the weights, and then applying the weights to the Vandermonde matrix of which we want to minimize the last singular value.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{consensus}
-	\caption{The input point positions $X\in \mathbb{R}^{m\times n}$ are fed trough the PointNet segmentation network, and are also used to construct the Vandermonde matrix $M$. The rows of $M$ are weighted using the weights $w$. The network learns to predict inliers by minimizing the last singular values in $\sum$ in the loss function.}
+	\caption{The input point positions $\mathbf{X}\in \mathbb{R}^{m\times n}$ are fed trough the PointNet segmentation network, and are also used to construct the Vandermonde matrix $\mathbf{M}$. The rows of $\mathbf{M}$ are weighted using the weights $\mathbf{w}$. The network learns to predict inliers by minimizing the last singular values in $\mathbf{\Sigma}$ in the loss function.}
 	\label{fig:consensus}
 \end{figure}
 
@@ -114,17 +114,17 @@ Because the fundamental matrix is a constraint expressed by 1 linear equation a 
 
 In the following sections the method used to extract the homography from the basis vectors will be explained. Two points that are related by a homography is expressed as follows. The monomials are grouped by parentheses.
 
-\[
-u \times Hv=0 \rightarrow
-\]
-\[
-[u]_{\times} Hv=0 \rightarrow
-\]
+\begin{equation}
+\mathbf{u} \times \mathbf{H}\mathbf{v}=0 \rightarrow
+\end{equation}
+\begin{equation}
+[\mathbf{u}]_{\times} \mathbf{H}\mathbf{v}=0 \rightarrow
+\end{equation}
 \begin{equation}
 \begin{pmatrix}
-0 & -1 & u_y \\
-1 & 0 & -u_x \\
--u_y & u_x & 0 \\
+0 & -1 & u_\mathrm{y} \\
+1 & 0 & -u_\mathrm{x} \\
+-u_\mathrm{y} & u_\mathrm{x} & 0 \\
 \end{pmatrix}
 \begin{pmatrix}
 h_{11} & h_{12} & h_{13} \\
@@ -132,8 +132,8 @@ h_{21} & h_{22} & h_{23} \\
 h_{31} & h_{32} & h_{33} \\
 \end{pmatrix}
 \begin{pmatrix}
-v_x \\
-v_y \\
+v_\mathrm{x} \\
+v_\mathrm{y} \\
 1 \\
 \end{pmatrix}
 =
@@ -145,36 +145,36 @@ v_y \\
 \rightarrow
 \end{equation}
 \begin{equation}
--h_{21} (v_x) \ \ \ \ - h_{22} (v_y) \ \ \ \ - h_{23} (1) \ \ \ + h_{31} (v_x u_y) + h_{32} (v_y u_y) + h_{33} (u_y) = 0 \\
+-h_{21} (v_\mathrm{x}) \ \ \ \ - h_{22} (v_\mathrm{y}) \ \ \ \ - h_{23} (1) \ \ \ + h_{31} (v_\mathrm{x} u_\mathrm{y}) + h_{32} (v_\mathrm{y} u_\mathrm{y}) + h_{33} (u_\mathrm{y}) = 0 \\
 \label{eqn:H-1}
 \end{equation}
 \begin{equation}
-\ \ h_{11} (v_x) \ \ \ \ \ + h_{12} (v_y) \ \ \ \ + h_{13} (1) \ \ \ -h_{31} (v_x u_x) -h_{32} (v_y u_x) - h_{33} (u_x) = 0 \\
+\ \ h_{11} (v_\mathrm{x}) \ \ \ \ \ + h_{12} (v_\mathrm{y}) \ \ \ \ + h_{13} (1) \ \ \ -h_{31} (v_\mathrm{x} u_\mathrm{x}) -h_{32} (v_\mathrm{y} u_\mathrm{x}) - h_{33} (u_\mathrm{x}) = 0 \\
 \label{eqn:H-2}
 \end{equation}
 \begin{equation}
--h_{11} (v_x u_y) -h_{12} (v_y u_y) -h_{13} (u_y) + h_{21} (v_x u_x) + h_{22} (v_y u_x) + h_{23} (u_x) = 0 \\
+-h_{11} (v_\mathrm{x} u_\mathrm{y}) -h_{12} (v_\mathrm{y} u_\mathrm{y}) -h_{13} (u_\mathrm{y}) + h_{21} (v_\mathrm{x} u_\mathrm{x}) + h_{22} (v_\mathrm{y} u_\mathrm{x}) + h_{23} (u_\mathrm{x}) = 0 \\
 \label{eqn:H-3}
 \end{equation}
 
-The monomials in the parentaccess are the same as for the fundamental constraint, which means that the same Vandermonde matrix $M$ can be used. But because an homography is constrained by $r=3$ linear equations the last 3 singular values of the SVD should be minimized during training. Extract 3 basis vectors from the nullspace which will be the 3 rightmost columns of $ V $ in the SVD of $diag(\textbf{w})M$.
+The monomials in the parentaccess are the same as for the fundamental constraint, which means that the same Vandermonde matrix $\textbf{M}$ can be used. But because an homography is constrained by $r=3$ linear equations the last 3 singular values of the SVD should be minimized during training. Extract 3 basis vectors from the nullspace which will be the 3 rightmost columns of $\textbf{V}$ in the SVD of $\diag(\textbf{w})\textbf{M}$.
 
-\[
-B = 
+\begin{equation}
+\mathbf{B} = 
 \begin{pmatrix}
 \textbf{v}_7 & \textbf{v}_8 & \textbf{v}_9
 \end{pmatrix}
 \in \mathbb{R}^{9x3}
-\]
+\end{equation}
 
-When calculating the fundamental matrix, the nullspace of the vandermonde matrix had a direct one to one mapping with the parameters needed to construct $F$. This is no longer the case when we want to use the nullspace basis $B$ to construct the homography matrix $H$. This is because the 3 linear equations of $H$ are tangled. Notice that $h_{21}$, $h_{22}$ and $h_{23}$ appears both in equation \ref{eqn:H-1} and \ref{eqn:H-3}. Also $h_{31}$, $h_{32}$ and $h_{33}$ appears both in equation \ref{eqn:H-1} and \ref{eqn:H-3}. Also $h_{11}$, $h_{12}$ and $h_{13}$ appears both in equation \ref{eqn:H-2} and \ref{eqn:H-3}. In order to extract the elements of $H$ from the nullspace basis vectors in $B$ we need to perform a change of basis.
-Notice that equation \ref{eqn:H-1} does not contain $u_x$ and equation \ref{eqn:H-2} does not contain $u_y$. We can exploit this fact to perform a change of basis on $B \in \mathbb{R}^{9x3}$ to get $B' \in \mathbb{R}^{9x2}$ that should have the structure seen in Table \ref{table:H}.
+When calculating the fundamental matrix, the nullspace of the vandermonde matrix had a direct one to one mapping with the parameters needed to construct $\textbf{F}$. This is no longer the case when we want to use the nullspace basis $\textbf{B}$ to construct the homography matrix $\textbf{H}$. This is because the 3 linear equations of $H$ are tangled. Notice that $h_{21}$, $h_{22}$ and $h_{23}$ appears both in equation \ref{eqn:H-1} and \ref{eqn:H-3}. Also $h_{31}$, $h_{32}$ and $h_{33}$ appears both in equation \ref{eqn:H-1} and \ref{eqn:H-3}. Also $h_{11}$, $h_{12}$ and $h_{13}$ appears both in equation \ref{eqn:H-2} and \ref{eqn:H-3}. In order to extract the elements of $\textbf{H}$ from the nullspace basis vectors in $\textbf{B}$ we need to perform a change of basis.
+Notice that equation \ref{eqn:H-1} does not contain $u_\mathrm{x}$ and equation \ref{eqn:H-2} does not contain $u_\mathrm{y}$. We can exploit this fact to perform a change of basis on $\textbf{B} \in \mathbb{R}^{9x3}$ to get $\textbf{B}' \in \mathbb{R}^{9x2}$ that should have the structure seen in Table \ref{table:H}.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{ c c c }
-	Monomial & Structure of $B'$ & Corresponding element in $H$ \\
-	$u_x v_x$ & \multirow{9}{*}{
+	Monomial & Structure of $\textbf{B}'$ & Corresponding element in $\textbf{H}$ \\
+	$u_\mathrm{x} v_\mathrm{x}$ & \multirow{9}{*}{
 $\begin{pmatrix}
 	0 & . \\
 	0 & . \\
@@ -199,54 +199,54 @@ h_{22} & h_{12} \\
 h_{23} & h_{13} \\
 \end{pmatrix}$
 } \\
-	$u_x v_y$ & \\
-	$u_x \ \ \ \ $ & \\    
+	$u_\mathrm{x} v_\mathrm{y}$ & \\
+	$u_\mathrm{x} \ \ \ \ $ & \\    
 	\hline
-	$u_y v_x$ & \\
-	$u_y v_y$ & \\
-	$u_y \ \ \ \ $ & \\    
+	$u_\mathrm{y} v_\mathrm{x}$ & \\
+	$u_\mathrm{y} v_\mathrm{y}$ & \\
+	$u_\mathrm{y} \ \ \ \ $ & \\    
 	\hline
-	$\ \ \ \ v_x$ & \\
-	$\ \ \ \ v_y$ & \\
+	$\ \ \ \ v_\mathrm{x}$ & \\
+	$\ \ \ \ v_\mathrm{y}$ & \\
 	$\ \ \ \ 1$ & \\
 \end{tabular}
-\caption{The basis monomials, the structure of $B'$ in the new basis and its corresponding elements in $H$.}
+\caption{The basis monomials, the structure of $\textbf{B}'$ in the new basis and its corresponding elements in $\textbf{H}$.}
 \label{table:H}
 \end{table}
 
-To perform the change of basis to get the structure of $B'$ we use the nullspace $\textbf{n}_1 \in \mathbb{R}^{3\times 1}$ of rows 1, 2 and 3 from $B$, and the nullspace $\textbf{n}_2 \in \mathbb{R}^{3x1}$ of row 4, 5, 6 from $B$.
+To perform the change of basis to get the structure of $\textbf{B}'$ we use the nullspace $\textbf{n}_1 \in \mathbb{R}^{3\times 1}$ of rows 1, 2 and 3 from $\textbf{B}$, and the nullspace $\textbf{n}_2 \in \mathbb{R}^{3x1}$ of row 4, 5, 6 from $\textbf{B}$.
 
-\[
-A_1 = 
+\begin{equation}
+\textbf{A}_1 = 
 \begin{pmatrix}
 b_{11} & b_{12} & b_{13} \\
 b_{21} & b_{22} & b_{23} \\
 b_{31} & b_{32} & b_{33} \\
 \end{pmatrix},
-A_2 = 
+\textbf{A}_2 = 
 \begin{pmatrix}
 b_{41} & b_{42} & b_{43} \\
 b_{51} & b_{52} & b_{53} \\
 b_{61} & b_{62} & b_{63} \\
 \end{pmatrix}
-\]
-\[
-\textbf{n}_1 = \textit{"rightmost column of right-singular vectors of A1"}
-\]
-\[
-\textbf{n}_2 = \textit{"rightmost column of right-singular vectors of A2"}
-\]
-\[
-\textbf{b}^{n_1} = B\textbf{n}_1
-\]
-\[
-\textbf{b}^{n_2} = B\textbf{n}_2
-\]
+\end{equation}
+\begin{equation}
+\textbf{n}_1 = \textit{"rightmost column of right-singular vectors of }\textbf{A}_1\textit{"}
+\end{equation}
+\begin{equation}
+\textbf{n}_2 = \textit{"rightmost column of right-singular vectors of }\textbf{A}_2\textit{"}
+\end{equation}
+\begin{equation}
+\textbf{b}^{\textbf{n}_1} = \textbf{B}\textbf{n}_1
+\end{equation}
+\begin{equation}
+\textbf{b}^{\textbf{n}_2} = \textbf{B}\textbf{n}_2
+\end{equation}
 
-Now the $\textbf{b}^{n_1}$ and $\textbf{b}^{n_2}$ basis vectors will have the following structure as desired.
+Now the $\textbf{b}^{\textbf{n}_1}$ and $\textbf{b}^{\textbf{n}_2}$ basis vectors will have the following structure as desired.
 
-\[
-\textbf{b}^{n_1} =
+\begin{equation}
+\textbf{b}^{\textbf{n}_1} =
 \begin{pmatrix}
 0 \\
 0 \\
@@ -258,7 +258,7 @@ Now the $\textbf{b}^{n_1}$ and $\textbf{b}^{n_2}$ basis vectors will have the fo
 . \\
 . \\
 \end{pmatrix},
-\textbf{b}^{n_2} =
+\textbf{b}^{\textbf{n}_2} =
 \begin{pmatrix}
 . \\
 . \\
@@ -270,67 +270,67 @@ Now the $\textbf{b}^{n_1}$ and $\textbf{b}^{n_2}$ basis vectors will have the fo
 . \\
 . \\
 \end{pmatrix},
-\]
+\end{equation}
 
-The basis vectors have zeros at the correct place. The next step is to adjust the scale so that row 4, 5 and 6 of $\textbf{b}^{n_1}$ and row 1, 2 and 3 of $\textbf{b}^{n_2}$ have the same norm because they both represent the same elements $h_{31}$, $h_{32}$ and $h_{33}$. We also make sure they have the same sign.
+The basis vectors have zeros at the correct place. The next step is to adjust the scale so that row 4, 5 and 6 of $\textbf{b}^{\textbf{n}_1}$ and row 1, 2 and 3 of $\textbf{b}^{\textbf{n}_2}$ have the same norm because they both represent the same elements $h_{31}$, $h_{32}$ and $h_{33}$. We also make sure they have the same sign.
 
-\[
-s = \sign(b^{n_2}_1 + b^{n_2}_2 + b^{n_2}_3) \sign(b^{n_1}_4 + b^{n_1}_5 + b^{n_1}_6)
-\]
+\begin{equation}
+s = \sign(b^{\textbf{n}_2}_1 + b^{\textbf{n}_2}_2 + b^{\textbf{n}_2}_3) \sign(b^{\textbf{n}_1}_4 + b^{\textbf{n}_1}_5 + b^{\textbf{n}_1}_6)
+\end{equation}
 
 $s$ will be -1 if they have different signs, or 1 if they are the same sign.
 
-\[
-B'=
+\begin{equation}
+\textbf{B}'=
 \begin{pmatrix}
-\textbf{b}^{n_1} / \norm{(b^{n_1}_4 \ b^{n_1}_5 \ b^{n_1}_6)
+\textbf{b}^{\textbf{n}_1} / \norm{(b^{\textbf{n}_1}_4 \ b^{\textbf{n}_1}_5 \ b^{\textbf{n}_1}_6)
 } &
-\textbf{b}^{n_2} / \norm{(b^{n_2}_1 \ b^{n_2}_2 \ b^{n_2}_3)} s
+\textbf{b}^{\textbf{n}_2} / \norm{(b^{\textbf{n}_2}_1 \ b^{\textbf{n}_2}_2 \ b^{\textbf{n}_2}_3)} s
 \end{pmatrix}
 \in \mathbb{R}^{9x2}
-\]
+\end{equation}
 
-It is now possible to assign the elements of $B'$ to the corresponding element of $H$ (Table \ref{table:H}) in the following way. The last row is negated because $h_{31}$, $h_{32}$ and $h_{33}$ has a different signs in equation \ref{eqn:H-1} compared to \ref{eqn:H-2}.
+It is now possible to assign the elements of $\textbf{B}'$ to the corresponding element of $\textbf{H}$ (Table \ref{table:H}) in the following way. The last row is negated because $h_{31}$, $h_{32}$ and $h_{33}$ has a different signs in equation \ref{eqn:H-1} compared to \ref{eqn:H-2}.
 
-\[
-H=
+\begin{equation}
+\textbf{H}=
 \begin{pmatrix}
 \ \ b'_{72} & \ \ b'_{82} & \ \ b'_{92} \\
 \ \ b'_{71} & \ \ b'_{81} & \ \ b'_{91} \\
 -b'_{41} & -b'_{51} & -b'_{61} \\
 \end{pmatrix}
-\]
+\end{equation}
 
 The method not only works for predicting the fundamental or homographic relationship between points, but can also be used for 3D rigid transformations.
 
-\[
-v=Ru+t \rightarrow
-\]
-\[
-Ru+t-v=0 \rightarrow
-\]
-\[
+\begin{equation}
+\textbf{v}=\textbf{R}\textbf{u}+\textbf{t} \rightarrow
+\end{equation}
+\begin{equation}
+\textbf{R}\textbf{u}+\textbf{t}-\textbf{v}=\textbf{0} \rightarrow
+\end{equation}
+\begin{equation}
 \begin{pmatrix}
 r_{11} & r_{12} & r_{13} \\
 r_{21} & r_{22} & r_{23} \\
 r_{31} & r_{32} & r_{33} \\
 \end{pmatrix}
 \begin{pmatrix}
-u_x \\
-u_y \\
-y_z \\
+u_\mathrm{x} \\
+u_\mathrm{y} \\
+y_\mathrm{z} \\
 \end{pmatrix}
 +
 \begin{pmatrix}
-t_x \\
-t_y \\
-t_z \\
+t_\mathrm{x} \\
+t_\mathrm{y} \\
+t_\mathrm{z} \\
 \end{pmatrix}
 -
 \begin{pmatrix}
-v_x \\
-v_y \\
-v_z \\
+v_\mathrm{x} \\
+v_\mathrm{y} \\
+v_\mathrm{z} \\
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -339,31 +339,31 @@ v_z \\
 0 \\
 \end{pmatrix}
 \rightarrow
-\]
-\[
+\end{equation}
+\begin{equation}
 \begin{cases}
-r_{11} (u_x) + r_{12} (u_y) + r_{13} (u_z) + t_x (1) - (v_y) = 0 \\
-r_{21} (u_x) + r_{22} (u_y) + r_{23} (u_z) + t_y (1) - (v_x) = 0 \\
-r_{31} (u_x) + r_{32} (u_y) + r_{33} (u_z) + t_z (1) - (v_z) = 0 \\
+r_{11} (u_\mathrm{x}) + r_{12} (u_\mathrm{y}) + r_{13} (u_\mathrm{z}) + t_\mathrm{x} (1) - (v_\mathrm{y}) = 0 \\
+r_{21} (u_\mathrm{x}) + r_{22} (u_\mathrm{y}) + r_{23} (u_\mathrm{z}) + t_\mathrm{y} (1) - (v_\mathrm{x}) = 0 \\
+r_{31} (u_\mathrm{x}) + r_{32} (u_\mathrm{y}) + r_{33} (u_\mathrm{z}) + t_\mathrm{z} (1) - (v_\mathrm{z}) = 0 \\
 \end{cases}
-\]
+\end{equation}
 
 The monomials in the parentheses form the following Vandermonde matrix.
 
-\[
-M=
+\begin{equation}
+\textbf{M}=
 \begin{pmatrix}
-u_{x,1} & u_{y,1} & u_{z,1} & v_{x,1} & v_{y,1} & v_{z,1} & 1 \\
+u_{\mathrm{x},1} & u_{\mathrm{y},1} & u_{\mathrm{z},1} & v_{\mathrm{x},1} & v_{\mathrm{y},1} & v_{\mathrm{z},1} & 1 \\
  & & & \vdots & & & \\
-u_{x,m} & u_{y,m} & u_{z,m} & v_{x,m} & v_{y,m} & v_{z,m} & 1 \\
+u_{\mathrm{x},m} & u_{\mathrm{y},m} & u_{\mathrm{z},m} & v_{\mathrm{x},m} & v_{\mathrm{y},m} & v_{\mathrm{z},m} & 1 \\
 \end{pmatrix}
-\]
+\end{equation}
 
 The constraint of $r=3$ linear equations is satisfied for all inliers if
 
-\[
+\begin{equation}
 \diag(\textbf{w})
-M
+\textbf{M}
 \begin{pmatrix}
 r_{11} & r_{21} & r_{31} \\
 r_{12} & r_{22} & r_{32} \\
@@ -371,7 +371,7 @@ r_{13} & r_{23} & r_{33} \\
 -1 & 0 & 0 \\
 0 & -1 & 0 \\
 0 & 0 & -1 \\
-t_x & t_y & t_z \\
+t_\mathrm{x} & t_\mathrm{y} & t_\mathrm{z} \\
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -380,13 +380,13 @@ t_x & t_y & t_z \\
 0 \\
 \end{pmatrix}
 ^{mx1}
-\]
+\end{equation}
 
-Similar to before $R$ and $t$ is extracted from the null vectors of $\diag(\textbf{w})M$. The null vectors are the 3 rightmost singular vectors in the SVD. The 3 null vectors form a basis matrix $B$ on which a change of basis is performed to untangle the components $v_x$, $v_y$ and $v_z$ into a new structure $B'$ where $R$ and $t$ are easy to extract.
+Similar to before $\textbf{R}$ and $\textbf{t}$ is extracted from the null vectors of $\diag(\textbf{w})\textbf{M}$. The null vectors are the 3 rightmost singular vectors in the SVD. The 3 null vectors form a basis matrix $\textbf{B}$ on which a change of basis is performed to untangle the components $v_\mathrm{x}$, $v_\mathrm{y}$ and $v_\mathrm{z}$ into a new structure $\textbf{B}'$ where $\textbf{R}$ and $\textbf{t}$ are easy to extract.
 
 \begin{center}
 	\begin{tabular}{ c c c }
-		Monomial & Structure of $B'$ &  \\
+		Monomial & Structure of $\textbf{B}'$ &  \\
 		$u_x$ & \multirow{7}{*}{
 			$\begin{pmatrix}
 			r_{11} & r_{21} & r_{31} \\
@@ -395,22 +395,22 @@ Similar to before $R$ and $t$ is extracted from the null vectors of $\diag(\text
 			-1 & 0 & 0 \\
 			0 & -1 & 0 \\
 			0 & 0 & -1 \\
-			t_x & t_y & t_z \\
+			t_\mathrm{x} & t_\mathrm{y} & t_\mathrm{z} \\
 			\end{pmatrix}$
 		} \\
-		$u_y$ & \\
-		$u_z$ & \\    
+		$u_\mathrm{y}$ & \\
+		$u_\mathrm{z}$ & \\    
 		\hline
-		$v_x$ & \\
-		$v_y$ & \\
-		$v_z$ & \\    
+		$v_\mathrm{x}$ & \\
+		$v_\mathrm{y}$ & \\
+		$v_\mathrm{z}$ & \\    
 		\hline
 		$1$ & \\
 	\end{tabular}
 \end{center}
 
-\[
-B'=
+\begin{equation}
+\textbf{B}'=
 -
 \begin{pmatrix}
 b_{41} & b_{42} & b_{43} \\
@@ -434,24 +434,24 @@ r_{13} & r_{23} & r_{33} \\
 -1 & 0 & 0 \\
 0 & -1 & 0 \\
 0 & 0 & -1 \\
-t_x & t_y & t_z \\
+t_\mathrm{x} & t_\mathrm{y} & t_\mathrm{z} \\
 \end{pmatrix}
-\]
+\end{equation}
 
 However this holds for any affine transformation, to enforce the rotation manifold constraint an additional regularizer loss term is added.
 
 \[
-\mathcal{L}_r=\log(1 + || RR^T - I_{3\times3} ||)
+\mathcal{L}_r=\log(\textbf{1} + || \textbf{R}\textbf{R}^T - \textbf{I}_{3\times3} ||)
 \]
 
-In the confusion matrix in the results section a point is classified as an inlier if its weight $w>0.5$. An example of the distribution of the weights $w$ for a typical set of input points can be seen in Figure \ref{fig:w-hist}.
+In the confusion matrix in the results section a point is classified as an inlier if its weight $w_i>0.5$. An example of the distribution of the weights $w_i$ for a typical set of input points can be seen in Figure \ref{fig:w-hist}.
 
 
 \begin{figure}[H]
 	\begin{center}
 		\input{fig/hist-w.pgf}
 	\end{center}
-	\caption{Histogram with 10 buckets of inlier weights $w$ for all point correspondences in a pair of images. A point is classified as an inlier if the weight $w$ is above a certain threshold.}
+	\caption{Histogram with 10 buckets of inlier weights $w_i$ for all point correspondences in a pair of images. A point is classified as an inlier if the weight $w_i$ is above a certain threshold.}
 	\label{fig:w-hist}
 \end{figure}
 
@@ -461,30 +461,30 @@ After some initial attempts at training the consensus maximization network for h
 
 Firstly the points should be transformed into a different basis before they are fed into the consensus maximization network. The change of basis ensures that the coordinates are scaled so that their maximum magnitude is 1, and the origin is centered in the middle of the image and not in the top left corner.
 
-\[
-G=
+\begin{equation}
+\textbf{G}=
 \begin{pmatrix}
 W & 0 & W/2 \\
 0 & W & H/2 \\
 0 & 0 & 1 \\
 \end{pmatrix}
-\]
-\[
-p' = G^{-1} p
-\]
-Where $p$ is the output point from the keypoint network, $W$ and $H$ is the width and height of the image respectively, and $p'$ is the new altered point used as input. The homography $H$ predicted by the consensus maximization network will be in this new basis $G$ and needs to be altered in order to use it in our standard pixel coordinate basis as follows.
+\end{equation}
+\begin{equation}
+\textbf{p}' = \textbf{G}^{-1} \textbf{p}
+\end{equation}
+Where $\textbf{p}$ is the output point from the keypoint network, $W$ and $H$ is the width and height of the image respectively, and $\textbf{p}'$ is the new altered point used as input. The homography $\textbf{H}$ predicted by the consensus maximization network will be in this new basis $\textbf{G}$ and needs to be altered in order to use it in our standard pixel coordinate basis as follows.
 
-\[
-H' = G H G^{-1}
-\]
+\begin{equation}
+\textbf{H}' = \textbf{G} \textbf{H} \textbf{G}^{-1}
+\end{equation}
 
 The second method to improve convergence during training is to normalize the rows of the Vandermonde matrix as follows.
 
-\[
-M_n' = \frac{M_n}{||M_n||}
-\]
+\begin{equation}
+\textbf{M}_n' = \frac{\textbf{M}_n}{||\textbf{M}_n||}
+\end{equation}
 
-For all $n$ rows of the Vandermonde matrix $M$.
+For all $n$ rows of the Vandermonde matrix $\textbf{M}$.
 
 
 
