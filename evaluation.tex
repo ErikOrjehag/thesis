@@ -9,7 +9,7 @@ The depth error and accuracy metrics are sparse and only calculated for the pixe
 
 The depth is predicted relative to an unknown scale, and the ground truth is measured in meters. To alleviate this issue the depth predictions are scaled so that their median is the same as the median of the ground truth for each frame. This does not guarantee that the unit of the predictions is meters, but at least it makes the scales somewhat similar.
 
-The error metrics used in the results chapter are referred to as \textit{Abs Rel}, \textit{Sq Rel}, \textit{RMSE} and \textit{RMSLE}.
+The error metrics used in the results chapter are referred to as \textit{Abs Rel}, \textit{Sq Rel}, \textit{RMSE} and \textit{RMSLE}. Following is an explanation of all the metrics used in the results chapter. We denote the ground truth $y_n$ and the prediction $\hat{y}_n$.
 
 The \textit{Abs Rel} error is based on \textit{MAE} which is the mean of the absolute errors which means that it has the same unit as the errors, and is conceptually quite easy to interpret.
 

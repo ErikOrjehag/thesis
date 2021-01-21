@@ -13,7 +13,7 @@ The method evaluated in this thesis is based on the UnsuperPoint paper\cite{unsu
 
 The score encoder is terminated by a sigmoid function and outputs $\textbf{S}_{\mathrm{map}}$, containing scores between 0 and 1 for each keypoint. The purpose of the scores are to rank the quality of the keypoints in all $8\times 8$ px patches of the image. A subset of the keypoints with the highest scores are safe to use in the SFM system, while the keypoints with low scores are disregarded. Typically patches in the sky and other non-textured areas will have keypoints with low scores.
 
-The position encoder is also terminated by a sigmoid function and outputs $\textbf{P}_{\textrm{relative}}$ which is the relative position of the keypoint in each patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions to form $\textbf{P}_{\textrm{map}}$.
+The position encoder is also terminated by a sigmoid function and outputs $\textbf{P}_{\textrm{relative}}$ which is the relative position of the keypoint in each $8 \times 8$ patch. In the Map2XY block in Figure \ref{fig:unsuperpoint} the relative positions are converted to absolute pixel positions to form $\textbf{P}_{\textrm{map}}$. The matrices have $H/8$ rows and $W/8$ columns, with two channels per cell storing the continuous x and y position for a predicted point in each patch. To convert from from relative to absolute point positions the following equations are used, where $r$ is each row and $c$ is each column in the matrices:
 
 \begin{equation}
 \textbf{P}_{\mathrm{map,x}}(r,c) = 8 * (c + \textbf{P}_{\mathrm{relative,x}}(r,c))
@@ -121,18 +121,18 @@ c_{ij}=
 \end{cases}
 \end{equation}
 
-A maximum distance of 8px to classify two points as corresponding is suitable because of the patch size of $8\times 8$ pixels. Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix and descriptor matrix $\textbf{F}$ as follows
+A maximum distance of 8px to classify two points as corresponding is suitable because of the patch size of $8\times 8$ pixels. Unlike point pairs, a single point can correspond to multiple points in the other branch. The descriptor loss term is defined using the correspondance matrix $\textbf{C}$ and descriptor matrix $\textbf{F}$ as follows
 
 \begin{equation}
 \mathcal{L}^{\textrm{desc}}=\sum^{M^B}_{i=1}\sum^{M^B}_{j=1}\lambda_d*c_{ij}\max\left(0,m_p-{\textbf{f}_i^A}^T\textbf{f}_j^B\right)+(1-c_{ij})\max\left(0,{\textbf{f}_i^A}^T\textbf{f}_j^B-m_n\right)
 \end{equation}
 
-The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $\textbf{R}^b=[r^b_{ij}]_{F\times F}$, where $b\in\{A,B\}$ is the branch.
+Where $\textbf{f}^b_i$ is row $i$ of $\textbf{F}^b$ for each branch $b\in\{A,B\}$. The weight $\lambda_d$ is used to balance the few corresponding points compared to the non-corresponding ones. The descriptors are decorrelated by minimizing the off-diagonal elements of a descriptor correlation matrix $\textbf{R}^b=[r^b_{ij}]_{F\times F}$.
 
 \begin{equation}
 \mathcal{L}^{\textrm{decorr}}=\sum^{\textbf{R}}_{i\neq j}r_{ij}^A+\sum^{\textbf{R}}_{i\neq j}r_{ij}^B
 \end{equation}
-Each element $r^b_{ij}$ is a Pearson's correlation coefficient\cite{pearsons} defined as
+Each element $r^b_{ij}$ for $b\in\{A,B\}$ is a Pearson's correlation coefficient\cite{pearsons} defined as
 \begin{equation}
 r^b_{ij}=
 \frac{ \tilde{\textbf{f}}_i^b \cdot \tilde{\textbf{f}}_j^b }{
@@ -144,4 +144,4 @@ r^b_{ij}=
 \tilde{\textbf{f}}_j^b=\textbf{f}_j^b-\bar{\textbf{f}}^b_j
 \end{equation}
 
-Due to what might be just a oversight by the authors, this is not the same definition of $r_{ij}$ as presented in the original UnsuperPoint paper.
+Where $\bar{\textbf{f}}^b_i$ is the mean of vector $\textbf{f}^b_i$. Due to what might be just a oversight by the authors, this is not the same definition of $r_{ij}$ as presented in the original UnsuperPoint paper.

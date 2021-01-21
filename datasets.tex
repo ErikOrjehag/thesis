@@ -1,15 +1,15 @@
 \section{Datasets}
 
-The neural networks are trained and evaluated on images from 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset the images from the left and right camera are treated as separate image sequences to yield more training data. The images are resized to $128\times 416$ pixels, and the intrinsic camera matrix is updated accordingly.
+The neural networks are trained and evaluated on images from 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset, the images from the left and right cameras are treated as separate image sequences to yield more training data. The images are resized to height $H=128$ and width $W=416$ pixels, and the intrinsic camera matrix $\textbf{K}$ is updated accordingly.
 
 \subsection{Sequence datasets}
 
-To train the networks used for depth and ego motion prediction the images from Kitti and Lyft at loaded in triplets of subsequent frames which are used during training of the network. To test the network the lidar data and ground truth ego motion from Kitti and Lyft is used. The lidar data is converted to a sparse depth map, that can be compared to the depth map predicted by the network. The ground truth lidar and ego motion data is only used during testing, not during training. A sample of 3 subsequent frames can be seen in Figure \ref{fig:sequencedataset}.
+To train the networks used for depth and ego motion prediction the images from Kitti and Lyft at loaded in triplets of subsequent frames which are used during training of the network. We denote an image by $\textbf{I}$, which is a $3\times H\times W$ matrix of \abbrRGB pixel colors. To test the network, the lidar data and ground truth ego motion from Kitti and Lyft are used. The lidar data is converted to a sparse depth map, that can be compared to the depth map predicted by the network. We denote a depth map by $\textbf{D}$, which is a $1\times H \times W$ matrix of depth values for each pixel. The ground truth lidar and ego motion data is only used during testing, not during training. A sample of 3 subsequent frames can be seen in Figure \ref{fig:sequencedataset}. We denote ego motion by $\textbf{T}$, which is a $3\times 4$ rigid 3D transformation matrix.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{sequencedataset}
-	\caption{The dataloader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $\textbf{I}_{t-1}$, $\textbf{I}_t$, $\textbf{I}_{t+1}$ with the sparse depth map overlayed on frame $\textbf{I}_t$.}
+	\caption{The dataloader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $\textbf{I}_{t-1}$, $\textbf{I}_t$, $\textbf{I}_{t+1}$ with the sparse depth map overlaid on frame $\textbf{I}_t$.}
 	\label{fig:sequencedataset}
 \end{figure}
 
@@ -28,7 +28,7 @@ Kitti contains 124 sequences, and Lyft contains 148 sequences. For each dataset 
 		Lyft & 134 / 3759 & 14 / 1735 \\ 
 		\hline
 	\end{tabular}
-	\caption{The training sequences are split into a training set and a testing set.}
+	\caption{The dataset sequences are split into a training set and a testing set. Approximatly 10\% of the sequences are used for testing.}
 	\label{table:datasets}
 \end{table}
 

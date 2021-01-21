@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,24 +11,18 @@ Vassileios Balntas, Karel Lenc, Andrea Vedaldi, and Krystian Mikolajczyk.
   descriptors.
 \newblock In \emph{CVPR}, 2017.
 
-\bibitem[Bissell et~al.(2018)Bissell, Birtchnell, Elliott, and Hsu]{sociology}
-David Bissell, Thomas Birtchnell, Anthony Elliott, and Eric Hsu.
-\newblock Autonomous automobilities: The social impacts of driverless vehicles.
-\newblock \emph{Current Sociology}, 68:\penalty0 001139211881674, 12 2018.
-\newblock \doi{10.1177/0011392118816743}.
-
 \bibitem[Christiansen et~al.(2019)Christiansen, Kragh, Brodskiy, and
   Karstoft]{unsuperpoint}
-Peter~Hviid Christiansen, Mikkel~Fly Kragh, Yury Brodskiy, and Henrik Karstoft.
+P.~Christiansen, M.~Kragh, Y.~Brodskiy, and H.~Karstoft.
 \newblock Unsuperpoint: End-to-end unsupervised interest point detector and
   descriptor.
-\newblock \emph{CoRR}, abs/1907.04011, 2019.
-\newblock URL \url{http://arxiv.org/abs/1907.04011}.
+\newblock \emph{ArXiv}, abs/1907.04011, 2019.
 
-\bibitem[DeTone et~al.(2017)DeTone, Malisiewicz, and Rabinovich]{superpoint}
+\bibitem[DeTone et~al.(2018)DeTone, Malisiewicz, and Rabinovich]{superpoint}
 Daniel DeTone, Tomasz Malisiewicz, and Andrew Rabinovich.
 \newblock Superpoint: Self-supervised interest point detection and description.
-\newblock 12 2017.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR) Workshops}, June 2018.
 
 \bibitem[Fischler and Bolles(1981)]{ransac}
 Martin~A. Fischler and Robert~C. Bolles.
@@ -45,15 +39,17 @@ Andreas Geiger, P~Lenz, Christoph Stiller, and Raquel Urtasun.
   1231--1237, 09 2013.
 \newblock \doi{10.1177/0278364913491297}.
 
-\bibitem[Godard et~al.(2017)Godard, Aodha, and Brostow]{leftright}
-Clement Godard, Oisin Aodha, and Gabriel Brostow.
+\bibitem[Godard et~al.(2017)Godard, Mac~Aodha, and Brostow]{leftright}
+Clement Godard, Oisin Mac~Aodha, and Gabriel~J. Brostow.
 \newblock Unsupervised monocular depth estimation with left-right consistency.
-\newblock 07 2017.
-\newblock \doi{10.1109/CVPR.2017.699}.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, July 2017.
 
-\bibitem[Godard et~al.(2018)Godard, Aodha, and Brostow]{monodepth2}
-Clément Godard, Oisin Aodha, and Gabriel Brostow.
-\newblock Digging into self-supervised monocular depth estimation, 06 2018.
+\bibitem[Godard et~al.(2019)Godard, Mac~Aodha, Firman, and Brostow]{monodepth2}
+Clement Godard, Oisin Mac~Aodha, Michael Firman, and Gabriel~J. Brostow.
+\newblock Digging into self-supervised monocular depth estimation.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision (ICCV)}, October 2019.
 
 \bibitem[Goodfellow et~al.(2016{\natexlab{a}})Goodfellow, Bengio, and
   Courville]{dlbook164}
@@ -83,15 +79,19 @@ Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
 \newblock MIT Press, 2016{\natexlab{d}}.
 \newblock \url{http://www.deeplearningbook.org}.
 
-\bibitem[Guizilini et~al.(2019)Guizilini, Ambrus, Pillai, and Gaidon]{packnet}
-Vitor Guizilini, Rares Ambrus, Sudeep Pillai, and Adrien Gaidon.
-\newblock Packnet-sfm: 3d packing for self-supervised monocular depth
-  estimation, 05 2019.
+\bibitem[Guizilini et~al.(2020)Guizilini, Ambrus, Pillai, Raventos, and
+  Gaidon]{packnet}
+Vitor Guizilini, Rares Ambrus, Sudeep Pillai, Allan Raventos, and Adrien
+  Gaidon.
+\newblock 3d packing for self-supervised monocular depth estimation.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition (CVPR)}, June 2020.
 
-\bibitem[He et~al.(2015)He, Zhang, Ren, and Sun]{resnet}
-Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{resnet}
+Kaiming He, X.~Zhang, Shaoqing Ren, and Jian Sun.
 \newblock Deep residual learning for image recognition.
-\newblock 7, 12 2015.
+\newblock \emph{2016 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 770--778, 2016.
 
 \bibitem[Jaderberg et~al.(2015)Jaderberg, Simonyan, Zisserman, and
   Kavukcuoglu]{spatialtransformernetworks}
@@ -144,11 +144,11 @@ N.Mayer, E.Ilg, P.H{\"a}usser, P.Fischer, D.Cremers, A.Dosovitskiy, and T.Brox.
 \newblock arXiv:1512.02134.
 
 \bibitem[Pillai et~al.(2019)Pillai, Ambrus, and Gaidon]{superdepth}
-Sudeep Pillai, Rares Ambrus, and Adrien Gaidon.
+S.~Pillai, Rares Ambrus, and Adrien Gaidon.
 \newblock Superdepth: Self-supervised, super-resolved monocular depth
   estimation.
-\newblock pages 9250--9256, 05 2019.
-\newblock \doi{10.1109/ICRA.2019.8793621}.
+\newblock \emph{2019 International Conference on Robotics and Automation
+  (ICRA)}, pages 9250--9256, 2019.
 
 \bibitem[Probst et~al.(2019)Probst, Paudel, Chhatkuli, and Gool]{consensus}
 Thomas Probst, Danda~Pani Paudel, Ajad Chhatkuli, and Luc~Van Gool.
@@ -157,32 +157,34 @@ Thomas Probst, Danda~Pani Paudel, Ajad Chhatkuli, and Luc~Van Gool.
 \newblock In \emph{The IEEE Conference on Computer Vision and Pattern
   Recognition (CVPR)}, June 2019.
 
-\bibitem[Qi et~al.(2016)Qi, Su, Mo, and Guibas]{pointnet}
-Charles~Ruizhongtai Qi, Hao Su, Kaichun Mo, and Leonidas~J. Guibas.
+\bibitem[Qi et~al.(2017)Qi, Su, Mo, and Guibas]{pointnet}
+C.~R. Qi, H.~Su, Kaichun Mo, and L.~Guibas.
 \newblock Pointnet: Deep learning on point sets for 3d classification and
   segmentation.
-\newblock \emph{CoRR}, abs/1612.00593, 2016.
+\newblock \emph{2017 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 77--85, 2017.
 
 \bibitem[Tang et~al.(2019)Tang, Ambrus, Guizilini, Pillai, Kim, and
   Gaidon]{keypointdepth}
-Jiexiong Tang, Rares Ambrus, Vitor Guizilini, Sudeep Pillai, Hanme Kim, and
-  Adrien Gaidon.
-\newblock Self-supervised 3d keypoint learning for ego-motion estimation, 12
-  2019.
+Jiexiong Tang, Rares Ambrus, V.~Guizilini, S.~Pillai, Hanme Kim, and Adrien
+  Gaidon.
+\newblock Self-supervised 3d keypoint learning for ego-motion estimation.
+\newblock \emph{ArXiv}, abs/1912.03426, 2019.
 
 \bibitem[Wang et~al.(2019)Wang, Chao, Garg, Hariharan, Campbell, and
   Weinberger]{lidarvscamera}
-Yan Wang, Wei-Lun Chao, Divyansh Garg, Bharath Hariharan, Mark Campbell, and
-  Kilian Weinberger.
+Yan Wang, Wei-Lun Chao, Divyansh Garg, Bharath Hariharan, M.~Campbell, and
+  Kilian~Q. Weinberger.
 \newblock Pseudo-lidar from visual depth estimation: Bridging the gap in 3d
   object detection for autonomous driving.
-\newblock pages 8437--8445, 06 2019.
-\newblock \doi{10.1109/CVPR.2019.00864}.
+\newblock \emph{2019 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 8437--8445, 2019.
 
 \bibitem[Zhou et~al.(2017)Zhou, Brown, Snavely, and Lowe]{sfmlearner}
-Tinghui Zhou, Matthew Brown, Noah Snavely, and David Lowe.
+Tinghui Zhou, M.~Brown, Noah Snavely, and D.~Lowe.
 \newblock Unsupervised learning of depth and ego-motion from video.
-\newblock 04 2017.
+\newblock \emph{2017 IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 6612--6619, 2017.
 
 \bibitem[{Zhou Wang} et~al.(2004){Zhou Wang}, {Bovik}, {Sheikh}, and
   {Simoncelli}]{ssim}

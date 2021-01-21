@@ -1,6 +1,5 @@
 
 Frågor till dig:
-1. Per-Erik tkr min background är ok men du ville gärna ha lite geometri med där också, vilken geometri ska jag lägga till?
 2. Förvirrad vad du tkr är fel med architechtures i kap 5. Du skriver "modified hur?", och ger som förslag att det räcker med "ResNet modified to predict poses", men tkr det är precis det jag skrivit fast till och med mer specifikt?
 3. Histogrammen i section 5.1 (keypoint learning) la jag in för att förtydliga vad ekvationerna betyder, tyckte det va smidigt för läsaren att se dem löpande i texten. Betyder inte så mycket som resultat eftersom de visar data på ett slumpvalt enskillt sample. Är det ok att jag behåller histogrammen i section 5.1?
 4. Sida 39 säger du att jag ska skriva att "det kördes extrinsic". Men extrinsic parameters är väll dem som beskriver kamerans position i världen, hur relaterar det till detta?
@@ -10,13 +9,6 @@ Frågor från dig:
 4. Sida 29 frågar du om samma nätverk evalueras på båda bilderna (siamese twin), svaret är ja.
 5. Sida 43 frågar du vad du ska se i figuren med camera movement. Min tanke va att man skulle se att den röda predicted path följer den gröna ground truth path rätt bra. För att se kvantitativt hur bra exakt den följer får man kolla på metrics i resultat tabellen.
 6. Sida 43 frågar du om det är experiment-id i tabellen, svaret är nej: det är konfigurations-id. Jag har en tabell med konfigurationer C1-C12, och en annan tabell med experiment E1-E16
-
-Todo:
-- Ekv nummer överallt.
-- Mer fluff metod
-- Notation
-- Abbreviations
-- Källor!
 
 Fixat:
 - Formulerat om architechtures kap 5 lite.
@@ -43,3 +35,4 @@ Fixat:
 - Att list of abbreviations and math notation.
 - Try to follow the correct math notation trough out the thesis.
 - Add equation numbers everywhere.
+- Gått igenom alla källor och fixat minst: Författarnamn, titel, evenemang, årtal

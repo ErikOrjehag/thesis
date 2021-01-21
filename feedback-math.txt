@@ -1,0 +1,4 @@
+
+Fixat:
+- Introducera pixelfärg I, djup D, och rigid transform T i section 4.1.1.
+- Introducera y_n och \hat{y}_n i section 4.4.1.

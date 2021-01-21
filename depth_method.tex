@@ -1,14 +1,16 @@
+\section{Depth and ego motion prediction}
 
+This section explains the implementation that was done in this thesis project for the depth and ego motion predicting networks.
 
 \subsection{Architectures for depth and ego motion CNNs}
 
 In order to predict depth and motion from monocular images two different CNN architectures are examined. Both are encoder-decoder type architectures, and their general layout is illustrated in Figure \ref{fig:net}.
 
-The first architecture is referred to as SfMlearner\cite{sfmlearner}, and uses a DispNet\cite{dispnet} architecture is used to predict depth maps at four different scales.
+The first architecture is referred to as SfMlearner\cite{sfmlearner}. It uses a DispNet\cite{dispnet} architecture to predict depth maps at four different scales.
 
-The second architecture is referred to as Monodepth2\cite{monodepth2}, and uses a ResNet18 architecture instead of a DispNet architecture to predict depth estimates. This architecture is a smaller resulting in faster training and evaluation.
+The second architecture is referred to as Monodepth2\cite{monodepth2}. It uses a ResNet18 architecture instead of a DispNet architecture to predict depth estimates. This architecture is smaller resulting in faster training and evaluation.
 
-Both SfMlearner and Monodepth2 uses a separate network to predict poses between frames. The pose network has a ResNet18\cite{resnet} architecture, but the decoder is modified to predict pose updates in an euler angle axis representation.
+Both SfMlearner and Monodepth2 uses a separate network to predict poses between frames. The pose network has a ResNet18\cite{resnet} architecture, but the decoder is modified to predict pose updates in an Euler-angle-axis representation.
 
 \begin{figure}[H]
 	\centering
@@ -20,7 +22,7 @@ Both SfMlearner and Monodepth2 uses a separate network to predict poses between 
 \subsection{Differentiable depth image warping}
 \label{sec:diffwarp}
 
-The core component of unsupervised depth learning is the differentiable depth image warp operation in the loss function of the CNN networks. Given the intrinsic camera matrix:
+The core component of unsupervised depth learning is the differentiable depth image warp operation in the loss function of the CNN networks. The goal is to reconstruct the target image from pixel values in the source image using the predicted depth and ego motion. If the predictions are good, then the reconstruction will also be good. If the loss is based on the quality of the reconstruction then the loss will be a good measure on how well the network has learned to predict depth and ego motion. To perform the reconstruction we need a few components. Firstly the intrinsic camera matrix:
 
 \begin{equation}
 \textbf{K} = 
@@ -31,7 +33,7 @@ f_\mathrm{x} & s & x_0 \\
 \end{pmatrix}
 \end{equation}
 
-And the predicted depth $ D_t(p_t) $ of pixel $ p_t $ of the target (current) frame. And the transform $ T_{t \rightarrow s} $ from the target to source (next/previous) frame:
+where $f$ is the focal length, $s$ is the skew coefficient (often zero), and $x_0$ and $y_0$ represent the principal point. Secondly we need the the predicted depth $ \textbf{D}_t(\textbf{p}_t) $ of pixel $ \textbf{p}_t $ of the target (current) frame. Thirdly we need the predicted ego motion in the form of a transform matrix $ \textbf{T}_{t \rightarrow s} $ from the target to the source (next or previous) frame in the sequence:
 
 \begin{equation}
 \textbf{T}_{t \rightarrow s} =
@@ -41,7 +43,7 @@ And the predicted depth $ D_t(p_t) $ of pixel $ p_t $ of the target (current) fr
 \end{pmatrix}
 \end{equation}
 
-The position of the target pixel $ p_t $ in the source image $ p_s $ can be calculated in homogeneous coordinates as:
+Given these, we can project the position of the target pixel $ \textbf{p}_t $ onto the source image $\textbf{I}_s$. We call this new position $ \textbf{p}_s $, and it is calculated in homogeneous coordinates as:
 
 \begin{equation}
 \textbf{p}_s \sim 
@@ -51,7 +53,7 @@ The position of the target pixel $ p_t $ in the source image $ p_s $ can be calc
 \textbf{T}_{t \rightarrow s} \textbf{D}_t(\textbf{p}_t) \textbf{K}^{-1} \textbf{p}_t 
 \end{equation}
 
-The pixel position $ p_s $ is however continuous and in order to sample the discrete source image $ \textbf{I}_s $ a differentiable bilinear sampling method is used. The method is described in \textit{spatial transformer networks}\cite{spatialtransformernetworks} and works by interpolating the neighbouring 4 pixels values (top-left, bottom-right) by the distance to the the continuous sampling point $ p_t $. This process is illustrated in Figure \ref{fig:warp}.
+The pixel position $ \textbf{p}_s $ is however continuous and in order to sample the discrete source image $ \textbf{I}_s $ a differentiable bilinear sampling method is used\cite{spatialtransformernetworks}. The value at the continuous sampling point $\textbf{p}_s$ is interpolated from its four discrete neighbors. This process is illustrated in Figure \ref{fig:warp}.
 
 
 \begin{figure}[H]
@@ -81,10 +83,10 @@ Another photometric loss term evaluated in this thesis is based on structured si
 \mathcal{L}_{ssim}(\textbf{I}_t, \hat{\textbf{I}}_t)=\mean(\clamp(\textbf{0},\textbf{1},\dfrac{\textbf{1}-\SSIM(\textbf{I}_t, \hat{\textbf{I}}_t)}{2}))
 \end{equation}
 \begin{equation}
-\SSIM(x,y)=\frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}
+\SSIM(\textbf{X},\textbf{Y})=\frac{(2\mu_{\textbf{X}}\mu_{\textbf{Y}}+C_1)(2\sigma_{\textbf{XY}}+C_2)}{(\mu_{\textbf{X}}^2+\mu_{\textbf{Y}}^2+C_1)(\sigma_{\textbf{X}}^2+\sigma_{\textbf{Y}}^2+C_2)}
 \end{equation}
 
-with $C_1=1e-4$ and $C_2=9e-4$. To compute the per-patch mean $\mu_x$ and standard deviation $\sigma_x$, a 1 pixel reflection padding was first used on the edges of the input images and then a $3\times3$ average pool filter with stride 1 was used to get the mean. Then $ \sigma_x=\mu_{x^2}-\mu_x^2 $.
+with $C_1=1e-4$ and $C_2=9e-4$. To compute the per-patch mean $\mu_{\textbf{X}}$ and standard deviation $\sigma_{\textbf{X}}$, a 1 pixel reflection padding was first used on the edges of the input images and then a $3\times3$ average pool filter with stride 1 was used to get the mean. Then $ \sigma_{\textbf{X}}=\mu_{\textbf{X}^2}-\mu_{\textbf{X}}^2 $.
 
 The two above mentioned photometric loss terms can also be combined and balanced using $ \mathcal{L}_{ps}(\textbf{I}_t, \hat{\textbf{I}}_s) = \alpha \mathcal{L}_{ssim} + (1-\alpha) \mathcal{L}_p $. In the experiments of this thesis $\alpha=0.85$ was used, which is the same value used in the original Monodepth2 paper. As the network learns over time to predict more accurate depth and ego motion, the reconstruction loss will decrease. The loss per individual pixel is illustrated in Figure \ref{fig:diff}, which shows the loss from the same sample but after 1 and 30 epochs of training respectively.
 
@@ -101,7 +103,7 @@ To propagate the depth from textured regions to regions of uniform color a depth
 \mathcal{L}_{smooth}(\textbf{D}_t)=\mean(|\delta_x^2 \textbf{D}_t|+|\delta_y^2 \textbf{D}_t|)
 \end{equation}
 
-The second alternative investigated was an edge aware smoothness loss that weights the first order derivative of the depth map with the exponential of the first derivative of the pixel intensities. This method allows large changes in depth near sharp features in the image but penelizes changes in depth in smooth regions, see Figure \ref{fig:edge}. The method showed great promise, resulting in sharper edges because the smoothness term is weighted to mostly affect areas with small photometric derivative.
+The second alternative investigated was an edge aware smoothness loss that weights the first order derivative of the depth map with the exponential of the first derivative of the pixel intensities. This method allows large changes in depth near sharp features in the image but penelizes changes in depth in smooth regions, see Figure \ref{fig:edge}. The method showed great promise, resulting in sharper edges because the smoothness term is weighted to mostly affect areas with small intensity derivative.
 
 \begin{equation}
 \mathcal{L}_{edge}(\textbf{D}_t)=\mean(|\delta_x \textbf{D}_t|e^{-|\delta_x \textbf{I}_t|} + |\delta_y \textbf{D}_t|e^{-|\delta_y \textbf{I}_t|})
@@ -140,7 +142,7 @@ The smaller depth maps in the depth decoder of the network are all used in the l
 \paragraph{Disparity loss} To encourage background depths (low disparities) in shadows of the depth map where occlusion has occurred a penalty on the disparity can be added $ \mathcal{L}_{o} =|d_t|. $
 \fi
 
-In the SfMLearner paper the photometric loss is calculated for the previous and next frames compared to the current in the sequence. The pixel wise average across the frames are then used. This causes problems if a pixel is for example occluded in the previous frame, but visible in the current and next frame. In this situation the average loss will be large even though a correct depth and transformation has been predicted, because of the occluded pixel. Instead Monodepth2 suggests to pick the minimum per pixel error over the frames which alleviates this issue, see Figure \ref{fig:min}. Both techniques where implemented in this thesis and compared in the experiments.
+In the SfMLearner paper the photometric loss is calculated for the previous and next frames compared to the current in the sequence. The pixel-wise average across the frames is then used. This causes problems if a pixel is for example occluded in the previous frame, but visible in the current and next frame. In this situation the average loss will be large even though a correct depth and transformation has been predicted, because of the occluded pixel. Instead Monodepth2 suggests to pick the minimum per pixel error over the frames which alleviates this issue, see Figure \ref{fig:min}. Both techniques where implemented in this thesis and compared in the experiments.
 
 \begin{figure}[H]
 	\centering
@@ -152,9 +154,9 @@ In the SfMLearner paper the photometric loss is calculated for the previous and 
 \subsection{Handling model limitations}
 \label{sec:modellimit}
 
-In order to optimize using the photometric reprojecton error as the loss function two assumptions must hold. Firstly the scene must be static, meaning all objects in the scene must be still except the moving camera. Dynamic objects will cause problems. Secondly there must be photometric consistency between frames for the photometric error to make sense. This means that non lambertian surfaces, change in lighting, and change in exposure between frames will cause problems. Two different methods of dealing with this issue was implemented and evaluated in this thesis.
+In order to optimize using the photometric reprojecton error as the loss function two assumptions must hold. Firstly the scene must be static, meaning all objects in the scene must be still except the moving camera. Dynamic objects will cause problems. Secondly there must be photometric consistency between frames for the photometric error to make sense. This means that non Lambertian surfaces, change in lighting, and change in exposure between frames will cause problems. Two different methods of dealing with this issue was implemented and evaluated in this thesis.
 
-\paragraph{Explainability mask} The authors of \cite{sfmlearner} tackle this problem by having a CNN predict what pixels are valid to use in the photometric loss function, see Figure~\ref{fig:exp}. It shares the encoder of the pose predicting network but branches of into a different decoders which estimates a mask of the valid/explainable pixels. The loss function for the mask is the cross entropy loss compared to a mask filled with ones. The photometric loss function is augmented to include the explainability mask removing pixels that cannot be explained by the predicted depth and transformation. This encourages the mask to be filled with ones, but allows some slack due to pixels that can not be explained by the photometric loss.
+\paragraph{Explainability mask} The authors of \cite{sfmlearner} tackle the model limitations by having a CNN predict what pixels are valid to use in the photometric loss function, see Figure~\ref{fig:exp}. It shares the encoder of the pose predicting network but branches of into a different decoders which estimates a mask of the valid/explainable pixels. The loss function for the mask is the cross entropy loss compared to a mask filled with ones. The photometric loss function is augmented to include the explainability mask removing pixels that cannot be explained by the predicted depth and transformation. This encourages the mask to be filled with ones, but allows some slack due to pixels that can not be explained by the photometric loss.
 
 \begin{figure}[H]
 	\centering

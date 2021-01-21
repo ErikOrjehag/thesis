@@ -18,28 +18,29 @@
 \contentsline {chapter}{\numberline {4}Method}{11}{chapter.4}
 \contentsline {section}{\numberline {4.1}Datasets}{11}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{12}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Homographic adaptation dataset}{12}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.2}Homographic adaptation dataset}{13}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Consensus maximization dataset}{13}{section.4.2}
 \contentsline {section}{\numberline {4.3}Comparing techniques for depth and ego motion prediction}{14}{section.4.3}
-\contentsline {section}{\numberline {4.4}Evaluation metrics}{14}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Depth error and accuracy metrics}{14}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.4}Evaluation metrics}{15}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Depth error and accuracy metrics}{15}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Camera ego motion error metric}{16}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}Keypoint error and score metrics}{16}{subsection.4.4.3}
 \contentsline {subsection}{\numberline {4.4.4}Consensus maximization performance metrics}{17}{subsection.4.4.4}
 \contentsline {chapter}{\numberline {5}Implementation}{19}{chapter.5}
-\contentsline {subsection}{\numberline {5.0.1}Architectures for depth and ego motion CNNs}{19}{subsection.5.0.1}
-\contentsline {subsection}{\numberline {5.0.2}Differentiable depth image warping}{20}{subsection.5.0.2}
-\contentsline {subsection}{\numberline {5.0.3}Loss functions}{21}{subsection.5.0.3}
-\contentsline {subsection}{\numberline {5.0.4}Depth map normalization}{23}{subsection.5.0.4}
-\contentsline {subsection}{\numberline {5.0.5}Depth map up-scaling}{23}{subsection.5.0.5}
-\contentsline {subsection}{\numberline {5.0.6}Handling occlusions}{24}{subsection.5.0.6}
-\contentsline {subsection}{\numberline {5.0.7}Handling model limitations}{24}{subsection.5.0.7}
+\contentsline {section}{\numberline {5.1}Depth and ego motion prediction}{19}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Architectures for depth and ego motion CNNs}{19}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Differentiable depth image warping}{20}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Loss functions}{21}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Depth map normalization}{23}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Depth map up-scaling}{23}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Handling occlusions}{24}{subsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1.7}Handling model limitations}{25}{subsection.5.1.7}
 \contentsline {paragraph}{Explainability mask}{25}{section*.23}
-\contentsline {paragraph}{Stationary pixels mask}{25}{section*.25}
-\contentsline {section}{\numberline {5.1}Unsupervised keypoint learning}{26}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Loss function for keypoint learning}{28}{subsection.5.1.1}
-\contentsline {section}{\numberline {5.2}Unsupervised consensus maximization}{32}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Improving training convergence}{38}{subsection.5.2.1}
+\contentsline {paragraph}{Stationary pixels mask}{26}{section*.25}
+\contentsline {section}{\numberline {5.2}Unsupervised keypoint learning}{27}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Loss function for keypoint learning}{29}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Unsupervised consensus maximization}{33}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Improving training convergence}{39}{subsection.5.3.1}
 \contentsline {chapter}{\numberline {6}Results}{41}{chapter.6}
 \contentsline {section}{\numberline {6.1}Depth and ego motion}{41}{section.6.1}
 \contentsline {section}{\numberline {6.2}Keypoint detection}{47}{section.6.2}
