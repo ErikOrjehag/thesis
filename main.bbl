@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,6 +10,12 @@ Vassileios Balntas, Karel Lenc, Andrea Vedaldi, and Krystian Mikolajczyk.
 \newblock Hpatches: A benchmark and evaluation of handcrafted and learned local
   descriptors.
 \newblock In \emph{CVPR}, 2017.
+
+\bibitem[Bissell et~al.(2018)Bissell, Birtchnell, Elliott, and Hsu]{sociology}
+David Bissell, Thomas Birtchnell, Anthony Elliott, and Eric Hsu.
+\newblock Autonomous automobilities: The social impacts of driverless vehicles.
+\newblock \emph{Current Sociology}, 68:\penalty0 001139211881674, 12 2018.
+\newblock \doi{10.1177/0011392118816743}.
 
 \bibitem[Christiansen et~al.(2019)Christiansen, Kragh, Brodskiy, and
   Karstoft]{unsuperpoint}
@@ -87,6 +93,18 @@ Vitor Guizilini, Rares Ambrus, Sudeep Pillai, Allan Raventos, and Adrien
 \newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
   and Pattern Recognition (CVPR)}, June 2020.
 
+\bibitem[{Hartley}(1995)]{8-point}
+R.~I. {Hartley}.
+\newblock In defence of the 8-point algorithm.
+\newblock In \emph{Proceedings of IEEE International Conference on Computer
+  Vision}, pages 1064--1070, 1995.
+\newblock \doi{10.1109/ICCV.1995.466816}.
+
+\bibitem[Hartley and Zisserman(2004)]{Hartley2004}
+R.~I. Hartley and A.~Zisserman.
+\newblock \emph{Multiple View Geometry in Computer Vision}.
+\newblock Cambridge University Press, ISBN: 0521540518, second edition, 2004.
+
 \bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{resnet}
 Kaiming He, X.~Zhang, Shaoqing Ren, and Jian Sun.
 \newblock Deep residual learning for image recognition.
@@ -107,7 +125,7 @@ R.~Kesten, M.~Usman, J.~Houston, T.~Pandya, K.~Nadhamuni, A.~Ferreira, M.~Yuan,
   B.~Low, A.~Jain, P.~Ondruska, S.~Omari, S.~Shah, A.~Kulkarni, A.~Kazakova,
   C.~Tao, L.~Platinsky, W.~Jiang, and V.~Shet.
 \newblock Lyft level 5 av dataset 2019.
-\newblock url{https://level5.lyft.com/dataset/}, 2019.
+\newblock https://level5.lyft.com/dataset/, 2019.
 
 \bibitem[Kim(2018)]{transportation}
 Tschangho Kim.
@@ -164,12 +182,19 @@ C.~R. Qi, H.~Su, Kaichun Mo, and L.~Guibas.
 \newblock \emph{2017 IEEE Conference on Computer Vision and Pattern Recognition
   (CVPR)}, pages 77--85, 2017.
 
-\bibitem[Tang et~al.(2019)Tang, Ambrus, Guizilini, Pillai, Kim, and
+\bibitem[Tang et~al.(2020)Tang, Ambrus, Guizilini, Pillai, Kim, and
   Gaidon]{keypointdepth}
 Jiexiong Tang, Rares Ambrus, V.~Guizilini, S.~Pillai, Hanme Kim, and Adrien
   Gaidon.
 \newblock Self-supervised 3d keypoint learning for ego-motion estimation.
-\newblock \emph{ArXiv}, abs/1912.03426, 2019.
+\newblock \emph{Conference on Robot Learning (CoRL)}, 2020.
+
+\bibitem[Wang et~al.(2020)Wang, Zhou, Hariharan, and Snavely]{pose-sup}
+Qianqian Wang, Xiaowei Zhou, Bharath Hariharan, and Noah Snavely.
+\newblock Learning feature descriptors using camera pose supervision.
+\newblock In \emph{ECCV 2020}, pages 757--774, 11 2020.
+\newblock ISBN 978-3-030-58451-1.
+\newblock \doi{10.1007/978-3-030-58452-8_44}.
 
 \bibitem[Wang et~al.(2019)Wang, Chao, Garg, Hariharan, Campbell, and
   Weinberger]{lidarvscamera}

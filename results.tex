@@ -4,7 +4,7 @@ This chapter presents the results from the experiments conducted to evaluate the
 
 \section{Depth and ego motion}
 
-For the depth and ego motion prediction networks 12 different configurations (Table \ref{table:configurations}) where trained and evaluated in 16 experiments (Table \ref{table:experiments}). The configurations and experiments are named C1 trough C12 and E1 to E16 respectively. A configuration is a particular combination of options (Table \ref{table:cli}), such as dataset, network architecture and loss function terms used during training. Each experiment measures the performance, using the metrics in section \ref{sec:depthmetrics}, of a configuration on a particular testing dataset. In some experiments the testing dataset will differ from the training dataset, for example a network can be trained on Kitti but evaluated on Lyft.
+For the depth and ego motion prediction networks 12 different configurations (Table \ref{table:configurations}) were trained and evaluated in 16 experiments (Table \ref{table:experiments}). The configurations and experiments are named C1 trough C12 and E1 to E16 respectively. A configuration is a particular combination of options (Table \ref{table:cli}), such as dataset, network architecture and loss function terms used during training. Each experiment measures the performance, using the metrics in section \ref{sec:depthmetrics}, of a configuration on a particular testing dataset. In some experiments, the testing dataset will differ from the training dataset, for example a network can be trained on Kitti but evaluated on Lyft.
 
 \begin{table}[H]
 \centering
@@ -37,7 +37,7 @@ C & Net & DS & Edge & Norm & Expl & Stat & SSIM & Comb & US \\
 12 & M2 & L & $ \times $ & $ \times $ &  & $ \times $ & $ \times $ & min & $ \times $ \\
 \hline
 \end{tabular}
-\caption{All configurations of the depth and ego motion network that were evaluated. The C column identifies the specific configuration. The Net column shows which architecture was used, either SL for SfmLearner or M2 for Monodepth2. The DS column shows which dataset was used during training, either K for Kitti or L for Lyft. The Edge column indicates if the edge aware smoothing loss term $\mathcal{L}_{edge}$ was used. The Norm column indicates if depth map normalization was used. The Expl column indicates if an explainability mask was used. The Stat column indicates if a mask to remove stationary pixels from the loss was used. The SSIM column indicates if $\mathcal{L}_{ps}$ was used, otherwise just $\mathcal{L}_{p}$. The Comb column shows which methods was used to combine the loss terms from the two source images, either the average or the minimum loss across frames. The US column indicates that up scaling of the depth maps in the pyramid was used, otherwise the target frame was down scaled to match the size of the smaller depth maps in the pyramid.}
+\caption{All configurations of the depth and ego motion network that were evaluated. The C column identifies the specific configuration. The Net column shows which architecture was used, either SL for SfmLearner or M2 for Monodepth2. The DS column shows which dataset was used during training, either K for Kitti or L for Lyft. The Edge column indicates if the edge aware smoothing loss term $\mathcal{L}_{\mathrm{edge}}$ was used. The Norm column indicates if depth map normalization was used. The Expl column indicates if an explainability mask was used. The Stat column indicates if a mask to remove stationary pixels from the loss was used. The SSIM column indicates if $\mathcal{L}_{\mathrm{ps}}$ was used, otherwise just $\mathcal{L}_{p}$. The Comb column shows which methods was used to combine the loss terms from the two source images, either the average or the minimum loss across frames. The US column indicates that up-scaling of the depth maps in the pyramid was used, otherwise the target frame was down-scaled to match the size of the smaller depth maps in the pyramid.}
 \label{table:configurations}
 \end{table}
 
@@ -86,11 +86,11 @@ E & C & DS & AbsRel & SqRel & RMSE & RMSLE & $1.25$ & $1.25^2$ & $1.25^3$ & Ego 
 16 & 12 & L & 0.303 & 8.051 & 19.312 & 0.385 & 0.637 & 0.827 & 0.906 & 0.059 \\
 \hline
 \end{tabular}}
-\caption{All the experiments measuring the performance of the different configurations in Table \ref{table:configurations}. The E column identifies a specific experiment. The C column shows which configuration was used. The DS column shows which dataset was used during testing, K for Kitti and L for Lyft. The dataset used during testing differs from the one used during training in some experiments. The AbsRel, SqRel, RMSE and RMSLE columns are the depth error metrics described in section \ref{sec:depthmetrics}, smaller is better. The $1.25$, $1.25^2$ and $1.25^3$ columns are the depth accuracy metrics described in section \ref{sec:depthmetrics}, larger is better. The Ego column is the camera ego motion error metric described in section \ref{sec:egometric}.}
+\caption{All the experiments measuring the performance of the different configurations in Table \ref{table:configurations}. The best result for each column is written in bold numerals. The E column identifies a specific experiment. The C column shows which configuration was used. The DS column shows which dataset was used during testing, K for Kitti and L for Lyft. The dataset used during testing differs from the one used during training in some experiments. The AbsRel, SqRel, RMSE and RMSLE columns are the depth error metrics described in section \ref{sec:depthmetrics}, smaller is better. The $1.25$, $1.25^2$ and $1.25^3$ columns are the depth accuracy metrics described in section \ref{sec:depthmetrics}, larger is better. The Ego column is the camera ego motion error metric described in section \ref{sec:egometric}.}
 \label{table:experiments}
 \end{table}
 
-To verify the quality of the predictions visually the depth map can be rendered using two different methods. Either as tinted depth map where black pixels are further away than yellow pixels (Figure \ref{fig:depthmapskitty}), or as a 3D point cloud where each point is colored by the input image (Figure \ref{fig:3drender}).
+To verify the quality of the predictions visually, the depth map can be rendered using two different methods. Either as tinted depth map where black pixels are further away than yellow pixels (Figure \ref{fig:depthmapskitty}), or as a 3D point cloud where each point is colored by the input image (Figure \ref{fig:3drender}).
 
 \begin{figure}[H]
 	\centering
@@ -126,7 +126,7 @@ The point cloud of a particular image can be rendered from different perspective
 	\end{minipage}
 \end{figure}
 
-Comparing E1 and E2, we see that the explainability mask improves the accuracy ever so slightly but the depth error is actually worse. When the stationary pixel mask is used instead in E3 the error metrics are significantly better than in both E1 and E2, the accuracy is comparable but slightly worse. The results correspond to what can be seen visually in Figure \ref{fig:e1e2e3}.
+Comparing E1 and E2, we see that the explainability mask improves the accuracy ever so slightly but the depth error is actually worse. When the stationary pixel mask is used instead in E3, the error metrics are significantly better than in both E1 and E2, the accuracy is comparable but slightly worse. The results correspond to what can be seen visually in Figure \ref{fig:e1e2e3}.
 
 In experiment E4 the edge aware depth smoothness term is added, interestingly the performance metric does not show an improvement. But looking at one of the depth maps (Figure \ref{fig:E4}) it visually looks significantly more sharp and well defined. Probably the depth error moves to other parts of the image when the edge aware depth smoothness term is enabled.
 
@@ -142,14 +142,14 @@ From experiment E11 and onwards the SfMLearner architecture is replaced by the M
 
 In E13 and E14 we again see that a network trained on Kitti performs better when evaluated on Kitti compared to Lyft, as expected. In E15 and E16 we see a network trained on Lyft that has a lower error on Kitti, but higher accuracy on Lyft.
 
-From the results it appears that the quality of depth prediction has a pretty low impact on the performance of the ego motion estimation. The depth and ego motion is predicted by different networks. But the loss function is dependent on both depth and ego motion predictions. It's not possible to learn only depth or only ego motion separately in this system, so they are in a way coupled. But the networks are separate and the performance of the depth network does not seem to have a big impact on the performance of the ego motion network.
+From the results it appears that the quality of depth prediction has a pretty low impact on the performance of the ego motion estimation. The depth and ego motion is predicted by different networks. But the loss function is dependent on both depth and ego motion predictions. It is not possible to learn only depth or only ego motion separately in this system, so they are in a way coupled. But the networks are separate and the performance of the depth network does not seem to have a big impact on the performance of the ego motion network.
 
 The effect of using either a explainability mask or stationary pixel mask can be seen in Figure \ref{fig:e1e2e3}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{E1-E2-E3}
-	\caption{The top row is from experiment E1, the second row is from E2 with the explainability maps shown to the left, and the last row is from E3 with the stationary pixel map shown to the left. In the top depth map the depth prediction for the biker is incorrect. Because the biker is stationary with respect to the camera the disparity of the pixels across the subsequent frames becomes 0 and the depth goes to infinity. Training using an explain-ability mask seems to improve the depth prediction for the biker, and using a stationary pixels mask improves the depth even more.}
+	\caption{The top row is from experiment E1, the second row is from E2 with the explainability maps shown to the left, and the last row is from E3 with the stationary pixel map shown to the left. In the top depth map, the depth prediction for the biker is incorrect. Because the biker is stationary with respect to the camera, the disparity of the pixels across the subsequent frames becomes 0 and the depth goes to infinity. Training using an explain-ability mask seems to improve the depth prediction for the biker, and using a stationary pixels mask improves the depth even more.}
 	\label{fig:e1e2e3}
 \end{figure}
 
@@ -198,7 +198,7 @@ The keypoint predicting network was evaluated and compared with the ORB detector
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{point1}
-	\caption{Results from the keypoint prediction network. The top row are the original input images fed to branch A, and bellow are the transformed images fed to branch B. Circles that are the same color have matching descriptors.}
+	\caption{Results from the keypoint prediction network. The top row are the original input images fed to branch A, and below are the transformed images fed to branch B. Circles that are the same color have matching descriptors.}
 	\label{fig:point1}
 \end{figure}
 

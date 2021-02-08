@@ -32,11 +32,11 @@ This section aims to critique and discuss the method used to answer our research
 
 \subsection{Datasets}
 
-Training the depth predicting network on Kitti and testing it on Lyft we can see that the depth maps produced (Figure \ref{fig:E14}) is quite acceptable. It is important for real world applications that the network is not over-fitted to its training dataset, but instead generalizes well to unseen data. Training and evaluating on two rather different car sequence dataset in this thesis was valuable in this regard, many papers only focus on getting the best benchmark on Kitti.
+Training the depth predicting network on Kitti and testing it on Lyft we can see that the depth maps produced (Figure \ref{fig:E14}) are quite acceptable. It is important for real world applications that the network is not over-fitted to its training dataset, but instead generalizes well to unseen data. Training and evaluating on two rather different car sequence dataset in this thesis was valuable in this regard, many papers only focus on getting the best benchmark on Kitti.
 
-Using images from the Kitti dataset to train the keypoint prediction network gave the insight that the technique generalizes well to the domain of autonomous cars and navigation. In the original paper the network was trained on the HPatches\cite{hpatches} dataset. A drawback of using homographic transformation to train the keypoint network is that is it unclear if the keypoint network would generalize to images not related by a simple homographic transformation. In non planar scenes where the camera is moving in 3D the feature points would instead be related by a fundamental matrix. To setup a system where unsupervised training could be performed on an image sequance such as the Kitti sequance dataset would be more complicated, and would be an interesting topic for future work.
+Using images from the Kitti dataset to train the keypoint prediction network gave the insight that the technique generalizes well to the domain of autonomous cars and navigation. In the original paper the network was trained on the HPatches\cite{hpatches} dataset. A drawback of using homographic transformation to train the keypoint network is that is it unclear if the keypoint network would generalize to images not related by a simple homographic transformation. In non planar scenes where the camera is moving in 3D, the feature points would instead be related by a fundamental matrix. To setup a system where unsupervised training could be performed on an image sequance such as the Kitti sequence dataset would be more complicated\cite{pose-sup}.
 
-The consensus maximization network was trained on homographies because it was possible to implement it as a natural extension of the keypoint prediction pipeline. If the keypoint prediction training pipeline is altered to train on an image sequence, then the consensus maximization could predict a fundamental matrix instead of an homography, which also would be more appropriate to solve a structure from motion problem.
+The consensus maximization network was trained on homographies because it was possible to implement it as a natural extension of the keypoint prediction pipeline. If the keypoint prediction training pipeline is altered to train on an image sequence, then the consensus maximization could predict a fundamental matrix instead of a homography, which also would be more appropriate to solve a structure from motion problem.
 
 \subsection{Evaluation metrics}
 
@@ -50,7 +50,7 @@ A very interesting path for future work would be to chain all networks together 
 
 Two nearby images in the sequence dataset are fed into both keypoint net and depth net. The 2D positions from the keypoint net can be lifted to 3D by sampling the depth maps. The 3D points are fed into the consensus network configured to predict a rigid 3D transformation. The photometric error loss function is implemented as before (Figure \ref{fig:warp}). But instead of using a pose predicting network, the output transform from the consensus network is used instead.
 
-Instead of calculating the point pair and correspondence matrices $\textbf{G}$ and $\textbf{C}$ using a known homography, we instead use the rigid 3D transformation to move the 3D points from $\textbf{I}_s$ and reproject them onto $\textbf{I}_t$. This uses the same method we use to reproject the image using the rigid transform and depth map, but this time it is done for sparse 3D points. The correspondances are calculated just as in section \ref{sec:keypointloss} but this time using the keypoints from $\textbf{I}_s$ and the reprojected points from $\textbf{I}_t$. The keypoint loss function would also be implemented as described in this thesis using the correspondences. Additionally an additional loss term could be added to encourage the keypoint score $\textbf{s}$ and the inlier prediction $\textbf{w}$ to be similar.
+Instead of calculating the point pair and correspondence matrices $\textbf{G}$ and $\textbf{C}$ using a known homography, we instead use the rigid 3D transformation to move the 3D points from $\textbf{I}_s$ and reproject them onto $\textbf{I}_t$. This uses the same method we use to reproject the image using the rigid transform and depth map, but this time it is done for sparse 3D points. The correspondances are calculated just as in section \ref{sec:keypointloss} but this time using the keypoints from $\textbf{I}_s$ and the reprojected points from $\textbf{I}_t$. The keypoint loss function would also be implemented as described in this thesis using the correspondences. Additionally a loss term could be added to encourage the keypoint score $\textbf{s}$ and the inlier prediction $\textbf{w}$ to be similar.
 
 Having depth maps from two frames in the sequence, and point pairs that should represent the same points in the scene, we can also add a sparse depth consistency loss.
 
@@ -62,7 +62,7 @@ Having depth maps from two frames in the sequence, and point pairs that should r
 }
 \end{equation}
 
-This sparse loss reduces scale drifting of the depth maps across frames.
+This sparse loss reduces scale drift of the depth maps across frames.
 
 \begin{figure}[H]
 	\centering
@@ -70,3 +70,11 @@ This sparse loss reduces scale drifting of the depth maps across frames.
 	\caption{A diagram with a suggestion of how the networks presented in this thesis could be chained together and trained using a joint loss function.}
 	\label{fig:futurework}
 \end{figure}
+
+\section{The work in a wider context}
+
+Self driving vehicles is a key area where neural network perception has a big impact. The adoption of autonomous vehicles could lead to more ride sharing alternatives, reducing the demand for owning a car, which in turn could reduce road congestion and oil consumption. \cite{transportation}
+
+A common concern with autonomous technologies is the impact it could have on available job opportunities. Truck drivers are often brought up as a profession that will be especially hard hit. The advent of wide spread autonomous driving vehicles could also bring about many new professions not present today, the actual total outcome of available jobs is still an open debate.\cite{sociology}
+
+TODO: MORE STUFFS!!!

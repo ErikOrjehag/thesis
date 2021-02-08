@@ -20,10 +20,10 @@
 \contentsline {subsection}{\numberline {4.1.1}Sequence datasets}{12}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Homographic adaptation dataset}{13}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}Consensus maximization dataset}{13}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Comparing techniques for depth and ego motion prediction}{14}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Comparing techniques for depth and egomotion prediction}{14}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Evaluation metrics}{15}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Depth error and accuracy metrics}{15}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Camera ego motion error metric}{16}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.2}Camera egomotion error metric}{16}{subsection.4.4.2}%
 \contentsline {subsection}{\numberline {4.4.3}Keypoint error and score metrics}{16}{subsection.4.4.3}%
 \contentsline {subsection}{\numberline {4.4.4}Consensus maximization performance metrics}{17}{subsection.4.4.4}%
 \contentsline {chapter}{\numberline {5}Implementation}{19}{chapter.5}%
@@ -54,7 +54,8 @@
 \contentsline {subsection}{\numberline {7.2.1}Datasets}{52}{subsection.7.2.1}%
 \contentsline {subsection}{\numberline {7.2.2}Evaluation metrics}{53}{subsection.7.2.2}%
 \contentsline {section}{\numberline {7.3}Future work}{53}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Conclusions}{55}{section.7.4}%
+\contentsline {section}{\numberline {7.4}The work in a wider context}{54}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Conclusions}{55}{section.7.5}%
 \contentsline {paragraph}{\textbf {How well do the unsupervised methods from previous research work on new datasets not tested in the original papers?}}{55}{section*.50}%
 \contentsline {paragraph}{\textbf {What are the performance gains of combining different methods from recent research in monocular depth and ego motion prediction?}}{55}{section*.51}%
 \contentsline {chapter}{Bibliography}{57}{chapter*.52}%

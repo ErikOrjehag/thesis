@@ -14,44 +14,44 @@ A level-1 auxiliary file: discussion.aux
 A level-1 auxiliary file: conclusions.aux
 Database file #1: IEEEfull.bib
 Database file #2: myrefs.bib
-You've used 26 entries,
+You've used 30 entries,
             2773 wiz_defined-function locations,
-            1274 strings with 24466 characters,
-and the built_in function-call counts, 14947 in all, are:
-= -- 1261
-> -- 1065
-< -- 13
-+ -- 359
-- -- 330
-* -- 1272
-:= -- 2273
-add.period$ -- 92
-call.type$ -- 26
-change.case$ -- 183
-chr.to.int$ -- 23
-cite$ -- 52
-duplicate$ -- 655
-empty$ -- 1095
-format.name$ -- 358
-if$ -- 3176
+            1303 strings with 25195 characters,
+and the built_in function-call counts, 17174 in all, are:
+= -- 1465
+> -- 1174
+< -- 17
++ -- 396
+- -- 363
+* -- 1444
+:= -- 2593
+add.period$ -- 108
+call.type$ -- 30
+change.case$ -- 206
+chr.to.int$ -- 27
+cite$ -- 60
+duplicate$ -- 763
+empty$ -- 1285
+format.name$ -- 397
+if$ -- 3669
 int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 29
-newline$ -- 152
-num.names$ -- 105
-pop$ -- 411
+missing$ -- 34
+newline$ -- 176
+num.names$ -- 121
+pop$ -- 462
 preamble$ -- 1
-purify$ -- 162
+purify$ -- 181
 quote$ -- 0
-skip$ -- 520
+skip$ -- 606
 stack$ -- 0
-substring$ -- 451
-swap$ -- 138
-text.length$ -- 10
+substring$ -- 568
+swap$ -- 166
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 261
+type$ -- 300
 warning$ -- 0
-while$ -- 104
+while$ -- 121
 width$ -- 0
-write$ -- 365
+write$ -- 424

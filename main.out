@@ -18,10 +18,10 @@
 \BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Sequence datasets}{section.4.1}% 18
 \BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Homographic adaptation dataset}{section.4.1}% 19
 \BOOKMARK [1][-]{section.4.2}{4.2 Consensus maximization dataset}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.3}{4.3 Comparing techniques for depth and ego motion prediction}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.3}{4.3 Comparing techniques for depth and egomotion prediction}{chapter.4}% 21
 \BOOKMARK [1][-]{section.4.4}{4.4 Evaluation metrics}{chapter.4}% 22
 \BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Depth error and accuracy metrics}{section.4.4}% 23
-\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Camera ego motion error metric}{section.4.4}% 24
+\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Camera egomotion error metric}{section.4.4}% 24
 \BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Keypoint error and score metrics}{section.4.4}% 25
 \BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Consensus maximization performance metrics}{section.4.4}% 26
 \BOOKMARK [0][]{chapter.5}{5 Implementation}{}% 27
@@ -50,5 +50,6 @@
 \BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Datasets}{section.7.2}% 50
 \BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 Evaluation metrics}{section.7.2}% 51
 \BOOKMARK [1][-]{section.7.3}{7.3 Future work}{chapter.7}% 52
-\BOOKMARK [1][-]{section.7.4}{7.4 Conclusions}{chapter.7}% 53
-\BOOKMARK [0][]{chapter*.52}{Bibliography}{}% 54
+\BOOKMARK [1][-]{section.7.4}{7.4 The work in a wider context}{chapter.7}% 53
+\BOOKMARK [1][-]{section.7.5}{7.5 Conclusions}{chapter.7}% 54
+\BOOKMARK [0][]{chapter*.52}{Bibliography}{}% 55

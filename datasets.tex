@@ -1,15 +1,15 @@
 \section{Datasets}
 
-The neural networks are trained and evaluated on images from 2 different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset, the images from the left and right cameras are treated as separate image sequences to yield more training data. The images are resized to height $H=128$ and width $W=416$ pixels, and the intrinsic camera matrix $\textbf{K}$ is updated accordingly.
+The neural networks are trained and evaluated on images from two different datasets, KITTI\cite{kitti} and Lyft\cite{lyft2019}. Both datasets are preprocessed to remove frames where the camera is not moving. This is important because if there is no movement between frames then no depth information can be inferred during training when using monoscopic data. In the Kitti dataset, the images from the left and right cameras are treated as separate image sequences to yield more training data. The images are resized to height $H=128$ and width $W=416$ pixels, and the intrinsic camera matrix $\textbf{K}$ is updated accordingly.
 
 \subsection{Sequence datasets}
 
-To train the networks used for depth and ego motion prediction the images from Kitti and Lyft at loaded in triplets of subsequent frames which are used during training of the network. We denote an image by $\textbf{I}$, which is a $3\times H\times W$ matrix of \abbrRGB pixel colors. To test the network, the lidar data and ground truth ego motion from Kitti and Lyft are used. The lidar data is converted to a sparse depth map, that can be compared to the depth map predicted by the network. We denote a depth map by $\textbf{D}$, which is a $1\times H \times W$ matrix of depth values for each pixel. The ground truth lidar and ego motion data is only used during testing, not during training. A sample of 3 subsequent frames can be seen in Figure \ref{fig:sequencedataset}. We denote ego motion by $\textbf{T}$, which is a $3\times 4$ rigid 3D transformation matrix.
+To train the networks used for depth and ego motion prediction, the images from Kitti and Lyft at loaded in triplets of subsequent frames. We denote an image by $\textbf{I}$, which is a $3\times H\times W$ matrix of \abbrRGB pixel colors. To test the network, the lidar data and ground truth egomotion from Kitti and Lyft are used. The lidar data is converted to a sparse depth map, that can be compared to the depth map predicted by the network. We denote a depth map by $\textbf{D}$, which is a $1\times H \times W$ matrix of depth values for each pixel. The ground truth lidar and egomotion data is only used during testing, not during training. A sample of 3 subsequent frames can be seen in Figure \ref{fig:sequencedataset}. We denote egomotion by $\textbf{T}$, which is a $3\times 4$ rigid 3D transformation matrix.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{sequencedataset}
-	\caption{The dataloader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $\textbf{I}_{t-1}$, $\textbf{I}_t$, $\textbf{I}_{t+1}$ with the sparse depth map overlaid on frame $\textbf{I}_t$.}
+	\caption{The data loader loads 3 subsequent frames in a sequence. The figure shows from top to bottom 3 frames from Kitti, $\textbf{I}_{t-1}$, $\textbf{I}_t$, $\textbf{I}_{t+1}$ with the sparse depth map overlaid on frame $\textbf{I}_t$.}
 	\label{fig:sequencedataset}
 \end{figure}
 
@@ -36,10 +36,10 @@ Kitti contains 124 sequences, and Lyft contains 148 sequences. For each dataset 
 
 To train the network that predicts keypoints, images are read one by one from the Kitti or Lyft datasets. The image is fed trough two branches, in branch A the image is not modified, and in branch B the image is transformed by a random homography (Figure \ref{fig:unsuperpointloss}). The authors of UnsuperPoint refer to this technique as homographic adaptation.
 
-How to generate the random homography used during training is not described in the UnsuperPoint paper, but is an important part of the method. The method used in this thesis generates random homographies from 5 parameters $\alpha_{\mathrm{rotation}}$, $\alpha_{\mathrm{translation}}$, $\alpha_{\mathrm{scale}}$, $\alpha_{\mathrm{sheer}}$ and $\alpha_{\mathrm{perspective}}$. The parameters controls the maximum transformation for each aspect of an homography. The final homographgy is constructed from parts as follows.
+How to generate the random homography used during training is not described in the UnsuperPoint paper, but is an important part of the method. The method used in this thesis generates random homographies from 5 parameters $\alpha_{\mathrm{rotation}}$, $\alpha_{\mathrm{translation}}$, $\alpha_{\mathrm{scale}}$, $\alpha_{\mathrm{shear}}$ and $\alpha_{\mathrm{perspective}}$. The parameters control the maximum transformation for each aspect of an homography. The final homographgy is constructed from parts as follows.
 
 \begin{equation}
-\textbf{H} = \textbf{H}_{\mathrm{affine}} \textbf{H}_{\mathrm{sheer}} \textbf{H}_{\mathrm{perspective}}
+\textbf{H} = \textbf{H}_{\mathrm{affine}} \textbf{H}_{\mathrm{shear}} \textbf{H}_{\mathrm{perspective}}
 \end{equation}
 
 Assume $u_n \sim \mathrm{U}(-1,1)$ are random uniform variables in the range $-1$ to $1$.
@@ -47,28 +47,28 @@ Assume $u_n \sim \mathrm{U}(-1,1)$ are random uniform variables in the range $-1
 \begin{equation}
 \textbf{H}_{\mathrm{affine}} = 
 \begin{pmatrix}
-\cos(r)*s & -\sin(r) & t_\mathrm{x} \\
-\sin(r)& \cos(r)*s & t_\mathrm{y} \\
+\cos(r)s & -\sin(r)s & t_\mathrm{x} \\
+\sin(r)s& \cos(r)s & t_\mathrm{y} \\
 0 & 0 & 1 \\
 \end{pmatrix}
 , \text{with}
 \begin{cases}
-r=u_1*\alpha_{\mathrm{rotation}} \\
-s=u_2*\alpha_{\mathrm{scale}}+1 \\
-t_\mathrm{x}=u_3*\alpha_{\mathrm{translation}} \\
-t_\mathrm{y}=u_4*\alpha_{\mathrm{translation}} \\
+r=u_1\alpha_{\mathrm{rotation}} \\
+s=u_2\alpha_{\mathrm{scale}}+1 \\
+t_\mathrm{x}=u_3\alpha_{\mathrm{translation}} \\
+t_\mathrm{y}=u_4\alpha_{\mathrm{translation}} \\
 \end{cases}
 \end{equation}
 
 \begin{equation}
-\textbf{H}_{\mathrm{sheer}} = 
+\textbf{H}_{\mathrm{shear}} = 
 \begin{pmatrix}
 1 & s & 0 \\
 s & 1 & 0 \\
 0 & 0 & 1 \\
 \end{pmatrix}
 , \text{with}
-\ s=u_5*\alpha_{\mathrm{sheer}} \\
+\ s=u_5 \alpha_{\mathrm{shear}} \\
 \end{equation}
 
 \begin{equation}
@@ -79,14 +79,14 @@ s & 1 & 0 \\
 p & p & 1 \\
 \end{pmatrix}
 , \text{with}
-\ p=u_6*\alpha_{\mathrm{perspective}} \\
+\ p=u_6\alpha_{\mathrm{perspective}} \\
 \end{equation}
 
 The output from the network is used together with the random but known homography to formulate the loss function.
 
 \section{Consensus maximization dataset}
 
-The consensus maximization network is trained on the output from the keypoint network. During training the weights of the keypoint net are frozen. Figure \ref{fig:consdata} illustrates the flow of data in the training and evaluation pipeline. Notice that the ground truth homography is not used in the loss function, and is only used in the evaluation metric to test the performance of the predictions.
+The consensus maximization network is trained on the output from the keypoint network. During training, the weights of the keypoint net are frozen. Figure \ref{fig:consdata} illustrates the flow of data in the training and evaluation pipeline. Notice that the ground truth homography is not used in the loss function, and is only used in the evaluation metric to test the performance of the predictions.
 
 \begin{figure}[H]
 	\centering
