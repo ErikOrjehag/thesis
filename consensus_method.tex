@@ -116,6 +116,7 @@ In the following sections the method used to extract the homography from the bas
 
 \begin{equation}
 \mathbf{u} \times \mathbf{H}\mathbf{v}=0 \rightarrow
+\label{eqn:H-cross}
 \end{equation}
 \begin{equation}
 [\mathbf{u}]_{\times} \mathbf{H}\mathbf{v}=0 \rightarrow
@@ -157,7 +158,7 @@ v_\mathrm{y} \\
 \label{eqn:H-3}
 \end{equation}
 
-The monomials in the parentheses are the same as for the fundamental constraint, which means that the same monomial matrix $\textbf{M}$ can be used. But because a homography is constrained by $r=3$ linear equations, the last three singular values of the SVD should be minimized during training. Extract three basis vectors from the nullspace which will be the three rightmost columns of $\textbf{V}$ in the SVD of $\diag(\textbf{w})\textbf{M}$.
+Note that the above derivation (\ref{eqn:H-cross}-\ref{eqn:H-3}) is identical to the DLT algorithm\cite{Hartley2004}. The monomials in the parentheses are the same as for the fundamental constraint, which means that the same monomial matrix $\textbf{M}$ can be used. But because a homography is constrained by $r=3$ linear equations, the last three singular values of the SVD should be minimized during training. Extract three basis vectors from the nullspace which will be the three rightmost columns of $\textbf{V}$ in the SVD of $\diag(\textbf{w})\textbf{M}$.
 
 \begin{equation}
 \mathbf{B} = 
@@ -457,7 +458,7 @@ In the confusion matrix in the results section a point is classified as an inlie
 
 \subsection{Improving training convergence}
 
-After some initial attempts at training the consensus maximization network for homographies on the output of the keypoint network, it was clear that it was next to impossible to get the training to converge on a good solution. Applying some additional techniques not described in the original paper resolved the issue.
+After some initial attempts at training the consensus maximization network for homographies on the output of the keypoint network, it was clear that it was next to impossible to get the training to converge on a good solution. Applying some additional techniques not described in the original paper resolved the issue. A similar normalization scheme, called Hartley normalization, is proposed in\cite{8-point}.
 
 Firstly the points should be transformed into a different basis before they are fed into the consensus maximization network. The change of basis ensures that the coordinates are scaled so that their maximum magnitude is 1, and the origin is centered in the middle of the image and not in the top left corner.
 

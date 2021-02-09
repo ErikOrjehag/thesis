@@ -31,7 +31,7 @@ The network is trained in a Siamese network setup, where two duplicate networks 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{unsuperpointloss}
-	\caption{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $\textbf{H}$. The keypoint positions from twin A are transformed by the same homography $\textbf{H}$ and the output from the two branches are compared in order to formulate the loss function.}
+	\caption{This figure illustrates the flow from input image to loss function. The image from branch A is fed directly into the UnsuperPoint network, while in branch B the image is first transformed by a random homography $\textbf{H}$. The keypoint positions from twin A are transformed by the same homography $\textbf{H}$ and the output from the two branches are compared in order to formulate the loss function. Note that the image transformation by $\textbf{H}$ in the figure, in practise becomes a resampling by $\textbf{H}^{-1}$.}
 	\label{fig:unsuperpointloss}
 \end{figure}
 

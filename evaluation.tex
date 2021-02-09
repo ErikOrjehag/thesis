@@ -58,7 +58,14 @@ This should be interpreted as the ratio of predictions that is within the ratio 
 \subsection{Camera egomotion error metric}
 \label{sec:egometric}
 
-The error of the camera motion predictions are measured using \textit{RMSE}. But instead of taking the mean error over all poses in a sequence, the alignment error is calculated part wise over a track length of only 5 poses. The final error is presented as the mean \textit{RMSE} of all parts. Each track part from the prediction is transformed to have its first pose coincide with the ground truth in a common origin. This is done so that the first pose in the track part of both the prediction and ground truth is the ${4\times 4}$ identity matrix. Because the egomotion is predicted relative to an unknown scale and the ground truth is in meters, we scale each predicted track part to have similar scale to the ground truth track part.
+The error of the camera motion predictions are measured using \textit{RMSE}. But instead of taking the mean error over all poses in a sequence, the alignment error is calculated part wise over a track length of only 5 poses. The final error is presented as the mean \textit{RMSE} of all parts. Each track part from the prediction is transformed to have its first pose coincide with the ground truth in a common origin. This is done so that the first pose in the track part of both the prediction and ground truth is the ${4\times 4}$ identity matrix. The egomotion is predicted relative to an unknown scale and the ground truth is in meters. To compensate for this we scale each predicted track part by the scale factor $s$ defined in equation \ref{eqn:track-scale},
+
+\begin{equation}
+s = \frac{\sum_{n=1}^{5} \textbf{p}_n\cdot \hat{\textbf{p}}_n}{\sum_{n=1}^{5} \hat{\textbf{p}}_n\cdot \hat{\textbf{p}}_n}
+\label{eqn:track-scale}
+\end{equation}
+
+where $\textbf{p}_n$ is a point in the ground truth track, and $\hat{\textbf{p}}_n$ is a point in the predicted track.
 
 \subsection{Keypoint error and score metrics}\label{sec:keypointmetrics}
 
